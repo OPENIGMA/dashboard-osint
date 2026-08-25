@@ -2,10 +2,11 @@ name: Automatic OSINT Data Collector
 
 on:
   schedule:
-    # S'exécute automatiquement toutes les heures (à la minute 0)
     - cron: '0 * * * *'
-  # Permet aussi de déclencher le script manuellement en 1 clic
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -13,10 +14,10 @@ jobs:
 
     steps:
     - name: Récupérer le code du dépôt
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Configurer Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: '3.x'
 
