@@ -1,34 +1,33 @@
-name: Automatic OSINT Data Collector
+name: OSINT Data Collector
 
 on:
   schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
-
-permissions:
-  contents: write
+    - cron: '0 */6 * * *' # S'exécute toutes les 6 heures
+  workflow_dispatch: # Permet le lancement manuel avec "Re-run jobs"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Récupérer le code du dépôt
-      uses: actions/checkout@v4
+      - name: Récupérer le code du dépôt
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Configurer Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.x'
+      - name: Configurer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
 
-    - name: Exécuter le script de collecte OSINT
-      run: python collector.py
+      - name: Lancer le script collector
+        run: python collector.py
 
-    - name: Sauvegarder et publier les nouvelles données
-      run: |
-        git config --global user.name "github-actions[bot]"
+      - name: Sauvegarder et publier les nouvelles données
+        run: |
+          git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git fetch origin main
           git pull --rebase origin main
           git add data_feed.json
-          git diff-index --quiet HEAD || (git commit -m "Auto-update OSINT feed data [skip ci]" && git push)
+          git diff-index --quiet HEAD || (git commit -m "Auto-update OSINT feed data [skip ci]" && git push --force-with-lease)
