@@ -1,0 +1,32 @@
+name: Automatic OSINT Data Collector
+
+on:
+  schedule:
+    # S'exécute automatiquement toutes les heures (à la minute 0)
+    - cron: '0 * * * *'
+  # Permet aussi de déclencher le script manuellement en 1 clic
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Récupérer le code du dépôt
+      uses: actions/checkout@v3
+
+    - name: Configurer Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Exécuter le script de collecte OSINT
+      run: python collector.py
+
+    - name: Sauvegarder et publier les nouvelles données
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add data_feed.json
+        git commit -m "Auto-update OSINT feed data [skip ci]" || exit 0
+        git push
