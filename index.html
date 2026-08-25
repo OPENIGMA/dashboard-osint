@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plateforme de Veille & OSINT - Zone Sud</title>
   
-  <!-- Leaflet CSS (Carte) -->
+  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   
   <style>
@@ -50,10 +50,10 @@
       font-size: 0.95rem;
     }
 
-    /* Barre de filtres */
+    /* Barre de filtres complète */
     .filter-bar {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 16px;
       background-color: var(--card-bg);
       padding: 16px;
@@ -69,7 +69,7 @@
     }
 
     .filter-group label {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--text-muted);
       text-transform: uppercase;
@@ -78,12 +78,12 @@
 
     select, input[type="text"] {
       width: 100%;
-      padding: 10px 12px;
+      padding: 9px 12px;
       background-color: #0f172a;
       border: 1px solid var(--border-color);
       border-radius: 6px;
       color: var(--text-color);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       outline: none;
       transition: border-color 0.2s;
     }
@@ -139,7 +139,7 @@
 
     /* Carte */
     #map {
-      height: 500px;
+      height: 520px;
       width: 100%;
       border-radius: 6px;
       z-index: 1;
@@ -148,7 +148,7 @@
     /* Tableau */
     .table-container {
       overflow-x: auto;
-      max-height: 500px;
+      max-height: 520px;
       overflow-y: auto;
     }
 
@@ -156,7 +156,7 @@
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     th {
@@ -170,7 +170,7 @@
     }
 
     td {
-      padding: 12px 10px;
+      padding: 10px;
       border-bottom: 1px solid var(--border-color);
     }
 
@@ -205,20 +205,31 @@
     <p class="subtitle">Suivi automatique en zone Occitanie, PACA et Corse</p>
   </header>
 
-  <!-- Barre de filtrage -->
+  <!-- BARRE DE FILTRES COMPLÈTE -->
   <div class="filter-bar">
-    <!-- Barre de recherche libre -->
+    <!-- 1. Recherche libre -->
     <div class="filter-group">
       <label for="free-search">Recherche libre :</label>
       <input 
         type="text" 
         id="free-search" 
-        placeholder="Mots-clés (ex: A69, tracteurs, Béziers...)" 
+        placeholder="Mots-clés (ex: A69, tracteurs...)" 
         oninput="applyFilters()"
       />
     </div>
 
-    <!-- Filtre Thématique -->
+    <!-- 2. Période -->
+    <div class="filter-group">
+      <label for="period-select">Période :</label>
+      <select id="period-select" onchange="applyFilters()">
+        <option value="all">Toutes les dates</option>
+        <option value="24h">Dernières 24 heures</option>
+        <option value="7d">7 derniers jours</option>
+        <option value="30d" selected>30 derniers jours</option>
+      </select>
+    </div>
+
+    <!-- 3. Thématique -->
     <div class="filter-group">
       <label for="theme-select">Thématique :</label>
       <select id="theme-select" onchange="applyFilters()">
@@ -243,19 +254,35 @@
       </select>
     </div>
 
-    <!-- Filtre Région -->
+    <!-- 4. Région -->
     <div class="filter-group">
       <label for="region-select">Région :</label>
-      <select id="region-select" onchange="applyFilters()">
+      <select id="region-select" onchange="onRegionChange()">
         <option value="">Toutes les régions</option>
         <option value="OCC">Occitanie</option>
         <option value="PACA">PACA</option>
         <option value="COR">Corse</option>
       </select>
     </div>
+
+    <!-- 5. Département -->
+    <div class="filter-group">
+      <label for="dept-select">Département :</label>
+      <select id="dept-select" onchange="applyFilters()">
+        <option value="">Tous les départements</option>
+      </select>
+    </div>
+
+    <!-- 6. Ville -->
+    <div class="filter-group">
+      <label for="city-select">Ville :</label>
+      <select id="city-select" onchange="applyFilters()">
+        <option value="">Toutes les villes</option>
+      </select>
+    </div>
   </div>
 
-  <!-- Dashboard Principal -->
+  <!-- DASHBOARD PRINCIPAL -->
   <div class="dashboard-grid">
     <!-- Panneau Carte -->
     <div class="panel">
@@ -279,7 +306,7 @@
               <th>Date</th>
               <th>Thématique</th>
               <th>Titre & Source</th>
-              <th>Ville</th>
+              <th>Lieu</th>
             </tr>
           </thead>
           <tbody id="events-table-body">
@@ -292,7 +319,7 @@
     </div>
   </div>
 
-  <!-- Leaflet JS (Carte) -->
+  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
   <script>
@@ -300,60 +327,148 @@
     let map;
     let markersLayer;
 
-    // Initialisation de la carte (Centrée sur le Sud de la France)
+    // RESTAURATION STRICTE DE TES PARAMÈTRES DE CARTE AVEC SELECTEUR DE FONDS
     function initMap() {
-      map = L.map('map').setView([43.5, 3.8], 7);
-      
-      // Fond de carte sombre (CartoDB Dark Matter)
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; OpenStreetMap &copy; CARTO',
-        subdomains: 'abcd',
-        maxZoom: 19
-      }).addTo(map);
+      map = L.map('map').setView([43.5, 5.0], 7);
+
+      // 1. Fond Sombre Lisible (CARTO Voyager)
+      const darkTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        maxZoom: 19,
+        attribution: '&copy; CARTO'
+      });
+
+      // 2. Fond OpenStreetMap standard (Clair)
+      const osmTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap'
+      });
+
+      // 3. Fond Satellite (Esri World Imagery)
+      const satelliteTiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: '&copy; Esri'
+      });
+
+      // Appliquer le fond par défaut
+      darkTiles.addTo(map);
+
+      // Ajouter le sélecteur de cartes en haut à droite
+      const baseMaps = {
+        "Sombre (Clair)": darkTiles,
+        "Carte Routière": osmTiles,
+        "Satellite": satelliteTiles
+      };
+      L.control.layers(baseMaps).addTo(map);
 
       markersLayer = L.layerGroup().addTo(map);
     }
 
-    // Chargement des données JSON générées par collector.py
+    // Chargement du JSON
     async function loadData() {
       try {
         const response = await fetch('data_feed.json');
-        if (!response.ok) throw new Error("Impossible de charger data_feed.json");
+        if (!response.ok) throw new Error("Erreur chargement JSON");
         allEvents = await response.json();
+        
+        populateGeographicFilters();
         applyFilters();
       } catch (error) {
-        console.error("Erreur de chargement :", error);
+        console.error("Erreur :", error);
         document.getElementById('events-table-body').innerHTML = `
           <tr>
             <td colspan="4" style="text-align: center; color: var(--danger-color);">
-              Aucune donnée disponible. Exécutez le script d'acquisition.
+              Aucune donnée disponible. Exécutez le script de collecte.
             </td>
           </tr>`;
       }
     }
 
-    // Application dynamique des filtres (Recherche libre + Thématique + Région)
+    // Remplissage dynamique des menus Départements et Villes
+    function populateGeographicFilters() {
+      const deptSelect = document.getElementById('dept-select');
+      const citySelect = document.getElementById('city-select');
+      
+      const depts = new Set();
+      const cities = new Set();
+
+      allEvents.forEach(e => {
+        if (e.location && e.location.department) depts.add(e.location.department);
+        if (e.location && e.location.city) cities.add(e.location.city);
+      });
+
+      deptSelect.innerHTML = '<option value="">Tous les départements</option>' + 
+        Array.from(depts).sort().map(d => `<option value="${d}">${d}</option>`).join('');
+
+      citySelect.innerHTML = '<option value="">Toutes les villes</option>' + 
+        Array.from(cities).sort().map(c => `<option value="${c}">${c}</option>`).join('');
+    }
+
+    // Mise à jour si la région change
+    function onRegionChange() {
+      const selectedRegion = document.getElementById('region-select').value;
+      const deptSelect = document.getElementById('dept-select');
+      const citySelect = document.getElementById('city-select');
+
+      const depts = new Set();
+      const cities = new Set();
+
+      allEvents.forEach(e => {
+        if (!selectedRegion || (e.location && e.location.region === selectedRegion)) {
+          if (e.location.department) depts.add(e.location.department);
+          if (e.location.city) cities.add(e.location.city);
+        }
+      });
+
+      deptSelect.innerHTML = '<option value="">Tous les départements</option>' + 
+        Array.from(depts).sort().map(d => `<option value="${d}">${d}</option>`).join('');
+
+      citySelect.innerHTML = '<option value="">Toutes les villes</option>' + 
+        Array.from(cities).sort().map(c => `<option value="${c}">${c}</option>`).join('');
+
+      applyFilters();
+    }
+
+    // Filtrage complet (Recherche libre + Période + Thème + Région + Dept + Ville)
     function applyFilters() {
+      const searchQuery = document.getElementById('free-search').value.toLowerCase().trim();
+      const period = document.getElementById('period-select').value;
       const selectedTheme = document.getElementById('theme-select').value;
       const selectedRegion = document.getElementById('region-select').value;
-      const searchQuery = document.getElementById('free-search').value.toLowerCase().trim();
+      const selectedDept = document.getElementById('dept-select').value;
+      const selectedCity = document.getElementById('city-select').value;
+
+      const now = new Date();
 
       const filteredEvents = allEvents.filter(event => {
-        const matchTheme = !selectedTheme || event.theme === selectedTheme;
-        const matchRegion = !selectedRegion || event.location.region === selectedRegion;
-        
-        // Recherche multi-champs (titre + résumé + source + ville)
+        // Filtre Recherche libre
         const fullText = `${event.title} ${event.summary} ${event.source_name} ${event.location.city}`.toLowerCase();
-        const matchSearch = !searchQuery || fullText.includes(searchQuery);
+        if (searchQuery && !fullText.includes(searchQuery)) return false;
 
-        return matchTheme && matchRegion && matchSearch;
+        // Filtre Période
+        if (period !== 'all' && event.timestamp) {
+          const evtDate = new Date(event.timestamp);
+          const diffHours = (now - evtDate) / (1000 * 60 * 60);
+
+          if (period === '24h' && diffHours > 24) return false;
+          if (period === '7d' && diffHours > 168) return false;
+          if (period === '30d' && diffHours > 720) return false;
+        }
+
+        // Filtre Thème
+        if (selectedTheme && event.theme !== selectedTheme) return false;
+
+        // Filtres Géographiques
+        if (selectedRegion && event.location.region !== selectedRegion) return false;
+        if (selectedDept && event.location.department !== selectedDept) return false;
+        if (selectedCity && event.location.city !== selectedCity) return false;
+
+        return true;
       });
 
       renderTable(filteredEvents);
       renderMap(filteredEvents);
     }
 
-    // Rendu du tableau des résultats
+    // Rendu du tableau
     function renderTable(events) {
       const tbody = document.getElementById('events-table-body');
       document.getElementById('table-count').innerText = events.length;
@@ -362,7 +477,7 @@
         tbody.innerHTML = `
           <tr>
             <td colspan="4" style="text-align: center; color: var(--text-muted);">
-              Aucune alerte ne correspond à vos critères.
+              Aucune alerte ne correspond aux filtres sélectionnés.
             </td>
           </tr>`;
         return;
@@ -381,13 +496,13 @@
               <a href="${event.url}" target="_blank" class="event-link">${event.title}</a>
               <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Source: ${event.source_name}</div>
             </td>
-            <td><strong>${event.location.city}</strong></td>
+            <td><strong>${event.location.city} (${event.location.department || ''})</strong></td>
           </tr>
         `;
       }).join('');
     }
 
-    // Rendu de la carte avec marqueurs
+    // Rendu des marqueurs sur la carte
     function renderMap(events) {
       markersLayer.clearLayers();
       document.getElementById('map-count').innerText = events.length;
@@ -396,18 +511,18 @@
         if (event.location && event.location.lat && event.location.lng) {
           const marker = L.circleMarker([event.location.lat, event.location.lng], {
             radius: 7,
-            fillColor: '#38bdf8',
-            color: '#0f172a',
-            weight: 2,
+            fillColor: '#0284c7',
+            color: '#ffffff',
+            weight: 1.5,
             opacity: 1,
-            fillOpacity: 0.8
+            fillOpacity: 0.85
           });
 
           marker.bindPopup(`
-            <div style="color: #0f172a; font-family: sans-serif;">
-              <strong style="font-size: 0.85rem; color: #0284c7;">${event.theme}</strong><br/>
+            <div style="color: #0f172a; font-family: sans-serif; font-size: 0.85rem;">
+              <strong style="color: #0284c7;">${event.theme}</strong><br/>
               <a href="${event.url}" target="_blank" style="font-weight: bold; color: #0f172a; text-decoration: none;">${event.title}</a><br/>
-              <small style="color: #64748b;">${event.location.city} — ${event.source_name}</small>
+              <small style="color: #64748b;">${event.location.city} (${event.location.department || ''}) — ${event.source_name}</small>
             </div>
           `);
 
@@ -416,7 +531,6 @@
       });
     }
 
-    // Démarrage au chargement de la page
     window.onload = () => {
       initMap();
       loadData();
