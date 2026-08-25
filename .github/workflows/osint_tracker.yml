@@ -27,8 +27,8 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git stash
-          git pull --rebase origin main
-          git stash pop || true
           git add data_feed.json
-          git diff-index --quiet HEAD || (git commit -m "Auto-update OSINT feed data [skip ci]" && git push --force-with-lease)
+          git diff-index --quiet HEAD || git commit -m "OSINT feed data update [skip ci]"
+          git fetch origin main
+          git pull --rebase origin main
+          git push --force-with-lease
