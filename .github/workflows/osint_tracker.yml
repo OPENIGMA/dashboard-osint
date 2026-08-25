@@ -1,9 +1,9 @@
 name: OSINT Data Collector
 
 on:
- schedule:
-    - cron: '0 * * * *' # S'exécute au début de chaque heure
-  workflow_dispatch:: # Permet le lancement manuel avec "Re-run jobs"
+  schedule:
+    - cron: '0 * * * *' # S'exécute toutes les 6 heures
+  workflow_dispatch: # Permet le lancement manuel avec "Re-run jobs"
 
 jobs:
   build:
