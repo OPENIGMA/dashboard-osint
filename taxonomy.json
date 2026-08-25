@@ -1,0 +1,113 @@
+{
+  "themes": [
+    {
+      "id": "ordre_public",
+      "label": "Ordre Public & Mouvements Sociaux",
+      "subthemes": [
+        "Evenement voie publique",
+        "Manifestation",
+        "Greve",
+        "Blocage occupation",
+        "Projet Amenagement Conteste",
+        "Installation illicite",
+        "Squat",
+        "Free Rave Teknival"
+      ]
+    },
+    {
+      "id": "securite",
+      "label": "Sécurité & Criminalité",
+      "subthemes": [
+        "Delinquance criminalite",
+        "Criminalite organisee",
+        "Armes",
+        "Cybercriminalite",
+        "Drones"
+      ]
+    },
+    {
+      "id": "ideologies",
+      "label": "Idéologies & Radicalités",
+      "subthemes": [
+        "Radicalisation",
+        "Separatisme",
+        "Derives sectaires",
+        "Proselytisme",
+        "Apologie",
+        "Terrorisme",
+        "Ultra-droite",
+        "Ultra-gauche",
+        "Animaliste",
+        "Ecologie",
+        "Survivalisme"
+      ]
+    },
+    {
+      "id": "politique_institutions",
+      "label": "Institutions & Politique",
+      "subthemes": [
+        "Visite Officielle",
+        "Elections 2027",
+        "JOPH 2030",
+        "Enseignement Education nationale",
+        "Sante",
+        "Culte"
+      ]
+    },
+    {
+      "id": "secteurs_strategiques",
+      "label": "Secteurs Stratégiques & Environnement",
+      "subthemes": [
+        "Agriculture",
+        "Chasse",
+        "Transports",
+        "Ferroviaire",
+        "Nucleaire"
+      ]
+    }
+  ],
+  "geography": {
+    "zone": "Zone de Défense et de Sécurité Sud",
+    "regions": [
+      {
+        "name": "OCCITANIE",
+        "code": "OCC",
+        "departments": [
+          {"code": "09", "name": "Ariège", "cities": ["Foix", "Pamiers"]},
+          {"code": "11", "name": "Aude", "cities": ["Carcassonne", "Narbonne"]},
+          {"code": "12", "name": "Aveyron", "cities": ["Rodez", "Millau"]},
+          {"code": "30", "name": "Gard", "cities": ["Nîmes", "Alès"]},
+          {"code": "31", "name": "Haute-Garonne", "cities": ["Toulouse", "Blagnac", "Muret"]},
+          {"code": "32", "name": "Gers", "cities": ["Auch"]},
+          {"code": "34", "name": "Hérault", "cities": ["Montpellier", "Béziers", "Sète"]},
+          {"code": "46", "name": "Lot", "cities": ["Cahors", "Figeac"]},
+          {"code": "48", "name": "Lozère", "cities": ["Mende"]},
+          {"code": "65", "name": "Hautes-Pyrénées", "cities": ["Tarbes", "Lourdes"]},
+          {"code": "66", "name": "Pyrénées-Orientales", "cities": ["Perpignan"]},
+          {"code": "81", "name": "Tarn", "cities": ["Albi", "Castres"]},
+          {"code": "82", "name": "Tarn-et-Garonne", "cities": ["Montauban"]}
+        ]
+      },
+      {
+        "name": "PACA",
+        "code": "PACA",
+        "departments": [
+          {"code": "04", "name": "Alpes-de-Haute-Provence", "cities": ["Digne-les-Bains", "Manosque"]},
+          {"code": "05", "name": "Hautes-Alpes", "cities": ["Gap", "Briançon"]},
+          {"code": "06", "name": "Alpes-Maritimes", "cities": ["Nice", "Cannes", "Antibes"]},
+          {"code": "13", "name": "Bouches-du-Rhône", "cities": ["Marseille", "Aix-en-Provence", "Arles"]},
+          {"code": "83", "name": "Var", "cities": ["Toulon", "La Seyne-sur-Mer", "Hyères"]},
+          {"code": "84", "name": "Vaucluse", "cities": ["Avignon", "Orange"]}
+        ]
+      },
+      {
+        "name": "CORSE",
+        "code": "COR",
+        "departments": [
+          {"code": "2A", "name": "Corse-du-Sud", "cities": ["Ajaccio", "Porto-Vecchio"]},
+          {"code": "2B", "name": "Haute-Corse", "cities": ["Bastia", "Corte"]}
+        ]
+      }
+    ]
+  }
+}
