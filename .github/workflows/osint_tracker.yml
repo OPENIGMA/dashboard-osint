@@ -25,10 +25,10 @@ jobs:
 
       - name: Sauvegarder et publier les nouvelles données
         run: |
-         git config --global user.name "github-actions[bot]"
-         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-         git reset --hard HEAD
-         git fetch origin main
-         git pull --rebase origin main
-         git add data_feed.json
-         git diff-index --quiet HEAD || (git commit -m "Auto-update OSINT feed data [skip ci]" && git push --force-with-lease)  
+           git config --global user.name "github-actions[bot]"
+           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+           git reset --hard HEAD
+           git fetch origin main
+           git pull --rebase origin main
+           git add data_feed.json
+           git diff-index --quiet HEAD || (git commit -m "Auto-update OSINT feed data [skip ci]" && git push --force-with-lease)  
