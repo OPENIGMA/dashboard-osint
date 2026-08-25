@@ -2,8 +2,8 @@ name: OSINT Data Collector
 
 on:
   schedule:
-    - cron: '0 * * * *' # S'exécute toutes les 6 heures
-  workflow_dispatch: # Permet le lancement manuel avec "Re-run jobs"
+    - cron: '0 * * * *' # S'exécute toutes les heures
+  workflow_dispatch:
 
 jobs:
   build:
@@ -27,7 +27,8 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin main
+          git stash
           git pull --rebase origin main
+          git stash pop || true
           git add data_feed.json
           git diff-index --quiet HEAD || (git commit -m "Auto-update OSINT feed data [skip ci]" && git push --force-with-lease)
