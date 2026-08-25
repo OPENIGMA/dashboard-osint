@@ -16,11 +16,10 @@ if os.path.exists('communes.json'):
     except Exception as e:
         print(f"Erreur lecture communes.json : {e}")
 
-# RECHERCHES CIBLÉES EN ZONE SUD (PRESSE & SOCIAUX)
 SEARCH_QUERIES = [
     {"theme": "Agriculture", "source_type": "Presse", "query": "agriculteurs OR fnsea OR tracteurs Occitanie OR PACA"},
-    {"theme": "Blocage occupation", "source_type": "Presse", "query": "blocage autoroute OR barrage routier Toulouse OR Montpellier OR Marseille OR Nîmes OR Béziers"},
-    {"theme": "Manifestation", "source_type": "Presse", "query": "manifestation cortège Nîmes OR Perpignan OR Toulon OR Nice OR Avignon OR Albi OR Béziers"},
+    {"theme": "Blocage occupation", "source_type": "Presse", "query": "blocage autoroute OR barrage routier Toulouse OR Montpellier OR Marseille OR Nîmes OR Béziers OR Avignon OR Gap"},
+    {"theme": "Manifestation", "source_type": "Presse", "query": "manifestation cortège Nîmes OR Perpignan OR Toulon OR Nice OR Avignon OR Albi OR Béziers OR Gap OR Digne"},
     {"theme": "Projet Amenagement Conteste", "source_type": "Presse", "query": "A69 OR autoroute OR bassine contestation Occitanie OR PACA"},
     {"theme": "Criminalite organisee", "source_type": "Presse", "query": "narcotrafic OR fusillade OR point de deal Marseille OR Nîmes OR Avignon OR Cavaillon"},
     {"theme": "Agriculture", "source_type": "X (Twitter)", "query": "site:x.com OR site:twitter.com agriculteurs OR tracteurs Occitanie OR PACA"},
@@ -38,15 +37,15 @@ def detect_location(text):
         if len(city_key) > 3 and (re.search(r'\b' + re.escape(city_key) + r'\b', text_lower) or re.search(r'\b' + re.escape(city_key) + r'\b', normalized_text)):
             info = CITIES_DB[city_key]
             return {
-                "region": info["region"],
-                "department": info["department"],
+                "region": info["region"].upper(),
+                "department": str(info["department"]).zfill(2),
                 "city": info["city"],
                 "lat": info["lat"],
                 "lng": info["lng"]
             }
             
     if "occitanie" in text_lower:
-        return {"region": "OCC", "department": "31", "city": "Toulouse", "lat": 43.6047, "lng": 1.4442}
+        return {"region": "OCCITANIE", "department": "31", "city": "Toulouse", "lat": 43.6047, "lng": 1.4442}
     return {"region": "PACA", "department": "13", "city": "Marseille", "lat": 43.2965, "lng": 5.3698}
 
 events = []
@@ -99,7 +98,6 @@ for item_target in SEARCH_QUERIES:
     except Exception as e:
         print(f"Avertissement requête non aboutie ({theme}): {e}")
 
-# Toujours enregistrer le résultat, même vide, pour garantir le succès de GitHub Actions
 with open('data_feed.json', 'w', encoding='utf-8') as f:
     json.dump(events, f, ensure_ascii=False, indent=2)
 
