@@ -85,18 +85,38 @@
 
     // Initialisation de la carte Leaflet
     function initMap() {
-      // Centrer sur la Zone Sud (Toulouse/Marseille/Corse)
-      map = L.map('map').setView([43.5, 5.0], 7);
+  map = L.map('map').setView([43.5, 5.0], 7);
 
-      // Fond de carte sombre (CartoDB Dark Matter)
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; OpenStreetMap &copy; CARTO',
-        subdomains: 'abcd',
-        maxZoom: 19
-      }).addTo(map);
+  // 1. Fond Sombre Lisible
+  const darkTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    maxZoom: 19,
+    attribution: '&copy; CARTO'
+  });
 
-      markersLayer = L.layerGroup().addTo(map);
-    }
+  // 2. Fond OpenStreetMap standard (Clair)
+  const osmTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap'
+  });
+
+  // 3. Fond Satellite (Esri World Imagery)
+  const satelliteTiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: '&copy; Esri'
+  });
+
+  // Appliquer le fond sombre par défaut
+  darkTiles.addTo(map);
+
+  // Ajouter le sélecteur de cartes en haut à droite
+  const baseMaps = {
+    "Sombre (Clair)": darkTiles,
+    "Carte Routière": osmTiles,
+    "Satellite": satelliteTiles
+  };
+  L.control.layers(baseMaps).addTo(map);
+
+  markersLayer = L.layerGroup().addTo(map);
+}
 
     // Chargement de la taxonomie JSON pour remplir les filtres
     async function loadTaxonomy() {
