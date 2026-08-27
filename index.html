@@ -4,67 +4,254 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard OSINT - Zone Sud</title>
-    <!-- Leaflet CSS pour la carte -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; display: flex; height: 100vh; background: #f4f6f8; color: #333; }
-        #sidebar { width: 300px; background: #fff; padding: 20px; box-shadow: 2px 0 5px rgba(0,0,0,0.1); overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
-        #main { flex: 1; display: flex; flex-direction: column; }
-        #map { flex: 2; width: 100%; min-height: 300px; }
-        #feed { flex: 1; background: #fff; padding: 20px; overflow-y: auto; border-top: 2px solid #e0e0e0; }
-        h2 { margin-top: 0; color: #2c3e50; font-size: 1.2rem; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        h3 { font-size: 1rem; color: #555; margin: 10px 0 5px; }
-        select { width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px; background: #fff; }
-        select:disabled { background: #f0f0f0; color: #999; }
-        .alert-card { background: #f8f9fa; border-left: 4px solid #3498db; padding: 15px; margin-bottom: 10px; border-radius: 4px; transition: transform 0.2s; }
-        .alert-card:hover { transform: translateX(5px); background: #eef2f5; }
-        .alert-card h4 { margin: 0 0 5px 0; font-size: 0.95rem; line-height: 1.4; }
-        .alert-card a { color: #2980b9; text-decoration: none; font-weight: bold; }
-        .alert-card a:hover { text-decoration: underline; }
-        .meta { font-size: 0.8rem; color: #666; margin-top: 8px; display: flex; justify-content: space-between; }
-        .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; background: #e0e0e0; color: #333; font-weight: bold; }
-        .badge.theme { background: #3498db; color: #fff; }
-        #count { text-align: center; font-weight: bold; color: #555; margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background: #0d1117; 
+            color: #e6edf3; 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        /* HEADER - Filtres en ligne */
+        header {
+            background: #161b22;
+            border-bottom: 2px solid #00d4ff;
+            padding: 12px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: flex-end;
+            box-shadow: 0 2px 10px rgba(0, 212, 255, 0.15);
+        }
+        header h1 {
+            color: #00d4ff;
+            font-size: 1.2rem;
+            margin-right: 15px;
+            white-space: nowrap;
+            align-self: center;
+        }
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .filter-group label {
+            font-size: 0.7rem;
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: bold;
+        }
+        select, input[type="text"] {
+            background: #0d1117;
+            color: #e6edf3;
+            border: 1px solid #30363d;
+            border-radius: 5px;
+            padding: 6px 10px;
+            font-size: 0.85rem;
+            min-width: 140px;
+            outline: none;
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+        select:focus, input[type="text"]:focus {
+            border-color: #00d4ff;
+            box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2);
+        }
+        select:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            background: #161b22;
+        }
+        #search-box {
+            flex: 1;
+            min-width: 200px;
+        }
+        #count-badge {
+            background: #00d4ff;
+            color: #0d1117;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            align-self: center;
+            height: 32px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* MAIN - Carte à gauche, Feed à droite */
+        main {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+        #map {
+            width: 50%;
+            height: 100%;
+            background: #0d1117;
+            z-index: 1;
+        }
+        #feed {
+            width: 50%;
+            height: 100%;
+            overflow-y: auto;
+            padding: 20px;
+            background: #0d1117;
+            border-left: 2px solid #30363d;
+        }
+        
+        /* Scrollbar personnalisée */
+        #feed::-webkit-scrollbar { width: 8px; }
+        #feed::-webkit-scrollbar-track { background: #0d1117; }
+        #feed::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+        #feed::-webkit-scrollbar-thumb:hover { background: #00d4ff; }
+
+        /* Cartes d'alertes */
+        .alert-card {
+            background: #161b22;
+            border-left: 3px solid #00d4ff;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        .alert-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.15);
+        }
+        .alert-card h4 {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 8px;
+            color: #e6edf3;
+        }
+        .alert-card h4 a {
+            color: #e6edf3;
+            text-decoration: none;
+        }
+        .alert-card h4 a:hover {
+            color: #00d4ff;
+            text-decoration: underline;
+        }
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: #8b949e;
+            margin-top: 6px;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            background: #00d4ff;
+            color: #0d1117;
+        }
+        .badge.source {
+            background: #30363d;
+            color: #e6edf3;
+        }
+        .empty-state {
+            text-align: center;
+            color: #8b949e;
+            padding: 40px 20px;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
 
-<div id="sidebar">
-    <h2>🔍 Filtres OSINT</h2>
+<header>
+    <h1>🛰️ OSINT SUD</h1>
     
-    <h3>Région</h3>
-    <select id="filter-region"><option value="all">Toutes les régions</option></select>
+    <div class="filter-group">
+        <label>Région</label>
+        <select id="filter-region"><option value="all">Toutes</option></select>
+    </div>
     
-    <h3>Département</h3>
-    <select id="filter-dept" disabled><option value="all">Tous les départements</option></select>
+    <div class="filter-group">
+        <label>Département</label>
+        <select id="filter-dept" disabled><option value="all">Tous</option></select>
+    </div>
     
-    <h3>Ville</h3>
-    <select id="filter-city" disabled><option value="all">Toutes les villes</option></select>
+    <div class="filter-group">
+        <label>Ville</label>
+        <select id="filter-city" disabled><option value="all">Toutes</option></select>
+    </div>
     
-    <h3>Thématique</h3>
-    <select id="filter-theme">
-        <option value="all">Toutes les thématiques</option>
-        <option value="Agriculture">Agriculture</option>
-        <option value="Blocage occupation">Blocage / Occupation</option>
-        <option value="Manifestation">Manifestation</option>
-        <option value="Projet Amenagement Conteste">Projet Contesté</option>
-        <option value="Criminalite organisee">Criminalité Organisée</option>
-        <option value="Cybercriminalite">Cybercriminalité</option>
-        <option value="Drones">Drones</option>
-    </select>
+    <div class="filter-group">
+        <label>Thématique</label>
+        <select id="filter-theme">
+            <option value="all">Toutes</option>
+            <option value="Agriculture">Agriculture</option>
+            <option value="Armes">Armes</option>
+            <option value="Chasse">Chasse</option>
+            <option value="Délinquance criminalité">Délinquance criminalité</option>
+            <option value="Dérives Sectaires">Dérives Sectaires</option>
+            <option value="Ecologie">Ecologie</option>
+            <option value="Education nationale">Education nationale</option>
+            <option value="Ferroviaire">Ferroviaire</option>
+            <option value="Festivité Evènements voie publique">Festivité / Evènements</option>
+            <option value="Criminalité organisée">Criminalité organisée</option>
+            <option value="Free Rave Teknival">Free Rave Teknival</option>
+            <option value="Immigration">Immigration</option>
+            <option value="Nucléaire">Nucléaire</option>
+            <option value="Pêche">Pêche</option>
+            <option value="Prévention de la délinquance">Prévention délinquance</option>
+            <option value="Santé">Santé</option>
+            <option value="Séparatisme">Séparatisme</option>
+            <option value="Survivalisme">Survivalisme</option>
+            <option value="Transport">Transport</option>
+            <option value="Visite officielle">Visite officielle</option>
+            <option value="Radicalisation">Radicalisation</option>
+            <option value="Culte">Culte</option>
+            <option value="Prosélytisme">Prosélytisme</option>
+            <option value="Terrorisme">Terrorisme</option>
+            <option value="Animaliste">Animaliste</option>
+            <option value="Projet aménagement contesté (PAC)">Projet aménagement contesté</option>
+            <option value="Ultra gauche">Ultra gauche</option>
+            <option value="Ultra droite">Ultra droite</option>
+            <option value="JOPH 2030">JOPH 2030</option>
+            <option value="Elections 2027">Elections 2027</option>
+            <option value="Apologie">Apologie</option>
+            <option value="Blocage grève">Blocage grève</option>
+            <option value="Cybercriminalité">Cybercriminalité</option>
+            <option value="Drones">Drones</option>
+            <option value="Intrusion">Intrusion</option>
+            <option value="Manifestation">Manifestation</option>
+        </select>
+    </div>
+    
+    <div class="filter-group" style="flex:1; min-width:200px;">
+        <label>🔎 Recherche</label>
+        <input type="text" id="search-box" placeholder="Rechercher dans titres, villes, sources...">
+    </div>
+    
+    <div id="count-badge">0 alerte(s)</div>
+</header>
 
-    <div id="count">0 alerte(s)</div>
-</div>
-
-<div id="main">
+<main>
     <div id="map"></div>
-    <div id="feed"></div>
-</div>
+    <div id="feed">
+        <div class="empty-state">Chargement des données OSINT...</div>
+    </div>
+</main>
 
-<!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-    // 1. Géographie intégrée pour garantir le fonctionnement des filtres en cascade
+    // 1. Géographie pour les filtres en cascade
     const GEO_DATA = {
         "OCCITANIE": {
             "09": ["Foix", "Pamiers", "Saint-Girons"], "11": ["Carcassonne", "Narbonne", "Limoux"],
@@ -93,14 +280,15 @@
     const selDept = document.getElementById('filter-dept');
     const selCity = document.getElementById('filter-city');
     const selTheme = document.getElementById('filter-theme');
+    const searchBox = document.getElementById('search-box');
 
     // Peupler les régions
     Object.keys(GEO_DATA).forEach(r => selRegion.add(new Option(r, r)));
 
     // Filtre en cascade : Région -> Département
     selRegion.addEventListener('change', () => {
-        selDept.innerHTML = '<option value="all">Tous les départements</option>';
-        selCity.innerHTML = '<option value="all">Toutes les villes</option>';
+        selDept.innerHTML = '<option value="all">Tous</option>';
+        selCity.innerHTML = '<option value="all">Toutes</option>';
         selCity.disabled = true;
         
         if (selRegion.value !== 'all') {
@@ -116,7 +304,7 @@
 
     // Filtre en cascade : Département -> Ville
     selDept.addEventListener('change', () => {
-        selCity.innerHTML = '<option value="all">Toutes les villes</option>';
+        selCity.innerHTML = '<option value="all">Toutes</option>';
         if (selRegion.value !== 'all' && selDept.value !== 'all') {
             selCity.disabled = false;
             GEO_DATA[selRegion.value][selDept.value].forEach(c => selCity.add(new Option(c, c)));
@@ -128,6 +316,7 @@
 
     selCity.addEventListener('change', applyFilters);
     selTheme.addEventListener('change', applyFilters);
+    searchBox.addEventListener('input', applyFilters);
 
     // 2. Fonction de nettoyage du JSON (supprime les espaces parasites dans les clés)
     function cleanKeys(obj) {
@@ -151,7 +340,7 @@
             applyFilters();
         } catch (e) {
             console.error("Erreur chargement data_feed.json", e);
-            document.getElementById('feed').innerHTML = "<p style='color:red;'>Erreur de chargement des données. Vérifiez que data_feed.json existe.</p>";
+            document.getElementById('feed').innerHTML = "<p class='empty-state' style='color:#ff5555;'>Erreur de chargement des données. Vérifiez que data_feed.json existe.</p>";
         }
     }
 
@@ -161,6 +350,7 @@
         const d = selDept.value;
         const c = selCity.value;
         const t = selTheme.value;
+        const search = searchBox.value.toLowerCase().trim();
 
         const filtered = allData.filter(evt => {
             const loc = evt.location || {};
@@ -168,34 +358,44 @@
             const matchD = (d === 'all' || loc.department === d);
             const matchC = (c === 'all' || loc.city === c);
             const matchT = (t === 'all' || evt.theme === t);
-            return matchR && matchD && matchC && matchT;
+            
+            let matchSearch = true;
+            if (search) {
+                const searchText = `${evt.title} ${evt.source_name} ${loc.city} ${evt.theme}`.toLowerCase();
+                matchSearch = searchText.includes(search);
+            }
+            
+            return matchR && matchD && matchC && matchT && matchSearch;
         });
 
         renderFeed(filtered);
         renderMap(filtered);
-        document.getElementById('count').innerText = `${filtered.length} alerte(s)`;
+        document.getElementById('count-badge').innerText = `${filtered.length} alerte(s)`;
     }
 
     function renderFeed(data) {
         const feed = document.getElementById('feed');
         if (data.length === 0) {
-            feed.innerHTML = "<p>Aucune alerte ne correspond aux filtres sélectionnés.</p>";
+            feed.innerHTML = "<div class='empty-state'>Aucune alerte ne correspond aux filtres sélectionnés.</div>";
             return;
         }
         
-        feed.innerHTML = data.map(evt => `
+        feed.innerHTML = data.map(evt => {
+            const loc = evt.location || {};
+            const dateStr = evt.timestamp ? new Date(evt.timestamp).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' }) : 'Date inconnue';
+            return `
             <div class="alert-card">
                 <h4><a href="${evt.url}" target="_blank">${evt.title}</a></h4>
                 <div class="meta">
-                    <span class="badge theme">${evt.theme || 'Non classé'}</span>
-                    <span>${evt.location ? evt.location.city + ' (' + evt.location.department + ')' : 'Localisation inconnue'}</span>
+                    <span class="badge">${evt.theme || 'Non classé'}</span>
+                    <span>${loc.city ? loc.city + ' (' + loc.department + ')' : 'Localisation inconnue'}</span>
                 </div>
-                <div class="meta" style="margin-top:5px; font-style:italic;">
-                    <span>Source: ${evt.source_name || 'Inconnue'}</span>
-                    <span>${new Date(evt.timestamp).toLocaleDateString('fr-FR')}</span>
+                <div class="meta" style="margin-top:5px;">
+                    <span class="badge source">${evt.source_name || 'Inconnue'}</span>
+                    <span>${dateStr}</span>
                 </div>
             </div>
-        `).join('');
+        `}).join('');
     }
 
     function renderMap(data) {
@@ -203,7 +403,7 @@
         data.forEach(evt => {
             if (evt.location && evt.location.lat && evt.location.lng) {
                 const marker = L.marker([evt.location.lat, evt.location.lng]);
-                marker.bindPopup(`<b>${evt.title}</b><br><a href="${evt.url}" target="_blank">Lire l'article</a>`);
+                marker.bindPopup(`<b style="color:#0d1117">${evt.title}</b><br><a href="${evt.url}" target="_blank" style="color:#0056b3">Lire l'article</a>`);
                 markersLayer.addLayer(marker);
             }
         });
