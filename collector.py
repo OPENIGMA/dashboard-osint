@@ -117,12 +117,14 @@ LOCAL_RSS_FEEDS = [
 # 5. Mots-clés pour associer un article local à une thématique
 # ============================================================
 THEME_KEYWORDS = {
+    # Note : "ZAD" et "A69" ont été retirés d'ici pour éviter les conflits de priorité 
+    # avec la catégorie "Projet aménagement contesté (PAC)" qui est plus précise.
+    "Ecologie": ["écologie", "environnement", "climat", "pollution", "biodiversité", "sécheresse", "incendie", "canicule", "XR", "Extinction Rébellion", "SLT", "Les soulèvements de la terre", "ZIO"],
     "Agriculture": ["CR", "coordination rurale", "agriculture", "agriculteur", "FNSEA", "EGalim", "PAC", "tracteur", "récolte", "élevage", "viticulture", "chambre agriculture"],
     "Armes": ["arme", "fusil", "pistolet", "kalachnikov", "trafic arme", "confiscation", "arsenal"],
     "Chasse": ["chasse", "chasseur", "gibier", "ONCFS", "cynégétique", "battue", "braconnage", "loup"],
     "Délinquance criminalité": ["délinquance", "insécurité", "cambriolage", "agression", "vol", "braquage", "vandalisme", "rixe"],
     "Dérives Sectaires": ["secte", "dérive sectaire", "emprise mentale", "gourou", "MIVILUDES"],
-    "Ecologie": ["écologie", "environnement", "climat", "pollution", "biodiversité", "sécheresse", "incendie", "canicule","XR", "Extinction Rébellion", "SLT", "Les soulèvements de la terre", "ZIO", "ZAD","A69"],
     "Education nationale": ["école", "collège", "lycée", "professeur", "éducation nationale", "enseignant", "harcèlement", "DASEN"],
     "Ferroviaire": ["SNCF", "train", "gare", "rail", "ferroviaire", "TGV", "TER", "grève SNCF"],
     "Festivité Evènements voie publique": ["festival", "fête", "événement", "rassemblement", "concert", "carnaval", "féria", "feu artifice"],
@@ -186,7 +188,7 @@ def find_theme(title):
 # 6. Collecte DIRECTE depuis la Presse Locale (ORANGE)
 # ============================================================
 new_articles_count = 0
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
 
 print("📡 Début de l'aspiration des flux RSS LOCAUX (ORANGE)...")
 for feed in LOCAL_RSS_FEEDS:
@@ -203,7 +205,7 @@ for feed in LOCAL_RSS_FEEDS:
                 title_elem = item.find('title')
                 title = title_elem.text.strip() if title_elem is not None and title_elem.text else ''
                 link_elem = item.find('link')
-                link = link_elem.text.strip() if link_elem is not None and link_elem.text else '#'
+                link = str(link_elem.text).strip() if link_elem is not None and link_elem.text else '#'
                 pub_date_elem = item.find('pubDate')
                 pub_date_raw = pub_date_elem.text.strip() if pub_date_elem is not None and pub_date_elem.text else ''
                 
@@ -268,7 +270,8 @@ for social_feed in SOCIAL_RSS_FEEDS:
     keywords = social_feed["keywords"]
     
     try:
-        req = urllib.request.Request(rss_url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+        # User-Agent renforcé pour éviter le blocage 403 de Reddit
+        req = urllib.request.Request(rss_url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'})
         with urllib.request.urlopen(req, timeout=10) as response:
             xml_data = response.read()
             root = ET.fromstring(xml_data)
@@ -283,7 +286,7 @@ for social_feed in SOCIAL_RSS_FEEDS:
                     continue
                 
                 link_elem = item.find('link')
-                link = link_elem.text.strip() if link_elem is not None and link_elem.text else '#'
+                link = str(link_elem.text).strip() if link_elem is not None and link_elem.text else '#'
                 
                 theme = find_theme(title)
                 if theme == "Non classé":
@@ -372,7 +375,7 @@ for item_target in GN_QUERIES:
                 title_elem = item.find('title')
                 title = title_elem.text.strip() if title_elem is not None and title_elem.text else ''
                 link_elem = item.find('link')
-                link = link_elem.text.strip() if link_elem is not None and link_elem.text else '#'
+                link = str(link_elem.text).strip() if link_elem is not None and link_elem.text else '#'
                 pub_date_elem = item.find('pubDate')
                 pub_date_raw = pub_date_elem.text.strip() if pub_date_elem is not None and pub_date_elem.text else ''
                 
