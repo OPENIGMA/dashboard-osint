@@ -84,15 +84,15 @@ for evt in existing_events:
 print(f"📊 {len(valid_events)} événements conservés (< 30 jours). ID max : {max_id}")
 
 # ============================================================
-# 4. Mots-clés et Fonctions de classification
+# 4. Mots-clés pour le classement thématique
 # ============================================================
 THEME_KEYWORDS = {
-    "Agriculture": ["agriculture", "agriculteur", "FNSEA", "EGalim", "PAC", "tracteur", "récolte", "élevage", "viticulture", "chambre agriculture", "CR", "coordination rurale"],
+    "Agriculture": ["agriculture", "agriculteur", "FNSEA", "EGalim", "PAC", "tracteur", "récolte", "élevage", "viticulture", "chambre agriculture"],
     "Armes": ["arme", "fusil", "pistolet", "kalachnikov", "trafic arme", "confiscation", "arsenal"],
-    "Chasse": ["chasse", "chasseur", "gibier", "ONCFS", "cynégétique", "battue", "braconnage", "loup"],
+    "Chasse": ["chasse", "chasseur", "gibier", "ONCFS", "cynégétique", "battue", "braconnage"],
     "Délinquance criminalité": ["délinquance", "insécurité", "cambriolage", "agression", "vol", "braquage", "vandalisme", "rixe"],
     "Dérives Sectaires": ["secte", "dérive sectaire", "emprise mentale", "gourou", "MIVILUDES"],
-    "Ecologie": ["écologie", "environnement", "climat", "pollution", "biodiversité", "sécheresse", "incendie", "canicule", "XR", "Extinction Rébellion", "SLT", "Les soulèvements de la terre", "ZIO"],
+    "Ecologie": ["écologie", "environnement", "climat", "pollution", "biodiversité", "sécheresse", "incendie", "canicule"],
     "Education nationale": ["école", "collège", "lycée", "professeur", "éducation nationale", "enseignant", "harcèlement", "DASEN"],
     "Ferroviaire": ["SNCF", "train", "gare", "rail", "ferroviaire", "TGV", "TER", "grève SNCF"],
     "Festivité Evènements voie publique": ["festival", "fête", "événement", "rassemblement", "concert", "carnaval", "féria", "feu artifice"],
@@ -112,7 +112,7 @@ THEME_KEYWORDS = {
     "Prosélytisme": ["prosélytisme", "endoctrinement", "conversion", "propagande", "tabligh"],
     "Terrorisme": ["terrorisme", "attentat", "antiterroriste", "DGSI", "menace terroriste", "Vigipirate"],
     "Animaliste": ["animaliste", "cause animale", "antispéciste", "L214", "corrida", "abattoir", "végan"],
-    "Projet aménagement contesté (PAC)": ["ZAD", "bassine", "grand projet", "contestation", "A69", "Toulouse Castres", "bétonisation", "Sivens", "AFNT", "Aménagement ferroviaire au nord de toulouse", "LSNO", "Ligne nouvelle Sud-Ouest", "SATA", "téléphérique", "cruis", "photovoltaique"],
+    "Projet aménagement contesté (PAC)": ["ZAD", "bassine", "grand projet", "contestation", "A69", "Toulouse Castres", "bétonisation", "Sivens"],
     "Ultra gauche": ["ultra-gauche", "antifasciste", "black bloc", "anarchiste", "autonomes", "NPA"],
     "Ultra droite": ["ultra-droite", "identitaire", "extrême droite", "nationaliste", "suprémaciste", "RN", "Rassemblement national"],
     "JOPH 2030": ["JO 2030", "jeux olympiques", "JO Paris", "olympique", "paralympique", "JO Nice", "JO Marseille"],
@@ -224,9 +224,21 @@ for feed in LOCAL_RSS_FEEDS:
 # 6. 🔴 Collecte RÉSEAUX SOCIAUX (ROUGE)
 # ============================================================
 SOCIAL_RSS_FEEDS = [
-    {"platform": "Reddit (France)", "url": "https://www.reddit.com/r/France/new/.rss", "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "fusillade", "drone", "tracteur", "ZAD"]},
-    {"platform": "Reddit (Local Sud)", "url": "https://www.reddit.com/search.rss?q=Occitanie+OR+PACA+OR+Marseille+OR+Toulouse&sort=new&t=week", "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "fusillade", "tracteur"]},
-    {"platform": "Mastodon (Piaille.fr)", "url": "https://piaille.fr/public/local.rss", "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "ZAD", "tracteur"]}
+    {
+        "platform": "Reddit (France)",
+        "url": "https://www.reddit.com/r/France/new/.rss",
+        "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "fusillade", "drone", "tracteur", "ZAD"]
+    },
+    {
+        "platform": "Reddit (Local Sud)",
+        "url": "https://www.reddit.com/search.rss?q=Occitanie+OR+PACA+OR+Marseille+OR+Toulouse&sort=new&t=week",
+        "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "fusillade", "tracteur"]
+    },
+    {
+        "platform": "Mastodon (Piaille.fr)",
+        "url": "https://piaille.fr/public/local.rss",
+        "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "ZAD", "tracteur"]
+    }
 ]
 
 print("🔴 Début de la collecte Réseaux Sociaux (ROUGE)...")
@@ -235,7 +247,7 @@ for social_feed in SOCIAL_RSS_FEEDS:
     rss_url = social_feed["url"]
     keywords = social_feed["keywords"]
     try:
-        req = urllib.request.Request(rss_url, headers=headers)
+        req = urllib.request.Request(rss_url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
         with urllib.request.urlopen(req, timeout=10) as response:
             xml_data = response.read()
             root = ET.fromstring(xml_data)
@@ -307,7 +319,7 @@ GN_QUERIES = [
     {"theme": "Manifestation", "query": "manifestation OR cortège OR défilé OR rassemblement OR CRS"}
 ]
 
-print("🔵 Début des requêtes Google News (BLEU)...")
+print("🔵 Début des requêtes Google News complémentaires (BLEU)...")
 for item_target in GN_QUERIES:
     theme = item_target["theme"]
     query = item_target["query"]
