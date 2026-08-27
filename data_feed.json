@@ -17,6 +17,24 @@
     }
   },
   {
+    "id": "evt-1237",
+    "timestamp": "2026-08-27T13:54:41+02:00",
+    "title": "Panne électrique à la gare Montparnasse : les TGV de la SNCF vers Toulouse, Tarbes et Lourdes fortement perturbés",
+    "summary": "Article direct de France 3 Occitanie.",
+    "url": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/panne-electrique-a-la-gare-montparnasse-les-tgv-de-la-sncf-vers-toulouse-tarbes-et-lourdes-fortement-perturbes-3407381.html",
+    "source_name": "France 3 Occitanie",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "Ferroviaire",
+    "location": {
+      "region": "OCCITANIE",
+      "department": "31",
+      "city": "Toulouse",
+      "lat": 43.6047,
+      "lng": 1.4442
+    }
+  },
+  {
     "id": "evt-1213",
     "timestamp": "2026-08-27T13:52:02+02:00",
     "title": "L’origine de l’épidémie de légionellose en Savoie se précise : les trois quarts des victimes avaient fréquenté le même restaurant",
@@ -85,6 +103,24 @@
     }
   },
   {
+    "id": "evt-1242",
+    "timestamp": "2026-08-27T13:06:40+02:00",
+    "title": "VIDÉO. Classée rouge par Qualitair, la Corse traverse un épisode intense de pollution de l'air aux particules fines",
+    "summary": "Article direct de France 3 Corse.",
+    "url": "https://france3-regions.franceinfo.fr/corse/video-classee-rouge-par-qualitair-la-corse-traverse-un-episode-intense-de-pollution-de-l-air-aux-particules-fines-3407363.html",
+    "source_name": "France 3 Corse",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "Ecologie",
+    "location": {
+      "region": "CORSE",
+      "department": "2A",
+      "city": "Ajaccio",
+      "lat": 41.9272,
+      "lng": 8.7346
+    }
+  },
+  {
     "id": "evt-1207",
     "timestamp": "2026-08-27T13:06:02+02:00",
     "title": "Ils cambriolent des casernes de pompiers et volent des outils capables de forcer des portes blindées et des coffres-forts",
@@ -116,6 +152,60 @@
       "city": "Montpellier",
       "lat": 43.6108,
       "lng": 3.8767
+    }
+  },
+  {
+    "id": "evt-1240",
+    "timestamp": "2026-08-27T12:44:05+02:00",
+    "title": "Routes abîmées, panneaux endommagés ou brûlés… Après les incendies du Var, Barjols évalue le coût des dégâts",
+    "summary": "Article direct de France 3 PACA.",
+    "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/var/draguignan/routes-abimees-panneaux-endommages-ou-brules-apres-les-incendies-du-var-barjols-evalue-le-cout-des-degats-3407348.html",
+    "source_name": "France 3 PACA",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "Ecologie",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1239",
+    "timestamp": "2026-08-27T12:41:52+02:00",
+    "title": "Présidentielle 2027 : \"On ne va pas refaire les même conneries à chaque fois\"... Xavier Bertrand annonce sa candidature, sans passer par la case primaire",
+    "summary": "Article direct de L'Indépendant.",
+    "url": "https://www.lindependant.fr/2026/08/27/presidentielle-2027-on-ne-va-pas-refaire-les-meme-conneries-a-chaque-fois-xavier-bertrand-annonce-sa-candidature-sans-passer-par-la-case-primaire-13525283.php",
+    "source_name": "L'Indépendant",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "Visite officielle",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1241",
+    "timestamp": "2026-08-27T12:36:07+02:00",
+    "title": "\"Ce que j'attends des responsables politiques, c'est qu'ils s'expriment\" : malgré la crise dans les transports Lignes d'Azur, les réactions se font rares",
+    "summary": "Article direct de France 3 PACA.",
+    "url": "https://france3-regions.franceinfo.fr/provence-alpes-cote-d-azur/alpes-maritimes/nice/ce-que-j-attends-des-responsables-politiques-c-est-qu-ils-s-expriment-malgre-la-crise-dans-les-transports-ligne-d-azur-les-reactions-se-font-rares-3407219.html",
+    "source_name": "France 3 PACA",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "Transport",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
     }
   },
   {
@@ -178,6 +268,24 @@
     "source_name": "La Dépêche du Midi",
     "source_type": "Presse Locale Directe",
     "theme": "Transport",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1238",
+    "timestamp": "2026-08-27T11:55:38+02:00",
+    "title": "Elle faisait entrer ses amis dans la morgue pour leur montrer la préparation d’un corps : licenciée, la croque-mort dénonce un harcèlement au travail",
+    "summary": "Article direct de L'Indépendant.",
+    "url": "https://www.lindependant.fr/2026/08/27/elle-faisait-entrer-ses-amis-dans-la-morgue-pour-leur-montrer-la-preparation-dun-corps-licenciee-la-croque-mort-denonce-un-harcelement-au-travail-13525164.php",
+    "source_name": "L'Indépendant",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "Education nationale",
     "location": {
       "region": "PACA",
       "department": "13",
@@ -12842,210 +12950,6 @@
     "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBPU3ZhNU1XSW56RHBsb3VBcmRXT3ctQjdQNjBKNjdIQlhUWGJxNERqQThIOUJ3UTBwVmFiejVLX3VVb0pzcVUzWlFjenJtUjltUGl1OThZVUNVSzk2X1VjcEpka0FOZjg?oc=5",
     "source_name": "Le Monde diplomatique",
     "theme": "Ultra droite",
-    "location": {
-      "region": "PACA",
-      "department": "13",
-      "city": "Marseille",
-      "lat": 43.2965,
-      "lng": 5.3698
-    }
-  },
-  {
-    "id": "evt-1226",
-    "timestamp": "2026-07-23T07:00:00+00:00",
-    "title": "« Objectif zéro point de deal » : à Saint-Nazaire, le nouveau préfet dresse son plan de bataille contre le narcotrafic - Ouest-France",
-    "summary": "Article via Google News.",
-    "url": "https://news.google.com/rss/articles/CBMimwJBVV95cUxQNlVnRndJNzZTdFY0SXBJQXI0NVI1d3ljakRya01BbEF0cm9CUHc3WHNRX1AwVFNGeWJ6VXBOZU0yUnFTd1pwYkFKV2xiWkUxVW1QSDl2Y1RjVVctZmV1TFVaRW03ZFQ2NGxudEVvbkFwRFRsNUpIMjJVbFJQWjNpNWdqZnhSQ2ctY1pKbHlHRzUtM05kbGh4UUZKTzZXY01ob29NazZUY0l3U3VER1FfQklNbE54Y3NoWlRwV2hzc05JS2RtX1Y1dlNZbWROYzc2T2tuclFPVDJHdzZyZHF3a093VWwxN0JoSUxnYTJhZW4waDVwOWMtaWViRzJmUFd4WXpJcjBMdWc2ZnRjYTFrTEJ3NXpPWDBNRHBN?oc=5",
-    "source_name": "Ouest-France",
-    "source_type": "Google News",
-    "theme": "Criminalité organisée",
-    "location": {
-      "region": "PACA",
-      "department": "13",
-      "city": "Marseille",
-      "lat": 43.2965,
-      "lng": 5.3698
-    }
-  },
-  {
-    "id": "evt-1225",
-    "timestamp": "2026-07-13T07:00:00+00:00",
-    "title": "Cinq blessés par balle près d’un point de deal à Clermont-Ferrand - Sud Ouest",
-    "summary": "Article via Google News.",
-    "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQa09nSFhyX3dOTFFuaGtCdEVhZXZMbjFYZDdaRHo1WHlaQUpXdENVdU1qSUUxRHBaREp3ZnV6dFdUZFdldTVFWldyNVd4UmpBTHlVcnlWcWFMaVRjX2FxMDlsaDFZTFNRVE5RYzE0TFNQYnM2MlZmbnN2RDR1SWFweVlyWVZ5SzMxWlI1VXBhaGZnZTF5Skc2V2JYN1hTNjZSYWlBcUdYbktDaUoyczRkekRWZ1dYWjhLV3BnQ2tBbFJXQ2tPWUE?oc=5",
-    "source_name": "Sud Ouest",
-    "source_type": "Google News",
-    "theme": "Criminalité organisée",
-    "location": {
-      "region": "PACA",
-      "department": "13",
-      "city": "Marseille",
-      "lat": 43.2965,
-      "lng": 5.3698
-    }
-  },
-  {
-    "id": "evt-1227",
-    "timestamp": "2026-07-04T07:00:00+00:00",
-    "title": "Un point de deal démantelé à Villeurbanne: 8.000 euros en liquide saisis - BFM",
-    "summary": "Article via Google News.",
-    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPUkxxakJ2eGYwLXFxeFozS09rUGlaRnNSWDhuS0ZhMFJvaVRkNTFrdDQ5UFp0cDJ3NEJsS3RDRXVsRk5jUFVVVG9kMno1QW9NNkpUVHpNMl90c2toVFZwbVktQUZTc0c5OVRQdy1KeFIwYlU1b0FERlo5VnhvOTJlZDRkZ1BWZmZST0E1QmZBUk1WSFl4cUFLMkREOExHVU9Ka1drNlZ3Z3dkUnZ3cEFSN3N0VWFiemVlaHhJ?oc=5",
-    "source_name": "BFM",
-    "source_type": "Google News",
-    "theme": "Criminalité organisée",
-    "location": {
-      "region": "PACA",
-      "department": "13",
-      "city": "Marseille",
-      "lat": 43.2965,
-      "lng": 5.3698
-    }
-  },
-  {
-    "id": "evt-1228",
-    "timestamp": "2026-07-02T07:00:00+00:00",
-    "title": "Fusillades et règlement de comptes : ce point de deal de Haute-Savoie au cœur d’une guerre ouverte entre dealers - Le Messager",
-    "summary": "Article via Google News.",
-    "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQaDlZeFhPWXdxZlZBREU3UlFUa1BwcVp1UG4wUkNtWGVrcjJyLWppMTJlRFRjLVpYT3B0SF9mcl9rNWxPNFljNDhnY0JnX05QRlRoWGdPWUlaT1lfWnhKOS13eC0yZ0UxcV9tX3RpTFBjYzRHX1dOVXNnMTFLWEdRQ0FnVjVEZjBoU0tiY1dqVWtVX2RzQWZnLVhOSW1Wd2hpYlFTVktLeURRTTBKMTZlYU5KWkFUR0VLOG9keTdrSGNLalpScDhQZ0JvRlRZdw?oc=5",
-    "source_name": "Le Messager",
-    "source_type": "Google News",
-    "theme": "Criminalité organisée",
-    "location": {
-      "region": "PACA",
-      "department": "13",
-      "city": "Marseille",
-      "lat": 43.2965,
-      "lng": 5.3698
-    }
-  },
-  {
-    "id": "evt-1224",
-    "timestamp": "2026-06-30T07:00:00+00:00",
-    "title": "Vénissieux : un point de deal s’affiche en grand sur la façade d’un immeuble - CNews",
-    "summary": "Article via Google News.",
-    "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOcHFzMW1pN2lGNUxWclctcnJpRXF5SjlYQW1vOF9uY09ncXRKUzhLVDJjbWsyajVtbUJDWlpwWjdSTjZaejJYTnZVd1JVOGpELTVkcExjR3ZCd0EyVXJZUEhzbnp3cmNTTEx0NHV6dVA5TE5iRGxaQThyS1Y5Xzcxb3k4V01sbDM5SnJJckFZN3NYQ3lHckFrZTFJY2w5cGY5TEVRVklPZWk0U09nLVQ2ekdRUEdVUdIBuwFBVV95cUxNUkZNbG1oVk13NTM4b216ZmpIWC1YR1FHNTk5QURleDJ6aWw1Zk9TbzF2U2dFNDlHMmRDWm1tX0VIaTdkNEF4dVNxZGxxVklMaDdiTV9pamxjWTROc0dLY0pJTy1ibWMwa3ktZjRtQVlYa2NlNnRXSjZsc3JtMURGbk4wcktNdXVXVW44RGQ0bXNPNm9mdnAwYWIxWC1ILUJiVGJyaUpNMWJYVWEwRUxxbmN3OXktVnlXTkhF?oc=5",
-    "source_name": "CNews",
-    "source_type": "Google News",
-    "theme": "Criminalité organisée",
-    "location": {
-      "region": "PACA",
-      "department": "13",
-      "city": "Marseille",
-      "lat": 43.2965,
-      "lng": 5.3698
-    }
-  },
-  {
-    "id": "evt-1229",
-    "timestamp": "2026-06-24T07:00:00+00:00",
-    "title": "Un an après la loi narcotrafic, où en sommes-nous dans le Var ? - mesinfos",
-    "summary": "Article via Google News.",
-    "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQV0lvNUhVVUt1LUpVNENGYXR6czZWRmpLYzVtMndnT2FKdHB4MXp3aVFHMk14aVppOU1EYWVJdGctVzRkekoxb3JBbmgwMlZ3UF9FZHFHVkt5WHh6S29EeERMYWM1eVBnZmpfbDhidmlTZlYyM05zc0RVTUdOYlJ1SEVWRUpmaVhJNFhxWldaQlpFeUNVZmVLZ1ZaQkpJeEU2NEVEWmtrQ25yYWZJWUU1Snl1OFVnVkltSjcw?oc=5",
-    "source_name": "mesinfos",
-    "source_type": "Google News",
-    "theme": "Criminalité organisée",
-    "location": {
-      "region": "PACA",
-      "department": "13",
-      "city": "Marseille",
-      "lat": 43.2965,
-      "lng": 5.3698
-    }
-  },
-  {
-    "id": "evt-1221",
-    "timestamp": "2026-06-13T07:00:00+00:00",
-    "title": "Du cartel colombien au point de deal en France : comment le narcotrafic est devenu une industrie redoutable - Journal Spécial des Sociétés",
-    "summary": "Article via Google News.",
-    "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOUVN6RENkc0RzZ3dCX1ktZllaOEIyVTJzSVJxWjdNZm5tcWxrVENDWUN6LXZuNUQ3RlpabUxTUEpxdmJwMFctdV9NT1Q5REx0ZlZzMTFtcmVoYzZGVUNUMEJ3YnpxNkI4Vm1zdU4xR0NpNHFKdGxDQ182MWw3aHRuZ1J2VzFnS1ZtVkJGM082blZuSEc2blE?oc=5",
-    "source_name": "Journal Spécial des Sociétés",
-    "source_type": "Google News",
-    "theme": "Criminalité organisée",
-    "location": {
-      "region": "PACA",
-      "department": "13",
-      "city": "Marseille",
-      "lat": 43.2965,
-      "lng": 5.3698
-    }
-  },
-  {
-    "id": "evt-1222",
-    "timestamp": "2026-04-22T07:00:00+00:00",
-    "title": "Seine-Saint-Denis : le dernier grand point de deal de Saint-Ouen démantelé, 14 personnes mises en examen - Le Parisien",
-    "summary": "Article via Google News.",
-    "url": "https://news.google.com/rss/articles/CBMimgJBVV95cUxNUlRJcHFTNHUzMHkxV3Y4RXd1UWg2TThVdmRuWWZYUUo2Yi04cHNCel95LTNudWhWU0xwc0kwX0JxMTJ3eUtJdWlTR2FtbGVsVFJXMExiNmRGc3VqbmJFZl9VYjh0dW1sdGFyZ1BQaTRicnJMRzdaUlZXTmkycTFPdzNXczBjNFAxeVJKYjNPeUhkOEYwRmdxQVM4Q1djZkczVVpzdGhUZ0JOYmFDSS04VlFObE9hdTVQS2tBcEZ1d0RvVzBvelNPckgtck9sdDV6dEtlVjd3X1V6QWQ1dGdvYU9mQTJnS2tFWE9nT0xVcXAtWnh6VFc4T1gycE5mTUJYS05iZUowYlFqcWo4Tm84Q3Y3YXNJQzBxT3c?oc=5",
-    "source_name": "Le Parisien",
-    "source_type": "Google News",
-    "theme": "Criminalité organisée",
-    "location": {
-      "region": "PACA",
-      "department": "13",
-      "city": "Marseille",
-      "lat": 43.2965,
-      "lng": 5.3698
-    }
-  },
-  {
-    "id": "evt-1223",
-    "timestamp": "2026-04-13T07:00:00+00:00",
-    "title": "Démantèlement du dernier point de deal à Saint-Ouen - saint-ouen.fr",
-    "summary": "Article via Google News.",
-    "url": "https://news.google.com/rss/articles/CBMiggJBVV95cUxOVTBtbHNNSEVIeHhoTWN4ZjJQSm1PaXkzNWt6ejc1X2k2RUpNbHF5LXZzakhadUl4RFFMTTY3TzdKTVdGdURxUC1fZ01ZSnpIRHo3Z3RsMnNPa21HTFUzRzlVYVFoUHJ2YlFzRHMzbHJHT3Y2ZXllbXFsak9YRzhkV1M1UmVRRUZqX1IzQU5CV09VRkFRTkk4VkJ3VDJtUmxqWndZZjM1dHd4d0JkT2taT0RsbUN5UE11eEVyWFptYmUtd0NYUllDcG9LQXFweWJSaW9hUlU5NHA0RHd6aTh6SklIaTM1SVZ1MTI2dTJxREdQVUN1anZiMkFfdWV5ejhGZFE?oc=5",
-    "source_name": "saint-ouen.fr",
-    "source_type": "Google News",
-    "theme": "Criminalité organisée",
-    "location": {
-      "region": "PACA",
-      "department": "13",
-      "city": "Marseille",
-      "lat": 43.2965,
-      "lng": 5.3698
-    }
-  },
-  {
-    "id": "evt-1215",
-    "timestamp": "2025-09-22T21:00:00+02:00",
-    "title": "Incident grave à l’aéroport Nice Côte d’Azur: une enquête judiciaire ouverte, la gendarmerie des transports aériens saisie",
-    "summary": "Article direct de Var-Matin.",
-    "url": "https://www.varmatin.com/transports/incident-grave-a-l-aeroport-nice-cote-d-azur-une-enquete-judiciaire-ouverte-la-gendarmerie-des-transports-aeriens-saisie-1003079",
-    "source_name": "Var-Matin",
-    "source_type": "Presse Locale Directe",
-    "theme": "Armes",
-    "location": {
-      "region": "PACA",
-      "department": "06",
-      "city": "Nice",
-      "lat": 43.7102,
-      "lng": 7.262
-    }
-  },
-  {
-    "id": "evt-1216",
-    "timestamp": "2025-09-22T20:55:00+02:00",
-    "title": "Le match RCT-Castres du 13 septembre dernier s’était-il joué \"en vigilance orange\", comme l’affirme le préfet du Var?",
-    "summary": "Article direct de Var-Matin.",
-    "url": "https://www.varmatin.com/rugby/le-match-rct-castres-du-13-septembre-dernier-setait-il-joue-en-vigilance-orange-comme-laffirme-le-prefet-du-var-1003088",
-    "source_name": "Var-Matin",
-    "source_type": "Presse Locale Directe",
-    "theme": "Visite officielle",
-    "location": {
-      "region": "OCCITANIE",
-      "department": "81",
-      "city": "Castres",
-      "lat": 43.6044,
-      "lng": 2.2406
-    }
-  },
-  {
-    "id": "evt-1217",
-    "timestamp": "2025-09-22T20:00:00+02:00",
-    "title": "Meurtre d'une lycéenne en 1994: l'accusé à la mémoire sélective se dit innocent",
-    "summary": "Article direct de Var-Matin.",
-    "url": "https://www.varmatin.com/justice/meurtre-d-une-lyceenne-en-1994-l-accuse-a-la-memoire-selective-se-dit-innocent-1002936",
-    "source_name": "Var-Matin",
-    "source_type": "Presse Locale Directe",
-    "theme": "Education nationale",
     "location": {
       "region": "PACA",
       "department": "13",
