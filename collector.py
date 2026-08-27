@@ -2,29 +2,51 @@ import json
 import urllib.request
 import urllib.parse
 import xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 import re
 import os
 
-# 1. Chargement de la base de données locale des communes
+# 1. Chargement de la base locale des communes
 CITIES_DB = {}
 if os.path.exists('communes.json'):
     try:
         with open('communes.json', 'r', encoding='utf-8') as f:
             CITIES_DB = json.load(f)
-        print(f"Base locale chargée : {len(CITIES_DB)} communes disponibles.")
+        print(f"Base locale chargée : {len(CITIES_DB)} communes.")
     except Exception as e:
-        print(f"Erreur lecture communes.json : {e}")
+        print(f"Erreur communes.json : {e}")
+
+# Charge les données existantes si le fichier existe déjà
+existing_events = []
+if os.path.exists('data_feed.json'):
+    try:
+        with open('data_feed.json', 'r', encoding='utf-8') as f:
+            existing_events = json.load(f)
+    except Exception:
+        existing_events = []
+
+# Filtrage : On supprime d'entrée ce qui a plus de 30 jours
+now = datetime.now(timezone.utc)
+cutoff_30d = now - timedelta(days=30)
+
+valid_events = []
+seen_titles = set()
+
+for evt in existing_events:
+    try:
+        evt_time = datetime.fromisoformat(evt["timestamp"].replace("Z", "+00:00"))
+        if evt_time >= cutoff_30d:
+            valid_events.append(evt)
+            seen_titles.add(evt["title"])
+    except Exception:
+        continue
 
 SEARCH_QUERIES = [
     {"theme": "Agriculture", "source_type": "Presse", "query": "agriculteurs OR fnsea OR tracteurs Occitanie OR PACA"},
-    {"theme": "Blocage occupation", "source_type": "Presse", "query": "blocage autoroute OR barrage routier Toulouse OR Montpellier OR Marseille OR Nîmes OR Béziers OR Avignon OR Gap"},
-    {"theme": "Manifestation", "source_type": "Presse", "query": "manifestation cortège Nîmes OR Perpignan OR Toulon OR Nice OR Avignon OR Albi OR Béziers OR Gap OR Digne"},
-    {"theme": "Projet Amenagement Conteste", "source_type": "Presse", "query": "A69 OR autoroute OR bassine contestation Occitanie OR PACA"},
-    {"theme": "Criminalite organisee", "source_type": "Presse", "query": "narcotrafic OR fusillade OR point de deal Marseille OR Nîmes OR Avignon OR Cavaillon"},
-    {"theme": "Agriculture", "source_type": "X (Twitter)", "query": "site:x.com OR site:twitter.com agriculteurs OR tracteurs Occitanie OR PACA"},
-    {"theme": "Agriculture", "source_type": "TikTok", "query": "site:tiktok.com agriculteurs OR manifestation Occitanie OR PACA"},
-    {"theme": "Agriculture", "source_type": "Facebook", "query": "site:facebook.com/groups OR site:facebook.com agriculteurs en colère Occitanie OR PACA"}
+    {"theme": "Blocage occupation", "source_type": "Presse", "query": "blocage autoroute OR barrage routier Toulouse OR Marseille OR Nîmes OR Béziers OR Avignon OR Gap"},
+    {"theme": "Manifestation", "source_type": "Presse", "query": "manifestation cortège Nîmes OR Perpignan OR Toulon OR Nice OR Avignon OR Albi OR Béziers"},
+    {"theme": "Projet Conteste", "source_type": "Presse", "query": "A69 OR autoroute OR bassine contestation Occitanie OR PACA"},
+    {"theme": "Criminalite", "source_type": "Presse", "query": "narcotrafic OR fusillade OR point de deal Marseille OR Nîmes OR Avignon"}
 ]
 
 def detect_location(text):
@@ -48,9 +70,7 @@ def detect_location(text):
         return {"region": "OCCITANIE", "department": "31", "city": "Toulouse", "lat": 43.6047, "lng": 1.4442}
     return {"region": "PACA", "department": "13", "city": "Marseille", "lat": 43.2965, "lng": 5.3698}
 
-events = []
-event_id = 1
-seen_titles = set()
+event_id = len(valid_events) + 1
 
 for item_target in SEARCH_QUERIES:
     theme = item_target["theme"]
@@ -63,7 +83,7 @@ for item_target in SEARCH_QUERIES:
     try:
         req = urllib.request.Request(
             rss_url, 
-            headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
+            headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
         )
         with urllib.request.urlopen(req, timeout=8) as response:
             xml_data = response.read()
@@ -72,6 +92,7 @@ for item_target in SEARCH_QUERIES:
             for item in root.findall('.//item')[:10]:
                 title = item.find('title').text if item.find('title') is not None else ''
                 link = item.find('link').text if item.find('link') is not None else '#'
+                pub_date = item.find('pubDate').text if item.find('pubDate') is not None else ''
                 
                 if title in seen_titles:
                     continue
@@ -84,11 +105,12 @@ for item_target in SEARCH_QUERIES:
                 clean_text = re.sub('<[^<]+?>', '', title)
                 location = detect_location(clean_text)
                 
-                events.append({
+                valid_events.append({
                     "id": f"evt-{event_id}",
-                    "timestamp": datetime.utcnow().isoformat() + "Z",
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                    "pubDate": pub_date,
                     "title": title,
-                    "summary": f"Publication issue de {display_source} concernant la thématique {theme}.",
+                    "summary": f"Alerte issue de {display_source}.",
                     "url": link,
                     "source_name": display_source,
                     "theme": theme,
@@ -96,9 +118,10 @@ for item_target in SEARCH_QUERIES:
                 })
                 event_id += 1
     except Exception as e:
-        print(f"Avertissement requête non aboutie ({theme}): {e}")
+        print(f"Avertissement ({theme}): {e}")
 
+# Enregistrement du fichier avec purge automatique appliquée
 with open('data_feed.json', 'w', encoding='utf-8') as f:
-    json.dump(events, f, ensure_ascii=False, indent=2)
+    json.dump(valid_events, f, ensure_ascii=False, indent=2)
 
-print(f"Exécution terminée : {len(events)} alertes générées.")
+print(f"Terminé : {len(valid_events)} alertes valides dans la base (Purge > 30j effectuée).")
