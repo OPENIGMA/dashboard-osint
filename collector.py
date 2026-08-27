@@ -76,38 +76,36 @@ for evt in existing_events:
     except Exception:
         continue
 
-print(f"📊 {len(valid_events)} événements conservés (< 30 jours). ID max : {max_id}")
+print(f" {len(valid_events)} événements conservés (< 30 jours). ID max : {max_id}")
 
 # ============================================================
-# 4. Configuration des Flux RSS LOCAUX DIRECTS (Ta liste exhaustive)
+# 4. Configuration des Flux RSS LOCAUX DIRECTS (ORANGE)
 # ============================================================
 LOCAL_RSS_FEEDS = [
-    # --- OCCITANIE ---
     {"name": "La Dépêche du Midi", "url": "https://www.ladepeche.fr/rss.xml"},
     {"name": "Midi Libre", "url": "https://www.midilibre.fr/rss.xml"},
-    {"name": "La Montagne", "url": "https://www.lamontagne.fr/rss.xml"},
-    {"name": "Midi Olympique", "url": "https://www.midiolympique.fr/rss.xml"},
-    {"name": "Le Journal Toulousain", "url": "https://www.journaltoulousain.fr/feed/"},
-    {"name": "La Gazette du Midi", "url": "https://www.lagazettedumidi.com/feed/"},
-    {"name": "La Gazette Ariégeoise", "url": "https://www.lagazetteariegeoise.fr/feed/"},
-    {"name": "Le Journal de Millau", "url": "https://www.journaldemillau.fr/feed/"},
-    {"name": "Lozère Nouvelle", "url": "https://www.lozerenouvelle.fr/rss.xml"},
-    # --- PACA ---
+    {"name": "France 3 Occitanie", "url": "https://france3-regions.francetvinfo.fr/occitanie/rss"},
+    {"name": "L'Indépendant", "url": "https://www.lindependant.fr/rss.xml"},
     {"name": "La Provence", "url": "https://www.laprovence.com/rss.xml"},
     {"name": "Nice-Matin", "url": "https://www.nicematin.com/rss.xml"},
-    {"name": "Var-Matin", "url": "https://www.varmatin.com/rss.xml"},
-    {"name": "La Marseillaise", "url": "https://www.lamarseillaise.fr/rss.xml"},
-    {"name": "Le Dauphiné Libéré", "url": "https://www.ledauphine.com/rss.xml"},
-    # --- CORSE ---
-    {"name": "Corse-Matin", "url": "https://www.corsematin.com/rss.xml"},
-    {"name": "Corse Net Infos", "url": "https://www.corsenetinfos.corsica/feed/"},
-    {"name": "Le Journal de la Corse", "url": "https://www.journaldelacorse.corsica/rss.xml"},
-    {"name": "Paroles de Corse", "url": "https://www.parolesdecorse.com/feed/"},
-    {"name": "In Corsica", "url": "https://www.incorsica.com/feed/"},
-    {"name": "Terra Corsa", "url": "https://www.terracorsa.com/feed/"}
+    {"name": "France 3 PACA", "url": "https://france3-regions.francetvinfo.fr/provence-alpes-cote-d-azur/rss"},
+    {"name": "France 3 Corse", "url": "https://france3-regions.francetvinfo.fr/corse/rss"}
 ]
 
-# Mots-clés pour associer un article local à l'une de tes 36 thématiques
+# ============================================================
+# 5. Configuration Réseaux Sociaux (ROUGE) - Google Dorks + RSS
+# ============================================================
+SOCIAL_MEDIA_QUERIES = [
+    # X/Twitter via Nitter (instance publique)
+    {"platform": "X/Twitter", "query": "site:nitter.net (Occitanie OR PACA OR Marseille OR Toulouse) (manifestation OR blocage OR incident)", "source_type": "Reseaux Sociaux"},
+    # Mastodon instances publiques
+    {"platform": "Mastodon", "query": "site:mastodon.social OR site:mastodon.fr (Occitanie OR PACA)", "source_type": "Reseaux Sociaux"},
+    # Telegram public channels via Google
+    {"platform": "Telegram", "query": "site:t.me (Occitanie OR Marseille OR Toulouse) (alerte OR incident)", "source_type": "Reseaux Sociaux"},
+    # Facebook public posts
+    {"platform": "Facebook", "query": "site:facebook.com (Occitanie OR PACA) (manifestation OR blocage)", "source_type": "Reseaux Sociaux"}
+]
+
 THEME_KEYWORDS = {
     "Agriculture": ["agriculture", "agriculteur", "FNSEA", "EGalim", "PAC", "tracteur", "récolte", "élevage", "viticulture", "chambre agriculture"],
     "Armes": ["arme", "fusil", "pistolet", "kalachnikov", "trafic arme", "confiscation", "arsenal"],
@@ -175,12 +173,12 @@ def find_theme(title):
     return "Non classé"
 
 # ============================================================
-# 5. Collecte DIRECTE depuis la Presse Locale (ORANGE)
+# 6. Collecte DIRECTE depuis la Presse Locale (ORANGE)
 # ============================================================
 new_articles_count = 0
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
 
-print("📡 Début de l'aspiration des flux RSS LOCAUX...")
+print("📡 Début de l'aspiration des flux RSS LOCAUX (ORANGE)...")
 for feed in LOCAL_RSS_FEEDS:
     feed_name = feed["name"]
     rss_url = feed["url"]
@@ -225,85 +223,71 @@ for feed in LOCAL_RSS_FEEDS:
                     "summary": f"Article direct de {feed_name}.",
                     "url": link,
                     "source_name": feed_name,
-                    "source_type": "Presse Locale Directe", # <-- DÉCLENCHE LA COULEUR ORANGE
+                    "source_type": "Presse Locale Directe",
+                    "source_category": "orange",
                     "theme": theme,
                     "location": location
                 })
                 new_articles_count += 1
         time.sleep(1)
     except Exception as e:
-        print(f"   ⚠️ Flux indisponible ou erreur sur {feed_name}: {e}")
+        print(f"   ⚠️ Erreur sur {feed_name}: {e}")
 
-print(f"✅ {new_articles_count} articles locaux ajoutés.")
+print(f"✅ {new_articles_count} articles locaux (ORANGE) ajoutés.")
 
 # ============================================================
-# 6. Collecte complémentaire via Google News (BLEU)
+# 7. Collecte Réseaux Sociaux via Google Dorks (ROUGE)
 # ============================================================
-GN_QUERIES = [
-    {"theme": "Agriculture", "query": "agriculture OR FNSEA OR EGalim OR PAC"},
-    {"theme": "Criminalité organisée", "query": "narcotrafic OR grand banditisme OR point deal"},
-    {"theme": "Projet aménagement contesté (PAC)", "query": "ZAD OR bassine OR A69 OR contestation"},
-    {"theme": "Manifestation", "query": "manifestation OR cortège OR CRS OR mobilisation"},
-    {"theme": "Blocage grève", "query": "grève OR blocage OR syndicat OR piquet"}
-]
-
-print("🔍 Début des requêtes Google News complémentaires...")
-for item_target in GN_QUERIES:
-    theme = item_target["theme"]
-    query = item_target["query"]
+print("🔴 Début de la collecte Réseaux Sociaux (ROUGE) via Google Dorks...")
+for social_query in SOCIAL_MEDIA_QUERIES:
+    platform = social_query["platform"]
+    query = social_query["query"]
+    source_type = social_query["source_type"]
+    
     encoded_query = urllib.parse.quote(query)
-    rss_url = f"https://news.google.com/rss/search?q={encoded_query}&hl=fr&gl=FR&ceid=FR:fr"
-
+    search_url = f"https://www.google.com/search?q={encoded_query}&hl=fr"
+    
     try:
-        req = urllib.request.Request(rss_url, headers=headers)
+        req = urllib.request.Request(search_url, headers=headers)
         with urllib.request.urlopen(req, timeout=10) as response:
-            xml_data = response.read()
-            root = ET.fromstring(xml_data)
-            items = root.findall('.//item')
+            html_content = response.read().decode('utf-8')
             
-            for item in items[:10]:
-                title_elem = item.find('title')
-                title = title_elem.text.strip() if title_elem is not None and title_elem.text else ''
-                link_elem = item.find('link')
-                link = link_elem.text.strip() if link_elem is not None and link_elem.text else '#'
-                pub_date_elem = item.find('pubDate')
-                pub_date_raw = pub_date_elem.text.strip() if pub_date_elem is not None and pub_date_elem.text else ''
-                
-                pub_iso = datetime.now(timezone.utc).isoformat()
-                if pub_date_raw:
-                    try:
-                        parsed_dt = parsedate_to_datetime(pub_date_raw)
-                        pub_iso = parsed_dt.isoformat()
-                    except Exception: pass
-
-                if not title or link in seen_urls or title in seen_titles:
+            # Extraction basique des titres et liens (à améliorer avec BeautifulSoup si besoin)
+            import re
+            titles = re.findall(r'<h3[^>]*>([^<]+)</h3>', html_content)[:10]
+            
+            for title in titles:
+                clean_title = re.sub(r'<[^>]+>', '', title).strip()
+                if not clean_title or clean_title in seen_titles:
                     continue
                 
-                seen_urls.add(link)
-                seen_titles.add(title)
-                location = detect_location(title)
-                source_elem = item.find('source')
-                raw_source = source_elem.text.strip() if source_elem is not None and source_elem.text else "Presse"
-                
+                seen_titles.add(clean_title)
+                location = detect_location(clean_title)
+                theme = find_theme(clean_title)
                 max_id += 1
+                
                 valid_events.append({
                     "id": f"evt-{max_id}",
-                    "timestamp": pub_iso,
-                    "title": title,
-                    "summary": f"Article via Google News.",
-                    "url": link,
-                    "source_name": raw_source,
-                    "source_type": "Google News", # <-- RESTE EN BLEU PAR DÉFAUT
-                    "theme": theme,
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                    "title": clean_title,
+                    "summary": f"Post trouvé via Google Dork sur {platform}.",
+                    "url": search_url,
+                    "source_name": platform,
+                    "source_type": source_type,
+                    "source_category": "red",
+                    "theme": theme if theme != "Non classé" else "Reseaux Sociaux",
                     "location": location
                 })
                 new_articles_count += 1
-        time.sleep(3)
+                
+        time.sleep(2)
     except Exception as e:
-        print(f"   ⚠️ Erreur Google News [{theme}]: {e}")
+        print(f"   ⚠️ Erreur sur {platform}: {e}")
+
+print(f"✅ {new_articles_count} posts réseaux sociaux (ROUGE) ajoutés.")
 
 # ============================================================
-# 7. Tri et sauvegarde finale
+# 8. Tri et sauvegarde finale
 # ============================================================
 valid_events.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
 
