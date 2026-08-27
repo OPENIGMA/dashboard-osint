@@ -106,9 +106,10 @@
         <div class="filter-group">
             <label for="time-filter">Période</label>
             <select id="time-filter" onchange="filterData()">
+                <option value="ALL">TOUTES LES DATES</option>
                 <option value="24h">Dernières 24 Heures</option>
-                <option value="7d" selected>Derniers 7 Jours</option>
-                <option value="30d">Derniers 30 Jours</option>
+                <option value="7d">Derniers 7 Jours</option>
+                <option value="30d" selected>Derniers 30 Jours</option>
             </select>
         </div>
     </div>
@@ -156,7 +157,7 @@
         function loadData() {
             fetch('data_feed.json?t=' + new Date().getTime())
                 .then(response => {
-                    if (!response.ok) throw new Error("Erreur de chargement");
+                    if (!response.ok) throw new Error("Erreur de chargement des données");
                     return response.json();
                 })
                 .then(data => {
@@ -164,7 +165,7 @@
                     allEvents = data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
                     filterData();
                 })
-                .catch(err => console.error("Erreur :", err));
+                .catch(err => console.error("Erreur de chargement :", err));
         }
 
         // 3. Filtrage global (Région, Département, Thème, Temps)
@@ -175,9 +176,6 @@
             const selectedTime = document.getElementById('time-filter').value;
             
             const now = new Date().getTime();
-            let maxAgeHours = 24 * 30; // 30j
-            if (selectedTime === '24h') maxAgeHours = 24;
-            if (selectedTime === '7d') maxAgeHours = 24 * 7;
 
             const filtered = allEvents.filter(evt => {
                 // Filtre Région
@@ -190,9 +188,16 @@
                 const matchTheme = (selectedTheme === 'ALL') || (evt.theme === selectedTheme);
 
                 // Filtre Temps
-                const evtTime = new Date(evt.timestamp).getTime();
-                const ageInHours = (now - evtTime) / (1000 * 60 * 60);
-                const matchTime = ageInHours <= maxAgeHours;
+                let matchTime = true;
+                if (selectedTime !== 'ALL') {
+                    let maxAgeHours = 24 * 30; // 30j par défaut
+                    if (selectedTime === '24h') maxAgeHours = 24;
+                    if (selectedTime === '7d') maxAgeHours = 24 * 7;
+
+                    const evtTime = new Date(evt.timestamp).getTime();
+                    const ageInHours = (now - evtTime) / (1000 * 60 * 60);
+                    matchTime = ageInHours <= maxAgeHours;
+                }
 
                 return matchRegion && matchDept && matchTheme && matchTime;
             });
@@ -245,7 +250,7 @@
                         <span class="tag">${evt.location ? evt.location.city : 'Sud'}</span>
                         <span class="tag">${evt.source_name}</span>
                     </div>
-                    <div class="article-date">Collecté le ${dateFormatted}</div>
+                    <div class="article-date">Publié / Collecté le ${dateFormatted}</div>
                 `;
                 listContainer.appendChild(card);
             });
