@@ -242,73 +242,87 @@ for feed in LOCAL_RSS_FEEDS:
         print(f"   ⚠️ Erreur sur {feed_name}: {e}")
 
 # ============================================================
-# 6. 🔴 Collecte RÉSEAUX SOCIAUX (ROUGE) - Support Atom & RSS
+# 6bis. 🔴 Collecte X (TWITTER) et FACEBOOK via GOOGLE DORKS (ROUGE)
 # ============================================================
-SOCIAL_RSS_FEEDS = [
+
+# 1. Extraction automatique de TOUS les mots-clés de TOUTES tes thématiques
+all_theme_keywords = set()
+for theme, keywords in THEME_KEYWORDS.items():
+    for kw in keywords:
+        all_theme_keywords.add(kw)
+
+# Création de la chaîne de recherche combinant tous tes mots-clés
+theme_query_string = " OR ".join([f'"{kw}"' if " " in kw else kw for kw in all_theme_keywords])
+
+# Dorks ciblant tes 36 thématiques sur les zones Sud (Occitanie, PACA, Corse)
+DORK_FEEDS = [
     {
-        "platform": "Reddit (France)",
-        "url": "https://www.reddit.com/r/France/new/.rss",
-        "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "fusillade", "drone", "tracteur", "ZAD"]
+        "platform": "X (Twitter)",
+        "query": f"site:x.com ({theme_query_string}) (Occitanie OR PACA OR Corse OR Toulouse OR Marseille OR Nice OR Montpellier OR Nîmes OR Toulon OR Ajaccio)"
     },
     {
-        "platform": "Mastodon (Piaille.fr)",
-        "url": "https://piaille.fr/public/local.rss",
-        "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "ZAD", "tracteur"]
+        "platform": "Facebook",
+        "query": f"site:facebook.com ({theme_query_string}) (Occitanie OR PACA OR Corse OR Toulouse OR Marseille OR Nice OR Montpellier OR Nîmes OR Toulon OR Ajaccio)"
     }
 ]
 
-print("🔴 Début de la collecte Réseaux Sociaux (ROUGE)...")
-for social_feed in SOCIAL_RSS_FEEDS:
-    platform = social_feed["platform"]
-    keywords = social_feed["keywords"]
+print("🔴 Début de la collecte X & Facebook via Google Dorks (ROUGE) sur TOUTES les thématiques...")
+for dork in DORK_FEEDS:
+    platform = dork["platform"]
+    encoded_query = urllib.parse.quote(dork["query"])
+    rss_url = f"https://news.google.com/rss/search?q={encoded_query}&hl=fr&gl=FR&ceid=FR:fr"
+    
     try:
-        req = urllib.request.Request(social_feed["url"], headers=HEADERS_BROWSER)
+        req = urllib.request.Request(rss_url, headers=HEADERS_BROWSER)
         with urllib.request.urlopen(req, timeout=10) as response:
             root = ET.fromstring(response.read())
-            # Recherche hybride RSS (<item>) et Atom (<entry>)
-            items = root.findall('.//item') or root.findall('.//{http://www.w3.org/2005/Atom}entry')
+            items = root.findall('.//item')
             
             for item in items[:20]:
-                title_elem = item.find('title') or item.find('{http://www.w3.org/2005/Atom}title')
-                title = title_elem.text.strip() if title_elem is not None and title_elem.text else ''
+                raw_title = item.find('title').text.strip() if item.find('title') is not None and item.find('title').text else ''
+                if not raw_title: continue
                 
-                link = '#'
-                link_elem = item.find('link') or item.find('{http://www.w3.org/2005/Atom}link')
-                if link_elem is not None:
-                    link = link_elem.attrib.get('href', link_elem.text or '#').strip()
-
-                title_lower = title.lower()
-                if not any(kw in title_lower for kw in keywords): 
+                # Nettoyage du titre
+                title = raw_title.rsplit(' - ', 1)[0].strip()
+                link = item.find('link').text.strip() if item.find('link') is not None and item.find('link').text else '#'
+                
+                clean_t = normalize_title(title)
+                if link in seen_urls or title in seen_titles or clean_t in seen_normalized_titles:
                     continue
                     
-                clean_t = normalize_title(title)
-                if not title or link in seen_urls or title in seen_titles or clean_t in seen_normalized_titles:
-                    continue
+                theme = find_theme(title)
+                # Si le titre contient au moins une ville du Sud mais pas de mot-clé d'une thématique spécifique
+                if theme == "Non classé": 
+                    theme = "Reseaux Sociaux"
 
                 seen_urls.add(link)
                 seen_titles.add(title)
                 seen_normalized_titles.add(clean_t)
-                
-                theme = find_theme(title)
-                if theme == "Non classé": theme = "Reseaux Sociaux"
+
+                pub_date_raw = item.find('pubDate').text.strip() if item.find('pubDate') is not None and item.find('pubDate').text else ''
+                pub_iso = datetime.now(timezone.utc).isoformat()
+                if pub_date_raw:
+                    try: pub_iso = parsedate_to_datetime(pub_date_raw).isoformat()
+                    except Exception: pass
                 
                 max_id += 1
                 valid_events.append({
                     "id": f"evt-{max_id}", 
-                    "timestamp": datetime.now(timezone.utc).isoformat(), 
+                    "timestamp": pub_iso, 
                     "title": f"[{platform}] {title}", 
-                    "summary": f"Post trouvé sur {platform}.", 
+                    "summary": f"Publication {platform} détectée par Dork OSINT.", 
                     "url": link,
                     "source_name": platform, 
                     "source_type": "Reseaux Sociaux", 
-                    "source_category": "red",
+                    "source_category": "red",  # Force la couleur ROUGE
                     "theme": theme, 
                     "location": detect_location(title)
                 })
                 new_articles_count += 1
-        time.sleep(2)
+                
+        time.sleep(random.uniform(3.0, 5.0))
     except Exception as e:
-        print(f"   ⚠️ Erreur sur {platform}: {e}")
+        print(f"   ⚠️ Erreur Dork [{platform}]: {e}")
 
 # ============================================================
 # 7. 🔵 Collecte GOOGLE NEWS (BLEU) - Requêtes combinées
