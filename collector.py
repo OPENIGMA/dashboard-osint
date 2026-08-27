@@ -9,18 +9,23 @@ import time
 from email.utils import parsedate_to_datetime
 
 # ============================================================
-# 1. Chargement et NETTOYAGE de la base locale des communes
+# 1. NETTOYAGE et Chargement de communes.json
 # ============================================================
 CITIES_DB = {}
 if os.path.exists('communes.json'):
     try:
         with open('communes.json', 'r', encoding='utf-8') as f:
             raw_db = json.load(f)
+        clean_db = {}
         for key, value in raw_db.items():
             clean_key = key.strip().lower()
             clean_value = {k.strip(): (v.strip() if isinstance(v, str) else v) for k, v in value.items()}
-            CITIES_DB[clean_key] = clean_value
-        print(f"✅ Base locale chargée et nettoyée : {len(CITIES_DB)} communes.")
+            clean_db[clean_key] = clean_value
+        
+        with open('communes.json', 'w', encoding='utf-8') as f:
+            json.dump(clean_db, f, ensure_ascii=False, indent=2)
+        CITIES_DB = clean_db
+        print(f"✅ communes.json nettoyé. {len(CITIES_DB)} communes.")
     except Exception as e:
         print(f"❌ Erreur communes.json : {e}")
 
@@ -79,52 +84,15 @@ for evt in existing_events:
 print(f"📊 {len(valid_events)} événements conservés (< 30 jours). ID max : {max_id}")
 
 # ============================================================
-# 4. Configuration des Flux RSS LOCAUX DIRECTS (Liste exhaustive)
-# ============================================================
-LOCAL_RSS_FEEDS = [
-    # Occitanie - Quotidiens
-    {"name": "La Dépêche du Midi", "url": "https://www.ladepeche.fr/rss.xml"},
-    {"name": "Midi Libre", "url": "https://www.midilibre.fr/rss.xml"},
-    {"name": "L'Indépendant", "url": "https://www.lindependant.fr/rss.xml"},
-    {"name": "La Montagne", "url": "https://www.lamontagne.fr/rss.xml"},
-    # Occitanie - Hebdomadaires / Spécialisés
-    {"name": "Midi Olympique", "url": "https://www.midi-olympique.fr/rss"},
-    {"name": "Le Journal Toulousain", "url": "https://www.journaltoulousain.fr/feed/"},
-    {"name": "La Gazette du Midi", "url": "https://www.lagazettedumidi.com/feed/"},
-    {"name": "La Gazette Ariégeoise", "url": "https://www.lagazetteariegeoise.fr/feed/"},
-    {"name": "Le Journal de Millau", "url": "https://www.journaldemillau.fr/feed/"},
-    {"name": "Lozère Nouvelle", "url": "https://www.lozerenouvelle.fr/rss.xml"},
-    # PACA - Quotidiens
-    {"name": "La Provence", "url": "https://www.laprovence.com/rss.xml"},
-    {"name": "Nice-Matin", "url": "https://www.nicematin.com/rss.xml"},
-    {"name": "Var-Matin", "url": "https://www.varmatin.com/rss.xml"},
-    {"name": "La Marseillaise", "url": "https://www.lamarseillaise.fr/rss.xml"},
-    {"name": "Le Dauphiné Libéré", "url": "https://www.ledauphine.com/rss.xml"},
-    # Corse
-    {"name": "Corse-Matin", "url": "https://www.corsematin.com/rss.xml"},
-    {"name": "Corse Net Infos", "url": "https://www.corsenetinfos.corsica/feed/"},
-    {"name": "Le Journal de la Corse", "url": "https://www.journaldelacorse.corsica/rss.xml"},
-    {"name": "Paroles de Corse", "url": "https://www.parolesdecorse.com/feed/"},
-    {"name": "In Corsica", "url": "https://www.incorsica.com/feed/"},
-    {"name": "Terra Corsa", "url": "https://www.terracorsa.com/feed/"},
-    # France 3 Régions
-    {"name": "France 3 Occitanie", "url": "https://france3-regions.francetvinfo.fr/occitanie/rss"},
-    {"name": "France 3 PACA", "url": "https://france3-regions.francetvinfo.fr/provence-alpes-cote-d-azur/rss"},
-    {"name": "France 3 Corse", "url": "https://france3-regions.francetvinfo.fr/corse/rss"}
-]
-
-# ============================================================
-# 5. Mots-clés pour associer un article local à une thématique
+# 4. Mots-clés et Fonctions de classification
 # ============================================================
 THEME_KEYWORDS = {
-    # Note : "ZAD" et "A69" ont été retirés d'ici pour éviter les conflits de priorité 
-    # avec la catégorie "Projet aménagement contesté (PAC)" qui est plus précise.
-    "Ecologie": ["écologie", "environnement", "climat", "pollution", "biodiversité", "sécheresse", "incendie", "canicule", "XR", "Extinction Rébellion", "SLT", "Les soulèvements de la terre", "ZIO"],
-    "Agriculture": ["CR", "coordination rurale", "agriculture", "agriculteur", "FNSEA", "EGalim", "PAC", "tracteur", "récolte", "élevage", "viticulture", "chambre agriculture"],
+    "Agriculture": ["agriculture", "agriculteur", "FNSEA", "EGalim", "PAC", "tracteur", "récolte", "élevage", "viticulture", "chambre agriculture", "CR", "coordination rurale"],
     "Armes": ["arme", "fusil", "pistolet", "kalachnikov", "trafic arme", "confiscation", "arsenal"],
     "Chasse": ["chasse", "chasseur", "gibier", "ONCFS", "cynégétique", "battue", "braconnage", "loup"],
     "Délinquance criminalité": ["délinquance", "insécurité", "cambriolage", "agression", "vol", "braquage", "vandalisme", "rixe"],
     "Dérives Sectaires": ["secte", "dérive sectaire", "emprise mentale", "gourou", "MIVILUDES"],
+    "Ecologie": ["écologie", "environnement", "climat", "pollution", "biodiversité", "sécheresse", "incendie", "canicule", "XR", "Extinction Rébellion", "SLT", "Les soulèvements de la terre", "ZIO"],
     "Education nationale": ["école", "collège", "lycée", "professeur", "éducation nationale", "enseignant", "harcèlement", "DASEN"],
     "Ferroviaire": ["SNCF", "train", "gare", "rail", "ferroviaire", "TGV", "TER", "grève SNCF"],
     "Festivité Evènements voie publique": ["festival", "fête", "événement", "rassemblement", "concert", "carnaval", "féria", "feu artifice"],
@@ -184,13 +152,37 @@ def find_theme(title):
             return theme
     return "Non classé"
 
-# ============================================================
-# 6. Collecte DIRECTE depuis la Presse Locale (ORANGE)
-# ============================================================
-new_articles_count = 0
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
+new_articles_count = 0
 
-print("📡 Début de l'aspiration des flux RSS LOCAUX (ORANGE)...")
+# ============================================================
+# 5. 🟠 Collecte PRESSE LOCALE (ORANGE)
+# ============================================================
+LOCAL_RSS_FEEDS = [
+    {"name": "La Dépêche du Midi", "url": "https://www.ladepeche.fr/rss.xml"},
+    {"name": "Midi Libre", "url": "https://www.midilibre.fr/rss.xml"},
+    {"name": "L'Indépendant", "url": "https://www.lindependant.fr/rss.xml"},
+    {"name": "La Montagne", "url": "https://www.lamontagne.fr/rss.xml"},
+    {"name": "Midi Olympique", "url": "https://www.midi-olympique.fr/rss"},
+    {"name": "Le Journal Toulousain", "url": "https://www.journaltoulousain.fr/feed/"},
+    {"name": "La Gazette du Midi", "url": "https://www.lagazettedumidi.com/feed/"},
+    {"name": "La Gazette Ariégeoise", "url": "https://www.lagazetteariegeoise.fr/feed/"},
+    {"name": "Le Journal de Millau", "url": "https://www.journaldemillau.fr/feed/"},
+    {"name": "Lozère Nouvelle", "url": "https://www.lozerenouvelle.fr/rss.xml"},
+    {"name": "La Provence", "url": "https://www.laprovence.com/rss.xml"},
+    {"name": "Nice-Matin", "url": "https://www.nicematin.com/rss.xml"},
+    {"name": "Var-Matin", "url": "https://www.varmatin.com/rss.xml"},
+    {"name": "La Marseillaise", "url": "https://www.lamarseillaise.fr/rss.xml"},
+    {"name": "Le Dauphiné Libéré", "url": "https://www.ledauphine.com/rss.xml"},
+    {"name": "Corse-Matin", "url": "https://www.corsematin.com/rss.xml"},
+    {"name": "Corse Net Infos", "url": "https://www.corsenetinfos.corsica/feed/"},
+    {"name": "Le Journal de la Corse", "url": "https://www.journaldelacorse.corsica/rss.xml"},
+    {"name": "France 3 Occitanie", "url": "https://france3-regions.francetvinfo.fr/occitanie/rss"},
+    {"name": "France 3 PACA", "url": "https://france3-regions.francetvinfo.fr/provence-alpes-cote-d-azur/rss"},
+    {"name": "France 3 Corse", "url": "https://france3-regions.francetvinfo.fr/corse/rss"}
+]
+
+print("🟠 Début de l'aspiration des flux RSS LOCAUX (ORANGE)...")
 for feed in LOCAL_RSS_FEEDS:
     feed_name = feed["name"]
     rss_url = feed["url"]
@@ -200,123 +192,81 @@ for feed in LOCAL_RSS_FEEDS:
             xml_data = response.read()
             root = ET.fromstring(xml_data)
             items = root.findall('.//item')
-            
-            for item in items[:25]:
-                title_elem = item.find('title')
-                title = title_elem.text.strip() if title_elem is not None and title_elem.text else ''
-                link_elem = item.find('link')
-                link = str(link_elem.text).strip() if link_elem is not None and link_elem.text else '#'
-                pub_date_elem = item.find('pubDate')
-                pub_date_raw = pub_date_elem.text.strip() if pub_date_elem is not None and pub_date_elem.text else ''
+            for item in items[:20]:
+                title = item.find('title').text.strip() if item.find('title') is not None and item.find('title').text else ''
+                link = item.find('link').text.strip() if item.find('link') is not None and item.find('link').text else '#'
+                pub_date_raw = item.find('pubDate').text.strip() if item.find('pubDate') is not None and item.find('pubDate').text else ''
                 
                 pub_iso = datetime.now(timezone.utc).isoformat()
                 if pub_date_raw:
-                    try:
-                        parsed_dt = parsedate_to_datetime(pub_date_raw)
-                        pub_iso = parsed_dt.isoformat()
+                    try: pub_iso = parsedate_to_datetime(pub_date_raw).isoformat()
                     except Exception: pass
 
-                if not title or link in seen_urls or title in seen_titles:
-                    continue
-                
+                if not title or link in seen_urls or title in seen_titles: continue
                 theme = find_theme(title)
-                if theme == "Non classé":
-                    continue
+                if theme == "Non classé": continue
 
                 seen_urls.add(link)
                 seen_titles.add(title)
-                location = detect_location(title)
                 max_id += 1
-                
                 valid_events.append({
-                    "id": f"evt-{max_id}",
-                    "timestamp": pub_iso,
-                    "title": title,
-                    "summary": f"Article direct de {feed_name}.",
-                    "url": link,
-                    "source_name": feed_name,
-                    "source_type": "Presse Locale Directe",
-                    "source_category": "orange",
-                    "theme": theme,
-                    "location": location
+                    "id": f"evt-{max_id}", "timestamp": pub_iso, "title": title,
+                    "summary": f"Article direct de {feed_name}.", "url": link,
+                    "source_name": feed_name, "source_type": "Presse Locale Directe", "source_category": "orange",
+                    "theme": theme, "location": detect_location(title)
                 })
                 new_articles_count += 1
         time.sleep(1)
     except Exception as e:
         print(f"   ⚠️ Erreur sur {feed_name}: {e}")
 
-print(f"✅ {new_articles_count} articles locaux (ORANGE) ajoutés.")
-
 # ============================================================
-# 7. Collecte Réseaux Sociaux via Flux RSS Natifs (ROUGE)
+# 6. 🔴 Collecte RÉSEAUX SOCIAUX (ROUGE)
 # ============================================================
 SOCIAL_RSS_FEEDS = [
-    {
-        "platform": "Reddit (France)",
-        "url": "https://www.reddit.com/r/France/new/.rss",
-        "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "fusillade", "drone"]
-    },
-    {
-        "platform": "Mastodon (Piaille.fr)",
-        "url": "https://piaille.fr/public/local.rss",
-        "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie"]
-    }
+    {"platform": "Reddit (France)", "url": "https://www.reddit.com/r/France/new/.rss", "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "fusillade", "drone", "tracteur", "ZAD"]},
+    {"platform": "Reddit (Local Sud)", "url": "https://www.reddit.com/search.rss?q=Occitanie+OR+PACA+OR+Marseille+OR+Toulouse&sort=new&t=week", "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "fusillade", "tracteur"]},
+    {"platform": "Mastodon (Piaille.fr)", "url": "https://piaille.fr/public/local.rss", "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "ZAD", "tracteur"]}
 ]
 
-print("🔴 Début de la collecte Réseaux Sociaux (ROUGE) via RSS natifs...")
+print("🔴 Début de la collecte Réseaux Sociaux (ROUGE)...")
 for social_feed in SOCIAL_RSS_FEEDS:
     platform = social_feed["platform"]
     rss_url = social_feed["url"]
     keywords = social_feed["keywords"]
-    
     try:
-        # User-Agent renforcé pour éviter le blocage 403 de Reddit
-        req = urllib.request.Request(rss_url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'})
+        req = urllib.request.Request(rss_url, headers=headers)
         with urllib.request.urlopen(req, timeout=10) as response:
             xml_data = response.read()
             root = ET.fromstring(xml_data)
             items = root.findall('.//item')
-            
             for item in items[:15]:
-                title_elem = item.find('title')
-                title = title_elem.text.strip() if title_elem is not None and title_elem.text else ''
-                
+                title = item.find('title').text.strip() if item.find('title') is not None and item.find('title').text else ''
                 title_lower = title.lower()
-                if not any(kw in title_lower for kw in keywords):
-                    continue
+                if not any(kw in title_lower for kw in keywords): continue
                 
-                link_elem = item.find('link')
-                link = str(link_elem.text).strip() if link_elem is not None and link_elem.text else '#'
-                
+                link = item.find('link').text.strip() if item.find('link') is not None and item.find('link').text else '#'
+                if not title or link in seen_urls or title in seen_titles: continue
+
+                seen_urls.add(link)
+                seen_titles.add(title)
                 theme = find_theme(title)
-                if theme == "Non classé":
-                    theme = "Reseaux Sociaux"
+                if theme == "Non classé": theme = "Reseaux Sociaux"
                 
-                location = detect_location(title)
                 max_id += 1
-                
                 valid_events.append({
-                    "id": f"evt-{max_id}",
-                    "timestamp": datetime.now(timezone.utc).isoformat(),
-                    "title": f"[{platform}] {title}",
-                    "summary": f"Post trouvé sur {platform}.",
-                    "url": link,
-                    "source_name": platform,
-                    "source_type": "Reseaux Sociaux",
-                    "source_category": "red",
-                    "theme": theme,
-                    "location": location
+                    "id": f"evt-{max_id}", "timestamp": datetime.now(timezone.utc).isoformat(), 
+                    "title": f"[{platform}] {title}", "summary": f"Post trouvé sur {platform}.", "url": link,
+                    "source_name": platform, "source_type": "Reseaux Sociaux", "source_category": "red",
+                    "theme": theme, "location": detect_location(title)
                 })
                 new_articles_count += 1
-                
         time.sleep(2)
     except Exception as e:
         print(f"   ⚠️ Erreur sur {platform}: {e}")
 
-print(f"✅ {new_articles_count} posts réseaux sociaux (ROUGE) ajoutés au total.")
-
 # ============================================================
-# 8. Collecte complémentaire via Google News (BLEU) - 36 Thèmes
+# 7. 🔵 Collecte GOOGLE NEWS (BLEU)
 # ============================================================
 GN_QUERIES = [
     {"theme": "Agriculture", "query": "agriculture OR agriculteur OR FNSEA OR EGalim OR PAC OR tracteur"},
@@ -357,70 +307,53 @@ GN_QUERIES = [
     {"theme": "Manifestation", "query": "manifestation OR cortège OR défilé OR rassemblement OR CRS"}
 ]
 
-print("🔵 Début des requêtes Google News complémentaires (BLEU)...")
+print("🔵 Début des requêtes Google News (BLEU)...")
 for item_target in GN_QUERIES:
     theme = item_target["theme"]
     query = item_target["query"]
     encoded_query = urllib.parse.quote(query)
     rss_url = f"https://news.google.com/rss/search?q={encoded_query}&hl=fr&gl=FR&ceid=FR:fr"
-
     try:
         req = urllib.request.Request(rss_url, headers=headers)
         with urllib.request.urlopen(req, timeout=10) as response:
             xml_data = response.read()
             root = ET.fromstring(xml_data)
             items = root.findall('.//item')
-            
             for item in items[:10]:
-                title_elem = item.find('title')
-                title = title_elem.text.strip() if title_elem is not None and title_elem.text else ''
-                link_elem = item.find('link')
-                link = str(link_elem.text).strip() if link_elem is not None and link_elem.text else '#'
-                pub_date_elem = item.find('pubDate')
-                pub_date_raw = pub_date_elem.text.strip() if pub_date_elem is not None and pub_date_elem.text else ''
+                title = item.find('title').text.strip() if item.find('title') is not None and item.find('title').text else ''
+                link = item.find('link').text.strip() if item.find('link') is not None and item.find('link').text else '#'
+                pub_date_raw = item.find('pubDate').text.strip() if item.find('pubDate') is not None and item.find('pubDate').text else ''
                 
                 pub_iso = datetime.now(timezone.utc).isoformat()
                 if pub_date_raw:
-                    try:
-                        parsed_dt = parsedate_to_datetime(pub_date_raw)
-                        pub_iso = parsed_dt.isoformat()
+                    try: pub_iso = parsedate_to_datetime(pub_date_raw).isoformat()
                     except Exception: pass
 
-                if not title or link in seen_urls or title in seen_titles:
-                    continue
+                if not title or link in seen_urls or title in seen_titles: continue
                 
                 seen_urls.add(link)
                 seen_titles.add(title)
-                location = detect_location(title)
                 source_elem = item.find('source')
                 raw_source = source_elem.text.strip() if source_elem is not None and source_elem.text else "Presse"
                 
                 max_id += 1
                 valid_events.append({
-                    "id": f"evt-{max_id}",
-                    "timestamp": pub_iso,
-                    "title": title,
-                    "summary": f"Article via Google News.",
-                    "url": link,
-                    "source_name": raw_source,
-                    "source_type": "Google News",
-                    "source_category": "blue",
-                    "theme": theme,
-                    "location": location
+                    "id": f"evt-{max_id}", "timestamp": pub_iso, "title": title,
+                    "summary": f"Article via Google News.", "url": link,
+                    "source_name": raw_source, "source_type": "Google News", "source_category": "blue",
+                    "theme": theme, "location": detect_location(title)
                 })
                 new_articles_count += 1
-        time.sleep(3)
+        time.sleep(2)
     except Exception as e:
         print(f"   ⚠️ Erreur Google News [{theme}]: {e}")
 
-print(f"✅ {new_articles_count} articles Google News (BLEU) ajoutés au total.")
-
 # ============================================================
-# 9. Tri et sauvegarde finale
+# 8. Tri et sauvegarde finale
 # ============================================================
 valid_events.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
 
 with open('data_feed.json', 'w', encoding='utf-8') as f:
     json.dump(valid_events, f, ensure_ascii=False, indent=2)
 
-print(f"🎉 SUCCÈS TOTAL : {len(valid_events)} alertes en base.")
+print(f"🎉 SUCCÈS TOTAL : {len(valid_events)} alertes en base (+{new_articles_count} nouveaux).")
