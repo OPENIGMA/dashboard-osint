@@ -1,5 +1,6 @@
 import json
 import urllib.request
+import urllib.parse
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 import re
@@ -15,7 +16,6 @@ if os.path.exists('communes.json'):
     try:
         with open('communes.json', 'r', encoding='utf-8') as f:
             raw_db = json.load(f)
-        # Nettoyage agressif des espaces dans les clés et valeurs
         for key, value in raw_db.items():
             clean_key = key.strip().lower()
             clean_value = {k.strip(): (v.strip() if isinstance(v, str) else v) for k, v in value.items()}
@@ -79,20 +79,32 @@ for evt in existing_events:
 print(f"📊 {len(valid_events)} événements conservés (< 30 jours). ID max : {max_id}")
 
 # ============================================================
-# 4. Configuration des Flux RSS LOCAUX DIRECTS (Occitanie, PACA, Corse)
+# 4. Configuration des Flux RSS LOCAUX DIRECTS (Ta liste exhaustive)
 # ============================================================
 LOCAL_RSS_FEEDS = [
-    # Occitanie
+    # --- OCCITANIE ---
     {"name": "La Dépêche du Midi", "url": "https://www.ladepeche.fr/rss.xml"},
     {"name": "Midi Libre", "url": "https://www.midilibre.fr/rss.xml"},
-    {"name": "France 3 Occitanie", "url": "https://france3-regions.francetvinfo.fr/occitanie/rss"},
-    {"name": "L'Indépendant", "url": "https://www.lindependant.fr/rss.xml"},
-    # PACA
+    {"name": "La Montagne", "url": "https://www.lamontagne.fr/rss.xml"},
+    {"name": "Midi Olympique", "url": "https://www.midiolympique.fr/rss.xml"},
+    {"name": "Le Journal Toulousain", "url": "https://www.journaltoulousain.fr/feed/"},
+    {"name": "La Gazette du Midi", "url": "https://www.lagazettedumidi.com/feed/"},
+    {"name": "La Gazette Ariégeoise", "url": "https://www.lagazetteariegeoise.fr/feed/"},
+    {"name": "Le Journal de Millau", "url": "https://www.journaldemillau.fr/feed/"},
+    {"name": "Lozère Nouvelle", "url": "https://www.lozerenouvelle.fr/rss.xml"},
+    # --- PACA ---
     {"name": "La Provence", "url": "https://www.laprovence.com/rss.xml"},
     {"name": "Nice-Matin", "url": "https://www.nicematin.com/rss.xml"},
-    {"name": "France 3 PACA", "url": "https://france3-regions.francetvinfo.fr/provence-alpes-cote-d-azur/rss"},
-    # Corse
-    {"name": "France 3 Corse", "url": "https://france3-regions.francetvinfo.fr/corse/rss"}
+    {"name": "Var-Matin", "url": "https://www.varmatin.com/rss.xml"},
+    {"name": "La Marseillaise", "url": "https://www.lamarseillaise.fr/rss.xml"},
+    {"name": "Le Dauphiné Libéré", "url": "https://www.ledauphine.com/rss.xml"},
+    # --- CORSE ---
+    {"name": "Corse-Matin", "url": "https://www.corsematin.com/rss.xml"},
+    {"name": "Corse Net Infos", "url": "https://www.corsenetinfos.corsica/feed/"},
+    {"name": "Le Journal de la Corse", "url": "https://www.journaldelacorse.corsica/rss.xml"},
+    {"name": "Paroles de Corse", "url": "https://www.parolesdecorse.com/feed/"},
+    {"name": "In Corsica", "url": "https://www.incorsica.com/feed/"},
+    {"name": "Terra Corsa", "url": "https://www.terracorsa.com/feed/"}
 ]
 
 # Mots-clés pour associer un article local à l'une de tes 36 thématiques
@@ -163,7 +175,7 @@ def find_theme(title):
     return "Non classé"
 
 # ============================================================
-# 5. Collecte DIRECTE depuis la Presse Locale (Occitanie, PACA, Corse)
+# 5. Collecte DIRECTE depuis la Presse Locale (ORANGE)
 # ============================================================
 new_articles_count = 0
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
@@ -179,7 +191,7 @@ for feed in LOCAL_RSS_FEEDS:
             root = ET.fromstring(xml_data)
             items = root.findall('.//item')
             
-            for item in items[:25]: # 25 derniers articles par média
+            for item in items[:25]:
                 title_elem = item.find('title')
                 title = title_elem.text.strip() if title_elem is not None and title_elem.text else ''
                 link_elem = item.find('link')
@@ -199,7 +211,7 @@ for feed in LOCAL_RSS_FEEDS:
                 
                 theme = find_theme(title)
                 if theme == "Non classé":
-                    continue # On ignore ce qui ne correspond à aucune de nos 36 thématiques
+                    continue
 
                 seen_urls.add(link)
                 seen_titles.add(title)
@@ -218,14 +230,14 @@ for feed in LOCAL_RSS_FEEDS:
                     "location": location
                 })
                 new_articles_count += 1
-        time.sleep(2) # Délai de courtoisie
+        time.sleep(1)
     except Exception as e:
-        print(f"   ⚠️ Erreur sur {feed_name}: {e}")
+        print(f"   ⚠️ Flux indisponible ou erreur sur {feed_name}: {e}")
 
 print(f"✅ {new_articles_count} articles locaux ajoutés.")
 
 # ============================================================
-# 6. Collecte complémentaire via Google News (pour élargir)
+# 6. Collecte complémentaire via Google News (BLEU)
 # ============================================================
 GN_QUERIES = [
     {"theme": "Agriculture", "query": "agriculture OR FNSEA OR EGalim OR PAC"},
