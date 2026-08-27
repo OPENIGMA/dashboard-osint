@@ -2,8 +2,8 @@ name: OSINT Data Collector
 
 on:
   schedule:
-    - cron: '0 */6 * * *' # S'exécute toutes les 6 heures (évite le rate-limit de Google)
-  workflow_dispatch: # Permet de lancer manuellement depuis l'interface GitHub
+    - cron: '0 */6 * * *' # Toutes les 6 heures (évite le blocage de Google)
+  workflow_dispatch: # Permet de lancer manuellement en 1 clic
   push:
     paths:
       - 'collector.py'
@@ -34,4 +34,12 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data_feed.json
-          git diff-index --quiet HEAD || (git commit -m "🤖 Auto-update OSINT feed data [skip ci]" && git push)
+          
+          # Vérifie s'il y a des modifications avant de commiter
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "🤖 Auto-update OSINT feed data [skip ci]"
+            git push origin HEAD
+            echo "✅ Données mises à jour et poussées avec succès sur GitHub."
+          else
+            echo "⚠️ Aucune nouvelle donnée à pousser."
+          fi
