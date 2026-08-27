@@ -2,8 +2,8 @@ name: OSINT Data Collector
 
 on:
   schedule:
-    - cron: '0 */6 * * *' # Toutes les 6 heures (évite le rate-limit de Google)
-  workflow_dispatch: # Permet de lancer manuellement en 1 clic
+    - cron: '0 */6 * * *' # S'exécute automatiquement toutes les 6 heures
+  workflow_dispatch: # Permet de le lancer manuellement en 1 clic
   push:
     paths:
       - 'collector.py'
@@ -29,24 +29,25 @@ jobs:
       - name: Lancer le script collector
         run: python collector.py
 
-      - name: Sauvegarder et publier les nouvelles données
+      - name: Sauvegarder et publier les nouvelles données (Méthode infaillible)
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Récupérer les derniers changements du dépôt distant
+          # Récupérer l'état exact du dépôt distant
           git fetch origin
           
-          # Réinitialiser l'historique local pour qu'il corresponde au distant, 
-          # tout en conservant les modifications du fichier data_feed.json générées par le script
+          # Réinitialiser l'historique local pour correspondre au distant, 
+          # tout en gardant les modifications du fichier data_feed.json
           git reset --soft origin/main
           
           git add data_feed.json
           
+          # Vérifier s'il y a vraiment des changements à pousser
           if git diff-index --quiet HEAD --; then
-            echo "⚠️ Aucune nouvelle donnée à pousser (le fichier n'a pas changé)."
+            echo "Aucune nouvelle donnee a pousser."
           else
-            git commit -m "🤖 Auto-update OSINT feed data [skip ci]"
+            git commit -m "Auto-update OSINT feed data [skip ci]"
             git push origin HEAD:main
-            echo "✅ Données mises à jour et poussées avec succès sur GitHub."
+            echo "Donnees mises a jour et poussees avec succes."
           fi
