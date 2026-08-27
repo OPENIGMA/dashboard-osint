@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
-        #controls { padding: 10px; background: #1a1a1a; color: white; display: flex; gap: 10px; align-items: center; }
+        #controls { padding: 10px; background: #1a1a1a; color: white; display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
         #map { height: calc(100vh - 50px); width: 100%; }
         select { padding: 8px; font-weight: bold; background: #333; color: white; border: 1px solid #555; border-radius: 4px; }
     </style>
@@ -16,13 +16,24 @@
 <body>
 
     <div id="controls">
-        <label for="region-filter"><strong>RÉGION :</strong></label>
-        <select id="region-filter" onchange="filterData()">
-            <option value="ALL">TOUTES LES RÉGIONS</option>
-            <option value="OCCITANIE">OCCITANIE</option>
-            <option value="PACA">PACA</option>
-            <option value="CORSE">CORSE</option>
-        </select>
+        <div>
+            <label for="region-filter"><strong>RÉGION :</strong></label>
+            <select id="region-filter" onchange="filterData()">
+                <option value="ALL">TOUTES LES RÉGIONS</option>
+                <option value="OCCITANIE">OCCITANIE</option>
+                <option value="PACA">PACA</option>
+                <option value="CORSE">CORSE</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="time-filter"><strong>PÉRIODE :</strong></label>
+            <select id="time-filter" onchange="filterData()">
+                <option value="24h">Dernières 24 Heures</option>
+                <option value="7d" selected>Derniers 7 Jours</option>
+                <option value="30d">Derniers 30 Jours</option>
+            </select>
+        </div>
     </div>
 
     <div id="map"></div>
@@ -30,30 +41,16 @@
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        // 1. Définition des différentes couches de carte (Multi-couches 100% gratuites)
-        const layerOSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap'
-        });
+        const layerOSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' });
+        const layerDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 19, attribution: '© OpenStreetMap © CARTO' });
+        const layerSatellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 18, attribution: 'Tiles © Esri' });
 
-        const layerDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap © CARTO'
-        });
-
-        const layerSatellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-            maxZoom: 18,
-            attribution: 'Tiles © Esri'
-        });
-
-        // 2. Initialisation de la carte sur le fond Sombre par défaut
         const map = L.map('map', {
             center: [43.6047, 3.8767],
             zoom: 7,
             layers: [layerDark]
         });
 
-        // 3. Ajout du contrôle multi-couches en haut à droite
         const baseMaps = {
             "Fond Sombre (OSINT)": layerDark,
             "Vue Satellite": layerSatellite,
@@ -64,7 +61,6 @@
         let allEvents = [];
         let markersGroup = L.layerGroup().addTo(map);
 
-        // 4. Chargement des données JSON avec anti-cache
         function loadData() {
             fetch('data_feed.json?t=' + new Date().getTime())
                 .then(response => {
@@ -73,12 +69,11 @@
                 })
                 .then(data => {
                     allEvents = data;
-                    renderMarkers(allEvents);
+                    filterData();
                 })
                 .catch(err => console.error("Erreur :", err));
         }
 
-        // 5. Affichage des repères sur la carte
         function renderMarkers(events) {
             markersGroup.clearLayers();
 
@@ -93,7 +88,7 @@
                             <p style="margin: 0 0 5px 0; font-size: 12px; color: #555;">
                                 <strong>Thème:</strong> ${evt.theme}<br>
                                 <strong>Source:</strong> ${evt.source_name}<br>
-                                <strong>Date:</strong> ${dateFormatted}
+                                <strong>Collecté le:</strong> ${dateFormatted}
                             </p>
                             <a href="${evt.url}" target="_blank" style="color: #0066cc; font-weight: bold;">Consulter l'article</a>
                         </div>
@@ -104,16 +99,28 @@
             });
         }
 
-        // 6. Filtrage par région
         function filterData() {
             const selectedRegion = document.getElementById('region-filter').value;
-            
-            if (selectedRegion === 'ALL') {
-                renderMarkers(allEvents);
-            } else {
-                const filtered = allEvents.filter(evt => evt.location && evt.location.region === selectedRegion);
-                renderMarkers(filtered);
-            }
+            const selectedTime = document.getElementById('time-filter').value;
+            const now = new Date().getTime();
+
+            let maxAgeHours = 24 * 30; // 30 jours par défaut
+            if (selectedTime === '24h') maxAgeHours = 24;
+            if (selectedTime === '7d') maxAgeHours = 24 * 7;
+
+            const filtered = allEvents.filter(evt => {
+                // Filtre Région
+                const matchRegion = (selectedRegion === 'ALL') || (evt.location && evt.location.region === selectedRegion);
+                
+                // Filtre Temps
+                const evtTime = new Date(evt.timestamp).getTime();
+                const ageInHours = (now - evtTime) / (1000 * 60 * 60);
+                const matchTime = ageInHours <= maxAgeHours;
+
+                return matchRegion && matchTime;
+            });
+
+            renderMarkers(filtered);
         }
 
         loadData();
