@@ -26,7 +26,7 @@ if os.path.exists('data_feed.json'):
     except Exception:
         existing_events = []
 
-# Filtrage : On supprime d'entrée ce qui a plus de 30 jours
+# Filtrage : On conserve uniquement ce qui a moins de 30 jours
 now = datetime.now(timezone.utc)
 cutoff_30d = now - timedelta(days=30)
 
@@ -42,13 +42,13 @@ for evt in existing_events:
     except Exception:
         continue
 
-# Mots-clés optimisés avec filtre "when:7d" pour forcer les articles récents
+# Mots-clés avec syntaxe RSS standard 100% compatible
 SEARCH_QUERIES = [
-    {"theme": "Agriculture", "source_type": "Presse", "query": "(agriculteurs OR fnsea OR tracteurs) (Occitanie OR PACA) when:7d"},
-    {"theme": "Blocage occupation", "source_type": "Presse", "query": "(blocage OR barrage) (Toulouse OR Marseille OR Nîmes OR Béziers OR Avignon OR Gap) when:7d"},
-    {"theme": "Manifestation", "source_type": "Presse", "query": "manifestation (Nîmes OR Perpignan OR Toulon OR Nice OR Avignon OR Albi OR Béziers) when:7d"},
-    {"theme": "Projet Conteste", "source_type": "Presse", "query": "(A69 OR autoroute OR bassine) (Occitanie OR PACA) when:7d"},
-    {"theme": "Criminalite", "source_type": "Presse", "query": "(narcotrafic OR fusillade OR \"point de deal\") (Marseille OR Nîmes OR Avignon) when:7d"}
+    {"theme": "Agriculture", "source_type": "Presse", "query": "agriculture Occitanie PACA"},
+    {"theme": "Blocage occupation", "source_type": "Presse", "query": "blocage Toulouse Marseille Nîmes Avignon"},
+    {"theme": "Manifestation", "source_type": "Presse", "query": "manifestation Nîmes Perpignan Toulon Nice Avignon"},
+    {"theme": "Projet Conteste", "source_type": "Presse", "query": "A69 autoroute bassine Occitanie PACA"},
+    {"theme": "Criminalite", "source_type": "Presse", "query": "narcotrafic fusillade Marseille Nîmes Avignon"}
 ]
 
 def detect_location(text):
@@ -81,27 +81,27 @@ for item_target in SEARCH_QUERIES:
     query = item_target["query"]
     
     encoded_query = urllib.parse.quote(query)
-    # Ajout du paramètre sort par date dans l'URL RSS
+    # URL RSS native officielle Google News
     rss_url = f"https://news.google.com/rss/search?q={encoded_query}&hl=fr&gl=FR&ceid=FR:fr"
     
     try:
         req = urllib.request.Request(
             rss_url, 
-            headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}
+            headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
         )
         with urllib.request.urlopen(req, timeout=10) as response:
             xml_data = response.read()
             root = ET.fromstring(xml_data)
             
             items = root.findall('.//item')
-            print(f"[{theme}] {len(items)} articles trouvés dans le flux RSS.")
+            print(f"[{theme}] : {len(items)} article(s) récupéré(s).")
 
             for item in items[:10]:
                 title = item.find('title').text if item.find('title') is not None else ''
                 link = item.find('link').text if item.find('link') is not None else '#'
                 pub_date_raw = item.find('pubDate').text if item.find('pubDate') is not None else ''
                 
-                # Parsing de la date RFC822 de Google (ex: "Wed, 27 Aug 2026 06:30:00 GMT") vers ISO
+                # Conversion de la date RSS en ISO
                 pub_iso = datetime.now(timezone.utc).isoformat()
                 if pub_date_raw:
                     try:
@@ -115,33 +115,31 @@ for item_target in SEARCH_QUERIES:
                 seen_titles.add(title)
 
                 source_elem = item.find('source')
-                raw_source = source_elem.text if source_elem is not None else "Web"
-                display_source = f"{source_type} ({raw_source})" if source_type != "Presse" else raw_source
+                raw_source = source_elem.text if source_elem is not None else "Presse"
 
                 clean_text = re.sub('<[^<]+?>', '', title)
                 location = detect_location(clean_text)
                 
                 valid_events.append({
                     "id": f"evt-{event_id}",
-                    "timestamp": pub_iso,  # Utilise la date réelle de publication
-                    "pubDate": pub_date_raw,
+                    "timestamp": pub_iso,
                     "title": title,
-                    "summary": f"Alerte issue de {display_source}.",
+                    "summary": f"Alerte issue de {raw_source}.",
                     "url": link,
-                    "source_name": display_source,
+                    "source_name": raw_source,
                     "theme": theme,
                     "location": location
                 })
                 event_id += 1
                 new_articles_count += 1
     except Exception as e:
-        print(f"Avertissement ({theme}): {e}")
+        print(f"Erreur sur la requête [{theme}]: {e}")
 
-# Trier tous les événements par date décroissante (les plus récents en premier)
+# Trier tous les événements par date la plus récente
 valid_events.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
 
-# Enregistrement du fichier avec purge automatique appliquée
+# Sauvegarde dans data_feed.json
 with open('data_feed.json', 'w', encoding='utf-8') as f:
     json.dump(valid_events, f, ensure_ascii=False, indent=2)
 
-print(f"Terminé : {len(valid_events)} alertes valides dans la base ({new_articles_count} nouveaux articles ajoutés).")
+print(f"Succès : {len(valid_events)} alertes enregistrées (+{new_articles_count} nouveaux articles).")
