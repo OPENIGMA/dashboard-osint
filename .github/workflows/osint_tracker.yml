@@ -29,25 +29,25 @@ jobs:
       - name: Lancer le script collector
         run: python collector.py
 
-      - name: Sauvegarder et publier les nouvelles données (Méthode infaillible)
+      - name: Sauvegarder et publier (Méthode infaillible)
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Récupérer l'état exact du dépôt distant
+          # Récupère l'état exact du dépôt distant
           git fetch origin
           
-          # Réinitialiser l'historique local pour correspondre au distant, 
-          # tout en gardant les modifications du fichier data_feed.json
+          # Réinitialise l'historique local pour correspondre au distant, 
+          # tout en gardant les modifications du fichier data_feed.json générées par le script
           git reset --soft origin/main
           
           git add data_feed.json
           
-          # Vérifier s'il y a vraiment des changements à pousser
+          # Vérifie s'il y a vraiment des changements à pousser
           if git diff-index --quiet HEAD --; then
-            echo "Aucune nouvelle donnee a pousser."
+            echo "Aucune nouvelle donnée à pousser."
           else
             git commit -m "Auto-update OSINT feed data [skip ci]"
             git push origin HEAD:main
-            echo "Donnees mises a jour et poussees avec succes."
+            echo "Données mises à jour et poussées avec succès."
           fi
