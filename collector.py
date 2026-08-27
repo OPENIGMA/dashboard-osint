@@ -1,7 +1,6 @@
 import json
 import urllib.request
 import urllib.parse
-import urllib.error
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 import re
@@ -38,7 +37,6 @@ seen_titles = set()
 
 for evt in existing_events:
     try:
-        # Nettoyage du timestamp pour fromisoformat
         ts = evt.get("timestamp", "")
         if ts.endswith("Z"):
             ts = ts[:-1] + "+00:00"
@@ -52,7 +50,7 @@ for evt in existing_events:
 
 print(f"📊 {len(valid_events)} événements valides conservés (moins de 30 jours).")
 
-# Mots-clés avec syntaxe RSS standard (Thèmes alignés sur taxonomy.json)
+# Mots-clés avec syntaxe RSS standard
 SEARCH_QUERIES = [
     {"theme": "Agriculture", "query": "agriculture Occitanie PACA"},
     {"theme": "Blocage occupation", "query": "blocage Toulouse Marseille Nîmes Avignon"},
@@ -67,9 +65,8 @@ def detect_location(text):
         
     text_lower = text.lower()
     normalized_text = re.sub(r'[-–—]', ' ', text_lower)
-    
-    # Tri par longueur pour matcher les noms composés en premier
     sorted_cities = sorted(CITIES_DB.keys(), key=len, reverse=True)
+    
     for city_key in sorted_cities:
         if len(city_key) > 3:
             pattern = r'\b' + re.escape(city_key) + r'\b'
@@ -83,7 +80,6 @@ def detect_location(text):
                     "lng": float(info["lng"])
                 }
                 
-    # Fallback
     if "occitanie" in text_lower:
         return {"region": "OCCITANIE", "department": "31", "city": "Toulouse", "lat": 43.6047, "lng": 1.4442}
     return {"region": "PACA", "department": "13", "city": "Marseille", "lat": 43.2965, "lng": 5.3698}
@@ -95,10 +91,8 @@ for item_target in SEARCH_QUERIES:
     theme = item_target["theme"]
     query = item_target["query"]
     encoded_query = urllib.parse.quote(query)
-    
     rss_url = f"https://news.google.com/rss/search?q={encoded_query}&hl=fr&gl=FR&ceid=FR:fr"
     
-    # User-Agent plus réaliste pour éviter le blocage immédiat
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'
     }
@@ -113,7 +107,7 @@ for item_target in SEARCH_QUERIES:
             items = root.findall('.//item')
             print(f"   ✅ {len(items)} article(s) trouvés dans le flux RSS.")
             
-            for item in items[:15]: # On prend un peu plus pour compenser les doublons
+            for item in items[:15]:
                 title_elem = item.find('title')
                 title = title_elem.text if title_elem is not None else ''
                 
@@ -123,7 +117,6 @@ for item_target in SEARCH_QUERIES:
                 pub_date_elem = item.find('pubDate')
                 pub_date_raw = pub_date_elem.text if pub_date_elem is not None else ''
                 
-                # Conversion de la date RSS en ISO
                 pub_iso = datetime.now(timezone.utc).isoformat()
                 if pub_date_raw:
                     try:
@@ -132,7 +125,6 @@ for item_target in SEARCH_QUERIES:
                     except Exception:
                         pass
                         
-                # Nettoyage du titre
                 clean_title = re.sub('<[^<]+?>', '', title).strip()
                 
                 if not clean_title or clean_title in seen_titles:
@@ -158,11 +150,10 @@ for item_target in SEARCH_QUERIES:
                 event_id += 1
                 new_articles_count += 1
                 
-        # Petit délai de 3 secondes entre les requêtes pour ne pas se faire bannir par Google
-        time.sleep(3) 
+        time.sleep(3) # Délai pour éviter le blocage par Google
         
     except urllib.error.HTTPError as e:
-        print(f"   ❌ Erreur HTTP {e.code} pour [{theme}]: {e.reason} (Probablement un blocage de Google)")
+        print(f"   ❌ Erreur HTTP {e.code} pour [{theme}]: {e.reason}")
     except Exception as e:
         print(f"   ❌ Erreur générale sur [{theme}]: {e}")
 
