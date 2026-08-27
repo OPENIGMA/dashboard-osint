@@ -33,18 +33,20 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Récupérer les derniers changements du dépôt distant
+          git fetch origin
+          
+          # Réinitialiser l'historique local pour qu'il corresponde au distant, 
+          # tout en conservant les modifications du fichier data_feed.json générées par le script
+          git reset --soft origin/main
+          
           git add data_feed.json
           
-          # Vérifie s'il y a des modifications avant de commiter
-          if ! git diff-index --quiet HEAD --; then
-            git commit -m "🤖 Auto-update OSINT feed data [skip ci]"
-            
-            # Récupère les éventuelles modifications distantes pour éviter les conflits de push (non-fast-forward)
-            git pull --rebase origin main
-            
-            # Pousse les modifications de manière sécurisée
-            git push origin HEAD
-            echo "✅ Données mises à jour et poussées avec succès sur GitHub."
-          else
+          if git diff-index --quiet HEAD --; then
             echo "⚠️ Aucune nouvelle donnée à pousser (le fichier n'a pas changé)."
+          else
+            git commit -m "🤖 Auto-update OSINT feed data [skip ci]"
+            git push origin HEAD:main
+            echo "✅ Données mises à jour et poussées avec succès sur GitHub."
           fi
