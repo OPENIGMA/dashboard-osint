@@ -76,43 +76,53 @@ for evt in existing_events:
     except Exception:
         continue
 
-print(f" {len(valid_events)} événements conservés (< 30 jours). ID max : {max_id}")
+print(f"📊 {len(valid_events)} événements conservés (< 30 jours). ID max : {max_id}")
 
 # ============================================================
-# 4. Configuration des Flux RSS LOCAUX DIRECTS (ORANGE)
+# 4. Configuration des Flux RSS LOCAUX DIRECTS (Liste exhaustive)
 # ============================================================
 LOCAL_RSS_FEEDS = [
+    # Occitanie - Quotidiens
     {"name": "La Dépêche du Midi", "url": "https://www.ladepeche.fr/rss.xml"},
     {"name": "Midi Libre", "url": "https://www.midilibre.fr/rss.xml"},
-    {"name": "France 3 Occitanie", "url": "https://france3-regions.francetvinfo.fr/occitanie/rss"},
     {"name": "L'Indépendant", "url": "https://www.lindependant.fr/rss.xml"},
+    {"name": "La Montagne", "url": "https://www.lamontagne.fr/rss.xml"},
+    # Occitanie - Hebdomadaires / Spécialisés
+    {"name": "Midi Olympique", "url": "https://www.midi-olympique.fr/rss"},
+    {"name": "Le Journal Toulousain", "url": "https://www.journaltoulousain.fr/feed/"},
+    {"name": "La Gazette du Midi", "url": "https://www.lagazettedumidi.com/feed/"},
+    {"name": "La Gazette Ariégeoise", "url": "https://www.lagazetteariegeoise.fr/feed/"},
+    {"name": "Le Journal de Millau", "url": "https://www.journaldemillau.fr/feed/"},
+    {"name": "Lozère Nouvelle", "url": "https://www.lozerenouvelle.fr/rss.xml"},
+    # PACA - Quotidiens
     {"name": "La Provence", "url": "https://www.laprovence.com/rss.xml"},
     {"name": "Nice-Matin", "url": "https://www.nicematin.com/rss.xml"},
+    {"name": "Var-Matin", "url": "https://www.varmatin.com/rss.xml"},
+    {"name": "La Marseillaise", "url": "https://www.lamarseillaise.fr/rss.xml"},
+    {"name": "Le Dauphiné Libéré", "url": "https://www.ledauphine.com/rss.xml"},
+    # Corse
+    {"name": "Corse-Matin", "url": "https://www.corsematin.com/rss.xml"},
+    {"name": "Corse Net Infos", "url": "https://www.corsenetinfos.corsica/feed/"},
+    {"name": "Le Journal de la Corse", "url": "https://www.journaldelacorse.corsica/rss.xml"},
+    {"name": "Paroles de Corse", "url": "https://www.parolesdecorse.com/feed/"},
+    {"name": "In Corsica", "url": "https://www.incorsica.com/feed/"},
+    {"name": "Terra Corsa", "url": "https://www.terracorsa.com/feed/"},
+    # France 3 Régions
+    {"name": "France 3 Occitanie", "url": "https://france3-regions.francetvinfo.fr/occitanie/rss"},
     {"name": "France 3 PACA", "url": "https://france3-regions.francetvinfo.fr/provence-alpes-cote-d-azur/rss"},
     {"name": "France 3 Corse", "url": "https://france3-regions.francetvinfo.fr/corse/rss"}
 ]
 
 # ============================================================
-# 5. Configuration Réseaux Sociaux (ROUGE) - Google Dorks + RSS
+# 5. Mots-clés pour associer un article local à une thématique
 # ============================================================
-SOCIAL_MEDIA_QUERIES = [
-    # X/Twitter via Nitter (instance publique)
-    {"platform": "X/Twitter", "query": "site:nitter.net (Occitanie OR PACA OR Marseille OR Toulouse) (manifestation OR blocage OR incident)", "source_type": "Reseaux Sociaux"},
-    # Mastodon instances publiques
-    {"platform": "Mastodon", "query": "site:mastodon.social OR site:mastodon.fr (Occitanie OR PACA)", "source_type": "Reseaux Sociaux"},
-    # Telegram public channels via Google
-    {"platform": "Telegram", "query": "site:t.me (Occitanie OR Marseille OR Toulouse) (alerte OR incident)", "source_type": "Reseaux Sociaux"},
-    # Facebook public posts
-    {"platform": "Facebook", "query": "site:facebook.com (Occitanie OR PACA) (manifestation OR blocage)", "source_type": "Reseaux Sociaux"}
-]
-
 THEME_KEYWORDS = {
-    "Agriculture": ["agriculture", "agriculteur", "FNSEA", "EGalim", "PAC", "tracteur", "récolte", "élevage", "viticulture", "chambre agriculture"],
+    "Agriculture": ["CR", "coordination rurale", "agriculture", "agriculteur", "FNSEA", "EGalim", "PAC", "tracteur", "récolte", "élevage", "viticulture", "chambre agriculture"],
     "Armes": ["arme", "fusil", "pistolet", "kalachnikov", "trafic arme", "confiscation", "arsenal"],
-    "Chasse": ["chasse", "chasseur", "gibier", "ONCFS", "cynégétique", "battue", "braconnage"],
+    "Chasse": ["chasse", "chasseur", "gibier", "ONCFS", "cynégétique", "battue", "braconnage", "loup"],
     "Délinquance criminalité": ["délinquance", "insécurité", "cambriolage", "agression", "vol", "braquage", "vandalisme", "rixe"],
     "Dérives Sectaires": ["secte", "dérive sectaire", "emprise mentale", "gourou", "MIVILUDES"],
-    "Ecologie": ["écologie", "environnement", "climat", "pollution", "biodiversité", "sécheresse", "incendie", "canicule"],
+    "Ecologie": ["écologie", "environnement", "climat", "pollution", "biodiversité", "sécheresse", "incendie", "canicule","XR", "Extinction Rébellion", "SLT", "Les soulèvements de la terre", "ZIO", "ZAD","A69"],
     "Education nationale": ["école", "collège", "lycée", "professeur", "éducation nationale", "enseignant", "harcèlement", "DASEN"],
     "Ferroviaire": ["SNCF", "train", "gare", "rail", "ferroviaire", "TGV", "TER", "grève SNCF"],
     "Festivité Evènements voie publique": ["festival", "fête", "événement", "rassemblement", "concert", "carnaval", "féria", "feu artifice"],
@@ -132,7 +142,7 @@ THEME_KEYWORDS = {
     "Prosélytisme": ["prosélytisme", "endoctrinement", "conversion", "propagande", "tabligh"],
     "Terrorisme": ["terrorisme", "attentat", "antiterroriste", "DGSI", "menace terroriste", "Vigipirate"],
     "Animaliste": ["animaliste", "cause animale", "antispéciste", "L214", "corrida", "abattoir", "végan"],
-    "Projet aménagement contesté (PAC)": ["ZAD", "bassine", "grand projet", "contestation", "A69", "Toulouse Castres", "bétonisation", "Sivens"],
+    "Projet aménagement contesté (PAC)": ["ZAD", "bassine", "grand projet", "contestation", "A69", "Toulouse Castres", "bétonisation", "Sivens", "AFNT", "Aménagement ferroviaire au nord de toulouse", "LSNO", "Ligne nouvelle Sud-Ouest", "SATA", "téléphérique", "cruis", "photovoltaique"],
     "Ultra gauche": ["ultra-gauche", "antifasciste", "black bloc", "anarchiste", "autonomes", "NPA"],
     "Ultra droite": ["ultra-droite", "identitaire", "extrême droite", "nationaliste", "suprémaciste", "RN", "Rassemblement national"],
     "JOPH 2030": ["JO 2030", "jeux olympiques", "JO Paris", "olympique", "paralympique", "JO Nice", "JO Marseille"],
@@ -236,46 +246,91 @@ for feed in LOCAL_RSS_FEEDS:
 print(f"✅ {new_articles_count} articles locaux (ORANGE) ajoutés.")
 
 # ============================================================
-# 7. Collecte Réseaux Sociaux via Google Dorks (ROUGE)
+# 7. Collecte Réseaux Sociaux via Flux RSS Natifs (ROUGE)
 # ============================================================
-print("🔴 Début de la collecte Réseaux Sociaux (ROUGE) via Google Dorks...")
-for social_query in SOCIAL_MEDIA_QUERIES:
-    platform = social_query["platform"]
-    query = social_query["query"]
-    source_type = social_query["source_type"]
-    
-    encoded_query = urllib.parse.quote(query)
-    search_url = f"https://www.google.com/search?q={encoded_query}&hl=fr"
+SOCIAL_RSS_FEEDS = [
+    {
+        "platform": "Reddit (France)",
+        "url": "https://www.reddit.com/r/France/new/.rss",
+        "keywords": [
+            "manifestation", "blocage", "grève", "cortège", "piquet", "CGT", "mobilisation", "CRS", "escargot",
+            "narcotrafic", "fusillade", "point de deal", "mafia", "DZ", "arme", "kalachnikov", "cyberattaque", "hack", "ransomware", "drone", "survol", "intrusion", "squat", "effraction",
+            "radicalisation", "fiché S", "séparatisme", "terrorisme", "attentat", "secte", "gourou", "ultra-gauche", "black bloc", "ultra-droite", "identitaire", "apologie", "haine",
+            "A69", "bassine", "ZAD", "agriculteur", "tracteur", "FNSEA", "écologie", "incendie", "sécheresse", "chasse", "braconnage", "pêche", "L214", "antispéciste", "corrida",
+            "élection 2027", "présidentielle", "JOPH 2030", "jeux olympiques", "visite officielle", "ministre", "préfet", "éducation nationale", "professeur", "hôpital", "SAMU", "nucléaire", "EDF",
+            "SNCF", "train", "autoroute", "aéroport", "immigration", "migrant", "clandestin", "OQTF",
+            "teknival", "free party", "rave", "festival", "féria", "survivalisme", "bunker", "dérive sectaire", "prosélytisme", "culte"
+        ]
+    },
+    {
+        "platform": "Reddit (Recherche Locale Sud)",
+        "url": "https://www.reddit.com/search.rss?q=Occitanie+OR+PACA+OR+Marseille+OR+Toulouse+OR+Nîmes+OR+Montpellier+OR+Nice+OR+Avignon&sort=new&t=week",
+        "keywords": [
+            "manifestation", "blocage", "grève", "cortège", "piquet", "CGT", "mobilisation", "CRS", "escargot",
+            "narcotrafic", "fusillade", "point de deal", "mafia", "DZ", "arme", "kalachnikov", "cyberattaque", "hack", "ransomware", "drone", "survol", "intrusion", "squat", "effraction",
+            "radicalisation", "fiché S", "séparatisme", "terrorisme", "attentat", "secte", "gourou", "ultra-gauche", "black bloc", "ultra-droite", "identitaire", "apologie", "haine",
+            "A69", "bassine", "ZAD", "agriculteur", "tracteur", "FNSEA", "écologie", "incendie", "sécheresse", "chasse", "braconnage", "pêche", "L214", "antispéciste", "corrida",
+            "élection 2027", "présidentielle", "JOPH 2030", "jeux olympiques", "visite officielle", "ministre", "préfet", "éducation nationale", "professeur", "hôpital", "SAMU", "nucléaire", "EDF",
+            "SNCF", "train", "autoroute", "aéroport", "immigration", "migrant", "clandestin", "OQTF",
+            "teknival", "free party", "rave", "festival", "féria", "survivalisme", "bunker", "dérive sectaire", "prosélytisme", "culte"
+        ]
+    },
+    {
+        "platform": "Mastodon (Piaille.fr - Local)",
+        "url": "https://piaille.fr/public/local.rss",
+        "keywords": [
+            "manifestation", "blocage", "grève", "cortège", "piquet", "CGT", "mobilisation", "CRS", "escargot",
+            "narcotrafic", "fusillade", "point de deal", "mafia", "DZ", "arme", "kalachnikov", "cyberattaque", "hack", "ransomware", "drone", "survol", "intrusion", "squat", "effraction",
+            "radicalisation", "fiché S", "séparatisme", "terrorisme", "attentat", "secte", "gourou", "ultra-gauche", "black bloc", "ultra-droite", "identitaire", "apologie", "haine",
+            "A69", "bassine", "ZAD", "agriculteur", "tracteur", "FNSEA", "écologie", "incendie", "sécheresse", "chasse", "braconnage", "pêche", "L214", "antispéciste", "corrida",
+            "élection 2027", "présidentielle", "JOPH 2030", "jeux olympiques", "visite officielle", "ministre", "préfet", "éducation nationale", "professeur", "hôpital", "SAMU", "nucléaire", "EDF",
+            "SNCF", "train", "autoroute", "aéroport", "immigration", "migrant", "clandestin", "OQTF",
+            "teknival", "free party", "rave", "festival", "féria", "survivalisme", "bunker", "dérive sectaire", "prosélytisme", "culte"
+        ]
+    }
+]
+
+print("🔴 Début de la collecte Réseaux Sociaux (ROUGE) via RSS natifs...")
+for social_feed in SOCIAL_RSS_FEEDS:
+    platform = social_feed["platform"]
+    rss_url = social_feed["url"]
+    keywords = social_feed["keywords"]
     
     try:
-        req = urllib.request.Request(search_url, headers=headers)
+        req = urllib.request.Request(rss_url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
         with urllib.request.urlopen(req, timeout=10) as response:
-            html_content = response.read().decode('utf-8')
+            xml_data = response.read()
+            root = ET.fromstring(xml_data)
+            items = root.findall('.//item')
             
-            # Extraction basique des titres et liens (à améliorer avec BeautifulSoup si besoin)
-            import re
-            titles = re.findall(r'<h3[^>]*>([^<]+)</h3>', html_content)[:10]
-            
-            for title in titles:
-                clean_title = re.sub(r'<[^>]+>', '', title).strip()
-                if not clean_title or clean_title in seen_titles:
+            for item in items[:15]:
+                title_elem = item.find('title')
+                title = title_elem.text.strip() if title_elem is not None and title_elem.text else ''
+                
+                title_lower = title.lower()
+                if not any(kw in title_lower for kw in keywords):
                     continue
                 
-                seen_titles.add(clean_title)
-                location = detect_location(clean_title)
-                theme = find_theme(clean_title)
+                link_elem = item.find('link')
+                link = link_elem.text.strip() if link_elem is not None and link_elem.text else '#'
+                
+                theme = find_theme(title)
+                if theme == "Non classé":
+                    theme = "Reseaux Sociaux"
+                
+                location = detect_location(title)
                 max_id += 1
                 
                 valid_events.append({
                     "id": f"evt-{max_id}",
                     "timestamp": datetime.now(timezone.utc).isoformat(),
-                    "title": clean_title,
-                    "summary": f"Post trouvé via Google Dork sur {platform}.",
-                    "url": search_url,
+                    "title": f"[{platform}] {title}",
+                    "summary": f"Post trouvé sur {platform}.",
+                    "url": link,
                     "source_name": platform,
-                    "source_type": source_type,
+                    "source_type": "Reseaux Sociaux",
                     "source_category": "red",
-                    "theme": theme if theme != "Non classé" else "Reseaux Sociaux",
+                    "theme": theme,
                     "location": location
                 })
                 new_articles_count += 1
@@ -284,14 +339,114 @@ for social_query in SOCIAL_MEDIA_QUERIES:
     except Exception as e:
         print(f"   ⚠️ Erreur sur {platform}: {e}")
 
-print(f"✅ {new_articles_count} posts réseaux sociaux (ROUGE) ajoutés.")
+print(f"✅ {new_articles_count} posts réseaux sociaux (ROUGE) ajoutés au total.")
 
 # ============================================================
-# 8. Tri et sauvegarde finale
+# 8. Collecte complémentaire via Google News (BLEU) - 36 Thèmes
+# ============================================================
+GN_QUERIES = [
+    {"theme": "Agriculture", "query": "agriculture OR agriculteur OR FNSEA OR EGalim OR PAC OR tracteur"},
+    {"theme": "Armes", "query": "arme OR fusil OR pistolet OR kalachnikov OR trafic arme OR confiscation"},
+    {"theme": "Chasse", "query": "chasse OR chasseur OR gibier OR ONCFS OR cynégétique OR battue"},
+    {"theme": "Délinquance criminalité", "query": "délinquance OR insécurité OR cambriolage OR agression OR vol OR braquage"},
+    {"theme": "Dérives Sectaires", "query": "secte OR dérive sectaire OR emprise mentale OR gourou OR MIVILUDES"},
+    {"theme": "Ecologie", "query": "écologie OR environnement OR climat OR pollution OR biodiversité OR sécheresse"},
+    {"theme": "Education nationale", "query": "école OR collège OR lycée OR professeur OR éducation nationale OR enseignant"},
+    {"theme": "Ferroviaire", "query": "SNCF OR train OR gare OR rail OR ferroviaire OR TGV OR TER"},
+    {"theme": "Festivité Evènements voie publique", "query": "festival OR fête OR événement OR rassemblement OR concert OR carnaval"},
+    {"theme": "Criminalité organisée", "query": "narcotrafic OR mafia OR grand banditisme OR cartel OR point deal OR fusillade"},
+    {"theme": "Free Rave Teknival", "query": "teknival OR free party OR rave party OR sound system OR fête sauvage"},
+    {"theme": "Immigration", "query": "immigration OR migrant OR clandestin OR centre rétention OR OQTF OR sans-papiers"},
+    {"theme": "Nucléaire", "query": "nucléaire OR centrale nucléaire OR EDF OR ASN OR réacteur OR uranium"},
+    {"theme": "Pêche", "query": "pêche OR pêcheur OR maritime OR marée OR chalutier OR prud'homie"},
+    {"theme": "Prévention de la délinquance", "query": "prévention OR police municipale OR vidéosurveillance OR médiation"},
+    {"theme": "Santé", "query": "hôpital OR santé OR ARS OR médecin OR épidémie OR urgence OR SAMU"},
+    {"theme": "Séparatisme", "query": "séparatisme OR communautarisme OR repli OR islam radical"},
+    {"theme": "Survivalisme", "query": "survivalisme OR survivaliste OR bunker OR effondrement OR autonomie"},
+    {"theme": "Transport", "query": "transport OR mobilité OR bus OR autoroute OR aéroport OR bouchon"},
+    {"theme": "Visite officielle", "query": "visite officielle OR ministre OR préfet OR inauguration OR président"},
+    {"theme": "Radicalisation", "query": "radicalisation OR fiché S OR endoctrinement OR salafisme OR djihadisme"},
+    {"theme": "Culte", "query": "culte OR religion OR laïcité OR lieu de culte OR mosquée OR église"},
+    {"theme": "Prosélytisme", "query": "prosélytisme OR endoctrinement OR conversion OR propagande"},
+    {"theme": "Terrorisme", "query": "terrorisme OR attentat OR antiterroriste OR DGSI OR menace terroriste"},
+    {"theme": "Animaliste", "query": "animaliste OR cause animale OR antispéciste OR L214 OR corrida"},
+    {"theme": "Projet aménagement contesté (PAC)", "query": "ZAD OR bassine OR grand projet OR contestation OR A69 OR bétonisation"},
+    {"theme": "Ultra gauche", "query": "ultra-gauche OR antifasciste OR black bloc OR anarchiste OR autonomes"},
+    {"theme": "Ultra droite", "query": "ultra-droite OR identitaire OR extrême droite OR nationaliste OR suprémaciste"},
+    {"theme": "JOPH 2030", "query": "JO 2030 OR jeux olympiques OR JO Paris OR olympique OR paralympique"},
+    {"theme": "Elections 2027", "query": "élection 2027 OR présidentielle OR campagne électorale OR candidat"},
+    {"theme": "Apologie", "query": "apologie OR apologie terrorisme OR incitation haine OR provocation"},
+    {"theme": "Blocage grève", "query": "grève OR blocage OR syndicat OR piquet OR mouvement social"},
+    {"theme": "Cybercriminalité", "query": "cyberattaque OR piratage OR ransomware OR hack OR fuite données"},
+    {"theme": "Drones", "query": "drone OR survol OR aéronef OR télépilote OR zone interdite"},
+    {"theme": "Intrusion", "query": "intrusion OR effraction OR squat OR occupation illicite"},
+    {"theme": "Manifestation", "query": "manifestation OR cortège OR défilé OR rassemblement OR CRS"}
+]
+
+print("🔵 Début des requêtes Google News complémentaires (BLEU)...")
+for item_target in GN_QUERIES:
+    theme = item_target["theme"]
+    query = item_target["query"]
+    encoded_query = urllib.parse.quote(query)
+    rss_url = f"https://news.google.com/rss/search?q={encoded_query}&hl=fr&gl=FR&ceid=FR:fr"
+
+    try:
+        req = urllib.request.Request(rss_url, headers=headers)
+        with urllib.request.urlopen(req, timeout=10) as response:
+            xml_data = response.read()
+            root = ET.fromstring(xml_data)
+            items = root.findall('.//item')
+            
+            for item in items[:10]:
+                title_elem = item.find('title')
+                title = title_elem.text.strip() if title_elem is not None and title_elem.text else ''
+                link_elem = item.find('link')
+                link = link_elem.text.strip() if link_elem is not None and link_elem.text else '#'
+                pub_date_elem = item.find('pubDate')
+                pub_date_raw = pub_date_elem.text.strip() if pub_date_elem is not None and pub_date_elem.text else ''
+                
+                pub_iso = datetime.now(timezone.utc).isoformat()
+                if pub_date_raw:
+                    try:
+                        parsed_dt = parsedate_to_datetime(pub_date_raw)
+                        pub_iso = parsed_dt.isoformat()
+                    except Exception: pass
+
+                if not title or link in seen_urls or title in seen_titles:
+                    continue
+                
+                seen_urls.add(link)
+                seen_titles.add(title)
+                location = detect_location(title)
+                source_elem = item.find('source')
+                raw_source = source_elem.text.strip() if source_elem is not None and source_elem.text else "Presse"
+                
+                max_id += 1
+                valid_events.append({
+                    "id": f"evt-{max_id}",
+                    "timestamp": pub_iso,
+                    "title": title,
+                    "summary": f"Article via Google News.",
+                    "url": link,
+                    "source_name": raw_source,
+                    "source_type": "Google News",
+                    "source_category": "blue",
+                    "theme": theme,
+                    "location": location
+                })
+                new_articles_count += 1
+        time.sleep(3)
+    except Exception as e:
+        print(f"   ⚠️ Erreur Google News [{theme}]: {e}")
+
+print(f"✅ {new_articles_count} articles Google News (BLEU) ajoutés au total.")
+
+# ============================================================
+# 9. Tri et sauvegarde finale
 # ============================================================
 valid_events.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
 
 with open('data_feed.json', 'w', encoding='utf-8') as f:
     json.dump(valid_events, f, ensure_ascii=False, indent=2)
 
-print(f"🎉 SUCCÈS TOTAL : {len(valid_events)} alertes en base (+{new_articles_count} nouveaux).")
+print(f"🎉 SUCCÈS TOTAL : {len(valid_events)} alertes en base.")
