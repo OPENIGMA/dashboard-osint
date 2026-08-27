@@ -126,6 +126,12 @@
             transform: translateX(4px);
             box-shadow: 0 4px 12px rgba(0, 212, 255, 0.15);
         }
+        .alert-card.local {
+            border-left: 3px solid #ff9900 !important;
+        }
+        .alert-card.local:hover {
+            box-shadow: 0 4px 12px rgba(255, 153, 0, 0.2);
+        }
         .alert-card h4 {
             font-size: 0.95rem;
             line-height: 1.4;
@@ -158,6 +164,10 @@
             font-weight: bold;
             background: #00d4ff;
             color: #0d1117;
+        }
+        .badge.local {
+            background: #ff9900 !important;
+            color: #0d1117 !important;
         }
         .badge.source {
             background: #30363d;
@@ -273,7 +283,9 @@
 
     let allData = [];
     let map = L.map('map').setView([43.6, 3.8], 7);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { 
+        attribution: '© OpenStreetMap © CARTO' 
+    }).addTo(map);
     let markersLayer = L.layerGroup().addTo(map);
 
     const selRegion = document.getElementById('filter-region');
@@ -383,15 +395,19 @@
         feed.innerHTML = data.map(evt => {
             const loc = evt.location || {};
             const dateStr = evt.timestamp ? new Date(evt.timestamp).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' }) : 'Date inconnue';
+            const isLocal = evt.source_type === "Presse Locale Directe";
+            const localClass = isLocal ? "local" : "";
+            const sourceText = isLocal ? "📰 " + (evt.source_name || 'Presse Locale') : (evt.source_name || 'Inconnue');
+            
             return `
-            <div class="alert-card">
+            <div class="alert-card ${localClass}">
                 <h4><a href="${evt.url}" target="_blank">${evt.title}</a></h4>
                 <div class="meta">
-                    <span class="badge">${evt.theme || 'Non classé'}</span>
+                    <span class="badge ${localClass}">${evt.theme || 'Non classé'}</span>
                     <span>${loc.city ? loc.city + ' (' + loc.department + ')' : 'Localisation inconnue'}</span>
                 </div>
                 <div class="meta" style="margin-top:5px;">
-                    <span class="badge source">${evt.source_name || 'Inconnue'}</span>
+                    <span class="badge source">${sourceText}</span>
                     <span>${dateStr}</span>
                 </div>
             </div>
