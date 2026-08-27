@@ -1,540 +1,122 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plateforme de Veille & OSINT - Zone Sud</title>
-  
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  
-  <style>
-    :root {
-      --bg-color: #0f172a;
-      --card-bg: #1e293b;
-      --text-color: #f8fafc;
-      --text-muted: #94a3b8;
-      --accent-color: #38bdf8;
-      --border-color: #334155;
-      --danger-color: #ef4444;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      padding: 20px;
-      line-height: 1.5;
-    }
-
-    header {
-      margin-bottom: 24px;
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 16px;
-    }
-
-    h1 {
-      font-size: 1.75rem;
-      color: var(--accent-color);
-      margin-bottom: 6px;
-    }
-
-    p.subtitle {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    /* Barre de filtres complète */
-    .filter-bar {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 16px;
-      background-color: var(--card-bg);
-      padding: 16px;
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-      margin-bottom: 24px;
-    }
-
-    .filter-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .filter-group label {
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    select, input[type="text"] {
-      width: 100%;
-      padding: 9px 12px;
-      background-color: #0f172a;
-      border: 1px solid var(--border-color);
-      border-radius: 6px;
-      color: var(--text-color);
-      font-size: 0.9rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    select:focus, input[type="text"]:focus {
-      border-color: var(--accent-color);
-    }
-
-    /* Layout principal */
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
-
-    @media (min-width: 1024px) {
-      .dashboard-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .panel {
-      background-color: var(--card-bg);
-      border-radius: 8px;
-      border: 1px solid var(--border-color);
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .panel-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .panel-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .badge-count {
-      background-color: var(--accent-color);
-      color: #0f172a;
-      padding: 2px 8px;
-      border-radius: 12px;
-      font-size: 0.8rem;
-      font-weight: bold;
-    }
-
-    /* Carte */
-    #map {
-      height: 520px;
-      width: 100%;
-      border-radius: 6px;
-      z-index: 1;
-    }
-
-    /* Tableau */
-    .table-container {
-      overflow-x: auto;
-      max-height: 520px;
-      overflow-y: auto;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: 0.85rem;
-    }
-
-    th {
-      background-color: #0f172a;
-      color: var(--text-muted);
-      padding: 10px;
-      position: sticky;
-      top: 0;
-      z-index: 2;
-      font-weight: 600;
-    }
-
-    td {
-      padding: 10px;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    tr:hover {
-      background-color: rgba(56, 189, 248, 0.05);
-    }
-
-    a.event-link {
-      color: var(--accent-color);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    a.event-link:hover {
-      text-decoration: underline;
-    }
-
-    .tag-theme {
-      display: inline-block;
-      padding: 2px 6px;
-      background-color: #334155;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      color: #e2e8f0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard OSINT</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        #controls { padding: 10px; background: #1a1a1a; color: white; display: flex; gap: 10px; align-items: center; }
+        #map { height: calc(100vh - 50px); width: 100%; }
+        select { padding: 8px; font-weight: bold; background: #333; color: white; border: 1px solid #555; border-radius: 4px; }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>Plateforme OSINT & Veille Régionale</h1>
-    <p class="subtitle">Suivi automatique en zone Occitanie, PACA et Corse</p>
-  </header>
-
-  <!-- BARRE DE FILTRES COMPLÈTE -->
-  <div class="filter-bar">
-    <!-- 1. Recherche libre -->
-    <div class="filter-group">
-      <label for="free-search">Recherche libre :</label>
-      <input 
-        type="text" 
-        id="free-search" 
-        placeholder="Mots-clés (ex: A69, tracteurs...)" 
-        oninput="applyFilters()"
-      />
+    <div id="controls">
+        <label for="region-filter"><strong>RÉGION :</strong></label>
+        <select id="region-filter" onchange="filterData()">
+            <option value="ALL">TOUTES LES RÉGIONS</option>
+            <option value="OCCITANIE">OCCITANIE</option>
+            <option value="PACA">PACA</option>
+            <option value="CORSE">CORSE</option>
+        </select>
     </div>
 
-    <!-- 2. Période -->
-    <div class="filter-group">
-      <label for="period-select">Période :</label>
-      <select id="period-select" onchange="applyFilters()">
-        <option value="all">Toutes les dates</option>
-        <option value="24h">Dernières 24 heures</option>
-        <option value="7d">7 derniers jours</option>
-        <option value="30d" selected>30 derniers jours</option>
-      </select>
-    </div>
+    <div id="map"></div>
 
-    <!-- 3. Thématique -->
-    <div class="filter-group">
-      <label for="theme-select">Thématique :</label>
-      <select id="theme-select" onchange="applyFilters()">
-        <option value="">Toutes les thématiques</option>
-        <option value="Agriculture">Agriculture</option>
-        <option value="Evenement voie publique">Événement voie publique</option>
-        <option value="Manifestation">Manifestation</option>
-        <option value="Greve">Grève</option>
-        <option value="Blocage occupation">Blocage / Occupation</option>
-        <option value="Projet Amenagement Conteste">Projet aménagement contesté</option>
-        <option value="Delinquance criminalite">Délinquance & Criminalité</option>
-        <option value="Criminalite organisee">Criminalité organisée</option>
-        <option value="Armes">Armes</option>
-        <option value="Cybercriminalité">Cybercriminalité</option>
-        <option value="Drones">Drones</option>
-        <option value="Radicalisation">Radicalisation</option>
-        <option value="Ultra-droite">Ultra-droite</option>
-        <option value="Ultra-gauche">Ultra-gauche</option>
-        <option value="Ecologie">Écologie radicale</option>
-        <option value="Visite Officielle">Visite Officielle</option>
-        <option value="Transports">Transports</option>
-      </select>
-    </div>
-
-    <!-- 4. Région -->
-    <div class="filter-group">
-      <label for="region-select">Région :</label>
-      <select id="region-select" onchange="onRegionChange()">
-        <option value="">Toutes les Régions</option>
-        <option value="OCC">OCCITANIE</option>
-        <option value="PACA">PACA</option>
-        <option value="COR">CORSE</option>
-      </select>
-    </div>
-
-    <!-- 5. Département -->
-    <div class="filter-group">
-      <label for="dept-select">Département :</label>
-      <select id="dept-select" onchange="applyFilters()">
-        <option value="">Tous les départements</option>
-      </select>
-    </div>
-
-    <!-- 6. Ville -->
-    <div class="filter-group">
-      <label for="city-select">Ville :</label>
-      <select id="city-select" onchange="applyFilters()">
-        <option value="">Toutes les villes</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- DASHBOARD PRINCIPAL -->
-  <div class="dashboard-grid">
-    <!-- Panneau Carte -->
-    <div class="panel">
-      <div class="panel-header">
-        <span class="panel-title">Cartographie des événements</span>
-        <span class="badge-count" id="map-count">0</span>
-      </div>
-      <div id="map"></div>
-    </div>
-
-    <!-- Panneau Flux / Tableau -->
-    <div class="panel">
-      <div class="panel-header">
-        <span class="panel-title">Dernières alertes collectées</span>
-        <span class="badge-count" id="table-count">0</span>
-      </div>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Thématique</th>
-              <th>Titre & Source</th>
-              <th>Lieu</th>
-            </tr>
-          </thead>
-          <tbody id="events-table-body">
-            <tr>
-              <td colspan="4" style="text-align: center; color: var(--text-muted);">Chargement des données...</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <script>
-    let allEvents = [];
-    let map;
-    let markersLayer;
-
-    // RESTAURATION STRICTE DE TES PARAMÈTRES DE CARTE AVEC SELECTEUR DE FONDS
-    function initMap() {
-      map = L.map('map').setView([43.5, 5.0], 7);
-
-      // 1. Fond Sombre Lisible (CARTO Voyager)
-      const darkTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-        maxZoom: 19,
-        attribution: '&copy; CARTO'
-      });
-
-      // 2. Fond OpenStreetMap standard (Clair)
-      const osmTiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; OpenStreetMap'
-      });
-
-      // 3. Fond Satellite (Esri World Imagery)
-      const satelliteTiles = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        attribution: '&copy; Esri'
-      });
-
-      // Appliquer le fond par défaut
-      darkTiles.addTo(map);
-
-      // Ajouter le sélecteur de cartes en haut à droite
-      const baseMaps = {
-        "Sombre (Clair)": darkTiles,
-        "Carte Routière": osmTiles,
-        "Satellite": satelliteTiles
-      };
-      L.control.layers(baseMaps).addTo(map);
-
-      markersLayer = L.layerGroup().addTo(map);
-    }
-
-    // Chargement du JSON
-    async function loadData() {
-      try {
-        const response = await fetch('data_feed.json');
-        if (!response.ok) throw new Error("Erreur chargement JSON");
-        allEvents = await response.json();
-        
-        populateGeographicFilters();
-        applyFilters();
-      } catch (error) {
-        console.error("Erreur :", error);
-        document.getElementById('events-table-body').innerHTML = `
-          <tr>
-            <td colspan="4" style="text-align: center; color: var(--danger-color);">
-              Aucune donnée disponible. Exécutez le script de collecte.
-            </td>
-          </tr>`;
-      }
-    }
-
-    // Remplissage dynamique des menus Départements et Villes
-    function populateGeographicFilters() {
-      const deptSelect = document.getElementById('dept-select');
-      const citySelect = document.getElementById('city-select');
-      
-      const depts = new Set();
-      const cities = new Set();
-
-      allEvents.forEach(e => {
-        if (e.location && e.location.department) depts.add(e.location.department);
-        if (e.location && e.location.city) cities.add(e.location.city);
-      });
-
-      deptSelect.innerHTML = '<option value="">Tous les départements</option>' + 
-        Array.from(depts).sort().map(d => `<option value="${d}">${d}</option>`).join('');
-
-      citySelect.innerHTML = '<option value="">Toutes les villes</option>' + 
-        Array.from(cities).sort().map(c => `<option value="${c}">${c}</option>`).join('');
-    }
-
-    // Mise à jour si la région change
-    function onRegionChange() {
-      const selectedRegion = document.getElementById('region-select').value;
-      const deptSelect = document.getElementById('dept-select');
-      const citySelect = document.getElementById('city-select');
-
-      const depts = new Set();
-      const cities = new Set();
-
-      allEvents.forEach(e => {
-        if (!selectedRegion || (e.location && e.location.region === selectedRegion)) {
-          if (e.location.department) depts.add(e.location.department);
-          if (e.location.city) cities.add(e.location.city);
-        }
-      });
-
-      deptSelect.innerHTML = '<option value="">Tous les départements</option>' + 
-        Array.from(depts).sort().map(d => `<option value="${d}">${d}</option>`).join('');
-
-      citySelect.innerHTML = '<option value="">Toutes les villes</option>' + 
-        Array.from(cities).sort().map(c => `<option value="${c}">${c}</option>`).join('');
-
-      applyFilters();
-    }
-
-    // Filtrage complet (Recherche libre + Période + Thème + Région + Dept + Ville)
-    function applyFilters() {
-      const searchQuery = document.getElementById('free-search').value.toLowerCase().trim();
-      const period = document.getElementById('period-select').value;
-      const selectedTheme = document.getElementById('theme-select').value;
-      const selectedRegion = document.getElementById('region-select').value;
-      const selectedDept = document.getElementById('dept-select').value;
-      const selectedCity = document.getElementById('city-select').value;
-
-      const now = new Date();
-
-      const filteredEvents = allEvents.filter(event => {
-        // Filtre Recherche libre
-        const fullText = `${event.title} ${event.summary} ${event.source_name} ${event.location.city}`.toLowerCase();
-        if (searchQuery && !fullText.includes(searchQuery)) return false;
-
-        // Filtre Période
-        if (period !== 'all' && event.timestamp) {
-          const evtDate = new Date(event.timestamp);
-          const diffHours = (now - evtDate) / (1000 * 60 * 60);
-
-          if (period === '24h' && diffHours > 24) return false;
-          if (period === '7d' && diffHours > 168) return false;
-          if (period === '30d' && diffHours > 720) return false;
-        }
-
-        // Filtre Thème
-        if (selectedTheme && event.theme !== selectedTheme) return false;
-
-        // Filtres Géographiques
-        if (selectedRegion && event.location.region !== selectedRegion) return false;
-        if (selectedDept && event.location.department !== selectedDept) return false;
-        if (selectedCity && event.location.city !== selectedCity) return false;
-
-        return true;
-      });
-
-      renderTable(filteredEvents);
-      renderMap(filteredEvents);
-    }
-
-    // Rendu du tableau
-    function renderTable(events) {
-      const tbody = document.getElementById('events-table-body');
-      document.getElementById('table-count').innerText = events.length;
-
-      if (events.length === 0) {
-        tbody.innerHTML = `
-          <tr>
-            <td colspan="4" style="text-align: center; color: var(--text-muted);">
-              Aucune alerte ne correspond aux filtres sélectionnés.
-            </td>
-          </tr>`;
-        return;
-      }
-
-      tbody.innerHTML = events.map(event => {
-        const dateStr = new Date(event.timestamp).toLocaleDateString('fr-FR', {
-          day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // 1. Définition des différentes couches de carte (Multi-couches 100% gratuites)
+        const layerOSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap'
         });
-        
-        return `
-          <tr>
-            <td style="white-space: nowrap; color: var(--text-muted); font-size: 0.8rem;">${dateStr}</td>
-            <td><span class="tag-theme">${event.theme}</span></td>
-            <td>
-              <a href="${event.url}" target="_blank" class="event-link">${event.title}</a>
-              <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Source: ${event.source_name}</div>
-            </td>
-            <td><strong>${event.location.city} (${event.location.department || ''})</strong></td>
-          </tr>
-        `;
-      }).join('');
-    }
 
-    // Rendu des marqueurs sur la carte
-    function renderMap(events) {
-      markersLayer.clearLayers();
-      document.getElementById('map-count').innerText = events.length;
+        const layerDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap © CARTO'
+        });
 
-      events.forEach(event => {
-        if (event.location && event.location.lat && event.location.lng) {
-          const marker = L.circleMarker([event.location.lat, event.location.lng], {
-            radius: 7,
-            fillColor: '#0284c7',
-            color: '#ffffff',
-            weight: 1.5,
-            opacity: 1,
-            fillOpacity: 0.85
-          });
+        const layerSatellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 18,
+            attribution: 'Tiles © Esri'
+        });
 
-          marker.bindPopup(`
-            <div style="color: #0f172a; font-family: sans-serif; font-size: 0.85rem;">
-              <strong style="color: #0284c7;">${event.theme}</strong><br/>
-              <a href="${event.url}" target="_blank" style="font-weight: bold; color: #0f172a; text-decoration: none;">${event.title}</a><br/>
-              <small style="color: #64748b;">${event.location.city} (${event.location.department || ''}) — ${event.source_name}</small>
-            </div>
-          `);
+        // 2. Initialisation de la carte sur le fond Sombre par défaut
+        const map = L.map('map', {
+            center: [43.6047, 3.8767],
+            zoom: 7,
+            layers: [layerDark]
+        });
 
-          markersLayer.addLayer(marker);
+        // 3. Ajout du contrôle multi-couches en haut à droite
+        const baseMaps = {
+            "Fond Sombre (OSINT)": layerDark,
+            "Vue Satellite": layerSatellite,
+            "Plan Standard": layerOSM
+        };
+        L.control.layers(baseMaps).addTo(map);
+
+        let allEvents = [];
+        let markersGroup = L.layerGroup().addTo(map);
+
+        // 4. Chargement des données JSON avec anti-cache
+        function loadData() {
+            fetch('data_feed.json?t=' + new Date().getTime())
+                .then(response => {
+                    if (!response.ok) throw new Error("Erreur de chargement");
+                    return response.json();
+                })
+                .then(data => {
+                    allEvents = data;
+                    renderMarkers(allEvents);
+                })
+                .catch(err => console.error("Erreur :", err));
         }
-      });
-    }
 
-    window.onload = () => {
-      initMap();
-      loadData();
-    };
-  </script>
+        // 5. Affichage des repères sur la carte
+        function renderMarkers(events) {
+            markersGroup.clearLayers();
+
+            events.forEach(evt => {
+                if (evt.location && evt.location.lat && evt.location.lng) {
+                    const marker = L.marker([evt.location.lat, evt.location.lng]);
+                    const dateFormatted = new Date(evt.timestamp).toLocaleString('fr-FR');
+                    
+                    const popupContent = `
+                        <div style="font-family: Arial, sans-serif;">
+                            <h4 style="margin: 0 0 5px 0;">${evt.title}</h4>
+                            <p style="margin: 0 0 5px 0; font-size: 12px; color: #555;">
+                                <strong>Thème:</strong> ${evt.theme}<br>
+                                <strong>Source:</strong> ${evt.source_name}<br>
+                                <strong>Date:</strong> ${dateFormatted}
+                            </p>
+                            <a href="${evt.url}" target="_blank" style="color: #0066cc; font-weight: bold;">Consulter l'article</a>
+                        </div>
+                    `;
+                    marker.bindPopup(popupContent);
+                    markersGroup.addLayer(marker);
+                }
+            });
+        }
+
+        // 6. Filtrage par région
+        function filterData() {
+            const selectedRegion = document.getElementById('region-filter').value;
+            
+            if (selectedRegion === 'ALL') {
+                renderMarkers(allEvents);
+            } else {
+                const filtered = allEvents.filter(evt => evt.location && evt.location.region === selectedRegion);
+                renderMarkers(filtered);
+            }
+        }
+
+        loadData();
+    </script>
 </body>
 </html>
