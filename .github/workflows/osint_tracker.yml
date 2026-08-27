@@ -38,6 +38,11 @@ jobs:
           # Vérifie s'il y a des modifications avant de commiter
           if ! git diff-index --quiet HEAD --; then
             git commit -m "🤖 Auto-update OSINT feed data [skip ci]"
+            
+            # Récupère les éventuelles modifications distantes pour éviter les conflits de push (non-fast-forward)
+            git pull --rebase origin main
+            
+            # Pousse les modifications de manière sécurisée
             git push origin HEAD
             echo "✅ Données mises à jour et poussées avec succès sur GitHub."
           else
