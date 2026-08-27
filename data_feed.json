@@ -1,5 +1,77 @@
 [
   {
+    "id": "evt-1829",
+    "timestamp": "2026-08-27T16:10:57+02:00",
+    "title": "Un feu se déclare dans le secteur de la plaine de Calenzana",
+    "summary": "Article direct de France 3 Corse.",
+    "url": "https://france3-regions.franceinfo.fr/corse/haute-corse/un-feu-se-declare-dans-le-secteur-de-la-plaine-de-calenzana-3407501.html",
+    "source_name": "France 3 Corse",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "Dérives Sectaires",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1823",
+    "timestamp": "2026-08-27T16:05:57+02:00",
+    "title": "11-Septembre : le \"cerveau\" derrière l'attentat des tours jumelles sera jugé le 5 juin 2028, il est détenu dans la prison de Guantanamo depuis plus de vingt ans.",
+    "summary": "Article direct de La Dépêche du Midi.",
+    "url": "https://www.ladepeche.fr/2026/08/27/11-septembre-le-cerveau-derriere-lattentat-des-tours-jumelles-sera-juge-le-5-juin-2028-il-est-detenu-dans-la-prison-de-guantanamo-depuis-plus-de-vingt-13525500.php",
+    "source_name": "La Dépêche du Midi",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "Terrorisme",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1828",
+    "timestamp": "2026-08-27T16:00:03+02:00",
+    "title": "PHOTOS. L'impressionnante intervention des pompiers après un incendie dans un garage automobile",
+    "summary": "Article direct de France 3 Occitanie.",
+    "url": "https://france3-regions.franceinfo.fr/occitanie/tarn/albi/photos-l-impressionnante-intervention-des-pompiers-apres-un-incendie-dans-un-garage-automobile-3407393.html",
+    "source_name": "France 3 Occitanie",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "Ecologie",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1824",
+    "timestamp": "2026-08-27T15:58:56+02:00",
+    "title": "APPELS A TÉMOIGNAGES Tensions, incivilités, agressions… comment vivez-vous la cohabitation entre cyclistes et automobilistes ? Racontez-vous",
+    "summary": "Article direct de Midi Libre.",
+    "url": "https://www.midilibre.fr/2026/08/27/appels-a-temoignages-tensions-incivilites-agressions-comment-vivez-vous-la-cohabitation-entre-cyclistes-et-automobilistes-racontez-vous-13525520.php",
+    "source_name": "Midi Libre",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "Délinquance criminalité",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
     "id": "evt-1750",
     "timestamp": "2026-08-27T15:46:02+02:00",
     "title": "Des passagers étaient à l’intérieur : une cabine de téléphérique entre en collision avec une grue de chantier, l’infrastructure doit fermer",
@@ -126,6 +198,24 @@
     }
   },
   {
+    "id": "evt-1881",
+    "timestamp": "2026-08-27T14:09:06+00:00",
+    "title": "Mayotte: visite de la ministre de la Santé au centre hospitalier, où on se prépare à d'éventuels cas d'Ebola - RFI",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxQUi1mVm16M25pVU9mYTFhVzdZbnplYy00cVVwcjI4Ym5nMWhteE5MYWxRcXA5QmVhU2w2dkNhbjdlT0g1TDBoRVJwNm9RQWJXc2RGYjZhaDU3dVU4S3R4REtsWTJUUHdTSXVaTWxqLVdkVkdWWUxyTVJtNEZiQWN4bFVDV2tISmtWR0YxNlpYci13NTJVQmFJOGNrMXo3VUxjWUFmSjFFRWsyczk3Q1h6TDF5OUVNa0xTV3dkRlZQSVIwMExtNTI5LXZsaEY4RnVsMGVyMVBjaFVfWGE5WEZuaUFtOXhkZVh2bTVfM2dGdUdDMEg2MmJnOWZhc3dZQQ?oc=5",
+    "source_name": "RFI",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Visite officielle",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
     "id": "evt-1212",
     "timestamp": "2026-08-27T14:06:14+02:00",
     "title": "Une réalisatrice percutée de plein fouet en rattrapant son chien : le chauffard prend la fuite, elle meurt à l’hôpital",
@@ -134,6 +224,96 @@
     "source_name": "Midi Libre",
     "source_type": "Presse Locale Directe",
     "theme": "Santé",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1832",
+    "timestamp": "2026-08-27T14:05:38+00:00",
+    "title": "« Un super Rafale » : un nouvel avion de chasse français prêt vers 2034 selon Dassault - Le Parisien",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPNzYxOU5rTk1DTzZhXzRHdWRCMXZ4OTRhb1dNUG1seHlMUnR1Ql9GRmd2b2N5MnU3eXR3QjhNTE4wdF92R0NqVkU5NFJ2am01b0Y5UllfWUlheHV2ODdCTDJPcnNJYlRkSUFrNFhLbWN4dlpZbVEydVhiaExuUGFUeTg5S3ZuLVJnSHZoRW5pbFQxZHhGUzBBdTVXakdmNDhaVmxhczJ1d3o1d09YZk01bzR5VUxsUlJZNVhub0NIQndzTFdmNGw2dnJxSnlCRndhc1BiWGxGRUhoRmpGQkNVNmlURHJVUG5ienl2bA?oc=5",
+    "source_name": "Le Parisien",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Chasse",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1868",
+    "timestamp": "2026-08-27T14:00:31+00:00",
+    "title": "Santé numérique : les start-up européennes condamnées à traverser l'Atlantique ? - Les Echos",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPbUp2SzNTVHE2MTFrS0cxLWd1enYyWmNRdXJnZ1pIZFJrZEZzSW40UTgwdEl6Y0xKdzVYRVRSYl91V2w5MDd0ZGRCNDJMU29ERDFoNV9kNmxBWDdBYUEybnBXZDFlVlN5TDhHQVAwVWtnNFR5WUFNVUw0eGZpMFZTcUxTYnJvSUFTcE1LclRWRTNHOVpLU1hxdFU1Sl9RY05rbS04cF93Nnc1N2dlX29NdHhJZThaSW0xTWhaRk82U3FndmUyM1E?oc=5",
+    "source_name": "Les Echos",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Santé",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1867",
+    "timestamp": "2026-08-27T14:00:13+00:00",
+    "title": "​​​​​​Comment la police municipale est devenue incontournable pour lutter contre l’insécurité - Valeurs actuelles",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPaDZ2NlRoSlgyZlpXWktWeWpSQmhmbzR2Zi1VUldBNVpHYUVmOTJDUmxRLVR3NktJM0NBNkpuaFk0Ym8ySFkzY19zSFhjQUMwSWZMa21WZVZLY0lvdEpPMURwOFdhWHJVTGd5MHE3OWRHNGNZSmNFY1RFUlRhZXpOb1hNcW0xbWlVU2w2X3dxbTUxcUZtU3hXeFpMdGxBa2VFLTNCNXVnWXhOclVyYnJxSUhmeUdtalFWbTh4cHRMWGlLczNqZGtxa2NESE84YkRjSkdDRw?oc=5",
+    "source_name": "Valeurs actuelles",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Prévention de la délinquance",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1866",
+    "timestamp": "2026-08-27T13:56:10+00:00",
+    "title": "Des méduses mettent à nouveau deux réacteurs de la centrale de Gravelines à l’arrêt - Le marin",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMihAJBVV95cUxQQlZGejBuRUlmN1RqZHd5T3kxLUx6bGE2V3hLNXdFTnQ2VXZHQzdBWkpjb3VTc2paZWFJaVZmTTBJQkVuWjg1MURzVTREVDV5SXJxOVYzS1VlVGxuUUc0VmhFTlZobHB4b2F2aDFNdV9la3lHMmk2ZWtzNC1EV3VTcm9zcVE2eEFDX1NJY1Zud0lGQXA3V095cnV5OVVSODlUT05kNjYxa1dKUFVrMkdTNmc4bWdGTFg1NWtrSDBDUTZCRzMzbExmUlpRZDIwZGxmM19zSE1reGVmSUJ2V0YxREhaQzJ2ZFN4VFkxYjJ6QVROYzJFMTU0cGVDY2tlUHVNNmF1Nw?oc=5",
+    "source_name": "Le marin",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Nucléaire",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1905",
+    "timestamp": "2026-08-27T13:55:05+00:00",
+    "title": "Vesoul. Rassemblement ce samedi contre la pédocriminalité - L'Est Républicain",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNd0R3bDRPYUNLYUl1S0ZIUWhsZ1k3WWVPZmZDMUx1NHBvMVBiNDZhVjNPUE5vNFB2V1l5U21xZ0Y2SXJadkRfLWk4NnRhQkVWNm0xUXlXQ0RVS0IweEo2dUxUdGt0b3JyU1Y2bVFyRFNWa09OdjgxMU1uZTlJRV9uMC1LQVJJS0JXM3VvVHB6YmNZX0tRNmdXZFdndUcyVXgwX0UyOFd4OExJNm5ERVdnYw?oc=5",
+    "source_name": "L'Est Républicain",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Manifestation",
     "location": {
       "region": "PACA",
       "department": "13",
@@ -196,6 +376,24 @@
     }
   },
   {
+    "id": "evt-1833",
+    "timestamp": "2026-08-27T13:51:07+00:00",
+    "title": "La mairie annonce une battue aux renards, les internautes s’en prennent violemment aux élus - Ouest-France",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxOSUc4Unk1LWJCVGlQMVR4TjVNVFpWY2pJS0FsS09tMzkxWjV4cHdNcS1oazBuaWFCRUJsWVdMSGVXUG02bWcwR1JZeF9CQ3hFX0Y4Q3NNZ0tXMFJKTU5oOTJNbi1GcE9wdHJHcnQ5UG1vTHNkWnVBS1VkelpTMUtoOHk4a05uMjFXVXlEUmZmTnRpQUIwdUxPSmVXTExYTFBOOGZfSkFfUlpwMFp4bXpKMXc3TGZGQXhDeVN2QVBkLVRnMFZIT2tybW05SEc0N3VIeWo1VHBJdGI3VFVlMmxyZTVuX3dpcVIzT0FTVUxQTFQwcU0wYk1xbWg1T00xd0p4?oc=5",
+    "source_name": "Ouest-France",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Chasse",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
     "id": "evt-1204",
     "timestamp": "2026-08-27T13:49:12+02:00",
     "title": "Trains : la gare Montparnasse victime d'une \"panne d'installation électrique\", le trafic momentanément interrompu notamment vers le sud-ouest",
@@ -204,6 +402,24 @@
     "source_name": "La Dépêche du Midi",
     "source_type": "Presse Locale Directe",
     "theme": "Ferroviaire",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1844",
+    "timestamp": "2026-08-27T13:49:12+00:00",
+    "title": "Sécheresse 2026 : vers une baisse de 45% de la production de maïs grain, au plus bas depuis l’après-guerre - Plein Champ",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPcVRxNzFZclVINmY3dmpSRGE2T0F1eVBJZkFoYzdUWHo4MTBHYlg0djRFalI1ZzlUSEYwaUhDLXB2b0NSZldyT2tmRHVIZ1R3TTY4YlhpV3ZtRU9BRFk5eU1VLTg3dnF5b1I2bVI1TzAwbGtPUHhILWktZWlRRTFhSm9FMVNZVmpha2pZRjVvbWJJN3ZJcjc1Y3ljdXBxTkg5eTdWQ0g2bDF2eXBBN3N2QUprOEJzdEZQcWt6X2kzcFZTODRRcldoelBmcXZGU3RCVlJnZXR3?oc=5",
+    "source_name": "Plein Champ",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Ecologie",
     "location": {
       "region": "PACA",
       "department": "13",
@@ -355,6 +571,24 @@
     }
   },
   {
+    "id": "evt-1895",
+    "timestamp": "2026-08-27T13:31:54+00:00",
+    "title": "Présidentielle 2027 : Karim Bouamrane ne participera pas à la primaire mais reste candidat - Libération",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxQNzBjeWFMUUF4UTJQcVZvX3pNU1pVeWZZMGJMT3oyY2ZyV3JpWUlYRmdHU0RESnB1Y1JzWmhrSFBRU21QdnVDQ3VJNXpDbFpLa0hiZ1VWWHk3LUw0RDlybXRlbGdXV3NFT1pLcllZbnBCTDl4X0dIRkR1Qkpqbl9Yb0xxbF9oWFA5cEJlREROcmtjU1I1b1liaEZzSlZsZC1mYjhRWUFDOU1uTFhyODhjWnhTa3E5bzYyandoZ0FTa3VCOEs5QUhQUGo4U004NVE4OV8ycEN3c2N3Z3hyNFRnNDkzS0dVekk0OUJEbm9CUmVCMHM?oc=5",
+    "source_name": "Libération",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Elections 2027",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
     "id": "evt-1730",
     "timestamp": "2026-08-27T13:31:12+00:00",
     "title": "Smotrich lance un grand projet pour renforcer la présence juive en Galilée et dans le Neguev - IsraJ",
@@ -418,6 +652,42 @@
     "source_type": "Google News",
     "source_category": "blue",
     "theme": "Prosélytisme",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1831",
+    "timestamp": "2026-08-27T13:17:27+00:00",
+    "title": "Un jeune homme tué par arme blanche à Laon, un suspect placé en garde à vue - Courrier picard",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNakdxSEJLNDM0WnowLXdpQW44aXo0aWpyaUFCdXh5SHdoei1aUW8yOE1VVjdscnRIRkxuNVFBS3dYSUhHb25lSmRzaFNsMmVGQVVRMmR0Z1VaeHRZTnlSY3hIWWxSQWVwbXk0THVmbjRFVDF0TFdRYy1vdm92dC1XSUV4VGRudGJHbkFvbVFYQlA5TEkyd2VUWk9VclNIekNMYUFCQWJGV1RTUU14YTFObTB3S29aRVRsNDVncGpuMFJPeFcxRjMwQg?oc=5",
+    "source_name": "Courrier picard",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Armes",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1830",
+    "timestamp": "2026-08-27T13:16:00+00:00",
+    "title": "\"Pour moi, c'est forcément criminel\" : cet agriculteur du Puy-de-Dôme perd tout son stock de fourrage dans un incendie - La Montagne",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMihgJBVV95cUxQT1gzdElRWlZNbTFwdkxRT1pSYi1mWlYtUmxmeHNGX3pvdVJOSEZESGJMYWlYYS1hSC1UOVVtaHBzRU9vZUNud1c1c0ZJNDk3S1JIUEJGOEtvWlA0LUYyM0NGU2JsM0NQT0NJdmFVRU1DelNpUk5oU0hpN0EtMnlrMEd4SkpxdWlyVE53TjBZdlQ5Ni04cUNycmZrOWxxV21teFFnZG5RS3F6MFk3dHZXbWxVMVpWTGN5N25ZX0t1czRmM0tTUnZhdThFejdZTFZiYlA4X2Y4WkpBd0JPMzlXQjUzSFdqT0RZdkl6WGVDOEdMc3NnTVQ5azFaUzdDcHZXZVNJWGpB?oc=5",
+    "source_name": "La Montagne",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Agriculture",
     "location": {
       "region": "PACA",
       "department": "13",
@@ -578,6 +848,24 @@
     "source_type": "Google News",
     "source_category": "blue",
     "theme": "Culte",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1845",
+    "timestamp": "2026-08-27T12:58:16+00:00",
+    "title": "Fête des jardins : le 13e célèbre la nature en ville ! - Ville de Paris",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNVTBHc0RkaDE5SFlqdG1tRTUzWHpBUHoxdG03UmhMcEZiSzRWc3NtRGRMdTgxelhUOUVHeUFVTGJWMmRuM2R0QkdKcEp2X0llb2ptcm8zVEU4M0ZxdUlHY2Z5SzAwd0hZSE5iaEt5WXlkTm40U1g1QjFTRFhDYTBPR0NCSmxMZVhjY0tmd2o0Z2hBX3M?oc=5",
+    "source_name": "Ville de Paris",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Festivité Evènements voie publique",
     "location": {
       "region": "PACA",
       "department": "13",
@@ -938,6 +1226,42 @@
     "source_type": "Google News",
     "source_category": "blue",
     "theme": "Cybercriminalité",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1904",
+    "timestamp": "2026-08-27T12:35:44+00:00",
+    "title": "Cyberattaque chez Verspieren : des données de clients potentiellement compromises - L'Argus de l'assurance",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxOdTk0Mm5Wc2JYMEFtd0Y0ZUhLd1hsUWpENld4ZTQzV3ZsQmFVSWVYSUhJckhnVnFPRnV3c25obm9KTUpweVFJWDhhSE9kZU0xdHNuR1poWGw2eHIxNkRGMkRzWEZydEMzazlFNHZvU2phU2tabG1uRVY5dDB0Q3V0ejVqYl9RVDZvYWp3X21KUUhKaUMtYW5acHJCRldxcGVWLWlBZXFENDZDWjdvUThsSnhVN2VaRHJsb29WVS1MU3lHam5ITkdFSzBlVGZ0VDFRS01QYVJUN05IZUhvaG1RVUE5MGI0cU1SN3ZQZGpucVA4OTUzTXpQd3l3?oc=5",
+    "source_name": "L'Argus de l'assurance",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Cybercriminalité",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1882",
+    "timestamp": "2026-08-27T12:35:00+00:00",
+    "title": "\"Absolument génial\", \"inoubliable\" : noté 3,8 sur 5, c'est le meilleur film de Tim Curry... Et il est tout simplement culte pour plusieurs générations ! - AlloCiné",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTFBFRTExd3o1ZWxyQ0NjNk1QV2dZc1M1RWliSFVoS0V0RkZNTjBWdTc1dUV1WWVkMU8wWDZ3OHFIcXZvZ00wTFdtcmZ0ZHY4LWUxU014bkkzQmlTcHRTZXV0NVlBcW1fNF9YS1ZtajlpSWxybEp5b2M0SEdTWWgyUQ?oc=5",
+    "source_name": "AlloCiné",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Culte",
     "location": {
       "region": "PACA",
       "department": "13",
@@ -1393,6 +1717,24 @@
     }
   },
   {
+    "id": "evt-1869",
+    "timestamp": "2026-08-27T11:52:00+00:00",
+    "title": "L’origine de l’épidémie de légionellose en Savoie se précise : les trois quarts des victimes avaient fréquenté le même restaurant - Midi Libre",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMihAJBVV95cUxQTmtYQnZ6Z0JEaTdSdDFxN2xzMlVZN1JySVd6NVUzWXQzQ2szeVliMURZaDc4QnY1NHdoc0FhUDFwZndlay04bHRqNmhKYjdBOHJzdGN0REtweEFKVGhNQ2RZazhQNldjN1EtT0YxUTdPaWctNkZ3T1k4cnRCeFJnYmZXbmYxYXRCVGQ3aXotV1pSMlJCU2h0T1BYVlgxQlJqOHNYNUZxQXVHVWxjQW9NeEJDV3dpYWZpWUNMM0ZqQzJJQXlDcjhHR2FSVzUxRFZpVEl3cFREMmF6dktwMHkzcXU1VlI4RXJkYXN1aXdJaGRtMUJ5cEl6NkNON0JCcGRsLVp6cg?oc=5",
+    "source_name": "Midi Libre",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Santé",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
     "id": "evt-1234",
     "timestamp": "2026-08-27T11:49:00+00:00",
     "title": "Un bilan « catastrophique » pour Macron, selon un syndicat d’enseignants - 20 Minutes",
@@ -1806,6 +2148,24 @@
     "source_type": "Google News",
     "source_category": "blue",
     "theme": "Ferroviaire",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1834",
+    "timestamp": "2026-08-27T11:04:33+00:00",
+    "title": "Rugby : Yannick Bru, le manager de l’UBB, victime d’une agression au sortir d’un restaurant à Bordeaux - Le Figaro",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxPWFZMZXJraU5CRnNsc0owUElFejVOZk1Pc19HT1hQMktPME1fXzBxWHR3V3lvM1E5bmV6OUhLODZKb21fR0lDSC1wbldHN3JMZDdvV1Vxb0xiOW1TeXlQQU1zWFZGc3FqdkJnNVB6VjFhY3BqZllIZTNNOVdfMHN0bkdwSmtVaE9uQm96T0x6RGktaXFqb25WYUhOekc5dk10ZVRHZmZZVzVKWDB4WmRWVkNULXJOM01NQlF6dGZTcTRyQWxJU3NDaFNzRHNkMS14RDRyaXV1QQ?oc=5",
+    "source_name": "Le Figaro",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Délinquance criminalité",
     "location": {
       "region": "PACA",
       "department": "13",
@@ -3166,6 +3526,24 @@
     }
   },
   {
+    "id": "evt-1880",
+    "timestamp": "2026-08-27T09:07:02+00:00",
+    "title": "Une cycliste d’une cinquantaine d’années décède après une collision avec un bus à Amiens - Ouest-France",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMihwJBVV95cUxQdjRKeGZac19jTExrQ3NjejJBNzNyWTVicDVFeW94T2xEdWt5UFAxSVljMUFLNWZGTFhGVkxhRDZOTHRrdE9DZ0MtbVdaVFR4V2FWc1ZMWHNXNHNTTTY2d2wxUUt2UzZwMUFYcmFGQVdqUDBvZU5tNkNzR2dzckZsM2Nrd1I5ZmRsX1d2Tkk1NjZ1X2tPNXZkWENSTGRlb1RKdnBWeDhOUmJiUmwzWVZxQzVkQkNsaEVtQTJvUVVkY1dfQUFIVTQzVVFXcVpabGpwT3dCRTBrSENrUXkyY1cyV2FqNkxtQU5sVXVDUmRISHVOUVVWZm1jYVRYVGtwbzlRTWUtRVBTNA?oc=5",
+    "source_name": "Ouest-France",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Transport",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
     "id": "evt-619",
     "timestamp": "2026-08-27T09:07:00+00:00",
     "title": "Trimble lance un agent IA dédié au transport et à la logistique - Voxlog",
@@ -3189,6 +3567,24 @@
     "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQbzN0LVk1Mkp6OFY2VDAtZEZrTWUwTVhPZFFvSHFvUkJPODFmRXp1bkMxaDRweldZck9QcG9tcG04WmpTWmdRcWhOS3BmWV9qSmZGbGpFb3Bka2EtbW9CXzdDLXdfX0NhODFjc3dzU1FzOGctRVJoMkJaR3c2X296VGNGZW1jQm5sZWp0cV9DMExBTVdwSXd1aGZRSmFrVDVsQUZ0QUtrY3QwMEVUN1BkZ083cUxObVFKbk1KTVpDV0syN2V2WmtTRTZCTUtLQQ?oc=5",
     "source_name": "Nord Littoral",
     "theme": "Nucléaire",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-1879",
+    "timestamp": "2026-08-27T09:05:25+00:00",
+    "title": "Népal et Tibet : un effondrement de glacier pourrait avoir provoqué la crue meurtrière - Sciences et Avenir",
+    "summary": "Article via Google News.",
+    "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQYjZMTzdiZkNUZ0RieDdoLTVNRGpmbXBSRDNaVzBCN2NxX1NTa2oyYkgzWWhUTnFJTTJvQWcwdVNvb3ZXbks4dTI4enBMNHJpQmpEclpFNE5oUFVmX21vSEpsUU9LTDV0aEhjMUZYSGdSb0JSd1lfZC1Zdk5QdThlZ2s3LWxqMkJxRndjcmpVS20zbkQ1bFJfSnlzV2Z4cFQzQlA2Vw?oc=5",
+    "source_name": "Sciences et Avenir",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Survivalisme",
     "location": {
       "region": "PACA",
       "department": "13",
@@ -16793,7 +17189,7 @@
     }
   },
   {
-    "id": "evt-1801",
+    "id": "evt-1883",
     "timestamp": "2026-07-28T07:00:00+00:00",
     "title": "Attentat en Allemagne, quel est l'état de la menace terroriste en Europe ? - Ifri - Institut français des relations internationales",
     "summary": "Article via Google News.",
@@ -16811,7 +17207,7 @@
     }
   },
   {
-    "id": "evt-1818",
+    "id": "evt-1901",
     "timestamp": "2026-07-28T07:00:00+00:00",
     "title": "Aulnay-sous-Bois : une mosquée fermée pour apologie du terrorisme - Le Courrier de l'Atlas",
     "summary": "Article via Google News.",
@@ -16829,7 +17225,7 @@
     }
   },
   {
-    "id": "evt-1781",
+    "id": "evt-1859",
     "timestamp": "2026-07-27T07:00:00+00:00",
     "title": "Près de Rouen, une vingtaine de personnes évacuées par la police lors d’une « free party » - Actu.fr",
     "summary": "Article via Google News.",
@@ -16847,7 +17243,7 @@
     }
   },
   {
-    "id": "evt-1814",
+    "id": "evt-1897",
     "timestamp": "2026-07-27T07:00:00+00:00",
     "title": "« Incitation à la haine et apologie du terrorisme » : une mosquée d’Aulnay-sous-Bois fermée six mois par la préfecture - Actu.fr",
     "summary": "Article via Google News.",
@@ -16865,7 +17261,7 @@
     }
   },
   {
-    "id": "evt-1791",
+    "id": "evt-1871",
     "timestamp": "2026-07-22T07:00:00+00:00",
     "title": "Esclavage arabe en Afrique : Ibrahim Traoré brise un tabou et s'attaque à l'islam radical - lejdd.fr",
     "summary": "Article via Google News.",
@@ -16883,7 +17279,7 @@
     }
   },
   {
-    "id": "evt-1775",
+    "id": "evt-1852",
     "timestamp": "2026-07-21T07:00:00+00:00",
     "title": "Fusillade à Carcassonne, maire menacé à Alès : la DZNG, une franchise identitaire et ultraviolente de la DZ Mafia - Le Figaro",
     "summary": "Article via Google News.",
@@ -16901,7 +17297,7 @@
     }
   },
   {
-    "id": "evt-1816",
+    "id": "evt-1899",
     "timestamp": "2026-07-21T07:00:00+00:00",
     "title": "TRIBUNAL DE CHALON - Faux papiers, apologie du terrorisme et provocation directe à un acte de terrorisme, via Tik-Tok - Info-Chalon.com",
     "summary": "Article via Google News.",
@@ -16919,7 +17315,7 @@
     }
   },
   {
-    "id": "evt-1772",
+    "id": "evt-1850",
     "timestamp": "2026-07-17T07:00:00+00:00",
     "title": "Carcassonne : un mort et quatre blessés dans une fusillade près d'un point de deal - Radio France",
     "summary": "Article via Google News.",
@@ -16937,7 +17333,7 @@
     }
   },
   {
-    "id": "evt-1773",
+    "id": "evt-1851",
     "timestamp": "2026-07-13T07:00:00+00:00",
     "title": "Cinq blessés par balle près d’un point de deal à Clermont-Ferrand - Sud Ouest",
     "summary": "Article via Google News.",
@@ -16955,7 +17351,7 @@
     }
   },
   {
-    "id": "evt-1787",
+    "id": "evt-1865",
     "timestamp": "2026-07-10T07:00:00+00:00",
     "title": "Dans les centres de rétention administrative, les femmes face à des vulnérabilités multiples - Le Monde.fr",
     "summary": "Article via Google News.",
@@ -16973,7 +17369,7 @@
     }
   },
   {
-    "id": "evt-1802",
+    "id": "evt-1884",
     "timestamp": "2026-07-08T07:00:00+00:00",
     "title": "Vigipirate : été-automne 2026 - Les services de l'État dans la Vienne",
     "summary": "Article via Google News.",
@@ -16991,7 +17387,7 @@
     }
   },
   {
-    "id": "evt-1762",
+    "id": "evt-1841",
     "timestamp": "2026-06-30T07:00:00+00:00",
     "title": "DOSSIER SPÉCIAL : un psychiatre de Clermont accusé de dérive sectaire et d’agressions sexuelles - Courrier picard",
     "summary": "Article via Google News.",
@@ -17009,7 +17405,7 @@
     }
   },
   {
-    "id": "evt-1770",
+    "id": "evt-1849",
     "timestamp": "2026-06-30T07:00:00+00:00",
     "title": "Vénissieux : un point de deal s’affiche en grand sur la façade d’un immeuble - CNews",
     "summary": "Article via Google News.",
@@ -17027,7 +17423,7 @@
     }
   },
   {
-    "id": "evt-1803",
+    "id": "evt-1885",
     "timestamp": "2026-06-30T07:00:00+00:00",
     "title": "Street-médics et black-bloc : le média d’extrême droite Frontières relaxé en appel - Rue89 Lyon",
     "summary": "Article via Google News.",
@@ -17045,7 +17441,7 @@
     }
   },
   {
-    "id": "evt-1763",
+    "id": "evt-1842",
     "timestamp": "2026-06-24T07:00:00+00:00",
     "title": "Aux États-Unis, l’ex-directrice des services secrets américains sous l’emprise d’un gourou ? - Le Figaro",
     "summary": "Article via Google News.",
@@ -17063,7 +17459,7 @@
     }
   },
   {
-    "id": "evt-1805",
+    "id": "evt-1887",
     "timestamp": "2026-06-23T07:00:00+00:00",
     "title": "Dans la tête d'un black bloc: des Fribourgeois racontent - Frapp",
     "summary": "Article via Google News.",
@@ -17081,7 +17477,7 @@
     }
   },
   {
-    "id": "evt-1761",
+    "id": "evt-1840",
     "timestamp": "2026-06-22T07:00:00+00:00",
     "title": "Tulsi Gabbard sous l'emprise d'une secte ? Ses étranges liens avec un gourou - L'Express",
     "summary": "Article via Google News.",
@@ -17099,7 +17495,7 @@
     }
   },
   {
-    "id": "evt-1794",
+    "id": "evt-1874",
     "timestamp": "2026-06-22T07:00:00+00:00",
     "title": "Bernard-Henri Lévy - La grande alliance entre Poutine et l’islam radical - Le Point",
     "summary": "Article via Google News.",
@@ -17117,7 +17513,7 @@
     }
   },
   {
-    "id": "evt-1786",
+    "id": "evt-1864",
     "timestamp": "2026-06-21T07:00:00+00:00",
     "title": "Une rave-party enrayée par les gendarmes à Bonneval : du matériel de son saisi, mais pas d'interpellations - Le Progrès",
     "summary": "Article via Google News.",
@@ -17135,7 +17531,7 @@
     }
   },
   {
-    "id": "evt-1758",
+    "id": "evt-1837",
     "timestamp": "2026-06-19T07:00:00+00:00",
     "title": "Viols et emprise sectaire sur fond de yoga : le gourou roumain du Val-de-Marne crie à la conspiration - Le Parisien",
     "summary": "Article via Google News.",
@@ -17153,7 +17549,7 @@
     }
   },
   {
-    "id": "evt-1815",
+    "id": "evt-1898",
     "timestamp": "2026-06-19T07:00:00+00:00",
     "title": "Une Nîmoise jugée pour apologie du terrorisme et incitation à la haine avec des publications sur les réseaux sociaux, elle conteste et plaide la maladresse - Midi Libre",
     "summary": "Article via Google News.",
@@ -17171,7 +17567,7 @@
     }
   },
   {
-    "id": "evt-1804",
+    "id": "evt-1886",
     "timestamp": "2026-06-15T07:00:00+00:00",
     "title": "Des milliers de manifestants défilent à Genève contre le G7 avant le sommet en France - Euronews.com",
     "summary": "Article via Google News.",
@@ -17189,7 +17585,7 @@
     }
   },
   {
-    "id": "evt-1808",
+    "id": "evt-1890",
     "timestamp": "2026-06-15T07:00:00+00:00",
     "title": "Sommet du G7 d’Evian: l’ombre de Ben Laden et des Black blocs sur la sélection des sites - Le Figaro",
     "summary": "Article via Google News.",
@@ -17207,7 +17603,7 @@
     }
   },
   {
-    "id": "evt-1810",
+    "id": "evt-1892",
     "timestamp": "2026-06-14T07:00:00+00:00",
     "title": "Voiture en feu, environ 600 « Black Bloc »… de multiples affrontements à Genève en amont du G7 (photos) - Le Soir",
     "summary": "Article via Google News.",
@@ -17225,7 +17621,7 @@
     }
   },
   {
-    "id": "evt-1768",
+    "id": "evt-1846",
     "timestamp": "2026-06-13T07:00:00+00:00",
     "title": "Du cartel colombien au point de deal en France : comment le narcotrafic est devenu une industrie redoutable - Journal Spécial des Sociétés",
     "summary": "Article via Google News.",
@@ -17243,7 +17639,7 @@
     }
   },
   {
-    "id": "evt-1806",
+    "id": "evt-1888",
     "timestamp": "2026-06-13T07:00:00+00:00",
     "title": "«Selon leur doxa, les Black Blocs ne sont pas violents, mais vandalisent des entreprises violentes»: Qui sont ces casseurs qui créent la panique à Genève à l’approche du G7? - Le Temps",
     "summary": "Article via Google News.",
@@ -17261,7 +17657,7 @@
     }
   },
   {
-    "id": "evt-1774",
+    "id": "evt-1853",
     "timestamp": "2026-06-07T07:00:00+00:00",
     "title": "ENTRETIEN. « Les trafiquants sont plus mobiles, ils s’adaptent » : comment le narcotrafic a pris racine dans l’Ouest - Ouest-France",
     "summary": "Article via Google News.",
@@ -17279,7 +17675,7 @@
     }
   },
   {
-    "id": "evt-1777",
+    "id": "evt-1855",
     "timestamp": "2026-06-07T07:00:00+00:00",
     "title": "Free party sauvage dans l’Hérault : des centaines de teufeurs toujours sur place ce dimanche - Sud Ouest",
     "summary": "Article via Google News.",
@@ -17297,7 +17693,7 @@
     }
   },
   {
-    "id": "evt-1807",
+    "id": "evt-1889",
     "timestamp": "2026-06-04T07:00:00+00:00",
     "title": "Le Grand Conseil bernois veut interdire les \"antifas\" et le \"black bloc\" - rts.ch",
     "summary": "Article via Google News.",
@@ -17315,7 +17711,7 @@
     }
   },
   {
-    "id": "evt-1809",
+    "id": "evt-1891",
     "timestamp": "2026-06-03T07:00:00+00:00",
     "title": "Après le Bloc montpelliérain, les groupes d’ultradroite Patria Albiges et d’ultragauche Front de Rue dans le viseur du gouvernement - Midi Libre",
     "summary": "Article via Google News.",
@@ -17333,7 +17729,7 @@
     }
   },
   {
-    "id": "evt-1812",
+    "id": "evt-1894",
     "timestamp": "2026-05-19T07:00:00+00:00",
     "title": "Troublantes ressemblances entre la gestion du G7 et celle du G8 en 2003 - Leman bleu",
     "summary": "Article via Google News.",
@@ -17351,7 +17747,7 @@
     }
   },
   {
-    "id": "evt-1778",
+    "id": "evt-1856",
     "timestamp": "2026-05-04T07:00:00+00:00",
     "title": "\"Il est temps que ça se termine\" : dans le Cher, la free party continue mais les autorités préparent la fin de la fête - franceinfo",
     "summary": "Article via Google News.",
@@ -17369,7 +17765,7 @@
     }
   },
   {
-    "id": "evt-1780",
+    "id": "evt-1858",
     "timestamp": "2026-05-03T07:00:00+00:00",
     "title": "Free-party de Bourges : \"Le site est super propre…\" Les fêtards commencent à quitter les lieux sous l’œil de Laurent Nuñez - ladepeche.fr",
     "summary": "Article via Google News.",
@@ -17387,7 +17783,7 @@
     }
   },
   {
-    "id": "evt-1782",
+    "id": "evt-1860",
     "timestamp": "2026-05-01T07:00:00+00:00",
     "title": "Gigantesque fête sauvage sur un terrain militaire en France - Blick",
     "summary": "Article via Google News.",
@@ -17405,7 +17801,7 @@
     }
   },
   {
-    "id": "evt-1783",
+    "id": "evt-1861",
     "timestamp": "2026-05-01T07:00:00+00:00",
     "title": "33 blessés, un obus découvert, Laurent Nuñez sur place : ce que l’on sait de la rave party près de Bourges sur un terrain militaire - Le Figaro",
     "summary": "Article via Google News.",
@@ -17423,7 +17819,7 @@
     }
   },
   {
-    "id": "evt-1792",
+    "id": "evt-1872",
     "timestamp": "2026-05-01T07:00:00+00:00",
     "title": "\"On va signaler ces profils qui nous semblent à risque\" : la police aux frontières face à l’Islam radical - franceinfo",
     "summary": "Article via Google News.",
@@ -17441,7 +17837,7 @@
     }
   },
   {
-    "id": "evt-1793",
+    "id": "evt-1873",
     "timestamp": "2026-05-01T07:00:00+00:00",
     "title": "\"L’islam radical plutôt que la démocratie\" : un journaliste israélien accuse Paris d’\"inversion morale\" - i24NEWS",
     "summary": "Article via Google News.",
@@ -17459,7 +17855,7 @@
     }
   },
   {
-    "id": "evt-1811",
+    "id": "evt-1893",
     "timestamp": "2026-05-01T07:00:00+00:00",
     "title": "4 000 personnes défilent pour le 1er Mai à Nantes, deux policiers blessés lors d’affrontements avec des black blocs - Ouest-France",
     "summary": "Article via Google News.",
@@ -17477,7 +17873,7 @@
     }
   },
   {
-    "id": "evt-1764",
+    "id": "evt-1843",
     "timestamp": "2026-04-30T07:00:00+00:00",
     "title": "Dérive sectaire : un mouvement venu de Corée désormais visé par des plaintes en France - La Croix",
     "summary": "Article via Google News.",
@@ -17495,7 +17891,7 @@
     }
   },
   {
-    "id": "evt-1819",
+    "id": "evt-1902",
     "timestamp": "2026-04-27T07:00:00+00:00",
     "title": "Le rappeur Freeze Corleone condamné pour apologie du terrorisme - Le HuffPost",
     "summary": "Article via Google News.",
@@ -17513,7 +17909,7 @@
     }
   },
   {
-    "id": "evt-1769",
+    "id": "evt-1848",
     "timestamp": "2026-04-22T07:00:00+00:00",
     "title": "Seine-Saint-Denis : le dernier grand point de deal de Saint-Ouen démantelé, 14 personnes mises en examen - Le Parisien",
     "summary": "Article via Google News.",
@@ -17531,7 +17927,7 @@
     }
   },
   {
-    "id": "evt-1776",
+    "id": "evt-1854",
     "timestamp": "2026-04-15T07:00:00+00:00",
     "title": "Cinq ans de prison pour le \"gérant du point de deal d’Encagnane\" à Aix, \"contrôlé par la DZ Mafia\" - La Provence",
     "summary": "Article via Google News.",
@@ -17549,7 +17945,7 @@
     }
   },
   {
-    "id": "evt-1771",
+    "id": "evt-1847",
     "timestamp": "2026-04-13T07:00:00+00:00",
     "title": "Démantèlement du dernier point de deal à Saint-Ouen - saint-ouen.fr",
     "summary": "Article via Google News.",
@@ -17567,7 +17963,7 @@
     }
   },
   {
-    "id": "evt-1756",
+    "id": "evt-1835",
     "timestamp": "2026-04-10T07:00:00+00:00",
     "title": "Religion, emprise psychologique, argent... Une secte démantelée dans un village des Alpes-de-Haute-Provence - Radio France",
     "summary": "Article via Google News.",
@@ -17585,7 +17981,7 @@
     }
   },
   {
-    "id": "evt-1757",
+    "id": "evt-1836",
     "timestamp": "2026-04-10T07:00:00+00:00",
     "title": "Dérives sectaires dans les Alpes-de-Haute-Provence : cinq interpellations et 920 000 € de saisies - Ministère de l'Intérieur",
     "summary": "Article via Google News.",
@@ -17603,7 +17999,7 @@
     }
   },
   {
-    "id": "evt-1759",
+    "id": "evt-1838",
     "timestamp": "2026-04-10T07:00:00+00:00",
     "title": "\"Le Refuge\" : une communauté religieuse soupçonnée de dérive sectaire - franceinfo",
     "summary": "Article via Google News.",
@@ -17621,7 +18017,7 @@
     }
   },
   {
-    "id": "evt-1813",
+    "id": "evt-1896",
     "timestamp": "2026-04-10T07:00:00+00:00",
     "title": "Loi Yadan : « La provocation implicite au terrorisme, ça va être de l’arbitraire », avec Marc Trévidic (Video) - L'Humanité",
     "summary": "Article via Google News.",
@@ -17639,7 +18035,7 @@
     }
   },
   {
-    "id": "evt-1817",
+    "id": "evt-1900",
     "timestamp": "2026-04-10T07:00:00+00:00",
     "title": "Université d'Orléans : l'enseignant suspendu est poursuivi pour \"apologie publique d'un acte de terrorisme\" - ici.fr",
     "summary": "Article via Google News.",
@@ -17657,7 +18053,7 @@
     }
   },
   {
-    "id": "evt-1760",
+    "id": "evt-1839",
     "timestamp": "2026-04-09T07:00:00+00:00",
     "title": "\"Emprise psychologique\", propriété à 700.000 euros... Cinq personnes interpellées dans une affaire de dérive sectaire - BFM",
     "summary": "Article via Google News.",
@@ -17675,7 +18071,7 @@
     }
   },
   {
-    "id": "evt-1779",
+    "id": "evt-1857",
     "timestamp": "2026-04-06T07:00:00+00:00",
     "title": "Rave-party dans les Landes : plus de 1 500 teufeurs à Saugnac-et-Muret, \"pas de débordement\" relevé - ici.fr",
     "summary": "Article via Google News.",
@@ -17693,7 +18089,7 @@
     }
   },
   {
-    "id": "evt-1820",
+    "id": "evt-1903",
     "timestamp": "2026-04-03T07:00:00+00:00",
     "title": "« Apologie du terrorisme » : les questions demeurent autour des poursuites contre Rima Hassan - Mediapart",
     "summary": "Article via Google News.",
@@ -17711,7 +18107,7 @@
     }
   },
   {
-    "id": "evt-1790",
+    "id": "evt-1870",
     "timestamp": "2026-02-18T08:00:00+00:00",
     "title": "«Islam radical : la France sous pression» : CNEWS diffuse un grand reportage ce jeudi à 21h - CNews",
     "summary": "Article via Google News.",
@@ -17729,7 +18125,7 @@
     }
   },
   {
-    "id": "evt-1796",
+    "id": "evt-1876",
     "timestamp": "2025-12-07T08:00:00+00:00",
     "title": "\"Je pense que le voile est un drapeau de l'islam radical\", affirme Bruno Retailleau (LR) - BFM",
     "summary": "Article via Google News.",
@@ -17747,7 +18143,7 @@
     }
   },
   {
-    "id": "evt-1795",
+    "id": "evt-1875",
     "timestamp": "2025-11-20T08:00:00+00:00",
     "title": "DECRYPTAGE. Les jeunes musulmans de plus en plus attirés par l'islam radical : \"Un défi, mais pas une fatalité\" - ladepeche.fr",
     "summary": "Article via Google News.",
@@ -17765,7 +18161,7 @@
     }
   },
   {
-    "id": "evt-1797",
+    "id": "evt-1877",
     "timestamp": "2025-11-03T08:00:00+00:00",
     "title": "La France « au défi de l’islam radical » : quand « le Parisien » nous prend pour des imbéciles - L'Humanité",
     "summary": "Article via Google News.",
@@ -17783,7 +18179,7 @@
     }
   },
   {
-    "id": "evt-1798",
+    "id": "evt-1878",
     "timestamp": "2025-11-02T07:00:00+00:00",
     "title": "Islam radical : les mollahs d’Iran à l’assaut de la France ? - Le Parisien",
     "summary": "Article via Google News.",
@@ -17801,7 +18197,7 @@
     }
   },
   {
-    "id": "evt-1751",
+    "id": "evt-1825",
     "timestamp": "2025-09-22T21:00:00+02:00",
     "title": "Incident grave à l’aéroport Nice Côte d’Azur: une enquête judiciaire ouverte, la gendarmerie des transports aériens saisie",
     "summary": "Article direct de Var-Matin.",
@@ -17819,7 +18215,7 @@
     }
   },
   {
-    "id": "evt-1752",
+    "id": "evt-1826",
     "timestamp": "2025-09-22T20:55:00+02:00",
     "title": "Le match RCT-Castres du 13 septembre dernier s’était-il joué \"en vigilance orange\", comme l’affirme le préfet du Var?",
     "summary": "Article direct de Var-Matin.",
@@ -17837,7 +18233,7 @@
     }
   },
   {
-    "id": "evt-1753",
+    "id": "evt-1827",
     "timestamp": "2025-09-22T20:00:00+02:00",
     "title": "Meurtre d'une lycéenne en 1994: l'accusé à la mémoire sélective se dit innocent",
     "summary": "Article direct de Var-Matin.",
@@ -17855,7 +18251,7 @@
     }
   },
   {
-    "id": "evt-1784",
+    "id": "evt-1862",
     "timestamp": "2024-08-24T07:00:00+00:00",
     "title": "Des fêtards se sont installés sous le pont de Normandie, pour une rave party, à Honfleur - Ouest-France",
     "summary": "Article via Google News.",
@@ -17873,7 +18269,7 @@
     }
   },
   {
-    "id": "evt-1785",
+    "id": "evt-1863",
     "timestamp": "2022-11-04T07:00:00+00:00",
     "title": "La préfecture craint une rave party sauvage ce week-end dans le Territoire de Belfort - Le Trois",
     "summary": "Article via Google News.",
