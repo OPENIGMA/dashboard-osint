@@ -8,13 +8,18 @@ import os
 import time
 from email.utils import parsedate_to_datetime
 
-# 1. Chargement de la base locale des communes
+# 1. Chargement et nettoyage de la base locale des communes
 CITIES_DB = {}
 if os.path.exists('communes.json'):
     try:
         with open('communes.json', 'r', encoding='utf-8') as f:
-            CITIES_DB = json.load(f)
-        print(f"✅ Base locale chargée : {len(CITIES_DB)} communes.")
+            raw_db = json.load(f)
+            # Nettoyage automatique des espaces parasites dans les clés et valeurs
+            for key, value in raw_db.items():
+                clean_key = key.strip().lower()
+                clean_value = {k.strip(): (v.strip() if isinstance(v, str) else v) for k, v in value.items()}
+                CITIES_DB[clean_key] = clean_value
+        print(f"✅ Base locale chargée et nettoyée : {len(CITIES_DB)} communes.")
     except Exception as e:
         print(f"❌ Erreur communes.json : {e}")
 
@@ -24,46 +29,37 @@ if os.path.exists('data_feed.json'):
     try:
         with open('data_feed.json', 'r', encoding='utf-8') as f:
             existing_events = json.load(f)
-        print(f"✅ {len(existing_events)} événements chargés depuis data_feed.json.")
+        print(f"✅ {len(existing_events)} événements existants chargés.")
     except Exception as e:
-        print(f"⚠️ Erreur lecture data_feed.json : {e}")
+        print(f"⚠️ Erreur data_feed.json : {e}")
         existing_events = []
 
-# 3. Filtrage et conservation des IDs stables
+# 3. Filtrage : On conserve uniquement ce qui a moins de 30 jours
 now = datetime.now(timezone.utc)
 cutoff_30d = now - timedelta(days=30)
 valid_events = []
-seen_urls = set()
 seen_titles = set()
-max_id = 0
 
 for evt in existing_events:
-    # Trouver l'ID max pour la génération sécurisée des nouveaux IDs
-    evt_id = str(evt.get("id", "")).strip()
-    if evt_id.startswith("evt-"):
-        try:
-            num = int(evt_id.split("-")[1])
-            if num > max_id:
-                max_id = num
-        except (ValueError, IndexError):
-            pass
-            
-    # Filtrer par date et conserver les références uniques
     try:
-        ts = str(evt.get("timestamp", "")).strip()
+        # Nettoyage des clés et valeurs pour garantir un JSON propre
+        clean_evt = {k.strip(): (v.strip() if isinstance(v, str) else v) for k, v in evt.items()}
+        if "location" in clean_evt and isinstance(clean_evt["location"], dict):
+            clean_evt["location"] = {k.strip(): (v.strip() if isinstance(v, str) else v) for k, v in clean_evt["location"].items()}
+        
+        ts = clean_evt.get("timestamp", "")
         if ts.endswith("Z"):
             ts = ts[:-1] + "+00:00"
         evt_time = datetime.fromisoformat(ts)
         if evt_time >= cutoff_30d:
-            valid_events.append(evt)
-            seen_urls.add(str(evt.get("url", "")).strip())
-            seen_titles.add(str(evt.get("title", "")).strip())
+            valid_events.append(clean_evt)
+            seen_titles.add(clean_evt.get("title", ""))
     except Exception:
         continue
 
-print(f"📊 {len(valid_events)} événements valides conservés (< 30 jours). ID max actuel : {max_id}")
+print(f"📊 {len(valid_events)} événements valides conservés (moins de 30 jours).")
 
-# 4. Mots-clés avec syntaxe RSS standard
+# 4. Mots-clés de recherche
 SEARCH_QUERIES = [
     {"theme": "Agriculture", "query": "agriculture Occitanie PACA"},
     {"theme": "Blocage occupation", "query": "blocage Toulouse Marseille Nîmes Avignon"},
@@ -86,17 +82,19 @@ def detect_location(text):
             if re.search(pattern, text_lower) or re.search(pattern, normalized_text):
                 info = CITIES_DB[city_key]
                 return {
-                    "region": info["region"].upper().strip(),
-                    "department": str(info["department"]).strip().zfill(2),
-                    "city": info["city"].strip(),
-                    "lat": float(info["lat"]),
-                    "lng": float(info["lng"])
+                    "region": str(info.get("region", "OCCITANIE")).upper().strip(),
+                    "department": str(info.get("department", "31")).strip().zfill(2),
+                    "city": str(info.get("city", "Toulouse")).strip(),
+                    "lat": float(info.get("lat", 43.6047)),
+                    "lng": float(info.get("lng", 1.4442))
                 }
                 
     if "occitanie" in text_lower:
         return {"region": "OCCITANIE", "department": "31", "city": "Toulouse", "lat": 43.6047, "lng": 1.4442}
     return {"region": "PACA", "department": "13", "city": "Marseille", "lat": 43.2965, "lng": 5.3698}
 
+# 5. Récupération des nouveaux articles
+event_id = len(valid_events) + 1
 new_articles_count = 0
 
 for item_target in SEARCH_QUERIES:
@@ -105,29 +103,26 @@ for item_target in SEARCH_QUERIES:
     encoded_query = urllib.parse.quote(query)
     rss_url = f"https://news.google.com/rss/search?q={encoded_query}&hl=fr&gl=FR&ceid=FR:fr"
     
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'
-    }
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
     
     try:
         print(f"🔍 Recherche : [{theme}] -> {query}")
         req = urllib.request.Request(rss_url, headers=headers)
-        
         with urllib.request.urlopen(req, timeout=15) as response:
             xml_data = response.read()
             root = ET.fromstring(xml_data)
             items = root.findall('.//item')
-            print(f"   ✅ {len(items)} article(s) trouvé(s) dans le flux RSS.")
+            print(f"   ✅ {len(items)} article(s) trouvé(s).")
             
             for item in items[:15]:
                 title_elem = item.find('title')
-                title = title_elem.text if title_elem is not None else ''
+                title = title_elem.text.strip() if title_elem is not None and title_elem.text else ''
                 
                 link_elem = item.find('link')
-                link = link_elem.text if link_elem is not None else '#'
+                link = link_elem.text.strip() if link_elem is not None and link_elem.text else '#'
                 
                 pub_date_elem = item.find('pubDate')
-                pub_date_raw = pub_date_elem.text if pub_date_elem is not None else ''
+                pub_date_raw = pub_date_elem.text.strip() if pub_date_elem is not None and pub_date_elem.text else ''
                 
                 pub_iso = datetime.now(timezone.utc).isoformat()
                 if pub_date_raw:
@@ -137,48 +132,37 @@ for item_target in SEARCH_QUERIES:
                     except Exception:
                         pass
                         
-                clean_title = str(title).strip()
-                clean_url = str(link).strip()
-                
-                # Vérification stricte des doublons par URL et par titre
-                if not clean_title or clean_url in seen_urls or clean_title in seen_titles:
+                if not title or title in seen_titles:
                     continue
-                    
-                seen_urls.add(clean_url)
-                seen_titles.add(clean_title)
+                seen_titles.add(title)
                 
                 source_elem = item.find('source')
-                raw_source = source_elem.text if source_elem is not None else "Presse Locale"
+                raw_source = source_elem.text.strip() if source_elem is not None and source_elem.text else "Presse Locale"
                 
-                location = detect_location(clean_title)
-                
-                # Incrémentation stable de l'ID (garantit aucun chevauchement)
-                max_id += 1
+                location = detect_location(title)
                 
                 valid_events.append({
-                    "id": f"evt-{max_id}",
+                    "id": f"evt-{event_id}",
                     "timestamp": pub_iso,
-                    "title": clean_title,
+                    "title": title,
                     "summary": f"Article presse ({raw_source}) relatif à la thématique {theme}.",
-                    "url": clean_url,
-                    "source_name": str(raw_source).strip(),
+                    "url": link,
+                    "source_name": raw_source,
                     "theme": theme,
                     "location": location
                 })
+                event_id += 1
                 new_articles_count += 1
                 
-        time.sleep(3) # Délai pour éviter le blocage par Google
+        time.sleep(3) # Délai anti-blocage
         
-    except urllib.error.HTTPError as e:
-        print(f"   ❌ Erreur HTTP {e.code} pour [{theme}]: {e.reason}")
     except Exception as e:
-        print(f"   ❌ Erreur générale sur [{theme}]: {e}")
+        print(f"   ❌ Erreur sur [{theme}]: {e}")
 
-# 5. Trier tous les événements par date la plus récente
+# 6. Tri et sauvegarde
 valid_events.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
 
-# 6. Sauvegarde propre dans data_feed.json
 with open('data_feed.json', 'w', encoding='utf-8') as f:
     json.dump(valid_events, f, ensure_ascii=False, indent=2)
 
-print(f"🎉 Succès : {len(valid_events)} alertes totales enregistrées (+{new_articles_count} nouveaux articles).")
+print(f"🎉 Succès : {len(valid_events)} alertes totales (+{new_articles_count} nouveaux).")
