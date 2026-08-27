@@ -18,7 +18,7 @@ if os.path.exists('communes.json'):
     except Exception as e:
         print(f"❌ Erreur communes.json : {e}")
 
-# Charge les données existantes si le fichier existe déjà
+# 2. Chargement des données existantes
 existing_events = []
 if os.path.exists('data_feed.json'):
     try:
@@ -26,10 +26,10 @@ if os.path.exists('data_feed.json'):
             existing_events = json.load(f)
         print(f"✅ {len(existing_events)} événements existants chargés.")
     except Exception as e:
-        print(f"⚠️ Erreur data_feed.json : {e}")
+        print(f"⚠️ Erreur lecture data_feed.json : {e}")
         existing_events = []
 
-# Filtrage : On conserve uniquement ce qui a moins de 30 jours
+# 3. Filtrage : On conserve uniquement ce qui a moins de 30 jours
 now = datetime.now(timezone.utc)
 cutoff_30d = now - timedelta(days=30)
 valid_events = []
@@ -37,20 +37,21 @@ seen_titles = set()
 
 for evt in existing_events:
     try:
-        ts = evt.get("timestamp", "")
+        # Nettoyage robuste du timestamp pour éviter les erreurs de format
+        ts = evt.get("timestamp", "").strip()
         if ts.endswith("Z"):
             ts = ts[:-1] + "+00:00"
         evt_time = datetime.fromisoformat(ts)
         if evt_time >= cutoff_30d:
             valid_events.append(evt)
-            seen_titles.add(evt.get("title", ""))
+            seen_titles.add(evt.get("title", "").strip())
     except Exception as e:
-        print(f"⚠️ Erreur parsing date pour {evt.get('id')}: {e}")
+        print(f"⚠️ Erreur parsing date pour un événement : {e}")
         continue
 
 print(f"📊 {len(valid_events)} événements valides conservés (moins de 30 jours).")
 
-# Mots-clés avec syntaxe RSS standard
+# 4. Mots-clés avec syntaxe RSS standard (Nettoyés des espaces superflus)
 SEARCH_QUERIES = [
     {"theme": "Agriculture", "query": "agriculture Occitanie PACA"},
     {"theme": "Blocage occupation", "query": "blocage Toulouse Marseille Nîmes Avignon"},
@@ -73,9 +74,9 @@ def detect_location(text):
             if re.search(pattern, text_lower) or re.search(pattern, normalized_text):
                 info = CITIES_DB[city_key]
                 return {
-                    "region": info["region"].upper(),
-                    "department": str(info["department"]).zfill(2),
-                    "city": info["city"],
+                    "region": info["region"].upper().strip(),
+                    "department": str(info["department"]).strip().zfill(2),
+                    "city": info["city"].strip(),
                     "lat": float(info["lat"]),
                     "lng": float(info["lng"])
                 }
@@ -105,9 +106,9 @@ for item_target in SEARCH_QUERIES:
             xml_data = response.read()
             root = ET.fromstring(xml_data)
             items = root.findall('.//item')
-            print(f"   ✅ {len(items)} article(s) trouvés dans le flux RSS.")
+            print(f"   ✅ {len(items)} article(s) trouvé(s) dans le flux RSS.")
             
-            for item in items[:15]:
+            for item in items[:15]: # On prend un peu plus pour compenser les doublons
                 title_elem = item.find('title')
                 title = title_elem.text if title_elem is not None else ''
                 
@@ -117,6 +118,7 @@ for item_target in SEARCH_QUERIES:
                 pub_date_elem = item.find('pubDate')
                 pub_date_raw = pub_date_elem.text if pub_date_elem is not None else ''
                 
+                # Conversion de la date RSS en ISO
                 pub_iso = datetime.now(timezone.utc).isoformat()
                 if pub_date_raw:
                     try:
@@ -150,17 +152,18 @@ for item_target in SEARCH_QUERIES:
                 event_id += 1
                 new_articles_count += 1
                 
-        time.sleep(3) # Délai pour éviter le blocage par Google
+        # Petit délai de 3 secondes entre les requêtes pour éviter le blocage par Google
+        time.sleep(3) 
         
     except urllib.error.HTTPError as e:
-        print(f"   ❌ Erreur HTTP {e.code} pour [{theme}]: {e.reason}")
+        print(f"   ❌ Erreur HTTP {e.code} pour [{theme}]: {e.reason} (Probablement un blocage de Google)")
     except Exception as e:
         print(f"   ❌ Erreur générale sur [{theme}]: {e}")
 
-# Trier tous les événements par date la plus récente
+# 5. Trier tous les événements par date la plus récente
 valid_events.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
 
-# Sauvegarde dans data_feed.json
+# 6. Sauvegarde propre dans data_feed.json
 with open('data_feed.json', 'w', encoding='utf-8') as f:
     json.dump(valid_events, f, ensure_ascii=False, indent=2)
 
