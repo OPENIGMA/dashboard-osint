@@ -3,21 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard OSINT</title>
+    <title>Dashboard OSINT - Flux & Cartographie</title>
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
-        body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
-        #controls { padding: 10px; background: #1a1a1a; color: white; display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
-        #map { height: calc(100vh - 50px); width: 100%; }
-        select { padding: 8px; font-weight: bold; background: #333; color: white; border: 1px solid #555; border-radius: 4px; }
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 0; font-family: Arial, sans-serif; display: flex; flex-direction: column; height: 100vh; background: #121212; color: #fff; }
+        
+        /* Barre supérieure de filtres */
+        #top-bar { padding: 12px 20px; background: #1a1a1a; display: flex; gap: 15px; align-items: center; flex-wrap: wrap; border-bottom: 1px solid #333; }
+        .filter-group { display: flex; flex-direction: column; gap: 4px; }
+        .filter-group label { font-size: 11px; font-weight: bold; color: #aaa; text-transform: uppercase; }
+        select { padding: 8px 12px; font-weight: bold; background: #2a2a2a; color: #fff; border: 1px solid #444; border-radius: 4px; outline: none; }
+        select:focus { border-color: #0088ff; }
+
+        /* Conteneur principal : Carte + Flux d'articles */
+        #main-container { display: flex; flex: 1; overflow: hidden; }
+        #map { flex: 1; height: 100%; }
+        
+        /* Panneau latéral (Articles) */
+        #sidebar { width: 380px; background: #181818; border-left: 1px solid #333; display: flex; flex-direction: column; overflow: hidden; }
+        #sidebar-header { padding: 15px; background: #222; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; }
+        #sidebar-header h2 { margin: 0; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; color: #0088ff; }
+        #counter { font-size: 12px; background: #333; padding: 3px 8px; border-radius: 12px; color: #fff; }
+        
+        #articles-list { flex: 1; overflow-y: auto; padding: 10px; }
+        .article-card { background: #222; border: 1px solid #333; border-radius: 6px; padding: 12px; margin-bottom: 10px; transition: border-color 0.2s; }
+        .article-card:hover { border-color: #0088ff; }
+        .article-title { font-size: 14px; font-weight: bold; margin: 0 0 8px 0; color: #fff; line-height: 1.3; }
+        .article-title a { color: inherit; text-decoration: none; }
+        .article-title a:hover { text-decoration: underline; color: #0088ff; }
+        .article-meta { font-size: 11px; color: #aaa; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+        .tag { background: #333; padding: 2px 6px; border-radius: 3px; color: #ddd; font-weight: bold; }
+        .tag-theme { background: #0055a5; color: #fff; }
+        .article-date { font-size: 11px; color: #777; }
+
+        /* Responsive : écran mobile */
+        @media (max-width: 768px) {
+            #main-container { flex-direction: column; }
+            #sidebar { width: 100%; height: 40vh; }
+            #map { height: 60vh; }
+        }
     </style>
 </head>
 <body>
 
-    <div id="controls">
-        <div>
-            <label for="region-filter"><strong>RÉGION :</strong></label>
+    <!-- Barre de filtres complète -->
+    <div id="top-bar">
+        <div class="filter-group">
+            <label for="region-filter">Région</label>
             <select id="region-filter" onchange="filterData()">
                 <option value="ALL">TOUTES LES RÉGIONS</option>
                 <option value="OCCITANIE">OCCITANIE</option>
@@ -26,8 +60,51 @@
             </select>
         </div>
 
-        <div>
-            <label for="time-filter"><strong>PÉRIODE :</strong></label>
+        <div class="filter-group">
+            <label for="dept-filter">Département</label>
+            <select id="dept-filter" onchange="filterData()">
+                <option value="ALL">TOUS LES DÉPARTEMENTS</option>
+                <!-- Occitanie -->
+                <option value="09">09 - Ariège</option>
+                <option value="11">11 - Aude</option>
+                <option value="12">12 - Aveyron</option>
+                <option value="30">30 - Gard</option>
+                <option value="31">31 - Haute-Garonne</option>
+                <option value="32">32 - Gers</option>
+                <option value="34">34 - Hérault</option>
+                <option value="46">46 - Lot</option>
+                <option value="48">48 - Lozère</option>
+                <option value="65">65 - Hautes-Pyrénées</option>
+                <option value="66">66 - Pyrénées-Orientales</option>
+                <option value="81">81 - Tarn</option>
+                <option value="82">82 - Tarn-et-Garonne</option>
+                <!-- PACA -->
+                <option value="04">04 - Alpes-de-Haute-Provence</option>
+                <option value="05">05 - Hautes-Alpes</option>
+                <option value="06">06 - Alpes-Maritimes</option>
+                <option value="13">13 - Bouches-du-Rhône</option>
+                <option value="83">83 - Var</option>
+                <option value="84">84 - Vaucluse</option>
+                <!-- Corse -->
+                <option value="2A">2A - Corse-du-Sud</option>
+                <option value="2B">2B - Haute-Corse</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="theme-filter">Thématique</label>
+            <select id="theme-filter" onchange="filterData()">
+                <option value="ALL">TOUS LES THÈMES</option>
+                <option value="Agriculture">Agriculture</option>
+                <option value="Blocage occupation">Blocage / Occupation</option>
+                <option value="Manifestation">Manifestation</option>
+                <option value="Projet Conteste">Projet Contesté</option>
+                <option value="Criminalite">Criminalité / Sécurité</option>
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label for="time-filter">Période</label>
             <select id="time-filter" onchange="filterData()">
                 <option value="24h">Dernières 24 Heures</option>
                 <option value="7d" selected>Derniers 7 Jours</option>
@@ -36,13 +113,27 @@
         </div>
     </div>
 
-    <div id="map"></div>
+    <!-- Interface Carte + Liste d'articles -->
+    <div id="main-container">
+        <div id="map"></div>
+        
+        <div id="sidebar">
+            <div id="sidebar-header">
+                <h2>Flux OSINT</h2>
+                <span id="counter">0 alerte(s)</span>
+            </div>
+            <div id="articles-list">
+                <!-- Les cartes d'articles s'insèrent ici dynamiquement -->
+            </div>
+        </div>
+    </div>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        const layerOSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' });
+        // 1. Fonds de carte (Multi-couches 100% gratuits)
         const layerDark = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 19, attribution: '© OpenStreetMap © CARTO' });
+        const layerOSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' });
         const layerSatellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 18, attribution: 'Tiles © Esri' });
 
         const map = L.map('map', {
@@ -61,6 +152,7 @@
         let allEvents = [];
         let markersGroup = L.layerGroup().addTo(map);
 
+        // 2. Chargement des données avec anti-cache
         function loadData() {
             fetch('data_feed.json?t=' + new Date().getTime())
                 .then(response => {
@@ -68,43 +160,22 @@
                     return response.json();
                 })
                 .then(data => {
-                    allEvents = data;
+                    // Tri par date décroissante (plus récent en premier)
+                    allEvents = data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
                     filterData();
                 })
                 .catch(err => console.error("Erreur :", err));
         }
 
-        function renderMarkers(events) {
-            markersGroup.clearLayers();
-
-            events.forEach(evt => {
-                if (evt.location && evt.location.lat && evt.location.lng) {
-                    const marker = L.marker([evt.location.lat, evt.location.lng]);
-                    const dateFormatted = new Date(evt.timestamp).toLocaleString('fr-FR');
-                    
-                    const popupContent = `
-                        <div style="font-family: Arial, sans-serif;">
-                            <h4 style="margin: 0 0 5px 0;">${evt.title}</h4>
-                            <p style="margin: 0 0 5px 0; font-size: 12px; color: #555;">
-                                <strong>Thème:</strong> ${evt.theme}<br>
-                                <strong>Source:</strong> ${evt.source_name}<br>
-                                <strong>Collecté le:</strong> ${dateFormatted}
-                            </p>
-                            <a href="${evt.url}" target="_blank" style="color: #0066cc; font-weight: bold;">Consulter l'article</a>
-                        </div>
-                    `;
-                    marker.bindPopup(popupContent);
-                    markersGroup.addLayer(marker);
-                }
-            });
-        }
-
+        // 3. Filtrage global (Région, Département, Thème, Temps)
         function filterData() {
             const selectedRegion = document.getElementById('region-filter').value;
+            const selectedDept = document.getElementById('dept-filter').value;
+            const selectedTheme = document.getElementById('theme-filter').value;
             const selectedTime = document.getElementById('time-filter').value;
+            
             const now = new Date().getTime();
-
-            let maxAgeHours = 24 * 30; // 30 jours par défaut
+            let maxAgeHours = 24 * 30; // 30j
             if (selectedTime === '24h') maxAgeHours = 24;
             if (selectedTime === '7d') maxAgeHours = 24 * 7;
 
@@ -112,15 +183,72 @@
                 // Filtre Région
                 const matchRegion = (selectedRegion === 'ALL') || (evt.location && evt.location.region === selectedRegion);
                 
+                // Filtre Département
+                const matchDept = (selectedDept === 'ALL') || (evt.location && String(evt.location.department).padStart(2, '0') === selectedDept);
+                
+                // Filtre Thème
+                const matchTheme = (selectedTheme === 'ALL') || (evt.theme === selectedTheme);
+
                 // Filtre Temps
                 const evtTime = new Date(evt.timestamp).getTime();
                 const ageInHours = (now - evtTime) / (1000 * 60 * 60);
                 const matchTime = ageInHours <= maxAgeHours;
 
-                return matchRegion && matchTime;
+                return matchRegion && matchDept && matchTheme && matchTime;
             });
 
-            renderMarkers(filtered);
+            renderUI(filtered);
+        }
+
+        // 4. Rendu de la carte et de la liste d'articles
+        function renderUI(events) {
+            markersGroup.clearLayers();
+            const listContainer = document.getElementById('articles-list');
+            listContainer.innerHTML = '';
+
+            document.getElementById('counter').innerText = `${events.length} alerte(s)`;
+
+            events.forEach(evt => {
+                const dateFormatted = new Date(evt.timestamp).toLocaleString('fr-FR', {
+                    day: '2-digit', month: '2-digit', year: 'numeric',
+                    hour: '2-digit', minute: '2-digit'
+                });
+
+                // A. Marqueur Carte
+                if (evt.location && evt.location.lat && evt.location.lng) {
+                    const marker = L.marker([evt.location.lat, evt.location.lng]);
+                    const popupContent = `
+                        <div style="font-family: Arial, sans-serif; color: #111;">
+                            <h4 style="margin: 0 0 5px 0;">${evt.title}</h4>
+                            <p style="margin: 0 0 5px 0; font-size: 12px; color: #555;">
+                                <strong>Thème:</strong> ${evt.theme}<br>
+                                <strong>Ville:</strong> ${evt.location.city} (${evt.location.department})<br>
+                                <strong>Source:</strong> ${evt.source_name}<br>
+                                <strong>Date:</strong> ${dateFormatted}
+                            </p>
+                            <a href="${evt.url}" target="_blank" style="color: #0066cc; font-weight: bold;">Lire l'article</a>
+                        </div>
+                    `;
+                    marker.bindPopup(popupContent);
+                    markersGroup.addLayer(marker);
+                }
+
+                // B. Carte de la liste latérale
+                const card = document.createElement('div');
+                card.className = 'article-card';
+                card.innerHTML = `
+                    <div class="article-title">
+                        <a href="${evt.url}" target="_blank">${evt.title}</a>
+                    </div>
+                    <div class="article-meta">
+                        <span class="tag tag-theme">${evt.theme}</span>
+                        <span class="tag">${evt.location ? evt.location.city : 'Sud'}</span>
+                        <span class="tag">${evt.source_name}</span>
+                    </div>
+                    <div class="article-date">Collecté le ${dateFormatted}</div>
+                `;
+                listContainer.appendChild(card);
+            });
         }
 
         loadData();
