@@ -177,7 +177,7 @@ for item_target in SEARCH_QUERIES:
 # 5. Trier tous les événements par date la plus récente
 valid_events.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
 
-# 6. Sauvegarde propre dans data_feed.json (élimine les espaces parasites dans les clés)
+# 6. Sauvegarde propre dans data_feed.json
 with open('data_feed.json', 'w', encoding='utf-8') as f:
     json.dump(valid_events, f, ensure_ascii=False, indent=2)
 
