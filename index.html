@@ -126,12 +126,24 @@
             transform: translateX(4px);
             box-shadow: 0 4px 12px rgba(0, 212, 255, 0.15);
         }
-        .alert-card.local {
-            border-left: 3px solid #ff9900 !important;
+        
+        /* Couleurs selon la source */
+        .alert-card.orange {
+            border-left: 3px solid #ff9900;
         }
-        .alert-card.local:hover {
+        .alert-card.orange:hover {
             box-shadow: 0 4px 12px rgba(255, 153, 0, 0.2);
         }
+        .alert-card.red {
+            border-left: 3px solid #ff4444;
+        }
+        .alert-card.red:hover {
+            box-shadow: 0 4px 12px rgba(255, 68, 68, 0.2);
+        }
+        .alert-card.blue {
+            border-left: 3px solid #00d4ff;
+        }
+        
         .alert-card h4 {
             font-size: 0.95rem;
             line-height: 1.4;
@@ -165,9 +177,17 @@
             background: #00d4ff;
             color: #0d1117;
         }
-        .badge.local {
-            background: #ff9900 !important;
-            color: #0d1117 !important;
+        .badge.orange {
+            background: #ff9900;
+            color: #0d1117;
+        }
+        .badge.red {
+            background: #ff4444;
+            color: #fff;
+        }
+        .badge.blue {
+            background: #00d4ff;
+            color: #0d1117;
         }
         .badge.source {
             background: #30363d;
@@ -191,8 +211,8 @@
         <select id="filter-source">
             <option value="all">Toutes les sources</option>
             <option value="orange">🟠 Presse Locale</option>
-            <option value="blue">🔵 Google News</option>
             <option value="red">🔴 Réseaux Sociaux</option>
+            <option value="blue">🔵 Google News</option>
         </select>
     </div>
     
@@ -294,7 +314,8 @@
 
     let allData = [];
     let map = L.map('map').setView([43.6, 3.8], 7);
-       // Couches de carte gratuites et sans clé API
+    
+    // Couches de carte gratuites et sans clé API
     const osmClassic = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
         attribution: '© OpenStreetMap',
         maxZoom: 19
@@ -318,8 +339,10 @@
         "🛰️ Satellite": esriSatellite
     };
     L.control.layers(baseMaps, null, { position: 'topright' }).addTo(map);
+    
     let markersLayer = L.layerGroup().addTo(map);
 
+    const selSource = document.getElementById('filter-source');
     const selRegion = document.getElementById('filter-region');
     const selDept = document.getElementById('filter-dept');
     const selCity = document.getElementById('filter-city');
@@ -360,6 +383,7 @@
 
     selCity.addEventListener('change', applyFilters);
     selTheme.addEventListener('change', applyFilters);
+    selSource.addEventListener('change', applyFilters);
     searchBox.addEventListener('input', applyFilters);
 
     // 2. Fonction de nettoyage du JSON (supprime les espaces parasites dans les clés)
@@ -390,36 +414,35 @@
 
     // 4. Application des filtres et affichage
     function applyFilters() {
-    const src = document.getElementById('filter-source').value;
-    const r = selRegion.value;
-    const d = selDept.value;
-    const c = selCity.value;
-    const t = selTheme.value;
-    const search = searchBox.value.toLowerCase().trim();
+        const src = selSource.value;
+        const r = selRegion.value;
+        const d = selDept.value;
+        const c = selCity.value;
+        const t = selTheme.value;
+        const search = searchBox.value.toLowerCase().trim();
 
-    const filtered = allData.filter(evt => {
-        const loc = evt.location || {};
-        const matchSrc = (src === 'all' || evt.source_category === src);
-        const matchR = (r === 'all' || loc.region === r);
-        const matchD = (d === 'all' || loc.department === d);
-        const matchC = (c === 'all' || loc.city === c);
-        const matchT = (t === 'all' || evt.theme === t);
-        
-        let matchSearch = true;
-        if (search) {
-            const searchText = `${evt.title} ${evt.source_name} ${loc.city} ${evt.theme}`.toLowerCase();
-            matchSearch = searchText.includes(search);
-        }
-        
-        return matchSrc && matchR && matchD && matchC && matchT && matchSearch;
-    });
+        const filtered = allData.filter(evt => {
+            const loc = evt.location || {};
+            const matchSrc = (src === 'all' || evt.source_category === src);
+            const matchR = (r === 'all' || loc.region === r);
+            const matchD = (d === 'all' || loc.department === d);
+            const matchC = (c === 'all' || loc.city === c);
+            const matchT = (t === 'all' || evt.theme === t);
+            
+            let matchSearch = true;
+            if (search) {
+                const searchText = `${evt.title} ${evt.source_name} ${loc.city} ${evt.theme}`.toLowerCase();
+                matchSearch = searchText.includes(search);
+            }
+            
+            return matchSrc && matchR && matchD && matchC && matchT && matchSearch;
+        });
 
-    renderFeed(filtered);
-    renderMap(filtered);
-    document.getElementById('count-badge').innerText = `${filtered.length} alerte(s)`;
-}
-const selSource = document.getElementById('filter-source');
-selSource.addEventListener('change', applyFilters);
+        renderFeed(filtered);
+        renderMap(filtered);
+        document.getElementById('count-badge').innerText = `${filtered.length} alerte(s)`;
+    }
+
     function renderFeed(data) {
         const feed = document.getElementById('feed');
         if (data.length === 0) {
@@ -430,15 +453,14 @@ selSource.addEventListener('change', applyFilters);
         feed.innerHTML = data.map(evt => {
             const loc = evt.location || {};
             const dateStr = evt.timestamp ? new Date(evt.timestamp).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' }) : 'Date inconnue';
-            const isLocal = evt.source_type === "Presse Locale Directe";
-            const localClass = isLocal ? "local" : "";
-            const sourceText = isLocal ? "📰 " + (evt.source_name || 'Presse Locale') : (evt.source_name || 'Inconnue');
+            const sourceCat = evt.source_category || 'blue';
+            const sourceText = evt.source_name || 'Inconnue';
             
             return `
-            <div class="alert-card ${localClass}">
+            <div class="alert-card ${sourceCat}">
                 <h4><a href="${evt.url}" target="_blank">${evt.title}</a></h4>
                 <div class="meta">
-                    <span class="badge ${localClass}">${evt.theme || 'Non classé'}</span>
+                    <span class="badge ${sourceCat}">${evt.theme || 'Non classé'}</span>
                     <span>${loc.city ? loc.city + ' (' + loc.department + ')' : 'Localisation inconnue'}</span>
                 </div>
                 <div class="meta" style="margin-top:5px;">
