@@ -471,16 +471,17 @@
         `}).join('');
     }
 
-    function renderMap(data) {
-        markersLayer.clearLayers();
-        data.forEach(evt => {
-            if (evt.location && evt.location.lat && evt.location.lng) {
-                const marker = L.marker([evt.location.lat, evt.location.lng]);
-                marker.bindPopup(`<b style="color:#0d1117">${evt.title}</b><br><a href="${evt.url}" target="_blank" style="color:#0056b3">Lire l'article</a>`);
-                markersLayer.addLayer(marker);
-            }
-        });
-    }
+function renderMap(data) {
+    markersLayer.clearLayers();
+    data.forEach(evt => {
+        // Sécurité : vérifier que lat et lng sont bien des nombres valides
+        if (evt.location && typeof evt.location.lat === 'number' && typeof evt.location.lng === 'number') {
+            const marker = L.marker([evt.location.lat, evt.location.lng]);
+            marker.bindPopup(`<b style="color:#0d1117">${evt.title}</b><br><a href="${evt.url}" target="_blank" style="color:#0056b3">Lire l'article</a>`);
+            markersLayer.addLayer(marker);
+        }
+    });
+}
 
     // Initialisation
     loadData();
