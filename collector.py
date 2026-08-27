@@ -227,11 +227,6 @@ SOCIAL_RSS_FEEDS = [
         "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "fusillade", "drone", "tracteur", "ZAD"]
     },
     {
-        "platform": "Reddit (Local Sud)",
-        "url": "https://www.reddit.com/search.rss?q=Occitanie+OR+PACA+OR+Marseille+OR+Toulouse&sort=new&t=week",
-        "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "fusillade", "tracteur"]
-    },
-    {
         "platform": "Mastodon (Piaille.fr)",
         "url": "https://piaille.fr/public/local.rss",
         "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "ZAD", "tracteur"]
@@ -244,27 +239,51 @@ for social_feed in SOCIAL_RSS_FEEDS:
     rss_url = social_feed["url"]
     keywords = social_feed["keywords"]
     try:
-        req = urllib.request.Request(rss_url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+        req = urllib.request.Request(rss_url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) OSINTBot/1.0'})
         with urllib.request.urlopen(req, timeout=10) as response:
             xml_data = response.read()
             root = ET.fromstring(xml_data)
-            items = root.findall('.//item')
-            for item in items[:15]:
-                title = item.find('title').text.strip() if item.find('title') is not None and item.find('title').text else ''
+            
+            # Gestion hybride RSS (<item>) et Atom (<entry>)
+            items = root.findall('.//item') or root.findall('.//{http://www.w3.org/2005/Atom}entry')
+            
+            for item in items[:20]:
+                # Extraction du titre
+                title_elem = item.find('title') or item.find('{http://www.w3.org/2005/Atom}title')
+                title = title_elem.text.strip() if title_elem is not None and title_elem.text else ''
+                
+                # Extraction du lien
+                link = '#'
+                link_elem = item.find('link') or item.find('{http://www.w3.org/2005/Atom}link')
+                if link_elem is not None:
+                    link = link_elem.attrib.get('href', link_elem.text or '#').strip()
+
                 title_lower = title.lower()
-                if not any(kw in title_lower for kw in keywords): continue
-                link = item.find('link').text.strip() if item.find('link') is not None and item.find('link').text else '#'
-                if not title or link in seen_urls or title in seen_titles: continue
+                if not any(kw in title_lower for kw in keywords): 
+                    continue
+                    
+                if not title or link in seen_urls or title in seen_titles: 
+                    continue
+                    
                 seen_urls.add(link)
                 seen_titles.add(title)
+                
                 theme = find_theme(title)
-                if theme == "Non classé": theme = "Reseaux Sociaux"
+                if theme == "Non classé": 
+                    theme = "Reseaux Sociaux"
+                    
                 max_id += 1
                 valid_events.append({
-                    "id": f"evt-{max_id}", "timestamp": datetime.now(timezone.utc).isoformat(), 
-                    "title": f"[{platform}] {title}", "summary": f"Post trouvé sur {platform}.", "url": link,
-                    "source_name": platform, "source_type": "Reseaux Sociaux", "source_category": "red",
-                    "theme": theme, "location": detect_location(title)
+                    "id": f"evt-{max_id}", 
+                    "timestamp": datetime.now(timezone.utc).isoformat(), 
+                    "title": f"[{platform}] {title}", 
+                    "summary": f"Post trouvé sur {platform}.", 
+                    "url": link,
+                    "source_name": platform, 
+                    "source_type": "Reseaux Sociaux", 
+                    "source_category": "red",
+                    "theme": theme, 
+                    "location": detect_location(title)
                 })
                 new_articles_count += 1
         time.sleep(2)
