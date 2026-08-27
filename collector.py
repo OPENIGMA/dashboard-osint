@@ -252,41 +252,12 @@ SOCIAL_RSS_FEEDS = [
     {
         "platform": "Reddit (France)",
         "url": "https://www.reddit.com/r/France/new/.rss",
-        "keywords": [
-            "manifestation", "blocage", "grève", "cortège", "piquet", "CGT", "mobilisation", "CRS", "escargot",
-            "narcotrafic", "fusillade", "point de deal", "mafia", "DZ", "arme", "kalachnikov", "cyberattaque", "hack", "ransomware", "drone", "survol", "intrusion", "squat", "effraction",
-            "radicalisation", "fiché S", "séparatisme", "terrorisme", "attentat", "secte", "gourou", "ultra-gauche", "black bloc", "ultra-droite", "identitaire", "apologie", "haine",
-            "A69", "bassine", "ZAD", "agriculteur", "tracteur", "FNSEA", "écologie", "incendie", "sécheresse", "chasse", "braconnage", "pêche", "L214", "antispéciste", "corrida",
-            "élection 2027", "présidentielle", "JOPH 2030", "jeux olympiques", "visite officielle", "ministre", "préfet", "éducation nationale", "professeur", "hôpital", "SAMU", "nucléaire", "EDF",
-            "SNCF", "train", "autoroute", "aéroport", "immigration", "migrant", "clandestin", "OQTF",
-            "teknival", "free party", "rave", "festival", "féria", "survivalisme", "bunker", "dérive sectaire", "prosélytisme", "culte"
-        ]
+        "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie", "fusillade", "drone"]
     },
     {
-        "platform": "Reddit (Recherche Locale Sud)",
-        "url": "https://www.reddit.com/search.rss?q=Occitanie+OR+PACA+OR+Marseille+OR+Toulouse+OR+Nîmes+OR+Montpellier+OR+Nice+OR+Avignon&sort=new&t=week",
-        "keywords": [
-            "manifestation", "blocage", "grève", "cortège", "piquet", "CGT", "mobilisation", "CRS", "escargot",
-            "narcotrafic", "fusillade", "point de deal", "mafia", "DZ", "arme", "kalachnikov", "cyberattaque", "hack", "ransomware", "drone", "survol", "intrusion", "squat", "effraction",
-            "radicalisation", "fiché S", "séparatisme", "terrorisme", "attentat", "secte", "gourou", "ultra-gauche", "black bloc", "ultra-droite", "identitaire", "apologie", "haine",
-            "A69", "bassine", "ZAD", "agriculteur", "tracteur", "FNSEA", "écologie", "incendie", "sécheresse", "chasse", "braconnage", "pêche", "L214", "antispéciste", "corrida",
-            "élection 2027", "présidentielle", "JOPH 2030", "jeux olympiques", "visite officielle", "ministre", "préfet", "éducation nationale", "professeur", "hôpital", "SAMU", "nucléaire", "EDF",
-            "SNCF", "train", "autoroute", "aéroport", "immigration", "migrant", "clandestin", "OQTF",
-            "teknival", "free party", "rave", "festival", "féria", "survivalisme", "bunker", "dérive sectaire", "prosélytisme", "culte"
-        ]
-    },
-    {
-        "platform": "Mastodon (Piaille.fr - Local)",
+        "platform": "Mastodon (Piaille.fr)",
         "url": "https://piaille.fr/public/local.rss",
-        "keywords": [
-            "manifestation", "blocage", "grève", "cortège", "piquet", "CGT", "mobilisation", "CRS", "escargot",
-            "narcotrafic", "fusillade", "point de deal", "mafia", "DZ", "arme", "kalachnikov", "cyberattaque", "hack", "ransomware", "drone", "survol", "intrusion", "squat", "effraction",
-            "radicalisation", "fiché S", "séparatisme", "terrorisme", "attentat", "secte", "gourou", "ultra-gauche", "black bloc", "ultra-droite", "identitaire", "apologie", "haine",
-            "A69", "bassine", "ZAD", "agriculteur", "tracteur", "FNSEA", "écologie", "incendie", "sécheresse", "chasse", "braconnage", "pêche", "L214", "antispéciste", "corrida",
-            "élection 2027", "présidentielle", "JOPH 2030", "jeux olympiques", "visite officielle", "ministre", "préfet", "éducation nationale", "professeur", "hôpital", "SAMU", "nucléaire", "EDF",
-            "SNCF", "train", "autoroute", "aéroport", "immigration", "migrant", "clandestin", "OQTF",
-            "teknival", "free party", "rave", "festival", "féria", "survivalisme", "bunker", "dérive sectaire", "prosélytisme", "culte"
-        ]
+        "keywords": ["manifestation", "blocage", "incident", "police", "narcotrafic", "A69", "grève", "incendie"]
     }
 ]
 
