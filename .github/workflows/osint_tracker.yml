@@ -2,7 +2,7 @@ name: OSINT Data Collector
 
 on:
   schedule:
-    - cron: '0 */6 * * *' # Toutes les 6 heures (évite le blocage de Google)
+    - cron: '0 */6 * * *' # Toutes les 6 heures (évite le rate-limit de Google)
   workflow_dispatch: # Permet de lancer manuellement en 1 clic
   push:
     paths:
@@ -41,5 +41,5 @@ jobs:
             git push origin HEAD
             echo "✅ Données mises à jour et poussées avec succès sur GitHub."
           else
-            echo "⚠️ Aucune nouvelle donnée à pousser."
+            echo "⚠️ Aucune nouvelle donnée à pousser (le fichier n'a pas changé)."
           fi
