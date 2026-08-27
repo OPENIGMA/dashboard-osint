@@ -196,16 +196,13 @@ for feed in LOCAL_RSS_FEEDS:
                 title = item.find('title').text.strip() if item.find('title') is not None and item.find('title').text else ''
                 link = item.find('link').text.strip() if item.find('link') is not None and item.find('link').text else '#'
                 pub_date_raw = item.find('pubDate').text.strip() if item.find('pubDate') is not None and item.find('pubDate').text else ''
-                
                 pub_iso = datetime.now(timezone.utc).isoformat()
                 if pub_date_raw:
                     try: pub_iso = parsedate_to_datetime(pub_date_raw).isoformat()
                     except Exception: pass
-
                 if not title or link in seen_urls or title in seen_titles: continue
                 theme = find_theme(title)
                 if theme == "Non classé": continue
-
                 seen_urls.add(link)
                 seen_titles.add(title)
                 max_id += 1
@@ -256,15 +253,12 @@ for social_feed in SOCIAL_RSS_FEEDS:
                 title = item.find('title').text.strip() if item.find('title') is not None and item.find('title').text else ''
                 title_lower = title.lower()
                 if not any(kw in title_lower for kw in keywords): continue
-                
                 link = item.find('link').text.strip() if item.find('link') is not None and item.find('link').text else '#'
                 if not title or link in seen_urls or title in seen_titles: continue
-
                 seen_urls.add(link)
                 seen_titles.add(title)
                 theme = find_theme(title)
                 if theme == "Non classé": theme = "Reseaux Sociaux"
-                
                 max_id += 1
                 valid_events.append({
                     "id": f"evt-{max_id}", "timestamp": datetime.now(timezone.utc).isoformat(), 
@@ -335,19 +329,15 @@ for item_target in GN_QUERIES:
                 title = item.find('title').text.strip() if item.find('title') is not None and item.find('title').text else ''
                 link = item.find('link').text.strip() if item.find('link') is not None and item.find('link').text else '#'
                 pub_date_raw = item.find('pubDate').text.strip() if item.find('pubDate') is not None and item.find('pubDate').text else ''
-                
                 pub_iso = datetime.now(timezone.utc).isoformat()
                 if pub_date_raw:
                     try: pub_iso = parsedate_to_datetime(pub_date_raw).isoformat()
                     except Exception: pass
-
                 if not title or link in seen_urls or title in seen_titles: continue
-                
                 seen_urls.add(link)
                 seen_titles.add(title)
                 source_elem = item.find('source')
                 raw_source = source_elem.text.strip() if source_elem is not None and source_elem.text else "Presse"
-                
                 max_id += 1
                 valid_events.append({
                     "id": f"evt-{max_id}", "timestamp": pub_iso, "title": title,
@@ -364,7 +354,6 @@ for item_target in GN_QUERIES:
 # 8. Tri et sauvegarde finale
 # ============================================================
 valid_events.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
-
 with open('data_feed.json', 'w', encoding='utf-8') as f:
     json.dump(valid_events, f, ensure_ascii=False, indent=2)
 
