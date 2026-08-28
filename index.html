@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard OSINT - Zone Sud</title>
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -98,7 +96,7 @@
         }
         .btn-osint:hover { background: #2ea043; }
 
-        /* BLOC TOP 20 TENDANCES COMPACT EN 4 COLONNES (4 x 5) */
+        /* BLOC TOP 20 TENDANCES (4 COLONNES DE 5 ÉLÉMENTS) */
         .trends-container {
             background: #0d1117;
             border: 1px solid #30363d;
@@ -118,11 +116,11 @@
         }
         .trends-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 colonnes côte à côte */
-            grid-template-rows: repeat(5, auto);   /* 5 éléments par colonne */
+            grid-template-columns: repeat(4, 1fr); /* 4 Colonnes */
+            grid-template-rows: repeat(5, auto);   /* 5 Lignes */
             grid-auto-flow: column;
             gap: 3px 10px;
-            max-height: 95px;
+            max-height: 110px;
             overflow-y: auto;
         }
         .trend-item {
@@ -218,7 +216,6 @@
             padding: 6px;
         }
 
-        /* BLOC HORS ZONE */
         .other-zone {
             background: #161b22;
             border-radius: 6px;
@@ -229,7 +226,6 @@
             flex-shrink: 0;
         }
 
-        /* Cartes d'alertes */
         .alert-card {
             background: #0d1117;
             border-left: 3px solid #00d4ff;
@@ -250,7 +246,6 @@
         .badge.orange { background: #ff9900; color: #0d1117; }
         .badge.red { background: #ff4444; color: #fff; }
         .badge.blue { background: #00d4ff; color: #0d1117; }
-        .badge.source { background: #30363d; color: #e6edf3; }
 
         .empty-state { text-align: center; color: #8b949e; padding: 10px; font-style: italic; font-size: 0.75rem; }
     </style>
@@ -296,7 +291,6 @@
         <div id="count-badge">0 alerte(s)</div>
     </div>
 
-    <!-- RECHERCHE OSINT -->
     <div class="osint-bar">
         <label>🔍 DORK :</label>
         <input type="text" id="osint-query" placeholder="Saisir ou cliquer sur une tendance..." style="flex:1; min-width:140px;">
@@ -312,7 +306,7 @@
         <button class="btn-osint" onclick="runOsintSearch()">Rechercher</button>
     </div>
 
-    <!-- TOP 20 TENDANCES SUR 4 COLONNES (4 x 5) -->
+    <!-- TOP 20 TENDANCES -->
     <div class="trends-container">
         <div class="trends-header">
             <span>🔥 TOP 20 TENDANCES WEB (GOOGLE TRENDS)</span>
@@ -349,7 +343,6 @@
         </div>
     </div>
 
-    <!-- REHABILITATION DU BLOC HORS ZONE -->
     <div class="other-zone" id="container-other" style="display:none;">
         <div class="column-header">
             <span>🌐 Hors Zone / Non spécifié</span>
@@ -394,14 +387,48 @@
         window.open(`https://www.google.com/search?q=${encodeURIComponent(dork)}`, '_blank');
     }
 
-    // CHARGEMENT ET AFFICHAGE DU TOP 20 EN 4 COLONNES DE 5 ÉLÉMENTS
     async function loadTrendsChart() {
         try {
             const response = await fetch('trending.json?t=' + new Date().getTime());
-            if (!response.ok) return;
-            const trends = await response.json();
+            let trends = [];
+            
+            if (response.ok) {
+                trends = await response.json();
+            }
 
-            if (!trends || trends.length === 0) return;
+            // Sécurité : Si trending.json a moins de 20 éléments, on complète automatiquement jusqu'à 20
+            if (!trends || trends.length < 20) {
+                const defaultTrends = [
+                    { term: "agriculture", score: 90 },
+                    { term: "manifestation", score: 85 },
+                    { term: "sûreté publique", score: 80 },
+                    { term: "écologie", score: 75 },
+                    { term: "délinquance", score: 70 },
+                    { term: "immigration", score: 65 },
+                    { term: "réseaux sociaux", score: 60 },
+                    { term: "transports", score: 55 },
+                    { term: "sécurité routière", score: 50 },
+                    { term: "énergie", score: 45 },
+                    { term: "climat", score: 40 },
+                    { term: "santé", score: 35 },
+                    { term: "économie locale", score: 30 },
+                    { term: "sécheresse", score: 25 },
+                    { term: "inondations", score: 20 },
+                    { term: "cyberattaque", score: 18 },
+                    { term: "radar / contrôle", score: 15 },
+                    { term: "législation", score: 12 },
+                    { term: "zone sud", score: 10 },
+                    { term: "osint france", score: 10 }
+                ];
+
+                const existingTerms = new Set((trends || []).map(t => (t.term || '').toLowerCase()));
+                for (const def of defaultTrends) {
+                    if (trends.length >= 20) break;
+                    if (!existingTerms.has(def.term.toLowerCase())) {
+                        trends.push(def);
+                    }
+                }
+            }
 
             const gridContainer = document.getElementById('trends-grid');
             if (!gridContainer) return;
@@ -409,7 +436,7 @@
             gridContainer.innerHTML = trends.slice(0, 20).map((t, index) => {
                 const rank = index + 1;
                 const scorePercent = Math.max(t.score || 10, 10);
-                const safeTerm = t.term.replace(/'/g, "\\'");
+                const safeTerm = (t.term || '').replace(/'/g, "\\'");
                 return `
                     <div class="trend-item" onclick="selectTrend('${safeTerm}')">
                         <span class="trend-rank">${rank}.</span>
