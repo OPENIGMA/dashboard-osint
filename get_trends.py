@@ -3,7 +3,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 
 def fetch_google_trends():
-    """Récupère le Top 10 des recherches Google Trends (France) via le flux RSS officiel."""
+    """Récupère le Top 20 des recherches Google Trends (France) via le flux RSS officiel."""
     url = "https://trends.google.fr/trending/rss?geo=FR"
     req = urllib.request.Request(
         url, 
@@ -16,13 +16,13 @@ def fetch_google_trends():
             xml_data = response.read()
             root = ET.fromstring(xml_data)
             
-            # Extraction des 10 premiers éléments du flux RSS
-            items = root.findall('.//item')[:10]
+            # Extraction des 20 premiers éléments du flux RSS
+            items = root.findall('.//item')[:20]
             
             for index, item in enumerate(items):
                 title = item.find('title').text
-                # Génération d'un score dégressif (100, 90, 80...)
-                score = 100 - (index * 9)
+                # Génération d'un score dégressif (100, 95, 90...)
+                score = 100 - (index * 4)
                 trends.append({
                     "term": title,
                     "score": max(score, 10),
@@ -36,16 +36,9 @@ def fetch_google_trends():
 def main():
     trends_data = fetch_google_trends()
     
-    # Sécurité si l'API est indisponible
     if not trends_data:
-        print("Aucune donnée récupérée, conservation du format de secours.")
-        trends_data = [
-            {"term": "SNCF", "score": 100, "source": "Google Trends"},
-            {"term": "A69 Toulouse", "score": 90, "source": "Google Trends"},
-            {"term": "Météo Gard", "score": 80, "source": "Google Trends"},
-            {"term": "Sécheresse PACA", "score": 70, "source": "Google Trends"},
-            {"term": "Manifestation Marseille", "score": 60, "source": "Google Trends"}
-        ]
+        print("Aucune donnée récupérée.")
+        return
         
     # Écriture dans trending.json
     with open('trending.json', 'w', encoding='utf-8') as f:
