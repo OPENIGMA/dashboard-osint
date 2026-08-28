@@ -98,27 +98,27 @@ print(f"📊 {len(valid_events)} événements conservés (< 30 jours). ID max : 
 # 4. Mots-clés et fonctions utilitaires
 # ============================================================
 THEME_KEYWORDS = {
-    "Agriculture": ["agriculture", "agriculteur", "FNSEA", "EGalim", "PAC", "tracteur", "récolte", "élevage", "viticulture", "chambre agriculture"],
+    "Agriculture": ["agriculture", "agriculteur", "FNSEA", "EGalim", "PAC", "tracteur", "récolte", "élevage", "viticulture", "chambre agriculture", "vaccination", "dermatose nodulaire contagieuse", "DNC"],
     "Armes": ["arme", "fusil", "pistolet", "kalachnikov", "trafic arme", "confiscation", "arsenal"],
     "Chasse": ["chasse", "chasseur", "gibier", "ONCFS", "cynégétique", "battue", "braconnage"],
     "Délinquance criminalité": ["délinquance", "insécurité", "cambriolage", "agression", "vol", "braquage", "vandalisme", "rixe"],
-    "Dérives Sectaires": ["secte", "dérive sectaire", "emprise mentale", "gourou", "MIVILUDES"],
-    "Ecologie": ["écologie", "environnement", "climat", "pollution", "biodiversité", "sécheresse", "incendie", "canicule"],
+    "Dérives Sectaires": ["secte", "dérive sectaire", "emprise mentale", "gourou", "MIVILUDES", "adepte"],
+    "Ecologie": ["écologie", "environnement", "climat", "pollution", "biodiversité", "sécheresse", "incendie", "canicule", "a69", "tht", "xr", "slt", "extinction rebellion", "les soulèvements de la terrre"],
     "Education nationale": ["école", "collège", "lycée", "professeur", "éducation nationale", "enseignant", "harcèlement", "DASEN"],
-    "Ferroviaire": ["SNCF", "train", "gare", "rail", "ferroviaire", "TGV", "TER", "grève SNCF"],
+    "Ferroviaire": ["SNCF", "train", "gare", "rail", "ferroviaire", "TGV", "TER", "grève SNCF", "sabotage"],
     "Festivité Evènements voie publique": ["festival", "fête", "événement", "rassemblement", "concert", "carnaval", "féria", "feu artifice"],
-    "Criminalité organisée": ["narcotrafic", "mafia", "grand banditisme", "cartel", "point deal", "trafiquant", "DZ mafia", "fusillade", "caïd"],
-    "Free Rave Teknival": ["teknival", "free party", "rave party", "sound system", "fête sauvage"],
+    "Criminalité organisée": ["narcotrafic", "mafia", "grand banditisme", "cartel", "point deal", "trafiquant", "DZ mafia", "fusillade", "caïd", "quartier prioritaire"],
+    "Free Rave Teknival": ["teknival", "free party", "rave party", "sound system", "fête sauvage", "teuf", "spot", "mur de son"],
     "Immigration": ["immigration", "migrant", "clandestin", "centre rétention", "OQTF", "sans-papiers", "CRA"],
     "Nucléaire": ["nucléaire", "centrale nucléaire", "EDF", "ASN", "réacteur", "uranium", "Tricastin", "Marcoule"],
     "Pêche": ["pêche", "pêcheur", "maritime", "marée", "chalutier", "prud'homie", "conchyliculture"],
     "Prévention de la délinquance": ["prévention", "police municipale", "vidéosurveillance", "médiation", "tranquillité publique", "CLSPD"],
     "Santé": ["hôpital", "santé", "ARS", "médecin", "épidémie", "urgence", "SAMU", "plan blanc", "désert médical"],
     "Séparatisme": ["séparatisme", "communautarisme", "repli", "islam radical", "contrat républicain"],
-    "Survivalisme": ["survivalisme", "survivaliste", "bunker", "effondrement", "autonomie alimentaire", "prepper"],
+    "Survivalisme": ["survivalisme", "survivaliste", "bunker", "effondrement", "autonomie alimentaire", "prepper", "conspiration", "conspirationniste", "Complotisme", "QAnon"],
     "Transport": ["transport", "mobilité", "bus", "autoroute", "aéroport", "bouchon", "péage", "Vinci"],
     "Visite officielle": ["visite officielle", "ministre", "préfet", "inauguration", "chef État", "président", "Darmanin", "Macron"],
-    "Radicalisation": ["radicalisation", "fiché S", "endoctrinement", "salafisme", "djihadisme", "signalement"],
+    "Radicalisation": ["radicalisation", "fiché S", "endoctrinement", "salafisme", "djihadisme", "signalement", "abaya", "burkini"],
     "Culte": ["culte", "religion", "laïcité", "lieu de culte", "mosquée", "église", "imam", "prêtre"],
     "Prosélytisme": ["prosélytisme", "endoctrinement", "conversion", "propagande", "tabligh"],
     "Terrorisme": ["terrorisme", "attentat", "antiterroriste", "DGSI", "menace terroriste", "Vigipirate"],
@@ -126,7 +126,7 @@ THEME_KEYWORDS = {
     "Projet aménagement contesté (PAC)": ["ZAD", "bassine", "grand projet", "contestation", "A69", "Toulouse Castres", "bétonisation", "Sivens"],
     "Ultra gauche": ["ultra-gauche", "antifasciste", "black bloc", "anarchiste", "autonomes", "NPA"],
     "Ultra droite": ["ultra-droite", "identitaire", "extrême droite", "nationaliste", "suprémaciste", "RN", "Rassemblement national"],
-    "JOPH 2030": ["JO 2030", "jeux olympiques", "JO Paris", "olympique", "paralympique", "JO Nice", "JO Marseille"],
+    "JOPH 2030": ["JO 2030", "jeux olympiques", "JO Paris", "olympique", "paralympique", "Briançon", "Serre Chevalier", "Montgenèvre"],
     "Elections 2027": ["élection 2027", "présidentielle", "campagne électorale", "candidat", "scrutin", "meeting"],
     "Apologie": ["apologie", "apologie terrorisme", "incitation haine", "provocation", "négationnisme"],
     "Blocage grève": ["grève", "blocage", "syndicat", "piquet", "CGT", "mouvement social", "escargot", "FO", "Sud"],
@@ -167,9 +167,15 @@ def detect_location(text):
 
 def find_theme(title):
     title_lower = title.lower()
+    
+    # Parcourt les thématiques avec des regex strictes (\b = mot entier)
     for theme, keywords in THEME_KEYWORDS.items():
-        if any(kw in title_lower for kw in keywords):
-            return theme
+        for kw in keywords:
+            # Échappe les caractères spéciaux et force la correspondance sur le mot entier
+            pattern = r'\b' + re.escape(kw.lower()) + r'\b'
+            if re.search(pattern, title_lower):
+                return theme
+                
     return "Non classé"
 
 HEADERS_BROWSER = {
