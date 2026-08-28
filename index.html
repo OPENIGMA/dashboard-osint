@@ -269,33 +269,43 @@
         <div class="filter-group">
             <label>Thème</label>
             <select id="filter-theme">
-                <option value="all">Tous (26 thèmes)</option>
-                <option value="Accident / Transport">Accident / Transport</option>
+                <option value="all">Tous les thèmes</option>
                 <option value="Agriculture">Agriculture</option>
+                <option value="Animaliste">Animaliste</option>
+                <option value="Apologie">Apologie</option>
                 <option value="Armes">Armes</option>
-                <option value="Attentat / Terrorisme">Attentat / Terrorisme</option>
+                <option value="Blocage grève">Blocage grève</option>
                 <option value="Chasse">Chasse</option>
-                <option value="Cyberattaque / Piratage">Cyberattaque / Piratage</option>
+                <option value="Criminalité organisée">Criminalité organisée</option>
+                <option value="Culte">Culte</option>
+                <option value="Cybercriminalité">Cybercriminalité</option>
                 <option value="Délinquance criminalité">Délinquance criminalité</option>
-                <option value="Disparition">Disparition</option>
+                <option value="Dérives Sectaires">Dérives Sectaires</option>
+                <option value="Drones">Drones</option>
                 <option value="Ecologie">Ecologie</option>
-                <option value="Economie locale">Economie locale</option>
-                <option value="Fait divers">Fait divers</option>
+                <option value="Education nationale">Education nationale</option>
+                <option value="Elections 2027">Elections 2027</option>
+                <option value="Ferroviaire">Ferroviaire</option>
+                <option value="Festivité Evènements voie publique">Festivité Evènements voie publique</option>
                 <option value="Free Rave Teknival">Free Rave Teknival</option>
                 <option value="Immigration">Immigration</option>
-                <option value="Incendie / Feu de forêt">Incendie / Feu de forêt</option>
-                <option value="Inondation / Intempérie">Inondation / Intempérie</option>
-                <option value="Justice / Procès">Justice / Procès</option>
+                <option value="Intrusion">Intrusion</option>
+                <option value="JOPH 2030">JOPH 2030</option>
                 <option value="Manifestation">Manifestation</option>
-                <option value="Narcotrafic / Drogue">Narcotrafic / Drogue</option>
-                <option value="Police / Gendarmerie">Police / Gendarmerie</option>
-                <option value="Politique locale">Politique locale</option>
-                <option value="Reseaux Sociaux">Réseaux Sociaux</option>
-                <option value="Santé publique">Santé publique</option>
-                <option value="Sécheresse / Eau">Sécheresse / Eau</option>
-                <option value="Sûreté publique">Sûreté publique</option>
+                <option value="Nucléaire">Nucléaire</option>
+                <option value="Pêche">Pêche</option>
+                <option value="Prévention de la délinquance">Prévention de la délinquance</option>
+                <option value="Projet aménagement contesté (PAC)">Projet aménagement contesté (PAC)</option>
+                <option value="Prosélytisme">Prosélytisme</option>
+                <option value="Radicalisation">Radicalisation</option>
+                <option value="Santé">Santé</option>
+                <option value="Séparatisme">Séparatisme</option>
+                <option value="Survivalisme">Survivalisme</option>
+                <option value="Terrorisme">Terrorisme</option>
+                <option value="Transport">Transport</option>
                 <option value="Ultra droite">Ultra droite</option>
                 <option value="Ultra gauche">Ultra gauche</option>
+                <option value="Visite officielle">Visite officielle</option>
             </select>
         </div>
         
@@ -416,21 +426,21 @@
                 const defaultTrends = [
                     { term: "agriculture", score: 90 },
                     { term: "manifestation", score: 85 },
-                    { term: "sûreté publique", score: 80 },
+                    { term: "sécurité", score: 80 },
                     { term: "écologie", score: 75 },
                     { term: "délinquance", score: 70 },
                     { term: "immigration", score: 65 },
                     { term: "réseaux sociaux", score: 60 },
                     { term: "transports", score: 55 },
-                    { term: "sécurité routière", score: 50 },
+                    { term: "narcotrafic", score: 50 },
                     { term: "énergie", score: 45 },
                     { term: "climat", score: 40 },
                     { term: "santé", score: 35 },
-                    { term: "économie locale", score: 30 },
+                    { term: "économie", score: 30 },
                     { term: "sécheresse", score: 25 },
                     { term: "inondations", score: 20 },
                     { term: "cyberattaque", score: 18 },
-                    { term: "radar / contrôle", score: 15 },
+                    { term: "blocage grève", score: 15 },
                     { term: "législation", score: 12 },
                     { term: "zone sud", score: 10 },
                     { term: "osint france", score: 10 }
@@ -527,12 +537,12 @@
             // Filtre par source (orange, red, blue ou all)
             const matchSrc = (src === 'all' || evt.source_category === src);
             
-            // Filtre par thème (Recherche souple / insensible à la casse et aux espaces)
+            // Filtre par thème exact
             const eventTheme = (evt.theme || '').toLowerCase().trim();
             const selectedTheme = t.toLowerCase().trim();
-            const matchT = (t === 'all' || eventTheme === selectedTheme || eventTheme.includes(selectedTheme));
+            const matchT = (t === 'all' || eventTheme === selectedTheme);
 
-            // Filtre par mots-clés dans la barre de recherche
+            // Filtre par mots-clés dans la barre de recherche textuelle
             let matchSearch = true;
             if (search) {
                 const searchText = `${evt.title || ''} ${evt.source_name || ''} ${evt.theme || ''} ${evt.region || ''} ${evt.description || evt.summary || ''}`.toLowerCase();
