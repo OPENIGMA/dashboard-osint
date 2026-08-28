@@ -348,14 +348,51 @@
         }
     }
 
-    function normalizeRegion(regionName) {
-        if (!regionName) return 'OTHER';
-        const reg = regionName.toLowerCase();
-        if (reg.includes('occitanie')) return 'OCCITANIE';
-        if (reg.includes('paca') || reg.includes('provence')) return 'PACA';
-        if (reg.includes('corse')) return 'CORSE';
-        return 'OTHER';
+    function normalizeRegion(regionName, sourceName) {
+    const reg = (regionName || '').toLowerCase();
+    const src = (sourceName || '').toLowerCase();
+
+    // 1. Détection via la région si elle existe déjà dans le JSON
+    if (reg.includes('occitanie')) return 'OCCITANIE';
+    if (reg.includes('paca') || reg.includes('provence')) return 'PACA';
+    if (reg.includes('corse')) return 'CORSE';
+
+    // 2. Mapping automatique basé sur la source (source_name)
+    // --- OCCITANIE ---
+    if (
+        src.includes('dépêche') || 
+        src.includes('midi libre') || 
+        src.includes('indépendant') || 
+        src.includes('montagne') || 
+        src.includes('journal toulousain') || 
+        src.includes('gazette du midi') || 
+        src.includes('france 3 occitanie')
+    ) {
+        return 'OCCITANIE';
     }
+
+    // --- PACA ---
+    if (
+        src.includes('provence') || 
+        src.includes('nice-matin') || 
+        src.includes('var-matin') || 
+        src.includes('marseillaise') || 
+        src.includes('dauphiné') || 
+        src.includes('france 3 paca')
+    ) {
+        return 'PACA';
+    }
+
+    // --- CORSE ---
+    if (
+        src.includes('corse-matin') || 
+        src.includes('france 3 corse')
+    ) {
+        return 'CORSE';
+    }
+
+    return 'OTHER';
+}
 
     function applyFilters() {
         const src = selSource.value;
