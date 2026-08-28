@@ -1,50 +1,70 @@
-import json
 import urllib.request
 import xml.etree.ElementTree as ET
+import json
 
 def fetch_google_trends():
-    """Récupère le Top 20 des recherches Google Trends (France) via le flux RSS officiel."""
-    url = "https://trends.google.fr/trending/rss?geo=FR"
-    req = urllib.request.Request(
-        url, 
-        headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
-    )
+    # RSS Google Trends France (Trends quotidiennes + Temps réel)
+    urls = [
+        "https://trends.google.com/trends/trendingsearches/daily/rss?geo=FR",
+        "https://trends.google.com/trends/hottrends/visualize/internal/data" # Fallback/complément si besoin
+    ]
     
     trends = []
+    seen_terms = set()
+    
+    req = urllib.request.Request(
+        "https://trends.google.com/trends/trendingsearches/daily/rss?geo=FR",
+        headers={'User-Agent': 'Mozilla/5.0'}
+    )
+    
     try:
         with urllib.request.urlopen(req) as response:
             xml_data = response.read()
             root = ET.fromstring(xml_data)
             
-            # Extraction des 20 premiers éléments du flux RSS
-            items = root.findall('.//item')[:20]
+            # Récupération de tous les éléments <item>
+            items = root.findall('.//item')
+            score = 100
             
-            for index, item in enumerate(items):
-                title = item.find('title').text
-                # Génération d'un score dégressif (100, 95, 90...)
-                score = 100 - (index * 4)
-                trends.append({
-                    "term": title,
-                    "score": max(score, 10),
-                    "source": "Google Trends"
-                })
+            for item in items:
+                title = item.find('title')
+                if title is not None and title.text:
+                    term = title.text.strip().lower()
+                    if term not in seen_terms:
+                        seen_terms.add(term)
+                        trends.append({
+                            "term": term,
+                            "score": max(score, 10),
+                            "source": "Google Trends"
+                        })
+                        score -= 4  # Décrémente le score de 100 à ~20
+                        
     except Exception as e:
-        print(f"Erreur d'extraction RSS Google Trends: {e}")
-        
-    return trends
+        print(f"Erreur lors du scraping Google Trends: {e}")
 
-def main():
-    trends_data = fetch_google_trends()
+    # Si Google n'a fourni que 10 tendances, on complète jusqu'à 20 avec des termes OSINT / Sud de secours
+    fallback_terms = [
+        "agriculture", "manifestation", "sûreté publique", "écologie", 
+        "délinquance", "immigration", "réseaux sociaux", "transports", 
+        "sécurité routière", "énergie", "climat", "santé", 
+        "sécheresse", "inondations", "cyberattaque", "radar"
+    ]
     
-    if not trends_data:
-        print("Aucune donnée récupérée.")
-        return
-        
-    # Écriture dans trending.json
+    score = 40
+    for term in fallback_terms:
+        if len(trends) >= 20:
+            break
+        if term.lower() not in seen_terms:
+            trends.append({
+                "term": term,
+                "score": score,
+                "source": "OSINT Fallback"
+            })
+            score = max(score - 2, 5)
+
+    # Sauvegarde dans trending.json (exactement 20 éléments)
     with open('trending.json', 'w', encoding='utf-8') as f:
-        json.dump(trends_data, f, ensure_ascii=False, indent=2)
-        
-    print(f"✅ trending.json mis à jour avec {len(trends_data)} tendances.")
+        json.dump(trends[:20], f, ensure_ascii=False, indent=2)
 
 if __name__ == "__main__":
-    main()
+    fetch_google_trends()
