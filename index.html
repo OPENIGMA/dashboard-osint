@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard OSINT - Zone Sud</title>
-    <!-- Chart.js pour l'histogramme des tendances -->
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -98,7 +98,7 @@
         }
         .btn-osint:hover { background: #2ea043; }
 
-        /* BLOC TOP 10 TENDANCES - Taille réduite (75px) */
+        /* BLOC TOP 10 TENDANCES DU WEB */
         .trends-container {
             background: #0d1117;
             border: 1px solid #30363d;
@@ -118,11 +118,11 @@
         }
         .chart-wrapper {
             position: relative;
-            height: 75px; 
+            height: 85px; 
             width: 100%;
         }
 
-        /* ESPACE PRINCIPAL (Les 3 Colonnes) */
+        /* ESPACE PRINCIPAL */
         main {
             flex: 1;
             display: flex;
@@ -170,6 +170,17 @@
             padding: 6px;
         }
 
+        /* BLOC HORS ZONE */
+        .other-zone {
+            background: #161b22;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+            max-height: 140px;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
         /* Cartes d'alertes */
         .alert-card {
             background: #0d1117;
@@ -193,7 +204,7 @@
         .badge.blue { background: #00d4ff; color: #0d1117; }
         .badge.source { background: #30363d; color: #e6edf3; }
 
-        .empty-state { text-align: center; color: #8b949e; padding: 15px; font-style: italic; font-size: 0.75rem; }
+        .empty-state { text-align: center; color: #8b949e; padding: 10px; font-style: italic; font-size: 0.75rem; }
     </style>
 </head>
 <body>
@@ -253,11 +264,11 @@
         <button class="btn-osint" onclick="runOsintSearch()">Rechercher</button>
     </div>
 
-    <!-- TOP 10 GENERÉ DEPUIS DATA_FEED.JSON -->
+    <!-- TOP 10 TENDANCES REELLES DEPUIS TRENDING.JSON -->
     <div class="trends-container">
         <div class="trends-header">
-            <span>🔥 TOP 10 TENDANCES (Extrait de data_feed.json)</span>
-            <span style="color:#8b949e; font-size:0.6rem;">💡 Cliquez sur une barre pour rechercher le terme</span>
+            <span>🔥 TOP 10 DES TENDANCES (GOOGLE TRENDS + X)</span>
+            <span style="color:#8b949e; font-size:0.6rem;">💡 Cliquez sur une barre pour lancer le Dork</span>
         </div>
         <div class="chart-wrapper">
             <canvas id="trendsChart"></canvas>
@@ -290,6 +301,15 @@
             </div>
             <div class="column-body" id="feed-corse"></div>
         </div>
+    </div>
+
+    <!-- REHABILITATION DU BLOC HORS ZONE -->
+    <div class="other-zone" id="container-other" style="display:none;">
+        <div class="column-header">
+            <span>🌐 Hors Zone / Non spécifié</span>
+            <span class="col-count" id="count-other">0</span>
+        </div>
+        <div class="column-body" id="feed-other"></div>
     </div>
 </main>
 
@@ -329,6 +349,67 @@
         window.open(`https://www.google.com/search?q=${encodeURIComponent(dork)}`, '_blank');
     }
 
+    // CHARGEMENT DES TENDANCES WEB (trending.json)
+    async function loadTrendsChart() {
+        try {
+            const response = await fetch('trending.json?t=' + new Date().getTime());
+            if (!response.ok) return;
+            const trends = await response.json();
+
+            if (!trends || trends.length === 0) return;
+
+            const labels = trends.map(t => t.term);
+            const dataScores = trends.map(t => t.score);
+            const backgroundColors = trends.map(t => t.source === "X (Twitter)" ? '#ff4444' : '#00d4ff');
+
+            const ctx = document.getElementById('trendsChart').getContext('2d');
+            if (trendsChartInstance) trendsChartInstance.destroy();
+
+            trendsChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: dataScores,
+                        backgroundColor: backgroundColors,
+                        borderRadius: 2,
+                        barThickness: 5
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (ctx) => ` Source: ${trends[ctx.dataIndex].source || 'Web'}`
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { display: false },
+                        y: {
+                            ticks: { color: '#e6edf3', font: { size: 9 } },
+                            grid: { display: false }
+                        }
+                    },
+                    onClick: (e, elements) => {
+                        if (elements && elements.length > 0) {
+                            const index = elements[0].index;
+                            const term = labels[index];
+                            document.getElementById('osint-query').value = term;
+                            runOsintSearch(term);
+                        }
+                    }
+                }
+            });
+        } catch (e) {
+            console.error("Erreur de chargement du fichier trending.json", e);
+        }
+    }
+
     function cleanKeys(obj) {
         if (Array.isArray(obj)) return obj.map(cleanKeys);
         if (obj !== null && typeof obj === 'object') {
@@ -341,92 +422,11 @@
         return obj;
     }
 
-    // EXTRACTION DU TOP 10 DEPUIS DATA_FEED.JSON
-    function computeAndRenderTrends(data) {
-        const counts = {};
-        const stopWords = new Set(["les", "des", "pour", "dans", "avec", "sur", "par", "une", "des", "que", "qui", "est", "pas", "plus", "du", "de", "la", "le", "un", "en", "et", "a", "au", "aux"]);
-
-        data.forEach(evt => {
-            // Utiliser d'abord le thème s'il existe
-            if (evt.theme) {
-                counts[evt.theme] = (counts[evt.theme] || 0) + 3;
-            }
-            // Découper les mots du titre
-            if (evt.title) {
-                const words = evt.title.toLowerCase().replace(/[^\wàâäéèêëîïôöùûüç\-]/g, ' ').split(/\s+/);
-                words.forEach(w => {
-                    if (w.length > 3 && !stopWords.has(w)) {
-                        const capitalized = w.charAt(0).toUpperCase() + w.slice(1);
-                        counts[capitalized] = (counts[capitalized] || 0) + 1;
-                    }
-                });
-            }
-        });
-
-        // Trier et prendre le Top 10
-        const sorted = Object.entries(counts)
-            .sort((a, b) => b[1] - a[1])
-            .slice(0, 10);
-
-        const labels = sorted.map(item => item[0]);
-        const dataScores = sorted.map(item => item[1]);
-
-        const ctx = document.getElementById('trendsChart').getContext('2d');
-        if (trendsChartInstance) trendsChartInstance.destroy();
-
-        trendsChartInstance = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    data: dataScores,
-                    backgroundColor: '#00d4ff',
-                    hoverBackgroundColor: '#ff9900',
-                    borderRadius: 3,
-                    barThickness: 5
-                }]
-            },
-            options: {
-                indexAxis: 'y',
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false },
-                    tooltip: {
-                        callbacks: {
-                            label: (ctx) => ` Occurrences : ${ctx.raw}`
-                        }
-                    }
-                },
-                scales: {
-                    x: { display: false },
-                    y: {
-                        ticks: { color: '#e6edf3', font: { size: 9 } },
-                        grid: { display: false }
-                    }
-                },
-                // ACTION AU CLIC SUR UNE BARRE
-                onClick: (e, elements) => {
-                    if (elements && elements.length > 0) {
-                        const index = elements[0].index;
-                        const term = labels[index];
-                        document.getElementById('osint-query').value = term;
-                        runOsintSearch(term);
-                    }
-                }
-            }
-        });
-    }
-
     async function loadData() {
         try {
             const response = await fetch('data_feed.json?t=' + new Date().getTime());
             const rawData = await response.json();
             allData = cleanKeys(rawData);
-            
-            // Calculer et afficher les tendances à partir des données réelles
-            computeAndRenderTrends(allData);
-            
             applyFilters();
         } catch (e) {
             console.error("Erreur de chargement du fichier data_feed.json", e);
@@ -452,7 +452,7 @@
             return 'CORSE';
         }
 
-        return 'OCCITANIE'; // Par défaut
+        return 'OTHER';
     }
 
     function applyFilters() {
@@ -471,16 +471,24 @@
             return matchSrc && matchT && matchSearch;
         });
 
-        const grouped = { OCCITANIE: [], PACA: [], CORSE: [] };
+        const grouped = { OCCITANIE: [], PACA: [], CORSE: [], OTHER: [] };
 
         filtered.forEach(evt => {
             const regKey = normalizeRegion(evt.region, evt.source_name);
-            if (grouped[regKey]) grouped[regKey].push(evt);
+            grouped[regKey].push(evt);
         });
 
         renderColumn('feed-occitanie', 'count-occitanie', grouped.OCCITANIE);
         renderColumn('feed-paca', 'count-paca', grouped.PACA);
         renderColumn('feed-corse', 'count-corse', grouped.CORSE);
+
+        const otherContainer = document.getElementById('container-other');
+        if (grouped.OTHER.length > 0) {
+            otherContainer.style.display = 'flex';
+            renderColumn('feed-other', 'count-other', grouped.OTHER);
+        } else {
+            otherContainer.style.display = 'none';
+        }
 
         document.getElementById('count-badge').innerText = `${filtered.length} alerte(s)`;
     }
@@ -511,6 +519,7 @@
     }
 
     loadData();
+    loadTrendsChart();
 </script>
 </body>
 </html>
