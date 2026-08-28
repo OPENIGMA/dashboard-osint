@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard OSINT - Zone Sud</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -62,11 +61,6 @@
             border-color: #00d4ff;
             box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2);
         }
-        select:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            background: #161b22;
-        }
         #search-box {
             flex: 1;
             min-width: 200px;
@@ -85,25 +79,18 @@
             align-items: center;
         }
 
-        /* MAIN - Carte à gauche, Feed à droite */
+        /* MAIN - Zone des alertes */
         main {
             flex: 1;
             display: flex;
             overflow: hidden;
         }
-        #map {
-            width: 50%;
-            height: 100%;
-            background: #0d1117;
-            z-index: 1;
-        }
         #feed {
-            width: 50%;
+            width: 100%;
             height: 100%;
             overflow-y: auto;
             padding: 20px;
             background: #0d1117;
-            border-left: 2px solid #30363d;
         }
         
         /* Scrollbar personnalisée */
@@ -217,21 +204,6 @@
     </div>
     
     <div class="filter-group">
-        <label>Région</label>
-        <select id="filter-region"><option value="all">Toutes</option></select>
-    </div>
-    
-    <div class="filter-group">
-        <label>Département</label>
-        <select id="filter-dept" disabled><option value="all">Tous</option></select>
-    </div>
-    
-    <div class="filter-group">
-        <label>Ville</label>
-        <select id="filter-city" disabled><option value="all">Toutes</option></select>
-    </div>
-    
-    <div class="filter-group">
         <label>Thématique</label>
         <select id="filter-theme">
             <option value="all">Toutes</option>
@@ -277,116 +249,30 @@
     
     <div class="filter-group" style="flex:1; min-width:200px;">
         <label>🔎 Recherche</label>
-        <input type="text" id="search-box" placeholder="Rechercher dans titres, villes, sources...">
+        <input type="text" id="search-box" placeholder="Rechercher dans titres, sources...">
     </div>
     
     <div id="count-badge">0 alerte(s)</div>
 </header>
 
 <main>
-    <div id="map"></div>
     <div id="feed">
         <div class="empty-state">Chargement des données OSINT...</div>
     </div>
 </main>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-    // 1. Géographie pour les filtres en cascade
-    const GEO_DATA = {
-        "OCCITANIE": {
-            "09": ["Foix", "Pamiers", "Saint-Girons"], "11": ["Carcassonne", "Narbonne", "Limoux"],
-            "12": ["Rodez", "Millau"], "30": ["Nîmes", "Alès", "Bagnols-sur-Cèze"],
-            "31": ["Toulouse", "Blagnac", "Colomiers", "Muret"], "32": ["Auch"],
-            "34": ["Montpellier", "Béziers", "Sète", "Agde"], "46": ["Cahors", "Figeac"],
-            "48": ["Mende"], "65": ["Tarbes", "Lourdes"], "66": ["Perpignan"],
-            "81": ["Albi", "Castres"], "82": ["Montauban"]
-        },
-        "PACA": {
-            "04": ["Digne-les-Bains", "Manosque"], "05": ["Gap", "Briançon"],
-            "06": ["Nice", "Cannes", "Antibes", "Grasse"], "13": ["Marseille", "Aix-en-Provence", "Arles"],
-            "83": ["Toulon", "La Seyne-sur-Mer", "Hyères", "Fréjus"], "84": ["Avignon", "Orange", "Carpentras"]
-        },
-        "CORSE": {
-            "2A": ["Ajaccio", "Porto-Vecchio"], "2B": ["Bastia", "Corte"]
-        }
-    };
-
     let allData = [];
-    let map = L.map('map').setView([43.6, 3.8], 7);
-    
-    // Couches de carte gratuites et sans clé API
-    const osmClassic = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
-        attribution: '© OpenStreetMap',
-        maxZoom: 19
-    });
-    const osmTopo = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', { 
-        attribution: '© OpenTopoMap',
-        maxZoom: 17
-    });
-    const esriSatellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { 
-        attribution: '© Esri World Imagery',
-        maxZoom: 19
-    });
-
-    // Couche par défaut : OpenStreetMap classique
-    osmClassic.addTo(map);
-
-    // Sélecteur de couches en haut à droite
-    const baseMaps = {
-        "🗺️ Plan": osmClassic,
-        "⛰️ Relief": osmTopo,
-        "🛰️ Satellite": esriSatellite
-    };
-    L.control.layers(baseMaps, null, { position: 'topright' }).addTo(map);
-    
-    let markersLayer = L.layerGroup().addTo(map);
 
     const selSource = document.getElementById('filter-source');
-    const selRegion = document.getElementById('filter-region');
-    const selDept = document.getElementById('filter-dept');
-    const selCity = document.getElementById('filter-city');
     const selTheme = document.getElementById('filter-theme');
     const searchBox = document.getElementById('search-box');
 
-    // Peupler les régions
-    Object.keys(GEO_DATA).forEach(r => selRegion.add(new Option(r, r)));
-
-    // Filtre en cascade : Région -> Département
-    selRegion.addEventListener('change', () => {
-        selDept.innerHTML = '<option value="all">Tous</option>';
-        selCity.innerHTML = '<option value="all">Toutes</option>';
-        selCity.disabled = true;
-        
-        if (selRegion.value !== 'all') {
-            selDept.disabled = false;
-            Object.keys(GEO_DATA[selRegion.value]).forEach(d => {
-                selDept.add(new Option(d, d));
-            });
-        } else {
-            selDept.disabled = true;
-        }
-        applyFilters();
-    });
-
-    // Filtre en cascade : Département -> Ville
-    selDept.addEventListener('change', () => {
-        selCity.innerHTML = '<option value="all">Toutes</option>';
-        if (selRegion.value !== 'all' && selDept.value !== 'all') {
-            selCity.disabled = false;
-            GEO_DATA[selRegion.value][selDept.value].forEach(c => selCity.add(new Option(c, c)));
-        } else {
-            selCity.disabled = true;
-        }
-        applyFilters();
-    });
-
-    selCity.addEventListener('change', applyFilters);
     selTheme.addEventListener('change', applyFilters);
     selSource.addEventListener('change', applyFilters);
     searchBox.addEventListener('input', applyFilters);
 
-    // 2. Fonction de nettoyage du JSON (supprime les espaces parasites dans les clés)
+    // Fonction de nettoyage du JSON
     function cleanKeys(obj) {
         if (Array.isArray(obj)) return obj.map(cleanKeys);
         if (obj !== null && typeof obj === 'object') {
@@ -399,12 +285,12 @@
         return obj;
     }
 
-    // 3. Chargement des données
+    // Chargement des données
     async function loadData() {
         try {
             const response = await fetch('data_feed.json?t=' + new Date().getTime());
             const rawData = await response.json();
-            allData = cleanKeys(rawData); // Nettoyage à la volée
+            allData = cleanKeys(rawData);
             applyFilters();
         } catch (e) {
             console.error("Erreur chargement data_feed.json", e);
@@ -412,34 +298,26 @@
         }
     }
 
-    // 4. Application des filtres et affichage
+    // Application des filtres et affichage
     function applyFilters() {
         const src = selSource.value;
-        const r = selRegion.value;
-        const d = selDept.value;
-        const c = selCity.value;
         const t = selTheme.value;
         const search = searchBox.value.toLowerCase().trim();
 
         const filtered = allData.filter(evt => {
-            const loc = evt.location || {};
             const matchSrc = (src === 'all' || evt.source_category === src);
-            const matchR = (r === 'all' || loc.region === r);
-            const matchD = (d === 'all' || loc.department === d);
-            const matchC = (c === 'all' || loc.city === c);
             const matchT = (t === 'all' || evt.theme === t);
             
             let matchSearch = true;
             if (search) {
-                const searchText = `${evt.title} ${evt.source_name} ${loc.city} ${evt.theme}`.toLowerCase();
+                const searchText = `${evt.title} ${evt.source_name} ${evt.theme}`.toLowerCase();
                 matchSearch = searchText.includes(search);
             }
             
-            return matchSrc && matchR && matchD && matchC && matchT && matchSearch;
+            return matchSrc && matchT && matchSearch;
         });
 
         renderFeed(filtered);
-        renderMap(filtered);
         document.getElementById('count-badge').innerText = `${filtered.length} alerte(s)`;
     }
 
@@ -451,7 +329,6 @@
         }
         
         feed.innerHTML = data.map(evt => {
-            const loc = evt.location || {};
             const dateStr = evt.timestamp ? new Date(evt.timestamp).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' }) : 'Date inconnue';
             const sourceCat = evt.source_category || 'blue';
             const sourceText = evt.source_name || 'Inconnue';
@@ -461,7 +338,6 @@
                 <h4><a href="${evt.url}" target="_blank">${evt.title}</a></h4>
                 <div class="meta">
                     <span class="badge ${sourceCat}">${evt.theme || 'Non classé'}</span>
-                    <span>${loc.city ? loc.city + ' (' + loc.department + ')' : 'Localisation inconnue'}</span>
                 </div>
                 <div class="meta" style="margin-top:5px;">
                     <span class="badge source">${sourceText}</span>
@@ -470,18 +346,6 @@
             </div>
         `}).join('');
     }
-
-function renderMap(data) {
-    markersLayer.clearLayers();
-    data.forEach(evt => {
-        // Sécurité : vérifier que lat et lng sont bien des nombres valides
-        if (evt.location && typeof evt.location.lat === 'number' && typeof evt.location.lng === 'number') {
-            const marker = L.marker([evt.location.lat, evt.location.lng]);
-            marker.bindPopup(`<b style="color:#0d1117">${evt.title}</b><br><a href="${evt.url}" target="_blank" style="color:#0056b3">Lire l'article</a>`);
-            markersLayer.addLayer(marker);
-        }
-    });
-}
 
     // Initialisation
     loadData();
