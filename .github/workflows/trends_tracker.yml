@@ -1,0 +1,31 @@
+name: Update Web Trends
+
+on:
+  schedule:
+    - cron: '0 * * * *' # S'exécute automatiquement toutes les heures
+  workflow_dispatch: # Permet de le lancer manuellement depuis l'onglet Actions de GitHub
+
+permissions:
+  contents: write
+
+jobs:
+  update-trends:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Execute trends script
+        run: python get_trends.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add trending.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update trending.json" && git push)
