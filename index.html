@@ -98,15 +98,15 @@
         }
         .btn-osint:hover { background: #2ea043; }
 
-        /* BLOC TOP 10 TENDANCES DU WEB */
+        /* BLOC TOP 20 TENDANCES COMPACT EN 4 COLONNES (4 x 5) */
         .trends-container {
             background: #0d1117;
             border: 1px solid #30363d;
             border-radius: 4px;
-            padding: 4px 8px;
+            padding: 6px 10px;
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 4px;
         }
         .trends-header {
             display: flex;
@@ -116,10 +116,58 @@
             font-weight: bold;
             color: #00d4ff;
         }
-        .chart-wrapper {
-            position: relative;
-            height: 85px; 
-            width: 100%;
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4 colonnes côte à côte */
+            grid-template-rows: repeat(5, auto);   /* 5 éléments par colonne */
+            grid-auto-flow: column;
+            gap: 3px 10px;
+            max-height: 95px;
+            overflow-y: auto;
+        }
+        .trend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.67rem;
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 3px;
+            transition: background 0.15s;
+        }
+        .trend-item:hover {
+            background: #21262d;
+        }
+        .trend-rank {
+            color: #8b949e;
+            font-weight: bold;
+            font-size: 0.62rem;
+            width: 16px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .trend-term {
+            color: #e6edf3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex: 1;
+        }
+        .trend-bar-wrapper {
+            width: 35px;
+            height: 4px;
+            background: #21262d;
+            border-radius: 2px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .trend-bar-fill {
+            height: 100%;
+            background: #00d4ff;
+            border-radius: 2px;
+        }
+        .trend-item:hover .trend-bar-fill {
+            background: #ff9900;
         }
 
         /* ESPACE PRINCIPAL */
@@ -251,7 +299,7 @@
     <!-- RECHERCHE OSINT -->
     <div class="osint-bar">
         <label>🔍 DORK :</label>
-        <input type="text" id="osint-query" placeholder="Saisir ou cliquer sur une barre du Top 10..." style="flex:1; min-width:140px;">
+        <input type="text" id="osint-query" placeholder="Saisir ou cliquer sur une tendance..." style="flex:1; min-width:140px;">
         
         <select id="osint-platform">
             <option value="all">🌐 Tous Réseaux</option>
@@ -264,15 +312,13 @@
         <button class="btn-osint" onclick="runOsintSearch()">Rechercher</button>
     </div>
 
-    <!-- TOP 10 TENDANCES REELLES DEPUIS TRENDING.JSON -->
+    <!-- TOP 20 TENDANCES SUR 4 COLONNES (4 x 5) -->
     <div class="trends-container">
         <div class="trends-header">
-            <span>🔥 TOP 10 DES TENDANCES (GOOGLE TRENDS + X)</span>
-            <span style="color:#8b949e; font-size:0.6rem;">💡 Cliquez sur une barre pour lancer le Dork</span>
+            <span>🔥 TOP 20 TENDANCES WEB (GOOGLE TRENDS)</span>
+            <span style="color:#8b949e; font-size:0.6rem;">💡 Cliquez sur un sujet pour lancer la recherche Dork</span>
         </div>
-        <div class="chart-wrapper">
-            <canvas id="trendsChart"></canvas>
-        </div>
+        <div id="trends-grid" class="trends-grid"></div>
     </div>
 </header>
 
@@ -315,7 +361,6 @@
 
 <script>
     let allData = [];
-    let trendsChartInstance = null;
 
     const selSource = document.getElementById('filter-source');
     const selTheme = document.getElementById('filter-theme');
@@ -349,7 +394,7 @@
         window.open(`https://www.google.com/search?q=${encodeURIComponent(dork)}`, '_blank');
     }
 
-    // CHARGEMENT DES TENDANCES WEB (trending.json)
+    // CHARGEMENT ET AFFICHAGE DU TOP 20 EN 4 COLONNES DE 5 ÉLÉMENTS
     async function loadTrendsChart() {
         try {
             const response = await fetch('trending.json?t=' + new Date().getTime());
@@ -358,56 +403,32 @@
 
             if (!trends || trends.length === 0) return;
 
-            const labels = trends.map(t => t.term);
-            const dataScores = trends.map(t => t.score);
-            const backgroundColors = trends.map(t => t.source === "X (Twitter)" ? '#ff4444' : '#00d4ff');
+            const gridContainer = document.getElementById('trends-grid');
+            if (!gridContainer) return;
 
-            const ctx = document.getElementById('trendsChart').getContext('2d');
-            if (trendsChartInstance) trendsChartInstance.destroy();
+            gridContainer.innerHTML = trends.slice(0, 20).map((t, index) => {
+                const rank = index + 1;
+                const scorePercent = Math.max(t.score || 10, 10);
+                const safeTerm = t.term.replace(/'/g, "\\'");
+                return `
+                    <div class="trend-item" onclick="selectTrend('${safeTerm}')">
+                        <span class="trend-rank">${rank}.</span>
+                        <span class="trend-term" title="${t.term}">${t.term}</span>
+                        <div class="trend-bar-wrapper">
+                            <div class="trend-bar-fill" style="width: ${scorePercent}%;"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
 
-            trendsChartInstance = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        data: dataScores,
-                        backgroundColor: backgroundColors,
-                        borderRadius: 2,
-                        barThickness: 5
-                    }]
-                },
-                options: {
-                    indexAxis: 'y',
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            callbacks: {
-                                label: (ctx) => ` Source: ${trends[ctx.dataIndex].source || 'Web'}`
-                            }
-                        }
-                    },
-                    scales: {
-                        x: { display: false },
-                        y: {
-                            ticks: { color: '#e6edf3', font: { size: 9 } },
-                            grid: { display: false }
-                        }
-                    },
-                    onClick: (e, elements) => {
-                        if (elements && elements.length > 0) {
-                            const index = elements[0].index;
-                            const term = labels[index];
-                            document.getElementById('osint-query').value = term;
-                            runOsintSearch(term);
-                        }
-                    }
-                }
-            });
         } catch (e) {
             console.error("Erreur de chargement du fichier trending.json", e);
         }
+    }
+
+    function selectTrend(term) {
+        document.getElementById('osint-query').value = term;
+        runOsintSearch(term);
     }
 
     function cleanKeys(obj) {
@@ -505,7 +526,6 @@
         feed.innerHTML = data.map(evt => {
             const dateStr = evt.timestamp ? new Date(evt.timestamp).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit' }) : '';
             const sourceCat = evt.source_category || 'blue';
-            const sourceText = evt.source_name || 'Info';
             
             return `
             <div class="alert-card ${sourceCat}">
