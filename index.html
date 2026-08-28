@@ -18,142 +18,130 @@
             overflow: hidden;
         }
         
-        /* HEADER - Filtres et Dork OSINT */
+        /* HEADER COMPACT - Filtres, Dork et Tendances */
         header {
             background: #161b22;
             border-bottom: 2px solid #00d4ff;
-            padding: 12px 20px;
+            padding: 8px 15px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
             box-shadow: 0 2px 10px rgba(0, 212, 255, 0.15);
+            flex-shrink: 0;
         }
         .header-top, .osint-bar {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
-            align-items: flex-end;
+            gap: 8px;
+            align-items: center;
         }
         .header-top h1 {
             color: #00d4ff;
-            font-size: 1.2rem;
-            margin-right: 15px;
+            font-size: 1rem;
+            margin-right: 10px;
             white-space: nowrap;
-            align-self: center;
         }
         .filter-group {
             display: flex;
-            flex-direction: column;
-            gap: 4px;
+            align-items: center;
+            gap: 5px;
         }
         .filter-group label {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #8b949e;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             font-weight: bold;
         }
         select, input[type="text"] {
             background: #0d1117;
             color: #e6edf3;
             border: 1px solid #30363d;
-            border-radius: 5px;
-            padding: 6px 10px;
-            font-size: 0.85rem;
-            min-width: 130px;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 0.8rem;
             outline: none;
-            transition: border 0.2s, box-shadow 0.2s;
+            transition: border 0.2s;
         }
         select:focus, input[type="text"]:focus {
             border-color: #00d4ff;
-            box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2);
         }
         #count-badge {
             background: #00d4ff;
             color: #0d1117;
-            padding: 6px 14px;
-            border-radius: 20px;
+            padding: 3px 10px;
+            border-radius: 12px;
             font-weight: bold;
-            font-size: 0.85rem;
-            white-space: nowrap;
-            align-self: center;
-            height: 32px;
-            display: flex;
-            align-items: center;
+            font-size: 0.75rem;
             margin-left: auto;
         }
 
-        /* Barre d'outil OSINT Réseaux */
+        /* Barre OSINT compacte */
         .osint-bar {
             background: #0d1117;
-            padding: 8px 12px;
-            border-radius: 6px;
+            padding: 4px 8px;
+            border-radius: 4px;
             border: 1px dashed #30363d;
-            align-items: center;
         }
         .osint-bar label {
             color: #00d4ff;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: bold;
         }
         .btn-osint {
             background: #238636;
             color: #ffffff;
             border: none;
-            padding: 6px 14px;
-            border-radius: 5px;
+            padding: 4px 10px;
+            border-radius: 4px;
             font-weight: bold;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             cursor: pointer;
-            transition: background 0.2s;
         }
-        .btn-osint:hover {
-            background: #2ea043;
-        }
+        .btn-osint:hover { background: #2ea043; }
 
-        /* Module Top 10 Tendances */
+        /* Module Top 10 Tendances REDIMENSIONNÉ */
         .trends-container {
             background: #0d1117;
             border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 8px 12px;
+            border-radius: 4px;
+            padding: 4px 8px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 2px;
         }
         .trends-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: bold;
             color: #00d4ff;
         }
         .chart-wrapper {
             position: relative;
-            height: 140px;
+            height: 80px; /* Taille fortement réduite pour libérer l'espace */
             width: 100%;
         }
 
-        /* MAIN - Layout 3 Colonnes */
+        /* MAIN - Layout optimisé pour la lecture des 3 colonnes */
         main {
             flex: 1;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            padding: 15px;
-            gap: 15px;
+            padding: 10px 15px;
+            gap: 10px;
         }
         .columns-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            gap: 12px;
             flex: 1;
             min-height: 0;
         }
         .region-column {
             background: #161b22;
-            border-radius: 8px;
+            border-radius: 6px;
             border: 1px solid #30363d;
             display: flex;
             flex-direction: column;
@@ -161,9 +149,9 @@
         }
         .column-header {
             background: #21262d;
-            padding: 10px 14px;
+            padding: 6px 10px;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border-bottom: 1px solid #30363d;
             display: flex;
             justify-content: space-between;
@@ -173,27 +161,27 @@
         .column-header .col-count {
             background: #30363d;
             color: #e6edf3;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.75rem;
+            padding: 1px 6px;
+            border-radius: 8px;
+            font-size: 0.7rem;
         }
         .column-body {
             flex: 1;
             overflow-y: auto;
-            padding: 12px;
+            padding: 8px;
         }
         
         .other-zone {
             background: #161b22;
-            border-radius: 8px;
+            border-radius: 6px;
             border: 1px solid #30363d;
-            max-height: 250px;
+            max-height: 150px;
             display: flex;
             flex-direction: column;
         }
 
         /* Scrollbars */
-        .column-body::-webkit-scrollbar { width: 6px; }
+        .column-body::-webkit-scrollbar { width: 5px; }
         .column-body::-webkit-scrollbar-track { background: #0d1117; }
         .column-body::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
         .column-body::-webkit-scrollbar-thumb:hover { background: #00d4ff; }
@@ -202,28 +190,26 @@
         .alert-card {
             background: #0d1117;
             border-left: 3px solid #00d4ff;
-            padding: 10px;
-            margin-bottom: 8px;
-            border-radius: 6px;
-            transition: transform 0.2s;
+            padding: 8px;
+            margin-bottom: 6px;
+            border-radius: 4px;
         }
-        .alert-card:hover { transform: translateX(3px); }
         .alert-card.orange { border-left-color: #ff9900; }
         .alert-card.red { border-left-color: #ff4444; }
         .alert-card.blue { border-left-color: #00d4ff; }
         
-        .alert-card h4 { font-size: 0.85rem; line-height: 1.3; margin-bottom: 6px; }
+        .alert-card h4 { font-size: 0.8rem; line-height: 1.2; margin-bottom: 4px; }
         .alert-card h4 a { color: #e6edf3; text-decoration: none; }
         .alert-card h4 a:hover { color: #00d4ff; text-decoration: underline; }
         
-        .meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; color: #8b949e; }
-        .badge { padding: 2px 6px; border-radius: 8px; font-size: 0.65rem; font-weight: bold; background: #00d4ff; color: #0d1117; }
+        .meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.65rem; color: #8b949e; }
+        .badge { padding: 1px 5px; border-radius: 4px; font-size: 0.6rem; font-weight: bold; background: #00d4ff; color: #0d1117; }
         .badge.orange { background: #ff9900; color: #0d1117; }
         .badge.red { background: #ff4444; color: #fff; }
         .badge.blue { background: #00d4ff; color: #0d1117; }
         .badge.source { background: #30363d; color: #e6edf3; }
 
-        .empty-state { text-align: center; color: #8b949e; padding: 20px 10px; font-style: italic; font-size: 0.8rem; }
+        .empty-state { text-align: center; color: #8b949e; padding: 15px; font-style: italic; font-size: 0.75rem; }
     </style>
 </head>
 <body>
@@ -233,7 +219,7 @@
         <h1>🛰️ OSINT SUD</h1>
         
         <div class="filter-group">
-            <label>Source Flux</label>
+            <label>Source</label>
             <select id="filter-source">
                 <option value="all">Toutes</option>
                 <option value="orange">🟠 Presse Locale</option>
@@ -243,9 +229,9 @@
         </div>
         
         <div class="filter-group">
-            <label>Thématique</label>
+            <label>Thème</label>
             <select id="filter-theme">
-                <option value="all">Toutes</option>
+                <option value="all">Tous</option>
                 <option value="Agriculture">Agriculture</option>
                 <option value="Armes">Armes</option>
                 <option value="Chasse">Chasse</option>
@@ -260,9 +246,8 @@
             </select>
         </div>
         
-        <div class="filter-group" style="flex:1; min-width:180px;">
-            <label>Filtrer le flux</label>
-            <input type="text" id="search-box" placeholder="Mots-clés dans les cartes...">
+        <div class="filter-group" style="flex:1; min-width:150px;">
+            <input type="text" id="search-box" placeholder="Mots-clés cartes..." style="width:100%;">
         </div>
         
         <div id="count-badge">0 alerte(s)</div>
@@ -270,27 +255,25 @@
 
     <!-- MODULE DE RECHERCHE OSINT RESEAUX -->
     <div class="osint-bar">
-        <label>🔍 INVESTIGATION RÉSEAUX SOCIAUX :</label>
-        <input type="text" id="osint-query" placeholder="Saisir un terme (ex: A69, blocage...)" style="flex:1; min-width:200px;">
+        <label>🔍 INVESTIGATION :</label>
+        <input type="text" id="osint-query" placeholder="Terme à rechercher..." style="flex:1; min-width:150px;">
         
-        <div class="filter-group">
-            <select id="osint-platform">
-                <option value="all">🌐 Tous les Réseaux</option>
-                <option value="x">🐦 X (Twitter)</option>
-                <option value="fb">📘 Facebook</option>
-                <option value="mastodon">🐘 Mastodon</option>
-                <option value="telegram">✈️ Telegram</option>
-            </select>
-        </div>
+        <select id="osint-platform">
+            <option value="all">🌐 Tous Réseaux</option>
+            <option value="x">🐦 X (Twitter)</option>
+            <option value="fb">📘 Facebook</option>
+            <option value="mastodon">🐘 Mastodon</option>
+            <option value="telegram">✈️ Telegram</option>
+        </select>
 
         <button class="btn-osint" onclick="runOsintSearch()">Lancer le Dork</button>
     </div>
 
-    <!-- MODULE TOP 10 TENDANCES -->
+    <!-- MODULE TOP 10 TENDANCES COMPACT ET CLIQUABLE -->
     <div class="trends-container">
         <div class="trends-header">
-            <span>🔥 TOP 10 DES TENDANCES (GOOGLE TRENDS + X)</span>
-            <span style="color:#8b949e; font-weight:normal;">Cliquez sur une barre pour rechercher le terme</span>
+            <span>🔥 TOP 10 TENDANCES (GOOGLE TRENDS + X)</span>
+            <span style="color:#8b949e; font-size:0.65rem;">Cliquez sur une barre pour lancer la recherche</span>
         </div>
         <div class="chart-wrapper">
             <canvas id="trendsChart"></canvas>
@@ -310,7 +293,7 @@
 
         <div class="region-column">
             <div class="column-header">
-                <span>📍 Provence-Alpes-Côte d'Azur</span>
+                <span>📍 PACA</span>
                 <span class="col-count" id="count-paca">0</span>
             </div>
             <div class="column-body" id="feed-paca"></div>
@@ -336,6 +319,7 @@
 
 <script>
     let allData = [];
+    let trendsChartInstance = null;
 
     const selSource = document.getElementById('filter-source');
     const selTheme = document.getElementById('filter-theme');
@@ -345,46 +329,36 @@
     selSource.addEventListener('change', applyFilters);
     searchBox.addEventListener('input', applyFilters);
 
-    // Moteur de Dorks OSINT Réseaux Sociaux
     function runOsintSearch(customQuery = null) {
         const query = customQuery || document.getElementById('osint-query').value.trim();
         const platform = document.getElementById('osint-platform').value;
 
         if (!query) {
-            alert("Veuillez saisir un terme de recherche (ex: A69, manifestation...).");
+            alert("Veuillez saisir un terme de recherche.");
             return;
         }
 
         let dork = "";
-        
         switch (platform) {
-            case 'x':
-                dork = `site:x.com "${query}"`;
-                break;
-            case 'fb':
-                dork = `site:facebook.com "${query}"`;
-                break;
-            case 'mastodon':
-                dork = `(site:mastodon.social OR site:mamot.fr) "${query}"`;
-                break;
-            case 'telegram':
-                dork = `site:t.me "${query}"`;
-                break;
+            case 'x': dork = `site:x.com "${query}"`; break;
+            case 'fb': dork = `site:facebook.com "${query}"`; break;
+            case 'mastodon': dork = `(site:mastodon.social OR site:mamot.fr) "${query}"`; break;
+            case 'telegram': dork = `site:t.me "${query}"`; break;
             case 'all':
             default:
                 dork = `(site:x.com OR site:facebook.com OR site:t.me OR site:mastodon.social) "${query}"`;
                 break;
         }
 
-        const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(dork)}`;
-        window.open(googleUrl, '_blank');
+        window.open(`https://www.google.com/search?q=${encodeURIComponent(dork)}`, '_blank');
     }
 
-    // Chargement de l'histogramme des tendances
     async function loadTrendsChart() {
         try {
             const response = await fetch('trending.json?t=' + new Date().getTime());
             const trends = await response.json();
+
+            if (!trends || trends.length === 0) return;
 
             const labels = trends.map(t => t.term);
             const dataScores = trends.map(t => t.score);
@@ -392,16 +366,19 @@
 
             const ctx = document.getElementById('trendsChart').getContext('2d');
             
-            new Chart(ctx, {
+            if (trendsChartInstance) {
+                trendsChartInstance.destroy();
+            }
+
+            trendsChartInstance = new Chart(ctx, {
                 type: 'bar',
                 data: {
                     labels: labels,
                     datasets: [{
-                        label: 'Score',
                         data: dataScores,
                         backgroundColor: backgroundColors,
-                        borderRadius: 3,
-                        barThickness: 8
+                        borderRadius: 2,
+                        barThickness: 5
                     }]
                 },
                 options: {
@@ -412,16 +389,14 @@
                         legend: { display: false },
                         tooltip: {
                             callbacks: {
-                                label: function(context) {
-                                    return ` Source: ${trends[context.dataIndex].source}`;
-                                }
+                                label: (context) => ` Source: ${trends[context.dataIndex].source}`
                             }
                         }
                     },
                     scales: {
                         x: { display: false },
                         y: {
-                            ticks: { color: '#e6edf3', font: { size: 10 } },
+                            ticks: { color: '#e6edf3', font: { size: 9 } },
                             grid: { display: false }
                         }
                     },
@@ -545,7 +520,7 @@
                 <div class="meta">
                     <span class="badge ${sourceCat}">${evt.theme || 'Non classé'}</span>
                 </div>
-                <div class="meta" style="margin-top:5px;">
+                <div class="meta" style="margin-top:4px;">
                     <span class="badge source">${sourceText}</span>
                     <span>${dateStr}</span>
                 </div>
@@ -553,7 +528,6 @@
         `}).join('');
     }
 
-    // Initialisations au chargement
     loadData();
     loadTrendsChart();
 </script>
