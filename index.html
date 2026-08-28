@@ -116,8 +116,8 @@
         }
         .trends-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 Colonnes */
-            grid-template-rows: repeat(5, auto);   /* 5 Lignes */
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(5, auto);
             grid-auto-flow: column;
             gap: 3px 10px;
             max-height: 110px;
@@ -269,28 +269,44 @@
         <div class="filter-group">
             <label>Thème</label>
             <select id="filter-theme">
-                <option value="all">Tous</option>
+                <option value="all">Tous (26 thèmes)</option>
+                <option value="Accident / Transport">Accident / Transport</option>
                 <option value="Agriculture">Agriculture</option>
                 <option value="Armes">Armes</option>
+                <option value="Attentat / Terrorisme">Attentat / Terrorisme</option>
                 <option value="Chasse">Chasse</option>
+                <option value="Cyberattaque / Piratage">Cyberattaque / Piratage</option>
                 <option value="Délinquance criminalité">Délinquance criminalité</option>
+                <option value="Disparition">Disparition</option>
                 <option value="Ecologie">Ecologie</option>
+                <option value="Economie locale">Economie locale</option>
+                <option value="Fait divers">Fait divers</option>
                 <option value="Free Rave Teknival">Free Rave Teknival</option>
                 <option value="Immigration">Immigration</option>
+                <option value="Incendie / Feu de forêt">Incendie / Feu de forêt</option>
+                <option value="Inondation / Intempérie">Inondation / Intempérie</option>
+                <option value="Justice / Procès">Justice / Procès</option>
                 <option value="Manifestation">Manifestation</option>
+                <option value="Narcotrafic / Drogue">Narcotrafic / Drogue</option>
+                <option value="Police / Gendarmerie">Police / Gendarmerie</option>
+                <option value="Politique locale">Politique locale</option>
                 <option value="Reseaux Sociaux">Réseaux Sociaux</option>
-                <option value="Ultra gauche">Ultra gauche</option>
+                <option value="Santé publique">Santé publique</option>
+                <option value="Sécheresse / Eau">Sécheresse / Eau</option>
+                <option value="Sûreté publique">Sûreté publique</option>
                 <option value="Ultra droite">Ultra droite</option>
+                <option value="Ultra gauche">Ultra gauche</option>
             </select>
         </div>
         
         <div class="filter-group" style="flex:1; min-width:140px;">
-            <input type="text" id="search-box" placeholder="Mots-clés..." style="width:100%;">
+            <input type="text" id="search-box" placeholder="Mots-clés (titre, ville, thème...)..." style="width:100%;">
         </div>
         
         <div id="count-badge">0 alerte(s)</div>
     </div>
 
+    <!-- RECHERCHE OSINT -->
     <div class="osint-bar">
         <label>🔍 DORK :</label>
         <input type="text" id="osint-query" placeholder="Saisir ou cliquer sur une tendance..." style="flex:1; min-width:140px;">
@@ -396,7 +412,6 @@
                 trends = await response.json();
             }
 
-            // Sécurité : Si trending.json a moins de 20 éléments, on complète automatiquement jusqu'à 20
             if (!trends || trends.length < 20) {
                 const defaultTrends = [
                     { term: "agriculture", score: 90 },
@@ -509,13 +524,21 @@
         const search = searchBox.value.toLowerCase().trim();
 
         const filtered = allData.filter(evt => {
+            // Filtre par source (orange, red, blue ou all)
             const matchSrc = (src === 'all' || evt.source_category === src);
-            const matchT = (t === 'all' || evt.theme === t);
+            
+            // Filtre par thème (Recherche souple / insensible à la casse et aux espaces)
+            const eventTheme = (evt.theme || '').toLowerCase().trim();
+            const selectedTheme = t.toLowerCase().trim();
+            const matchT = (t === 'all' || eventTheme === selectedTheme || eventTheme.includes(selectedTheme));
+
+            // Filtre par mots-clés dans la barre de recherche
             let matchSearch = true;
             if (search) {
-                const searchText = `${evt.title} ${evt.source_name} ${evt.theme} ${evt.region || ''}`.toLowerCase();
+                const searchText = `${evt.title || ''} ${evt.source_name || ''} ${evt.theme || ''} ${evt.region || ''} ${evt.description || evt.summary || ''}`.toLowerCase();
                 matchSearch = searchText.includes(search);
             }
+
             return matchSrc && matchT && matchSearch;
         });
 
