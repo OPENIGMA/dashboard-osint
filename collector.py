@@ -168,10 +168,8 @@ def detect_location(text):
 def find_theme(title):
     title_lower = title.lower()
     
-    # Parcourt les thématiques avec des regex strictes (\b = mot entier)
     for theme, keywords in THEME_KEYWORDS.items():
         for kw in keywords:
-            # Échappe les caractères spéciaux et force la correspondance sur le mot entier
             pattern = r'\b' + re.escape(kw.lower()) + r'\b'
             if re.search(pattern, title_lower):
                 return theme
@@ -245,22 +243,19 @@ for feed in LOCAL_RSS_FEEDS:
                 new_articles_count += 1
         time.sleep(1)
     except Exception as e:
-        print(f"   ⚠️ Erreur sur {feed_name}: {e}")
+        print(f"    ⚠️ Erreur sur {feed_name}: {e}")
 
 # ============================================================
-# 6bis. 🔴 Collecte X (TWITTER) et FACEBOOK via GOOGLE DORKS (ROUGE)
+# 6. 🔴 Collecte X (TWITTER) et FACEBOOK via GOOGLE DORKS (ROUGE)
 # ============================================================
 
-# 1. Extraction automatique de TOUS les mots-clés de TOUTES tes thématiques
 all_theme_keywords = set()
 for theme, keywords in THEME_KEYWORDS.items():
     for kw in keywords:
         all_theme_keywords.add(kw)
 
-# Création de la chaîne de recherche combinant tous tes mots-clés
 theme_query_string = " OR ".join([f'"{kw}"' if " " in kw else kw for kw in all_theme_keywords])
 
-# Dorks ciblant tes 36 thématiques sur les zones Sud (Occitanie, PACA, Corse)
 DORK_FEEDS = [
     {
         "platform": "X (Twitter)",
@@ -288,7 +283,6 @@ for dork in DORK_FEEDS:
                 raw_title = item.find('title').text.strip() if item.find('title') is not None and item.find('title').text else ''
                 if not raw_title: continue
                 
-                # Nettoyage du titre
                 title = raw_title.rsplit(' - ', 1)[0].strip()
                 link = item.find('link').text.strip() if item.find('link') is not None and item.find('link').text else '#'
                 
@@ -297,7 +291,6 @@ for dork in DORK_FEEDS:
                     continue
                     
                 theme = find_theme(title)
-                # Si le titre contient au moins une ville du Sud mais pas de mot-clé d'une thématique spécifique
                 if theme == "Non classé": 
                     theme = "Reseaux Sociaux"
 
@@ -320,7 +313,7 @@ for dork in DORK_FEEDS:
                     "url": link,
                     "source_name": platform, 
                     "source_type": "Reseaux Sociaux", 
-                    "source_category": "red",  # Force la couleur ROUGE
+                    "source_category": "red",
                     "theme": theme, 
                     "location": detect_location(title)
                 })
@@ -328,7 +321,7 @@ for dork in DORK_FEEDS:
                 
         time.sleep(random.uniform(3.0, 5.0))
     except Exception as e:
-        print(f"   ⚠️ Erreur Dork [{platform}]: {e}")
+        print(f"    ⚠️ Erreur Dork [{platform}]: {e}")
 
 # ============================================================
 # 7. 🔵 Collecte GOOGLE NEWS (BLEU) - Requêtes combinées
@@ -356,7 +349,7 @@ for item_target in GN_QUERIES_GROUPED:
                 raw_title = item.find('title').text.strip() if item.find('title') is not None and item.find('title').text else ''
                 if not raw_title: continue
                 
-                title = raw_title.rsplit(' - ', 1)[0].strip() # Nettoyage suffixe média
+                title = raw_title.rsplit(' - ', 1)[0].strip()
                 link = item.find('link').text.strip() if item.find('link') is not None and item.find('link').text else '#'
                 
                 clean_t = normalize_title(title)
@@ -396,13 +389,79 @@ for item_target in GN_QUERIES_GROUPED:
                 
         time.sleep(random.uniform(2.5, 4.0))
     except Exception as e:
-        print(f"   ⚠️ Erreur Google News [{item_target['category']}]: {e}")
+        print(f"    ⚠️ Erreur Google News [{item_target['category']}]: {e}")
 
 # ============================================================
-# 8. Tri et Sauvegarde
+# 8. 🔥 COLLECTE TENDANCES (GOOGLE TRENDS + X) -> trending.json
+# ============================================================
+print("🔥 Récupération des tendances Google Trends et X...")
+
+def get_google_trends():
+    trends = []
+    try:
+        url = "https://trends.google.com/trends/trendingsearches/daily/rss?geo=FR"
+        req = urllib.request.Request(url, headers=HEADERS_BROWSER)
+        with urllib.request.urlopen(req, timeout=10) as response:
+            root = ET.fromstring(response.read())
+            items = root.findall('.//item')
+            for item in items[:10]:
+                title = item.find('title').text.strip() if item.find('title') is not None else ''
+                if title:
+                    trends.append({"term": title, "source": "Google Trends"})
+    except Exception as e:
+        print(f"    ⚠️ Erreur Google Trends: {e}")
+    return trends
+
+def get_x_trends():
+    trends = []
+    try:
+        url = "https://trends24.in/france/"
+        req = urllib.request.Request(url, headers=HEADERS_BROWSER)
+        with urllib.request.urlopen(req, timeout=10) as response:
+            html = response.read().decode('utf-8', errors='ignore')
+            matches = re.findall(r'class="trend-card__list".*?>(.*?)</ul>', html, re.DOTALL)
+            if matches:
+                items = re.findall(r'<a[^>]*>(.*?)</a>', matches[0])
+                for item in items[:10]:
+                    clean_item = re.sub(r'<[^>]+>', '', item).strip()
+                    if clean_item:
+                        trends.append({"term": clean_item, "source": "X (Twitter)"})
+    except Exception as e:
+        print(f"    ⚠️ Erreur Tendances X: {e}")
+    return trends
+
+def generate_trending_json():
+    g_trends = get_google_trends()
+    x_trends = get_x_trends()
+    
+    combined_trends = []
+    seen = set()
+
+    # On alterne ou combine les tendances pour avoir un Top 10 mixé
+    for item in g_trends + x_trends:
+        term = item['term'].strip()
+        term_key = term.lower()
+        if term_key not in seen:
+            seen.add(term_key)
+            combined_trends.append({
+                "term": term,
+                "source": item['source'],
+                "score": 100 - (len(combined_trends) * 7) # Score relatif pour l'histogramme
+            })
+        if len(combined_trends) >= 10:
+            break
+
+    with open('trending.json', 'w', encoding='utf-8') as f:
+        json.dump(combined_trends, f, ensure_ascii=False, indent=2)
+    print(f"✅ trending.json généré avec {len(combined_trends)} tendances.")
+
+generate_trending_json()
+
+# ============================================================
+# 9. Tri et Sauvegarde finale des alertes
 # ============================================================
 valid_events.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
 with open('data_feed.json', 'w', encoding='utf-8') as f:
     json.dump(valid_events, f, ensure_ascii=False, indent=2)
 
-print(f"🎉 SUCCÈS : {len(valid_events)} alertes sauvegardées (+{new_articles_count} nouveaux).")
+print(f"🎉 SUCCÈS TOTAL : {len(valid_events)} alertes sauvegardées (+{new_articles_count} nouveaux).")
