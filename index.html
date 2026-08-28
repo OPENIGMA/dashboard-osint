@@ -16,18 +16,23 @@
             overflow: hidden;
         }
         
-        /* HEADER - Filtres en ligne */
+        /* HEADER - Filtres et Dork OSINT */
         header {
             background: #161b22;
             border-bottom: 2px solid #00d4ff;
             padding: 12px 20px;
             display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 2px 10px rgba(0, 212, 255, 0.15);
+        }
+        .header-top, .osint-bar {
+            display: flex;
             flex-wrap: wrap;
             gap: 12px;
             align-items: flex-end;
-            box-shadow: 0 2px 10px rgba(0, 212, 255, 0.15);
         }
-        header h1 {
+        .header-top h1 {
             color: #00d4ff;
             font-size: 1.2rem;
             margin-right: 15px;
@@ -53,17 +58,13 @@
             border-radius: 5px;
             padding: 6px 10px;
             font-size: 0.85rem;
-            min-width: 140px;
+            min-width: 130px;
             outline: none;
             transition: border 0.2s, box-shadow 0.2s;
         }
         select:focus, input[type="text"]:focus {
             border-color: #00d4ff;
             box-shadow: 0 0 0 2px rgba(0, 212, 255, 0.2);
-        }
-        #search-box {
-            flex: 1;
-            min-width: 200px;
         }
         #count-badge {
             background: #00d4ff;
@@ -77,6 +78,35 @@
             height: 32px;
             display: flex;
             align-items: center;
+            margin-left: auto;
+        }
+
+        /* Barre d'outil OSINT Réseaux */
+        .osint-bar {
+            background: #0d1117;
+            padding: 8px 12px;
+            border-radius: 6px;
+            border: 1px dashed #30363d;
+            align-items: center;
+        }
+        .osint-bar label {
+            color: #00d4ff;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        .btn-osint {
+            background: #238636;
+            color: #ffffff;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-osint:hover {
+            background: #2ea043;
         }
 
         /* MAIN - Layout 3 Colonnes */
@@ -105,9 +135,9 @@
         }
         .column-header {
             background: #21262d;
-            padding: 12px 16px;
+            padding: 10px 14px;
             font-weight: bold;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             border-bottom: 1px solid #30363d;
             display: flex;
             justify-content: space-between;
@@ -127,7 +157,6 @@
             padding: 12px;
         }
         
-        /* Conteneur optionnel hors zone */
         .other-zone {
             background: #161b22;
             border-radius: 8px;
@@ -137,7 +166,7 @@
             flex-direction: column;
         }
 
-        /* Scrollbar personnalisée */
+        /* Scrollbars */
         .column-body::-webkit-scrollbar { width: 6px; }
         .column-body::-webkit-scrollbar-track { background: #0d1117; }
         .column-body::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
@@ -147,135 +176,93 @@
         .alert-card {
             background: #0d1117;
             border-left: 3px solid #00d4ff;
-            padding: 12px;
-            margin-bottom: 10px;
+            padding: 10px;
+            margin-bottom: 8px;
             border-radius: 6px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s;
         }
-        .alert-card:hover {
-            transform: translateX(3px);
-            box-shadow: 0 4px 10px rgba(0, 212, 255, 0.15);
-        }
+        .alert-card:hover { transform: translateX(3px); }
         .alert-card.orange { border-left-color: #ff9900; }
         .alert-card.red { border-left-color: #ff4444; }
         .alert-card.blue { border-left-color: #00d4ff; }
         
-        .alert-card h4 {
-            font-size: 0.85rem;
-            line-height: 1.3;
-            margin-bottom: 6px;
-        }
-        .alert-card h4 a {
-            color: #e6edf3;
-            text-decoration: none;
-        }
-        .alert-card h4 a:hover {
-            color: #00d4ff;
-            text-decoration: underline;
-        }
-        .meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.7rem;
-            color: #8b949e;
-            margin-top: 4px;
-            flex-wrap: wrap;
-            gap: 4px;
-        }
-        .badge {
-            display: inline-block;
-            padding: 2px 6px;
-            border-radius: 8px;
-            font-size: 0.65rem;
-            font-weight: bold;
-            background: #00d4ff;
-            color: #0d1117;
-        }
+        .alert-card h4 { font-size: 0.85rem; line-height: 1.3; margin-bottom: 6px; }
+        .alert-card h4 a { color: #e6edf3; text-decoration: none; }
+        .alert-card h4 a:hover { color: #00d4ff; text-decoration: underline; }
+        
+        .meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; color: #8b949e; }
+        .badge { padding: 2px 6px; border-radius: 8px; font-size: 0.65rem; font-weight: bold; background: #00d4ff; color: #0d1117; }
         .badge.orange { background: #ff9900; color: #0d1117; }
         .badge.red { background: #ff4444; color: #fff; }
         .badge.blue { background: #00d4ff; color: #0d1117; }
         .badge.source { background: #30363d; color: #e6edf3; }
 
-        .empty-state {
-            text-align: center;
-            color: #8b949e;
-            padding: 20px 10px;
-            font-style: italic;
-            font-size: 0.8rem;
-        }
+        .empty-state { text-align: center; color: #8b949e; padding: 20px 10px; font-style: italic; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>🛰️ OSINT SUD</h1>
-    
-    <div class="filter-group">
-        <label>Source</label>
-        <select id="filter-source">
-            <option value="all">Toutes les sources</option>
-            <option value="orange">🟠 Presse Locale</option>
-            <option value="red">🔴 Réseaux Sociaux</option>
-            <option value="blue">🔵 Google News</option>
-        </select>
+    <div class="header-top">
+        <h1>🛰️ OSINT SUD</h1>
+        
+        <div class="filter-group">
+            <label>Source Flux</label>
+            <select id="filter-source">
+                <option value="all">Toutes</option>
+                <option value="orange">🟠 Presse Locale</option>
+                <option value="red">🔴 Réseaux Sociaux</option>
+                <option value="blue">🔵 Google News</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label>Thématique</label>
+            <select id="filter-theme">
+                <option value="all">Toutes</option>
+                <option value="Agriculture">Agriculture</option>
+                <option value="Armes">Armes</option>
+                <option value="Chasse">Chasse</option>
+                <option value="Délinquance criminalité">Délinquance criminalité</option>
+                <option value="Ecologie">Ecologie</option>
+                <option value="Free Rave Teknival">Free Rave Teknival</option>
+                <option value="Immigration">Immigration</option>
+                <option value="Manifestation">Manifestation</option>
+                <option value="Reseaux Sociaux">Réseaux Sociaux</option>
+                <option value="Ultra gauche">Ultra gauche</option>
+                <option value="Ultra droite">Ultra droite</option>
+            </select>
+        </div>
+        
+        <div class="filter-group" style="flex:1; min-width:180px;">
+            <label>Filtrer le flux</label>
+            <input type="text" id="search-box" placeholder="Mots-clés dans les cartes...">
+        </div>
+        
+        <div id="count-badge">0 alerte(s)</div>
     </div>
-    
-    <div class="filter-group">
-        <label>Thématique</label>
-        <select id="filter-theme">
-            <option value="all">Toutes</option>
-            <option value="Agriculture">Agriculture</option>
-            <option value="Armes">Armes</option>
-            <option value="Chasse">Chasse</option>
-            <option value="Délinquance criminalité">Délinquance criminalité</option>
-            <option value="Dérives Sectaires">Dérives Sectaires</option>
-            <option value="Ecologie">Ecologie</option>
-            <option value="Education nationale">Education nationale</option>
-            <option value="Ferroviaire">Ferroviaire</option>
-            <option value="Festivité Evènements voie publique">Festivité / Evènements</option>
-            <option value="Criminalité organisée">Criminalité organisée</option>
-            <option value="Free Rave Teknival">Free Rave Teknival</option>
-            <option value="Immigration">Immigration</option>
-            <option value="Nucléaire">Nucléaire</option>
-            <option value="Pêche">Pêche</option>
-            <option value="Prévention de la délinquance">Prévention délinquance</option>
-            <option value="Santé">Santé</option>
-            <option value="Séparatisme">Séparatisme</option>
-            <option value="Survivalisme">Survivalisme</option>
-            <option value="Transport">Transport</option>
-            <option value="Visite officielle">Visite officielle</option>
-            <option value="Radicalisation">Radicalisation</option>
-            <option value="Culte">Culte</option>
-            <option value="Prosélytisme">Prosélytisme</option>
-            <option value="Terrorisme">Terrorisme</option>
-            <option value="Animaliste">Animaliste</option>
-            <option value="Projet aménagement contesté (PAC)">Projet aménagement contesté</option>
-            <option value="Ultra gauche">Ultra gauche</option>
-            <option value="Ultra droite">Ultra droite</option>
-            <option value="JOPH 2030">JOPH 2030</option>
-            <option value="Elections 2027">Elections 2027</option>
-            <option value="Apologie">Apologie</option>
-            <option value="Blocage grève">Blocage grève</option>
-            <option value="Cybercriminalité">Cybercriminalité</option>
-            <option value="Drones">Drones</option>
-            <option value="Intrusion">Intrusion</option>
-            <option value="Manifestation">Manifestation</option>
-            <option value="Reseaux Sociaux">Réseaux Sociaux</option>
-        </select>
+
+    <!-- NOUVEAU MODULE DE RECHERCHE OSINT RESEAUX -->
+    <div class="osint-bar">
+        <label>🔍 INVESTIGATION RÉSEAUX SOCIAUX :</label>
+        <input type="text" id="osint-query" placeholder="Saisir un terme (ex: A69, blocage...)" style="flex:1; min-width:200px;">
+        
+        <div class="filter-group">
+            <select id="osint-platform">
+                <option value="all">🌐 Tous les Réseaux</option>
+                <option value="x">🐦 X (Twitter)</option>
+                <option value="fb">📘 Facebook</option>
+                <option value="mastodon">🐘 Mastodon</option>
+                <option value="telegram">✈️ Telegram</option>
+            </select>
+        </div>
+
+        <button class="btn-osint" onclick="runOsintSearch()">Lancer le Dork</button>
     </div>
-    
-    <div class="filter-group" style="flex:1; min-width:200px;">
-        <label>🔎 Recherche</label>
-        <input type="text" id="search-box" placeholder="Rechercher dans titres, sources...">
-    </div>
-    
-    <div id="count-badge">0 alerte(s)</div>
 </header>
 
 <main>
     <div class="columns-container">
-        <!-- Colonne Occitanie -->
         <div class="region-column">
             <div class="column-header">
                 <span>📍 Occitanie</span>
@@ -284,7 +271,6 @@
             <div class="column-body" id="feed-occitanie"></div>
         </div>
 
-        <!-- Colonne PACA -->
         <div class="region-column">
             <div class="column-header">
                 <span>📍 Provence-Alpes-Côte d'Azur</span>
@@ -293,7 +279,6 @@
             <div class="column-body" id="feed-paca"></div>
         </div>
 
-        <!-- Colonne Corse -->
         <div class="region-column">
             <div class="column-header">
                 <span>📍 Corse</span>
@@ -303,7 +288,6 @@
         </div>
     </div>
 
-    <!-- Bloc Hors Zone (si données non localisées) -->
     <div class="other-zone" id="container-other" style="display:none;">
         <div class="column-header">
             <span>🌐 Hors Zone / Non spécifié</span>
@@ -323,6 +307,42 @@
     selTheme.addEventListener('change', applyFilters);
     selSource.addEventListener('change', applyFilters);
     searchBox.addEventListener('input', applyFilters);
+
+    // Moteur de Dorks OSINT Réseaux Sociaux
+    function runOsintSearch() {
+        const query = document.getElementById('osint-query').value.trim();
+        const platform = document.getElementById('osint-platform').value;
+
+        if (!query) {
+            alert("Veuillez saisir un terme de recherche (ex: A69, manifestation...).");
+            return;
+        }
+
+        let dork = "";
+        
+        switch (platform) {
+            case 'x':
+                dork = `site:x.com "${query}"`;
+                break;
+            case 'fb':
+                dork = `site:facebook.com "${query}"`;
+                break;
+            case 'mastodon':
+                dork = `(site:mastodon.social OR site:mamot.fr) "${query}"`;
+                break;
+            case 'telegram':
+                dork = `site:t.me "${query}"`;
+                break;
+            case 'all':
+            default:
+                dork = `(site:x.com OR site:facebook.com OR site:t.me OR site:mastodon.social) "${query}"`;
+                break;
+        }
+
+        // Ouverture de la recherche préformatée dans un nouvel onglet
+        const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(dork)}`;
+        window.open(googleUrl, '_blank');
+    }
 
     function cleanKeys(obj) {
         if (Array.isArray(obj)) return obj.map(cleanKeys);
@@ -349,50 +369,25 @@
     }
 
     function normalizeRegion(regionName, sourceName) {
-    const reg = (regionName || '').toLowerCase();
-    const src = (sourceName || '').toLowerCase();
+        const reg = (regionName || '').toLowerCase();
+        const src = (sourceName || '').toLowerCase();
 
-    // 1. Détection via la région si elle existe déjà dans le JSON
-    if (reg.includes('occitanie')) return 'OCCITANIE';
-    if (reg.includes('paca') || reg.includes('provence')) return 'PACA';
-    if (reg.includes('corse')) return 'CORSE';
+        if (reg.includes('occitanie')) return 'OCCITANIE';
+        if (reg.includes('paca') || reg.includes('provence')) return 'PACA';
+        if (reg.includes('corse')) return 'CORSE';
 
-    // 2. Mapping automatique basé sur la source (source_name)
-    // --- OCCITANIE ---
-    if (
-        src.includes('dépêche') || 
-        src.includes('midi libre') || 
-        src.includes('indépendant') || 
-        src.includes('montagne') || 
-        src.includes('journal toulousain') || 
-        src.includes('gazette du midi') || 
-        src.includes('france 3 occitanie')
-    ) {
-        return 'OCCITANIE';
+        if (src.includes('dépêche') || src.includes('midi libre') || src.includes('indépendant') || src.includes('montagne') || src.includes('journal toulousain') || src.includes('gazette du midi') || src.includes('france 3 occitanie')) {
+            return 'OCCITANIE';
+        }
+        if (src.includes('provence') || src.includes('nice-matin') || src.includes('var-matin') || src.includes('marseillaise') || src.includes('dauphiné') || src.includes('france 3 paca')) {
+            return 'PACA';
+        }
+        if (src.includes('corse-matin') || src.includes('france 3 corse')) {
+            return 'CORSE';
+        }
+
+        return 'OTHER';
     }
-
-    // --- PACA ---
-    if (
-        src.includes('provence') || 
-        src.includes('nice-matin') || 
-        src.includes('var-matin') || 
-        src.includes('marseillaise') || 
-        src.includes('dauphiné') || 
-        src.includes('france 3 paca')
-    ) {
-        return 'PACA';
-    }
-
-    // --- CORSE ---
-    if (
-        src.includes('corse-matin') || 
-        src.includes('france 3 corse')
-    ) {
-        return 'CORSE';
-    }
-
-    return 'OTHER';
-}
 
     function applyFilters() {
         const src = selSource.value;
@@ -412,25 +407,17 @@
             return matchSrc && matchT && matchSearch;
         });
 
-        // Groupement par région
-        const grouped = {
-            OCCITANIE: [],
-            PACA: [],
-            CORSE: [],
-            OTHER: []
-        };
+        const grouped = { OCCITANIE: [], PACA: [], CORSE: [], OTHER: [] };
 
         filtered.forEach(evt => {
-           const regKey = normalizeRegion(evt.region, evt.source_name);
+            const regKey = normalizeRegion(evt.region, evt.source_name);
             grouped[regKey].push(evt);
         });
 
-        // Rendu des colonnes
         renderColumn('feed-occitanie', 'count-occitanie', grouped.OCCITANIE);
         renderColumn('feed-paca', 'count-paca', grouped.PACA);
         renderColumn('feed-corse', 'count-corse', grouped.CORSE);
         
-        // Rendu hors zone
         const otherContainer = document.getElementById('container-other');
         if (grouped.OTHER.length > 0) {
             otherContainer.style.display = 'flex';
