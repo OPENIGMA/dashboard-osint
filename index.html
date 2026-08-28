@@ -421,7 +421,7 @@
         };
 
         filtered.forEach(evt => {
-            const regKey = normalizeRegion(evt.region);
+           const regKey = normalizeRegion(evt.region, evt.source_name);
             grouped[regKey].push(evt);
         });
 
