@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard OSINT - Zone Sud</title>
+    <!-- Inclusion de Chart.js pour l'histogramme des tendances -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
@@ -107,6 +109,30 @@
         }
         .btn-osint:hover {
             background: #2ea043;
+        }
+
+        /* Module Top 10 Tendances */
+        .trends-container {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 8px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .trends-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        .chart-wrapper {
+            position: relative;
+            height: 140px;
+            width: 100%;
         }
 
         /* MAIN - Layout 3 Colonnes */
@@ -242,7 +268,7 @@
         <div id="count-badge">0 alerte(s)</div>
     </div>
 
-    <!-- NOUVEAU MODULE DE RECHERCHE OSINT RESEAUX -->
+    <!-- MODULE DE RECHERCHE OSINT RESEAUX -->
     <div class="osint-bar">
         <label>🔍 INVESTIGATION RÉSEAUX SOCIAUX :</label>
         <input type="text" id="osint-query" placeholder="Saisir un terme (ex: A69, blocage...)" style="flex:1; min-width:200px;">
@@ -258,6 +284,17 @@
         </div>
 
         <button class="btn-osint" onclick="runOsintSearch()">Lancer le Dork</button>
+    </div>
+
+    <!-- MODULE TOP 10 TENDANCES -->
+    <div class="trends-container">
+        <div class="trends-header">
+            <span>🔥 TOP 10 DES TENDANCES (GOOGLE TRENDS + X)</span>
+            <span style="color:#8b949e; font-weight:normal;">Cliquez sur une barre pour rechercher le terme</span>
+        </div>
+        <div class="chart-wrapper">
+            <canvas id="trendsChart"></canvas>
+        </div>
     </div>
 </header>
 
@@ -309,8 +346,8 @@
     searchBox.addEventListener('input', applyFilters);
 
     // Moteur de Dorks OSINT Réseaux Sociaux
-    function runOsintSearch() {
-        const query = document.getElementById('osint-query').value.trim();
+    function runOsintSearch(customQuery = null) {
+        const query = customQuery || document.getElementById('osint-query').value.trim();
         const platform = document.getElementById('osint-platform').value;
 
         if (!query) {
@@ -339,9 +376,68 @@
                 break;
         }
 
-        // Ouverture de la recherche préformatée dans un nouvel onglet
         const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(dork)}`;
         window.open(googleUrl, '_blank');
+    }
+
+    // Chargement de l'histogramme des tendances
+    async function loadTrendsChart() {
+        try {
+            const response = await fetch('trending.json?t=' + new Date().getTime());
+            const trends = await response.json();
+
+            const labels = trends.map(t => t.term);
+            const dataScores = trends.map(t => t.score);
+            const backgroundColors = trends.map(t => t.source === "X (Twitter)" ? '#ff4444' : '#00d4ff');
+
+            const ctx = document.getElementById('trendsChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Score',
+                        data: dataScores,
+                        backgroundColor: backgroundColors,
+                        borderRadius: 3,
+                        barThickness: 8
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ` Source: ${trends[context.dataIndex].source}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { display: false },
+                        y: {
+                            ticks: { color: '#e6edf3', font: { size: 10 } },
+                            grid: { display: false }
+                        }
+                    },
+                    onClick: (e, elements) => {
+                        if (elements.length > 0) {
+                            const index = elements[0].index;
+                            const term = labels[index];
+                            document.getElementById('osint-query').value = term;
+                            runOsintSearch(term);
+                        }
+                    }
+                }
+            });
+        } catch (e) {
+            console.error("Erreur chargement trending.json", e);
+        }
     }
 
     function cleanKeys(obj) {
@@ -457,7 +553,9 @@
         `}).join('');
     }
 
+    // Initialisations au chargement
     loadData();
+    loadTrendsChart();
 </script>
 </body>
 </html>
