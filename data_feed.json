@@ -1,5 +1,59 @@
 [
   {
+    "id": "evt-3504",
+    "timestamp": "2026-08-30T00:35:37+00:00",
+    "title": "Argentine: manifestation contre le co-fondateur de Palantir",
+    "summary": "Article via Google News (Le Figaro).",
+    "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOSnk1bGY5ZHpJS19RYXJBLVNTekJ2VkNuS0FSRlBqTFhWRzhyTHZRVVBmSjlhZ3hoZ21YZ0ZicGwtR3d3NGNySW5ienVRMXNnQy10d3pRM2FqRlVoZTVYbDFxdE1zbkE2NHBmVVlBSl9uV1lBZmhrS05XT3pCbFNHdjhaU0diTGRRYVFJQnl3SXRaSTgwT0NvczlyZmlta0JKQVByUTJ6MkY?oc=5",
+    "source_name": "Le Figaro",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Manifestation",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3462",
+    "timestamp": "2026-08-29T23:31:13+02:00",
+    "title": "VIDÉO. Incendie à Cagnano, 130 hectares brûlés",
+    "summary": "Article direct de France 3 Corse.",
+    "url": "https://france3-regions.franceinfo.fr/corse/video-depart-de-feu-a-cagnano-d-importants-moyens-terrestres-et-aeriens-mobilises-3408296.html",
+    "source_name": "France 3 Corse",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "Ecologie",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3459",
+    "timestamp": "2026-08-29T23:01:31+02:00",
+    "title": "REPLAY. VIDEO : Le Toulouse Olympique domine les Bradford Bulls (28-18) et s'installe définitivement à la 9e place de la Super League",
+    "summary": "Article direct de L'Indépendant.",
+    "url": "https://www.lindependant.fr/2026/08/29/live-video-contre-bradford-toulouse-peut-assurer-son-maintien-suivez-le-match-en-direct-a-partir-de-21-h-13527068.php",
+    "source_name": "L'Indépendant",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "JOPH 2030",
+    "location": {
+      "region": "OCCITANIE",
+      "department": "31",
+      "city": "Toulouse",
+      "lat": 43.6047,
+      "lng": 1.4442
+    }
+  },
+  {
     "id": "evt-3371",
     "timestamp": "2026-08-29T21:27:20+02:00",
     "title": "Présidentielle 2027 : Marine Le Pen élue face à n'importe quel adversaire au second tour, Raphaël Glucksmann progresse légèrement selon un dernier sondage",
@@ -36,6 +90,24 @@
     }
   },
   {
+    "id": "evt-3468",
+    "timestamp": "2026-08-29T20:24:41+00:00",
+    "title": "[X (Twitter)] 🚨🇫🇷🚌❌ ALERTE INFO ! À QUELQUES JOURS DE LA RENTRÉE, LA MUNICIPALITÉ #RN DE HAYANGE SUPPRIME LES NAVETTES SCOLAIRES, LAISSANT 85 ENFANTS ÂGÉS DE 6 À 11 ANS SANS TRANSPORT SCOLAIRE 🤯 LES PARENTS N’ONT ÉT",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1RRXdWeU1zQjhfZDRHbDZ1N21UV3NXR3Buc2VGaTliZjg1NVdVcWJKUzlOdi02MmFDem1CbHk3M1Rtd2NZRjcwNmhSS05KZ2w3bkpiQVhGMXJodEdLTjBXeGF6Ykc?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Transport",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
     "id": "evt-3375",
     "timestamp": "2026-08-29T20:10:02+02:00",
     "title": "Présidentielle 2027 : \"J’attendrai décembre pour donner la réponse\", François Hollande de retour dans l’arène et déjà presque candidat",
@@ -45,6 +117,24 @@
     "source_type": "Presse Locale Directe",
     "source_category": "orange",
     "theme": "Elections 2027",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3516",
+    "timestamp": "2026-08-29T19:57:32+00:00",
+    "title": "Budget, retraites, santé, agriculture : Sébastien Lecornu dévoile sa feuille de route pour les derniers mois du quinquennat",
+    "summary": "Article via Google News (Destimed).",
+    "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxQaVY2bnEyM184V3oyMGQ1QnRsbXhQQmNnZjB1SEZJRURBYWFsNjZZSVF2RXIxbkR2UW9YZWw2TFIydjhqN25UY1hyZjkteHNMWHlpU0llUDQ4V21fbXl0ZlpzU3dTTGVYaEJOcTV0R3FfNjd4VlZrcEtpLUpWTFRRZElOeDEzRVdxMmIwRVVLMmJVZkhZYXRHdW5hanQ5aTExU2o5MmZJYTJxWklFLWZWTWg4d3RrbkQ5UUZfWXhHR3JmUS1SR2dNN21NcFlDT2pubHQxbzNCa2JfalU?oc=5",
+    "source_name": "Destimed",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Agriculture",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -234,6 +324,24 @@
     }
   },
   {
+    "id": "evt-3503",
+    "timestamp": "2026-08-29T17:32:53+00:00",
+    "title": "Grève prolongée jusqu'au 6 septembre chez la compagnie French Bee",
+    "summary": "Article via Google News (TF1 Info).",
+    "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNc0NMS0haOEdXUlJTQjRjaElKYkJpT0dfY1hFdGVGQk80eEFlZThQeW0ySTkxekVKRVAzZ0VoWlE0QzBXMzU5bUdCQ3VDVU1zMGlLR0JjTUVtbVhFTDAtMzFRU0hrdzNFcGw1RV84eExoTDZaUHVfenVuWmZEZndQZS1ZTHlnMDN4RWNfbndDSklleVFidEFKczNJVUJiRml4dXV2emxmMmN3a2JCenc?oc=5",
+    "source_name": "TF1 Info",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Blocage grève",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
     "id": "evt-3429",
     "timestamp": "2026-08-29T17:21:00+00:00",
     "title": "Préavis de grève reconduit du 1er au 6 septembre chez French Bee : les dessous du conflit social",
@@ -414,6 +522,24 @@
     }
   },
   {
+    "id": "evt-3466",
+    "timestamp": "2026-08-29T15:56:51+00:00",
+    "title": "[X (Twitter)] Toutes mes pensées aux victimes des incendies qui frappent l’Algérie, à leurs familles, aux blessés et à toutes celles et ceux qui traversent cette épreuve. Courage aux pompiers, aux secours et à toutes celles et ceux mobilisés sur le terrain. Tout mon soutien",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBLcXczcWJiSm1IM253RkNMZUFBZUJ5dlZqeGphcXA3VDVFUG5TbUsxS0hmS1lUSWhvUXhYSWJNelZVRHpaUkhuaHNrZklpbUFndXpKMEpfR1VXZDEx?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Reseaux Sociaux",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
     "id": "evt-3443",
     "timestamp": "2026-08-29T15:18:44+00:00",
     "title": "Agriculture : Sébastien Lecornu promet un \"plan de sauvetage\" puis un \"plan de relance\" après la sécheresse",
@@ -441,6 +567,42 @@
     "source_type": "Presse Locale Directe",
     "source_category": "orange",
     "theme": "Elections 2027",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3472",
+    "timestamp": "2026-08-29T14:30:00+00:00",
+    "title": "[X (Twitter)] 🎥 MINI VLOG | #isseymiyakeparfumsxPEEMWASU เก็บบรรยากาศ #PEEMWASU ในงาน Le Sel d’Issey Parfum มาฝากทุกคนครับ 〰️ #isseymiyakeparfumsTH #leseldisseyparfum #BUSbecauseofyouishine",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1KYWhTQWVrM0dkQWYwUWktei1OVFhKQlFYUGN0UFR2S2doR3FqM2dYdE5QelAzRXBUN0lnSEF1UFh4anlDaHItNzFuMlNpSnFac1UyR3piWlpkRDVGbGM1Zg?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Reseaux Sociaux",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3502",
+    "timestamp": "2026-08-29T14:20:22+00:00",
+    "title": "Une mère iranienne condamnée à la pendaison pour avoir filmé un incendie lors d’une manifestation anti-régime",
+    "summary": "Article via Google News (parismatch.com).",
+    "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxPNXp5cDlIMFY4blBIWjdvaUNXNEJjTmJpS1lPb1JhYmZCTEtSaGFpZmRIaGc1TFhsOFkxdWJTbWhxREQxZmdPOEdveFdMLVdCUk0zYmVTcndxUjdMNjZYalNUUUpiOG5oRkVQWkJSSjdJZmlmT3BRd1VQd3ZveFVTU2hDNi1kV0ZHRjVVd0tPaUY0NEd6Q3Joam5xdnh3TmdrTUVuTFNSZjI5T3NTMHlZb0Z0bXA1SnAtV1BZb2YxLWJTbmpMMXgxMURPUGRIdkUzbEF5cjVTRTdmT1hyRFZBTFBWbnJpVHpEemZEclFGSGN2cjg?oc=5",
+    "source_name": "parismatch.com",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Ecologie",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -1836,6 +1998,24 @@
     }
   },
   {
+    "id": "evt-3465",
+    "timestamp": "2026-08-28T18:17:11+00:00",
+    "title": "[X (Twitter)] 🚨🚨 MATVEY SAFONOV 🇷🇺 S’EST PRIS UN MEMBRE DU STAFF DU PSG ET A ÉTÉ SONNÉ DURANT L’ÉCHAUFFEMENT 😳😱 Le Russe a repris ensuite l’échauffement après un temps d’arrêt. 🎥 @ligue1plus",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1NSkk4b1FzdWhEdWgxUnNxX1FhYzdQaTJsbGZNMnNSNXhzSVF0aHRDdGxWcS1hVXRQVER2ekZCSm00ZUQzM1NyTkh5ODYwcGFaY3V1WUliNzd6RFJQaFV3?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Reseaux Sociaux",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
     "id": "evt-3099",
     "timestamp": "2026-08-28T18:03:52+02:00",
     "title": "\"Maintenir la pression\" après les mégafeux de cet été : pourquoi les sapeurs-pompiers déposent un préavis de grève d'un mois à la rentrée",
@@ -1869,6 +2049,24 @@
       "city": "Ajaccio",
       "lat": 41.9272,
       "lng": 8.7346
+    }
+  },
+  {
+    "id": "evt-3469",
+    "timestamp": "2026-08-28T17:53:41+00:00",
+    "title": "[X (Twitter)] Aujourd’hui, j’ai discuté avec la première ministre Frederiksen de la coopération grandissante entre le Canada et le Danemark, notamment l’Arctique, le renforcement de la défense et de la sécurité, ainsi que la création de débouchés en matière de commerce",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE13dVh2SVJtOWs1cjJHSUlhYk1QUE9aZUJYd2tRSmpZZVY3R1AwaGRORkdBUDhtTlNJRnJBbVVMOUptakw5RXdKcEV5S0N4R0hseGJZWHVhWWFwWnZaSzhMVVBn?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Visite officielle",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
     }
   },
   {
@@ -3024,6 +3222,24 @@
     }
   },
   {
+    "id": "evt-3470",
+    "timestamp": "2026-08-28T10:57:25+00:00",
+    "title": "[X (Twitter)] Nadir Hifi, Yves Pons et Axel Bouteille quittent le rassemblement de l'Équipe de France. Ils n'iront pas en Suède !",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5GYXNqS2NiTW5pQUNjV182Q0xNUWxJZ3pmb3d5VE9lRFNzRDdINWtia2NOcGM1QlBmWV84d1dtYnU3RFVDOFJNVTQzQk1tWnM5dVU4ZTRzT3F0T2VkSkNfWU8zSQ?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Festivité Evènements voie publique",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
     "id": "evt-2986",
     "timestamp": "2026-08-28T10:36:00+00:00",
     "title": "Sécheresse et agriculture : la ministre Annie Genevard appelle à un \"effort de solidarité global\"",
@@ -3285,6 +3501,24 @@
     "source_type": "Presse Locale Directe",
     "source_category": "orange",
     "theme": "Santé",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3473",
+    "timestamp": "2026-08-28T09:17:49+00:00",
+    "title": "[X (Twitter)] Le Sel d’Issey Parfum with #PEEMWASU 🫧✨ #isseymiyakeparfumsxPEEMWASU #isseymiyakeparfumsTH #leseldisseyparfum #BUSbecauseofyouishine",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBUVjg2c3pWQm9ldVNRaXJEWm1Nb3FDNlVqdTAyYjI5eHBjVWhiRzdsSnRGUDB6bjlQV0NXdVVfSUxIX1JJc0pDbEc1d0hMWms5TDlFd292elBpVDYzSDlidA?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Reseaux Sociaux",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -5247,6 +5481,24 @@
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
     "theme": "Reseaux Sociaux",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3464",
+    "timestamp": "2026-08-27T16:38:10+00:00",
+    "title": "[X (Twitter)] ❌⚠️ #Infotrafic #RERD Le trafic est interrompu entre Paris Gare du Nord et Villeneuve S Georges dans les 2 sens et perturbé sur le reste de la ligne. 🕐Heure de reprise estimée 20h00 Motif: Obstacle sur la voie (arbres)",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBZVzNFTXBNbFN5cG9YeDFyQk9sUlZUcVBFY2NoTHpnU1FVNEVZVk0yRGFYVUhjSzVxWXBFU2x2WmV3d2pUS0xiMnRNQ3NhV3dnc19UckR1OXJKNmVhcTJZ?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Ferroviaire",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -19230,6 +19482,24 @@
     }
   },
   {
+    "id": "evt-3483",
+    "timestamp": "2026-08-25T13:56:10+00:00",
+    "title": "[Facebook] FOCUS ÉLEVAGE — Le fil d'or qui relie Nino des Buissonnets et Dynamix de Belheme 🧬✨ Connaissez-vous le point commun méconnu entre les deux plus grands cracks de la carrière de Steve Guerdat ? Au-delà d'avoir tous les deux mené le cavalier suisse",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxNQ0NsOGZ6TnN3SDZIUnFNZFl3bldpeTJ0UkV6UTUwN3QyV1IzV2NSYnNESHJCS2NuYzE2Y2hsNWdmVzR5R2FfTnVWQ0E5dkUzVHV6MWItUVRxY1BCLXV0Y1hlWkJTR05sYTluNXJETF9mbm8yeEs0c1ZzeFdEYVFWdk5SRk81akVONTVqbks0Y0dmeHM4NzZ0TFZEOW0zUzJheGVXQjB6VmJOUjZITHhEZ291RWdsZ0tZa1JvNWJMaWl0SjA2bWs3WGZYaXA2ZGV5ckZsclA0RjdGR0daamRiUEU3TkFUUzdaVjNIUUlWWXRIMkF4UklOUVBpc0RibGJ1?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Agriculture",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
     "id": "evt-70",
     "timestamp": "2026-08-25T13:46:47+00:00",
     "title": "Un habitant du Val-d’Oise maintenu en détention dans le cadre d’une enquête sur un trafic d’armes sur Snapchat - Ouest-France",
@@ -26727,7 +26997,7 @@
     }
   },
   {
-    "id": "evt-3458",
+    "id": "evt-3526",
     "timestamp": "2026-07-29T08:46:23+00:00",
     "title": "Autorisation de survol de drone - 22 et 23 août 2026",
     "summary": "Article via Google News (Les services de l'État dans l'Orne).",
@@ -26745,15 +27015,15 @@
     }
   },
   {
-    "id": "evt-3411",
-    "timestamp": "2026-07-21T07:00:00+00:00",
-    "title": "[Facebook] 🚨 PESTICIDES INTERDITS : UN RETOUR QUI INQUIÈTE Plusieurs pesticides ont été interdits par Santé Canada en raison des risques qu'ils présentent pour la santé humaine et l'environnement. Or, une récente réforme de la Loi sur les produits antiparasitair",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxQdDRNcENURUtIMEsta3NRZkZRYlRFcjd1TlZjWlM5UnhPN1VXR2dWYmlmN00zMEo3djR4eldXUF9wMF9QUTRXV3VzOFZZcDNKNjNYZUhKQzhwZ1NqUFNZVHVSQnpPUEdJSC1DOFh0QjdzTWo0aXVLeHB5eDFRNUNJSmU4RnlXQUZLOVdqVGREOXk3Z3hmTnpqdGlxUEFZQnNobjhvaUw2U0ppbkxHLWxqYU42SWd5T3llTjVkeUNIWDJBeDEtcGlPb0tKQkcxbU41VG1SUnM0YTNfZW9hVkRBaTNTNnhBbWYyRDZsaTJPVW1WTlN0b1N3?oc=5",
-    "source_name": "Facebook",
+    "id": "evt-3479",
+    "timestamp": "2026-07-26T07:00:00+00:00",
+    "title": "[X (Twitter)] 🦁🦁🦁 Lots of new passengers on the @TeamEmiratesUAE bus at the end of this #TDF2026... 🦁🦁🦁 De nombreux nouveaux passagers dans le bus @TeamEmiratesUAE à la fin de ce #TDF2026...",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9Za2pDcnZVTU9kZE9XVVp0WjB0RlZfdE03aHVPNnBPRnZVYlZKRVpjbGJlR0NwVnV1MUhOdVVmelNiZEZ5MTV1VE9FTURzX0l1N3VHMGhJcGlJSkE?oc=5",
+    "source_name": "X (Twitter)",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
-    "theme": "Ecologie",
+    "theme": "Transport",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -26763,7 +27033,7 @@
     }
   },
   {
-    "id": "evt-3438",
+    "id": "evt-3512",
     "timestamp": "2026-07-17T07:00:00+00:00",
     "title": "« Il y avait de l’empathie, pas d’emprise » : un habitué des cérémonies conteste toute dérive sectaire dans ce village près de Nice",
     "summary": "Article via Google News (Nice-Matin).",
@@ -26781,7 +27051,7 @@
     }
   },
   {
-    "id": "evt-3450",
+    "id": "evt-3517",
     "timestamp": "2026-07-14T15:45:32+00:00",
     "title": "JOP d'hiver 2030 : audition d’Edgar Grospiron, président du Cojop Alpes 2030, et de Vincent Roberti, directeur général",
     "summary": "Article via Google News (assemblee-nationale.fr).",
@@ -26799,25 +27069,7 @@
     }
   },
   {
-    "id": "evt-3410",
-    "timestamp": "2026-07-12T07:00:00+00:00",
-    "title": "[Facebook] « Au lion d’or » Ars-sur-Moselle",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBkcjdfZmJzYUtFN0owTDZyaU5wMFBKVFhGcmYxd2hieG9ocGl3Sy1CRS01STR2NTQzb0pHbGNKd0NpTVpGT3Q4YkwtQkZiQXlJR1Nmd3A3YllYTm1RZ0ZXNVBmMEszUHZhdk9pTFNTeWNWQzQ?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Santé",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-3451",
+    "id": "evt-3518",
     "timestamp": "2026-07-07T07:00:00+00:00",
     "title": "France: malgré sa condamnation et l'obligation de porter un bracelet électronique, Marine Le Pen annonce être candidate à la présidentielle",
     "summary": "Article via Google News (tv5monde).",
@@ -26835,7 +27087,7 @@
     }
   },
   {
-    "id": "evt-3453",
+    "id": "evt-3520",
     "timestamp": "2026-07-01T07:00:00+00:00",
     "title": "Élection présidentielle : les premier et second tours fixés aux 18 avril et 2 mai 2027",
     "summary": "Article via Google News (rci.fm).",
@@ -26853,7 +27105,7 @@
     }
   },
   {
-    "id": "evt-3432",
+    "id": "evt-3506",
     "timestamp": "2026-06-30T07:00:00+00:00",
     "title": "DOSSIER SPÉCIAL : un psychiatre de Clermont accusé de dérive sectaire et d’agressions sexuelles",
     "summary": "Article via Google News (Courrier picard).",
@@ -26871,25 +27123,7 @@
     }
   },
   {
-    "id": "evt-3416",
-    "timestamp": "2026-06-22T07:00:00+00:00",
-    "title": "[Facebook] 🌡️ Fortes chaleurs : adaptation exceptionnelle des horaires de travail en agriculture 🌾 Suite à la parution de l’arrêté préfectoral n°1050 du 20 juin 2026, des mesures exceptionnelles sont mises en place pour accompagner les agriculteurs et viticulteurs de Cô",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxPQlZTTWxoWGxGdVpfbnFFZ21sRFhxWTFQS0xZMkliTmYtVDNyRDJPaWtldzJ2QVJjVlR2NF9iWHpJcUt0QTVzclZONHRRc3ZscHZ0aG1hTm8zMnI0QnpGb0dJNEszTjNoV3QwMGUtWTB2cHZERUI4M0lGMTZYN056X0tSQmpQa0lBNHZfei1pbGhoRmVySDZGcjBObzlabHpCZEkxcVJZbU5IYUNWZV9xNFQxLXR2ZDUta09YOGNJWG9ZUkoxSkdZR1lITEYtQ0JabW01U3Z6QzBPcFZVcFZMUW9lc1lYMzZlejF6WlEyWlpQcjRjbnlJWDN4bEdzbms?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Agriculture",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-3455",
+    "id": "evt-3522",
     "timestamp": "2026-06-16T07:00:00+00:00",
     "title": "Canicule : les oraux du bac pourront être reportés en cas de trop fortes chaleurs, annonce le ministre de l’Éducation",
     "summary": "Article via Google News (Ouest-France).",
@@ -26907,7 +27141,7 @@
     }
   },
   {
-    "id": "evt-3452",
+    "id": "evt-3519",
     "timestamp": "2026-06-10T07:00:00+00:00",
     "title": "Présidentielle 2027 : au RN, une si longue attente jusqu'au 7 juillet",
     "summary": "Article via Google News (Les Echos).",
@@ -26925,7 +27159,43 @@
     }
   },
   {
-    "id": "evt-3431",
+    "id": "evt-3488",
+    "timestamp": "2026-06-08T07:00:00+00:00",
+    "title": "[Facebook] Transports M réso. . Vous connaissez le Bus 🚌 d'Or 🏅 Plusieurs épreuves pour les conductrices et conducteurs et notamment un parcours technique à réaliser le plus rapidement possible sans toucher ou renverser de quilles ! Ils et elles étaient une trentaine à",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxQdEFXOUhKVWdRQW5rZXVoWWRCY3E5cGt0TW54TllsT3dXTzl3bHhkRUpYd1J5WHJIRnprRlp1THlpNU1teTZaZjI4RWs1VTlPdGR1b01zdkprRWEzX2tKbFlsX1F4TGVCR1hVRDhPenhKd2h2bm9HUG1ZTWFzR1ViZ3J2X1N2djc5QUsyUklmSlNETzdrREczek9tc1l6eVlab2VFZXkwbU55b2phNWJ6RElNTTM2Y2wyWERWemZmWnV1eDRqU3JkN3p5WnpVbDdRcXljTjhaeGl0ZHIwYnd3cGV0eXNOZDA?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Transport",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3498",
+    "timestamp": "2026-06-07T07:00:00+00:00",
+    "title": "[Facebook] Le meilleur conducteur de bus de Grenoble défie la France au Bus d'Or Conducteur sur la ligne C5 du réseau M TAG depuis 2014, Julien Girard représentera Grenoble au Bus d'Or à Paris. Il s'est entraîné sur le parking d'Alpexpo, ce mardi 2 juin, pour prépare",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNT25BWnhrZ05BeHNDZm50RUZxMWRjRW9JbXFhSUZFQjI4b0s3MThDdWlEREo1OUZNdExfUV9LeXZkWEJBd2xQdDJLR01pN3FaMXlwWS1MOGdCLWVpZktjSkVYal9ab2lMTktuMUhJT0t6V1lCRFlVZWkyem9VMkFidkhGSnM0MUU0eVZadkthU1dsNThJVTZqaHNQZmd5b2g4MWZzVGxpZ255VFJnQ21XNVNUS01rSnFmMzVRd1lxQjJtaUhwZlMydFhMdVNtcldkaG00bDVjTmFLWmlhVGJRNw?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Transport",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3505",
     "timestamp": "2026-05-26T07:00:00+00:00",
     "title": "Conférence internationale sur le terrorisme et extrémisme violent : la radicalisation des jeunes",
     "summary": "Article via Google News (coe.int).",
@@ -26943,7 +27213,79 @@
     }
   },
   {
-    "id": "evt-3437",
+    "id": "evt-3494",
+    "timestamp": "2026-05-24T07:00:00+00:00",
+    "title": "[Facebook] 🚌 Le bus d'or est un concours national qui permet de récompenser les meilleurs conducteurs et conductrices de bus. Reportage dans les coulisses des qualifications à Grenoble, entre chronomètre et précision au millimètre. 🎥 Benoît Lagneux, Ancelin Faure e",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPNmdra25PRkF3eUQ5TEk1eWpqSlZwbjFYU3hDOF9xS3pSWFZqVkZXR2hadi16MjFDODBZUUhyRkI3OGY2SEMzUms5bldzVzcxSlMzWC1DR2NFRTk2dk5ENU9RN1lsZG82SWF5NUw5S2o1YzhIQ21sWnZrV2RIbElOVTlfLUNENExyLXhrWW03cDBQTkpra05nN1dhNEM5R256WThlUFR2ZXludGs2ODMydG5Rd0Q0UV80Wm5hOTNTSFR4SjF3U2liaEdUVkphb1JLQTBRREpidjAxWXEyUm55cHpjb2tTQQ?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Transport",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3497",
+    "timestamp": "2026-05-24T07:00:00+00:00",
+    "title": "[Facebook] Le Dauphiné Libéré Grenoble et Sud-Isère. . 🚌 Le bus d'or est un concours national qui permet de récompenser les meilleurs conducteurs et conductrices de bus. Reportage dans les coulisses des qualifications à Grenoble, entre chronomètre et précision au",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQNWhrMTFsZS1fbmRYTnZDd2FPbXVGQlpENkNTTHQwcXA1S3NNUWpvV09qZVlmVFhIaVYzSnBGSjVqWDBPSGVLdXVRaExMX3dZTkJMX3NOdll5Z2UxeWZWNF9pRmJ0dmpDRElqd0RLakV5NmVxcTZSTXJYX1hpWHluUlhfdjJ5dUk3anphTnZpTkp4SkQwdU4xQ0lRYjZPUU9zaEZGUDNONkJLQlptTGJnaE9GMnp4RzQ?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Transport",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3501",
+    "timestamp": "2026-05-20T07:00:00+00:00",
+    "title": "[Facebook] 🚨 RASSEMBLEMENT ET CORTÈGE SANG ET OR À PARIS ! 🤩🔥 📍 Tout au long de la journée, on se retrouve en force dans la FanZone au Square des Acrobates - rue Annie Fratellini - à Saint-Denis ! 🫂 ✅ Ouverture : vendredi 22 mai dès 9h jusqu’à 20h ✅ Ac",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxOeTcxd3BPdnlyN2hIYmtibEt2NnBqXzBtSnBuSDhRWmVWZ0hNM2Y2aGRDZVVRcGxxdFFjWXp0SGc2VWlVOS1YeXpVeU8wV2dYQXN5UlVWVm1NUDU4VGVIdndDblMzLUpoWVp0WDRIVkVNNHRvQjQ1WEk4eHBrRkRZQkp5VmRVenFvZlpIN19tRTk2ZDFpdHd3WGpnRW9OcjRBTFhEdHMyeE5NaWhaUlYxclpxczBwbHV3YjJzdWdHdEZYcXRjeHBwdVcxRnBNSFRnSURuZF9kVVQ4VUdyQ25Qb1V4ZDN6WVZpWkJDdGlaTXhWS0E?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Festivité Evènements voie publique",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3490",
+    "timestamp": "2026-05-13T07:00:00+00:00",
+    "title": "[Facebook] Il se prépare pour les Bus d'or 2026, une sorte de JO des chauffeurs de bus. Ecoutez le portrait de Georges-Henri Stines pour \"Il était une fois des lorrains\" 👇 https://l.ici.fr/bw9i",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNcjBzazlFdXRQMmF5RU5uMVN4UF9YT1NsNDc4cmRGcmJlOVJqSkczRGs5ZWpCWTJyUnUtR2FxTGdVVHE2YjlXZHc2Q3JLODVDeWlYMDlVWHp1X3NXQS04YzF0UmpBVk9aTlZKM2F5REtKTGFUYkJhQ3VucWJHSm1JdDV4UldDUVNJUnJvVndjc3h4RXMtdlhWZldGSDM2S0pOQ0F2U2dLeDdiNmpXdnZ4Ynl6SnNuSW9aTmo3NTVNYkhONk5JN3gtUVlEaC1yeU9CdG9UWjVadGpReVBPSS1GTXJiZFpHUXB1V29QR3RqZ1p5UnZ4eTdr?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Transport",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3511",
     "timestamp": "2026-05-07T09:52:50+00:00",
     "title": "Loi Rodwell : psychiatriser la radicalisation, pente glissante en démocratie",
     "summary": "Article via Google News (blast-info.fr).",
@@ -26961,7 +27303,7 @@
     }
   },
   {
-    "id": "evt-3436",
+    "id": "evt-3510",
     "timestamp": "2026-05-04T07:00:00+00:00",
     "title": "Côtes-d’Armor : soupçonné de dérive sectaire, un maire mis en examen pour abus de faiblesse et viols",
     "summary": "Article via Google News (Sud Ouest).",
@@ -26979,7 +27321,7 @@
     }
   },
   {
-    "id": "evt-3435",
+    "id": "evt-3509",
     "timestamp": "2026-04-30T07:00:00+00:00",
     "title": "Dérive sectaire : un mouvement venu de Corée désormais visé par des plaintes en France",
     "summary": "Article via Google News (La Croix).",
@@ -26997,7 +27339,25 @@
     }
   },
   {
-    "id": "evt-3457",
+    "id": "evt-3477",
+    "timestamp": "2026-04-24T07:00:00+00:00",
+    "title": "[X (Twitter)] Le préfet de la Côte-d'Or a signé un arrêté portant interdiction de rassemblements festifs à caractère musical et interdiction de circulation de tout véhicule transportant du matériel de son à destination d'un rassemblement festif à caractère musical non autorisé",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFB3N2JLU3N4VlduM3IxQktGVDNCVWFJSXVCX21weXZ0em5nNUswLW5ucklXaDlOVWstd2tGZl9MTUhyYmFWb3JXS2NrcG4zb0h1XzltT3VnOWg5cG9BamNLdzFjZw?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Festivité Evènements voie publique",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3525",
     "timestamp": "2026-04-24T07:00:00+00:00",
     "title": "Quel avenir pour Emmanuel Macron après 2027 ? Le Président assure qu’il ne fera plus de politique",
     "summary": "Article via Google News (Ouest-France).",
@@ -27015,7 +27375,25 @@
     }
   },
   {
-    "id": "evt-3433",
+    "id": "evt-3523",
+    "timestamp": "2026-04-13T07:00:00+00:00",
+    "title": "La SNCF lance une concertation publique sur la modernisation de la ligne ferroviaire Aix-Briançon",
+    "summary": "Article via Google News (ici.fr).",
+    "url": "https://news.google.com/rss/articles/CBMigAJBVV95cUxQUGpiRXpmRU1tSm10ZVllVVNnc2RHSjFBTC1OWHRYV0FGNDAwbUVBc29OakJrS2U4UkMtVkVEWjlTcms4U1Y3dHlFR2NQakwxZHBaRlV3X2I1UGJieGFvenhCbWdZaFdDdzhNOGtncDBLeDg4LXlhby1GOEtKelpGOGMwNDRQVWhPRFVTRVM4TkE5QldnVmRCaTBYbXo2dUg5bHdzTFNGM0t1dE5rMThlN21tdjZJejMweDFreWRsekhzUkpUcFdvTnNTdHBfZ3hwQ1lPQWRJU19hVU8tWjlvamR4cWhPdjl3dUhGa294VnJrbG9ONXBLVGI3aWlKdmo5?oc=5",
+    "source_name": "ici.fr",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Ferroviaire",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3507",
     "timestamp": "2026-04-10T07:00:00+00:00",
     "title": "Dérive sectaire à Bellaffaire: le couple mis en cause placé en détention provisoire",
     "summary": "Article via Google News (BFM).",
@@ -27033,7 +27411,7 @@
     }
   },
   {
-    "id": "evt-3434",
+    "id": "evt-3508",
     "timestamp": "2026-04-10T07:00:00+00:00",
     "title": "\"Le Refuge\" : une communauté religieuse soupçonnée de dérive sectaire",
     "summary": "Article via Google News (franceinfo).",
@@ -27051,7 +27429,7 @@
     }
   },
   {
-    "id": "evt-3454",
+    "id": "evt-3521",
     "timestamp": "2026-04-10T07:00:00+00:00",
     "title": "Léon XIV et Emmanuel Macron : que faut-il retenir de cette première audience privée au Vatican ?",
     "summary": "Article via Google News (La Vie.fr).",
@@ -27069,7 +27447,7 @@
     }
   },
   {
-    "id": "evt-3439",
+    "id": "evt-3513",
     "timestamp": "2026-04-09T07:00:00+00:00",
     "title": "Cinq personnes interpellées pour dérive sectaire à Bellafaire",
     "summary": "Article via Google News (Alpes 1).",
@@ -27087,7 +27465,7 @@
     }
   },
   {
-    "id": "evt-3440",
+    "id": "evt-3514",
     "timestamp": "2026-04-09T07:00:00+00:00",
     "title": "Cinq interpellations pour dérive sectaire dans les Alpes de Haute-Provence",
     "summary": "Article via Google News (www.lamarseillaise.fr).",
@@ -27105,7 +27483,43 @@
     }
   },
   {
-    "id": "evt-3441",
+    "id": "evt-3475",
+    "timestamp": "2026-04-03T07:00:00+00:00",
+    "title": "[X (Twitter)] #ArrêtéPréfectoral #CotedOr Le préfet de la Côte-d'Or a signé un arrêté portant interdiction de rassemblements festifs à caractère musical et interdiction de circulation de tout véhicule transportant du matériel de son à destination d'un rassemblement festif à car",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9JNVEzQ05CeFJZQ2NxZUtwaW0tbDJyTzc4Mm5XWXNZcGJGSkhBUVVVdjE1V051dzV2QUNLWS1PbXFUR3dmOTE3eXd4QllqcEZmLTVHX2RjckFuWW12R1ZVNkpsaw?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Festivité Evènements voie publique",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3478",
+    "timestamp": "2026-04-02T07:00:00+00:00",
+    "title": "[X (Twitter)] Saurez-vous les trouver ? 👀 Ouvrez les yeux le 03 avril et trouvez les tickets d’or dans certains bus et tramways 💫 Regardez au verso, scannez le QR code et C’EST MAGIQUE ! ⭐️ Vous gagnez directement 500 points bonus sur TBM fid’ ! Alors ? En route vers",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE5OWjhNNGRYeUhRdElhX29pS2kxTkNtWEl1Y0JROEZhclMyWWxJbm5iWlpva0MtZ2lMZ3BueU5Od25yMldCV2RvQzFJekJxcm9VQ1JyOWs3R2hCRmhuS1E?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Transport",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3515",
     "timestamp": "2026-04-01T07:00:00+00:00",
     "title": "En Occident, un terrorisme de plus en plus alimenté par la radicalisation des jeunes",
     "summary": "Article via Google News (Le Figaro).",
@@ -27123,7 +27537,7 @@
     }
   },
   {
-    "id": "evt-3456",
+    "id": "evt-3524",
     "timestamp": "2026-04-01T07:00:00+00:00",
     "title": "France 2027 : la prochaine élection présidentielle, entre héritages et recomposition",
     "summary": "Article via Google News (fr.infosgabon.com).",
@@ -27141,11 +27555,11 @@
     }
   },
   {
-    "id": "evt-3408",
-    "timestamp": "2026-03-05T08:00:00+00:00",
-    "title": "[Facebook] Chambre d'Agriculture de Côte-d'Or",
+    "id": "evt-3484",
+    "timestamp": "2026-03-23T07:00:00+00:00",
+    "title": "[Facebook] ... - Du Phoenix d'or - Élevage de Husky sibérien LOF & Testés",
     "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPWW5NOWZLdUpuUnZlYmg5LTFJclZtTXRiblp0NzR1eVZtSFpHd2JSMkNVcUpVT0VWaTJBSHd6SGtqLXNkcndjLTB6YWVsbzA1NXFDdmlucU5ocFBxcFRsS3hjYkFVVHRiNmx4Nm54bEJuWFF4dXRLWEhiNjRPcU5KY0tqR1RFUVNF?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFB6d2Z3clozOXlkazl3elZEeHFISm5Lb1hzWGxZMkk3X0VUcXhwMlFNNkhtb3NCaG1TTFNmM0F2MnNWSjVhaS1YeVZWUGdPdE1kS3hhclQxWEZybnRINnoycUYyQ0J0UGM4Z1UzRg?oc=5",
     "source_name": "Facebook",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
@@ -27159,7 +27573,25 @@
     }
   },
   {
-    "id": "evt-3383",
+    "id": "evt-3474",
+    "timestamp": "2026-01-15T08:00:00+00:00",
+    "title": "[X (Twitter)] 🚜 Manifestation agricole à #Dijon La manifestation se termine. Les engins et manifestants quittent le secteur de la place de la République. ➡️Restez prudents à l'approche des secteurs en cours de nettoyage. ➡️Le trafic des trams et des bus a repris.",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE56clY2N09oUVFYTEJseDZzdlktTDZHdW9tcDVCdkpFX094M0V0cndRMXRqcy1ST2pxdkx1QXN0R2toSEluSzNhYXJWSHBTS1VaNUNyTW40dE9HVHVDblI1MlhTQUVqeEtNUjRXYXdB?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Transport",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3460",
     "timestamp": "2025-09-22T21:00:00+02:00",
     "title": "Incident grave à l’aéroport Nice Côte d’Azur: une enquête judiciaire ouverte, la gendarmerie des transports aériens saisie",
     "summary": "Article direct de Var-Matin.",
@@ -27177,7 +27609,7 @@
     }
   },
   {
-    "id": "evt-3384",
+    "id": "evt-3461",
     "timestamp": "2025-09-22T20:55:00+02:00",
     "title": "Le match RCT-Castres du 13 septembre dernier s’était-il joué \"en vigilance orange\", comme l’affirme le préfet du Var?",
     "summary": "Article direct de Var-Matin.",
@@ -27195,137 +27627,101 @@
     }
   },
   {
-    "id": "evt-3406",
-    "timestamp": "2025-06-17T07:00:00+00:00",
-    "title": "[X (Twitter)] #SaveTheDate 🧓 | Le Gérontopôle Nouvelle-Aquitaine et l’@ARS_NAquit vous invitent à une journée régionale dédiée à la prévention des chutes des personnes âgées le 24/06/2025 de 9h à 17h. ⤵ 📍Université de Bordeaux – Site Pey Berland 👉 S’inscrire : h",
+    "id": "evt-3489",
+    "timestamp": "2025-06-01T07:00:00+00:00",
+    "title": "[Facebook] 🏆 Bus d’Or 2025 : Une journée sous le signe de l’excellence et de la convivialité ! Le 30 avril dernier, la finale régionale des Bus d’Or Transdev Centre-Val de Loire s’est tenue en Eure-et-Loir. Un événement emblématique où les meilleurs conducteurs, admini",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxQU0JQLTk1MThRUnRIMUlhS0dFbU9JMUpKZzBCMVpVNm5ERk12WU1mVlFNa1Y1bUZFVURDWE5RbzJFTEcyU3l3ZmVZSC1EVGMzYzhqSWdhV2J4MVRsTDJuaTAxUlZ0Q0RyWUljWTJzaTdoM3BnVjkteERLU1lXQ3p3c3BqMllOMkVvQXZyMExnWWlGWDY5MXA0TFhlNW1YeHc5V1FudWpDekMwRTgzRnAyMHJYUlR0dkVYQl9YbXM0b2IzcUhHU2ZmcHhTUmRja1BBcndtQXVLbTN1ZXBDRW5RRmxld3lYaEt1SEE?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Festivité Evènements voie publique",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3485",
+    "timestamp": "2025-05-26T07:00:00+00:00",
+    "title": "[Facebook] Impulsyon - Réseau de bus La Roche sur Yon Agglomération. . 🏆L'épreuve du Bus d'or a lieu tous les 2 ans pour désigner le meilleur conducteur de bus de France. Cette année, la compétition n'a pas lieu mais nous avons décidé de faire un \"entrainement\" en",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxOa2lkSVFDTXlNQXQtUW0zWGNlV2R5VkpGaVhzUGlwMVRRUFl6Q3pRRzU4YzFoYmRWTU5FMEZUaTZ4ODB2aW1HOUN5R1M5N0ozZDN0RWZIRnN5WWRSbE5tYVNUQUVqZHQxaENCYXBiakgzZFladlVFbEtOaDJqcnBNemg3TGlSVlZ3TFptUjVKX2dxRW9wT3ctU3o2QkJSY3YtRmlvVHlmdlVWSmlBb0dhV1VIQ002Tk05czRyaFdZRkxrVWo5dmM4bGtDZWpfckR4S1FZZ1BFemlYTXBxLXdlZmlkLUF5alFyTEg0TA?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Transport",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3500",
+    "timestamp": "2025-03-11T07:00:00+00:00",
+    "title": "[Facebook] 🚗✨ Rassemblement Auto au Carré d'Or ✨🚗 📅 Chaque 1er dimanche du mois, le Carré d'Or devient le point de rendez-vous incontournable des passionnés d'automobile ! Plus de 350 véhicules venus de tout le sud se réunissent pour un moment unique de pa",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxQSU15V2RaYkhQN2lsWjl5QllaUDI3RkxXNnZyYXVKMl9Qa2xpazRZQm9uY2lUdjNvdldpX0x4Qk45OHVzLVBLM001UXZ4ekN2X0xxNDg3aERsQ0c2bnJheXNwalBlYWVwZ3BQdjN6bkFYVnZyMzdCeXFBeFk5R0NLZVRKUHlpVmRDYjdfbktaU21Hc0lPMVRMVU1BS241OGJEVHFhY2YzRlM5bVRnUW5CbEhicV9GR1c4Tk5nX0dMdHJmM002aUhhRnpHRndVVlUta25aTHFIRzJGcUFuMUNUT1FkQllMX2cyUktVckhYTzg3Q3cxcHc0MDh3ZDZ6N3drRlBFZE00VTQ?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Festivité Evènements voie publique",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3493",
+    "timestamp": "2025-02-11T03:04:56+00:00",
+    "title": "[Facebook] L'Or du Commun: Pension Canine & Élevage de Golden Retriever",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOb21QZVg3UkN0V1Y1NTRFN2RHTVpldDNGeXBGNXkzWnV1WlhoZkNyNTlRSWZhZ1cwQkpiYXlGX1Uwa0VNMFBWdlpwUmFVY0ZIUk5zUkhlUkprT0xSdVl0YVVieEcyMnBTN0VGSXoxUmRHbWFpbGhWS0tZTnFBb1UyamhZT0poSkNTYXFxOXBUbGh0VGo5bEJnZkE2VTd6RXpSZng1bDh1NXE?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Agriculture",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3491",
+    "timestamp": "2025-01-06T08:00:00+00:00",
+    "title": "[Facebook] 🚈 Depuis le 1er janvier, tout trajet en métro, train ou RER en Ile-de-France est au tarif unique de 2 euros 50. Pour les bus et les trams, le prix passe à 2 euros. Une simplification défendue par la présidente de la région Valérie Pécresse 🎥 : Thomas Sellin #metr",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOYmFlcThmaEJNcTI3dkh0Y2ZnLUx0OTloWUYwOVE2Z1RsX3pkaXZHQ2JrLV94cHpSWlF5TWpqeW1RZTJVeWpWR3FvS1A2WG5mUFI2SHRoNnAzR010LVdvbkl3NWx6MWw2cThfNkpIWUs5OHE1X3c4VUlPSkN5YlppR1Nkd2JjX3cwTlhSQWFMWTk1NTM5TG56eDhUSEo1cmJjVVEtVlRTU0g0UUxYZVBEOXpQaE1sNWROZkhuV3hyT0RoTWZOVjZQam9SUjh4UEtwNUZvU05QbkNtUGZ6VlE?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Ferroviaire",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3471",
+    "timestamp": "2024-10-02T07:00:00+00:00",
+    "title": "[X (Twitter)] 🏆 Sommet d'or 2024 : Le matelas Aquaclim de BIORET AGRI-LOGETTE CONFORT 🐄 🌡 Découvrez au @SommetElevage 2024, le système de régulation des matelas à eau Aquaclim développé par Bioret Agri testé par l’équipe de recherche de l'UMR BIOPA",
     "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFA0SWtHMGJheHRFV1VSaklvbUpITEZVRTFWLVdsR0JOWGh3S3hVUGVnSExoMVpnTXoxeHhBMF9vcmpiZzJ6UVcyRUNKVjJvMENDeVJyQzAxU0ZJVkpoNl9pSzJ6Z0xESmR6d1ZzeGgwOXdZQQ?oc=5",
-    "source_name": "X (Twitter)",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Prévention de la délinquance",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-3415",
-    "timestamp": "2025-03-24T07:00:00+00:00",
-    "title": "[Facebook] France 3 Lorraine. . Cette pouliche a reçu la médaille d'or au salon de l'agriculture, et depuis son retour, elle fait sensation. Léa du Dol attend son premier poulain, une bonne nouvelle pour ce cheval de trait Ardennais, une race en danger d'extinction 🐴",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxNR2NvNHlNX2FHZERDZWV6R3dyTnVVTUlSWF9td3FmNEdnWE9aQ3lVSklUU3ZsZktmRkVOR0Y1bHVHYm13eUNZcmFDSzZDZk9oTUpmaTUtZ2p6Q0hNTkd3cjFaTHMyQzk5VXZYYkVMbWUzeTZ0OXBraUdJMXRtbGRyMF9NN3piX0hEX3ZhSlM0SVgyenVxQjVxckluRFZHWWdpN0NqcURQdHBWRFd1RklSRU5uanI1QzNUZjUxZmNESnNhSjItSHJEeldIc3BOSmluN3hVcTltdw?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Agriculture",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-3401",
-    "timestamp": "2025-03-06T08:00:00+00:00",
-    "title": "[X (Twitter)] Le 4 mars, c’était la Journée mondiale du surpoids & de l’obésité !🎗️ En France, l'obésité touche 17 % des adultes & le surpoids près d'1 sur 2 🎯 Facteurs de diabète, maladies cardiaques, cancers… Prévenir, c'est agir ! 🍏🏃 + infos👉https://t.co/FitAWDGDgu #",
-    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9NX1RSOWRqeUZLNGl2R3hVd09mOEdKbWppSEZNeUZxQVIyNW9jcFAtYVJYTWpNSG9oWVlRbUs5NWRDaVlDcFVUN2ROeWxqd0VkX2ZMVHlHWmUyUmE4b3VyeTdJTmNVaWVZM05aYUR4S2k?oc=5",
-    "source_name": "X (Twitter)",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Reseaux Sociaux",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-3423",
-    "timestamp": "2025-01-24T08:00:00+00:00",
-    "title": "[Facebook] FDSEA 21. . Élections Chambre d'Agriculture de Côte d'Or : #VotonsLeBonSens jusqu'au 31 Janvier ! Antoine Carré est en 17e position de notre liste commune FDSEA-JA-CAVB Retrouvez tous nos candidats pendant les 10 prochains jours ! Pour voter, RDV j",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNSzBzWVpXclo2OFlNX09lMUM2Q181SUxCLUFiZHM4UlBOQTVZVEd3ejhUWlNXZW9Tb25PRmM5Nm44Yk01LXR0bTl6cWFIQmNub0twV1NOYm5heTNkR3J3UTMwUWg4R1l5MmhFNWlMTXpjTnZFQWdkLWlibktCczNpV3Y2cHBtc2JTWk5HYzJHLW5mVzJqOUFtdjg3R0dsN3dnQ1F2ZldDQ1YwdXhhOXhjS2IzcWs4Sy1PV1dmdnBKVUNaSkZlT3BrbzYzRFdYX1JyejZoRFBFV3VYZmxXQVVqQw?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Agriculture",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-3413",
-    "timestamp": "2025-01-22T08:00:00+00:00",
-    "title": "[Facebook] FDSEA 21. . Élections Chambre d'Agriculture de Côte d'Or : #VotonsLeBonSens jusqu'au 31 Janvier ! Vincent LAVIER est en 13e position de notre liste commune FDSEA-JA-CAVB Retrouvez tous nos candidats pendant les 10 prochains jours ! Pour voter, RD",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQWkp0azNXZTVSNXFqMWRtRndpTXNack56bTFrblNWYmxTWW1rOC1NVkxpWjhBbHFMVUUtX3pOWUpiTU8yODF6OUpnb21uRUllaWVSYWYyNGhzT0VubXVQdWpxQmVkaW5MalhtaXNvS2VodUFGWXpjNXJNb1JSQlVpWm5zN3NkNFRMaG83N1Q2a2dKQWVEWGMwQWVudWFCY21SU3Boc3lRNjZEaG1FZDltVy04c2hOd3NqNXJuOFNGQkR2UFJySlNiUy1WT0JuTGxiWTZmem9iSVpzTjc1UFNaWg?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Agriculture",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-3418",
-    "timestamp": "2025-01-14T08:00:00+00:00",
-    "title": "[Facebook] FDSEA 21. . Élections Chambre d'Agriculture de Côte d'Or : #VotonsLeBonSens jusqu'au 31 Janvier ! Jacques de LOISY, Président de la FDSEA21, mène notre liste commune pour ces élections. Retrouvez tous nos candidats FDSEA- Jeunes Agriculteurs Côt",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPZHNKVjV2Nk1GT0ZOOW11LUU3R2ZDRU96RldzV1M5WEtwemprS2JTUzE4enpXRzNTUERlYmsxTnR4VHh1U205TG1lX1VtYWdCdlZEakdKcFlwLTNfUmc0VEt6SkpZUjNMMmEtZFlqeFk5QTlRUjBWcUZLbFBKbnFiQkRaXzlHOWtMQWVTSmpscU9UWmtYTVgtZmItSGlpNXpFYzNzZUg4RjVVdHNpWkJjWDZJSWhYY0lXbExjbktvcWRIUGwxaEJMNnY5Mlc3cjNQbkVyNDlySHFraVVlMnVCR3JR?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Agriculture",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-3422",
-    "timestamp": "2024-09-30T19:47:16+00:00",
-    "title": "[Facebook] Météo Côte d'Or (@meteocotedor21)",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9LQnEzX1RFQzh0NXNWbFVHS2NLS2dPcDhGbUE5aW5Ma0RPelJiQlpySFV6ZlpwN2VXOWoyY1p2MGdtR3VZR1pQeG1JT0JVTl8wenZ3aVV0RE03OFpiSnllTHYwaw?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Reseaux Sociaux",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-3393",
-    "timestamp": "2024-05-17T00:46:12+00:00",
-    "title": "[X (Twitter)] Les avis sur les comptes X et leur signification - suspensions et autres",
-    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9jUllsY0hpUkxaQmFZQ2FhWDJRRU44bU14ZGFXUzJfWkxEcGQtTG9qd2hSZzJoOGJGOVhCeVdjekVsUW5QRmIwRkVHZU9ON2VTcWxSS0RubXNQazc2dWlaWG1qRQ?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9ldGUxRVZDZjNaX0JteE9iXy1qUDlKbmJZSkhraHpNM2V4dm5DN1IxYlJDVzZ5b3Q0SzctZnV2QnJVRlptWEFhQ3FiZGdJaUdzbVdaYXdhVHIzUHNwQlF6TmJPWlg3aTI0MVBF?oc=5",
     "source_name": "X (Twitter)",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
@@ -27339,11 +27735,65 @@
     }
   },
   {
-    "id": "evt-3391",
-    "timestamp": "2024-05-17T00:30:03+00:00",
-    "title": "[X (Twitter)] Faire appel en cas de compte verrouillé ou suspendu",
+    "id": "evt-3486",
+    "timestamp": "2024-06-11T07:00:00+00:00",
+    "title": "[Facebook] 🏆 Connaissez-vous le bus d'or ? Il s'agit d'un concours destiné aux conducteurs volontaires qui devront réaliser un parcours au volant d'un bus, des manœuvres, un test écrit, etc. Le ou la meilleur·e conducteur·rice LiA remporte sa qualification au concours nat",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxNTUUyOGFxY2ZlRlIxczZycjhaQXdNTktnNTI4U2twWEhkQXA1SWVGeEV4QkdGaVpDV2JsUGhwZjZFb2p5WFhoaVI5UkJQZlNlc3VsWmU3NHNIRnBCT0Z6WTdqMy1VeTQ0TEdFbTVBZzdDVjVDcERidmFveDBKSGdfTGJxcUNIRjZiWUNVQzk2TGtzbUU5NzRfclF6WFNkNFd0dnk1UGZ1cDZXVExVWlBrcEtsVlhQQWZORmxPUFk2UDVpYTFrR2pFeDJyOHZUOXJWamppZDVzeGJtOFpYbHRFN0NOVGx5ckgwTExGMElqa3I4cFRDbUdxMVpKbDUwQQ?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Transport",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3476",
+    "timestamp": "2024-06-09T10:04:25+00:00",
+    "title": "[X (Twitter)] STM Bus (@stm_Bus) on X",
     "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE92eVgtVTB6Q0FScjY2dEZJSWNJV2cyc1NpN2VlR0p0WDZtQTljUGFYb0g1Y2tCVnBHQm84WGNfTjJ5eVRxM0tSNkZ1ckVDUnZ3aEhhVFJ4ZV9RWFF4anZR?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMiOEFVX3lxTFBzcTZ6MlhKeXZ1dlZnUlJSSW9oMFhNWDQyZHJMSUowYmMtMWYwTFhJc2tQMXVSVlVE?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Transport",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3481",
+    "timestamp": "2024-05-24T18:53:10+00:00",
+    "title": "[X (Twitter)] Rassemblement National (@RNational_off) on X",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiQEFVX3lxTE81SVlpRnhBbDNfSm5iZXhablJmLXo3MUVxZl9rX0FyOTl3VVJIYTE5TUJqTXdYa045bTMzajFzZTM?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Festivité Evènements voie publique",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3463",
+    "timestamp": "2024-05-20T13:34:52+00:00",
+    "title": "[X (Twitter)] RER B (@RERB) on X",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiNEFVX3lxTE5kcGFtM05wY2pfdXZlejlIcFJHcl9iSXMzLVZkM1pHekh1dTRhbnpwLVhlNm8?oc=5",
     "source_name": "X (Twitter)",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
@@ -27357,47 +27807,11 @@
     }
   },
   {
-    "id": "evt-3424",
-    "timestamp": "2024-03-18T07:00:00+00:00",
-    "title": "[Facebook] MÉDAILLE D'OR | Salon de l'agriculture 🏅 La viande d'une de nos vaches qui était présente au concours des bœufs de Noël à Laissac a remportée la Médaille d'or dans la catégorie Bœuf Fermier Aubrac Label Rouge. Une très belle surprise !! 🥳 Une jolie réc",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxOaDRXX1EwbHBnV20ybl9YMlpoSmNsUzBqZTl3VGRHcFlTOG9WOFFGS2tqSTRkT3FndEtRbnFuOWlacG92OEs3eEFEdHpVNjlVN2ExOHYyb20wSUp2UkMwdGFRSGIyQklLalJVVEtmbkhETF9xaXFxR3V3SUZ4NUowSWlyYXRDRURYUnlEaERYYkZKUkt4bXRWQmRIekhnYWVLRDZvNDdENE5Bd1dkSEZzNjVYS0tKQjhMMHlQYU04aEJkS2QxREN4amo1SV95VkVESC1icFRyLVpYZFRJbXd0V0U0OVJDNWpVdjNhRENjVWFpUQ?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Agriculture",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-3420",
-    "timestamp": "2023-11-29T17:07:06+00:00",
-    "title": "[Facebook] France Nature Environnement Côte-d'Or (@fnecotedor)",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE5IeXVrX3pLdldIOG1faG5lbmUyZUhuMUJ1ZlJkNDJYU2w1Z0s0elVwUGRjWFphZkxPX2RDcmdHQ0d6c2txOUtPY1YzaE8?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Ecologie",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-3400",
-    "timestamp": "2022-09-27T07:00:00+00:00",
-    "title": "[X (Twitter)] #PlanAntiChute| Ce matin a eu lieu à l'@ARS_NAquit le lancement du Comité Stratégique régional du Plan Antichute. 📝 ➡Objectif : réduire les chutes des personnes âgées pour améliorer leur qualité de vie. + d’infos : https://t.co/TKJUhGyCE8",
+    "id": "evt-3467",
+    "timestamp": "2024-05-17T11:18:07+00:00",
+    "title": "[X (Twitter)] Comprendre quand l'accès à un contenu est restreint dans un pays",
     "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5ZRml6NzVUbjNCX19Vb0JSa0tBU1U2Vjh4a2tPVWQzaGFEb2hqbzQzLWpwZFlFeUFSb1dhTS1OTVc4bDNoX0xIMUtIYUhFbFNvYnVNX05kQkhCQWwyVnU2dw?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5nRDdDWm1aWmFkTWJJM2VaR3NMUmpWMUdLTGNONHl1QkZXTGRwckJfeGhodDdTVGhTOGZzaHBZckZBdjJwc25WUFhzVElvaUFYc2JZb0p1cW5Pemg4LXUyQWlQZ1NkbXU4T3NTNFVLNFJ3dDg?oc=5",
     "source_name": "X (Twitter)",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
@@ -27411,15 +27825,15 @@
     }
   },
   {
-    "id": "evt-3414",
-    "timestamp": "2021-03-24T19:23:27+00:00",
-    "title": "[Facebook] Météo Côte-d'Or, le groupe",
+    "id": "evt-3482",
+    "timestamp": "2023-10-03T07:00:00+00:00",
+    "title": "[Facebook] Safety first, always! Ignoring a stopped school bus or a crossing guard isn't just breaking the law, it could have devastating consequences. Let's take those extra minutes to prioritize the well-being of our children and prevent a lifetime of regret. Together, let's ob",
     "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1jLWVmQVFhUmVXdTFYWmRjRFY1Qko0NEtYeDdaQWNQSmpQZE80eFhYWnR6R0NBTlpHNnBJVWdtQVc5aTJVZmJSUmZUenFSTFA4M0FQQ2pZMXgyWHFzVFE?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPX0I0WndqNUJlX2dNUW0wWTQwaUZNZnRaQ0xBTlkxdzhNTl9QTDc3eXB3cVdCMmpXOUpuajlueHFDUXpiSW1VU3FRNXFyQ1pJdEJSMU1ieThrOHotaXM4WUR4WnpsNDZubkcyUWYzaVRRMmR3NW1vVWFlX1I0bVFUYVU4RGdLakx4RTBNMUJpaXcxY0lmYXhKQ1BvUmtULWFNTVpVQmoxZ05lUk1Va242S3VNcEgzSDJsbmk0M2VKV3pmVnVncFUwQ1NZandOVVZlX0pv?oc=5",
     "source_name": "Facebook",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
-    "theme": "Reseaux Sociaux",
+    "theme": "Transport",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -27429,29 +27843,11 @@
     }
   },
   {
-    "id": "evt-3421",
-    "timestamp": "2015-10-30T12:48:54+00:00",
-    "title": "[Facebook] Jeunes Agriculteurs Côte d'Or (@jeunes.agriculteurscotedor)",
+    "id": "evt-3492",
+    "timestamp": "2023-05-24T13:00:42+00:00",
+    "title": "[Facebook] Élevage Du Cyr D'Or",
     "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFB4ZzFRcVU0dVlpM3lzckRuRlo0c0lHQ2ljLTZHUGduSm9zeUNVNk5TTGt0cGZiTnZBRk1EUzN2UWZFbnJvMC14a2FDNV9hNVhiclotVndpeXllTXRacTF3RHFB?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Reseaux Sociaux",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-3417",
-    "timestamp": "2015-10-29T10:38:35+00:00",
-    "title": "[Facebook] Association Fête de l'Agriculture",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9ZWVhUZDBoNzUwWmoybVBQV0xfOFJsdWpJN0pIcVVOcjFEYzhmTnFEbU94UzR0UklnQlBYZjFfRXBVWVVXeTFXaGx4ZjBmU3pGdl9KOFRR?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBHem41R3R5RkhoX0xFdG8zYl9mZlBqMmpGZVBzSDE4WkJxS1J2X2JCNWZtV0pOTUVycTRjQUllTkY0RVZGdXgyMTUtOWFJOFZfVi1BbHlrckM5Qk1uWVN2MFpUMVB4V2FlQlFYMkpTMWlxeHVaTWc?oc=5",
     "source_name": "Facebook",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
@@ -27465,15 +27861,87 @@
     }
   },
   {
-    "id": "evt-3419",
-    "timestamp": "2015-01-13T11:44:24+00:00",
-    "title": "[Facebook] Food and Agriculture Organization of the United Nations (FAO) (@UNFAO)",
+    "id": "evt-3480",
+    "timestamp": "2022-03-14T07:00:00+00:00",
+    "title": "[X (Twitter)] L’EP « Cartel » de Koba LaD est certifié disque d’or ! 📀 4ème disque d’or de sa carrière 👏",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBvcVByQmdpOEl0NFlINlpaTXdINE5qSWdxelRqWkRLc0VIdjh5SzNQLUlaNEtyQTE0Wld4ZnlzS3BWblJESTVzYmJ0YUJqNEdFUmN5ZGxCX1N2TGtKWExfYlZjdw?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Criminalité organisée",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3499",
+    "timestamp": "2021-05-17T03:36:06+00:00",
+    "title": "[Facebook] Syndicat d'Elevage Ovin de Côte d'Or (@Syndicat.Ovin.21)",
     "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE1IcnBvMmF2RUcwT0xzcTJxU1FVMEdmcnlZY051WVpTaURDYVJUbzlleDR1amZqUWZFNVFWRy1JcmRrSVQwRHc?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9rbzV4dEJOLUNKRjNkRHhwZDNpUURpWEx2Q05pTkRIR3NnSVFnN3FaNEtmT3pXMVZTajIxRzlQcnpXc25SSnlvb19jc0JVWEZQQjRfZw?oc=5",
     "source_name": "Facebook",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
-    "theme": "Agriculture",
+    "theme": "Blocage grève",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3496",
+    "timestamp": "2017-09-27T06:08:38+00:00",
+    "title": "[Facebook] Assemblage - Le Cep d'Or | Capdenac-Gare",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFAxRnJ6YVBkdEpxRlVHaS1oQ2thU1RndmR5T0E0VVZpclBpYUZtRndNU2tsQV9YLXlBUW53dU15MHp1dDNTWnFRYzJB?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Ferroviaire",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3487",
+    "timestamp": "2016-10-15T11:16:25+00:00",
+    "title": "[Facebook] Événements en Côte-d'Or 21",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE81WUhsS3NZa1lNWUQwRi0tMl9vRF9DMXE4RUk2aEZ1aV9MbWpMdUJQelVlOFgxUG55QVJkZW1kbmRGWnZweVU3TWtrbUxEQVdaNU1J?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Reseaux Sociaux",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-3495",
+    "timestamp": "2015-10-30T14:30:53+00:00",
+    "title": "[Facebook] Elevage de la Colline aux Crocs d'Or, Boxer et Boston Terrier (@ElevageDeLaCollineAuxCrocsDOr)",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5KZkZiWUJBTlloaUZTWnpCbU1PWkZTbHpXalZRanRNMGIzdVVuT19vU1BrRGJfcnBsNEVyYlJLMmxDLWQ1MEloU0FkUzJFcTVQQWlvZHdTRWk1b0ZleU1OS3FyRFZDUQ?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Reseaux Sociaux",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
