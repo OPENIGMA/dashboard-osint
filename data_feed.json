@@ -1,5 +1,59 @@
 [
   {
+    "id": "evt-137",
+    "timestamp": "2026-09-01T17:49:20+02:00",
+    "title": "Narcotrafic à Toulouse : Mohamed Zerrouki, accusé de s’être enrichi grâce au trafic de drogue, de nouveau devant la justice face à des accusations financières très ennuyeuses",
+    "summary": "Article direct de La Dépêche du Midi.",
+    "url": "https://www.ladepeche.fr/2026/09/01/narcotrafic-a-toulouse-mohamed-zerrouki-accuse-de-setre-enrichi-grace-au-trafic-de-drogue-de-nouveau-devant-la-justice-face-a-des-accusations-13530846.php",
+    "source_name": "La Dépêche du Midi",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "Criminalité organisée",
+    "location": {
+      "region": "OCCITANIE",
+      "department": "31",
+      "city": "Toulouse",
+      "lat": 43.6047,
+      "lng": 1.4442
+    }
+  },
+  {
+    "id": "evt-142",
+    "timestamp": "2026-09-01T17:31:56+02:00",
+    "title": "Transports publics à Ajaccio : la Capa assure que le réseau de bus fonctionne normalement",
+    "summary": "Article direct de France 3 Corse.",
+    "url": "https://france3-regions.franceinfo.fr/corse/transports-publics-a-ajaccio-la-capa-assure-que-le-reseau-de-bus-fonctionne-normalement-3409832.html",
+    "source_name": "France 3 Corse",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "Transport",
+    "location": {
+      "region": "CORSE",
+      "department": "2A",
+      "city": "Ajaccio",
+      "lat": 41.9272,
+      "lng": 8.7346
+    }
+  },
+  {
+    "id": "evt-141",
+    "timestamp": "2026-09-01T16:46:42+02:00",
+    "title": "Vol direct Toulouse-Washington : « Les Américains sont parmi les touristes qui dépensent le plus », comment Toulouse s'y prépare",
+    "summary": "Article direct de France 3 Occitanie.",
+    "url": "https://france3-regions.franceinfo.fr/occitanie/haute-garonne/toulouse/vol-direct-toulouse-washington-les-americains-sont-parmi-les-touristes-qui-depensent-le-plus-comment-toulouse-s-y-prepare-3409469.html",
+    "source_name": "France 3 Occitanie",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "Délinquance criminalité",
+    "location": {
+      "region": "OCCITANIE",
+      "department": "31",
+      "city": "Toulouse",
+      "lat": 43.6047,
+      "lng": 1.4442
+    }
+  },
+  {
     "id": "evt-7",
     "timestamp": "2026-09-01T16:40:10+02:00",
     "title": "REPLAY Emmanuel Macron à Mende pour la rentrée scolaire : \"On s’est tous fait déborder\" par les portables, lance le président aux élèves du lycée Chaptal",
@@ -36,6 +90,42 @@
     }
   },
   {
+    "id": "evt-138",
+    "timestamp": "2026-09-01T16:04:09+02:00",
+    "title": "ZEVENT 2026 de Montpellier : le concert d’ouverture voit grand à la Sud de France Arena",
+    "summary": "Article direct de Midi Libre.",
+    "url": "https://www.midilibre.fr/2026/09/01/zevent-2026-de-montpellier-le-concert-douverture-voit-grand-a-la-sud-de-france-arena-13530722.php",
+    "source_name": "Midi Libre",
+    "source_type": "Presse Locale Directe",
+    "source_category": "orange",
+    "theme": "Festivité Evènements voie publique",
+    "location": {
+      "region": "OCCITANIE",
+      "department": "34",
+      "city": "Montpellier",
+      "lat": 43.6108,
+      "lng": 3.8767
+    }
+  },
+  {
+    "id": "evt-183",
+    "timestamp": "2026-09-01T15:51:42+00:00",
+    "title": "Grève des sapeurs-pompiers en septembre : à quelle mobilisation s'attendre en Vaucluse ?",
+    "summary": "Article via Google News (La Provence).",
+    "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxORmFncjdpczg0aTRsdzFTd2pwY1dfWldib3VjUG1PYW5FYW5DZnRFc01QSHRvZlVoZjFvWmxJNHBvTUozd24tTVYzc0JTa1RqSXhxTExnaG1jTThlbkF6RFpyOGRSQW5Celh3LWFQSkFCOWdPdllpSUVFNjUyejl6UjFUeUhPYlNETUJENkI3ZzZwNkNpbXprSnFwWGp4UDRZQjlmdVRwRGJ6aFVJVWJHc2tJWDFTdlNSTVpDUnZpNXdxQ3dfYXZmNXFLN2Q1UDlKYXNnR0tPVGFCMmg5THE1c29tUC1CNHhpOTNlTQ?oc=5",
+    "source_name": "La Provence",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Blocage grève",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
     "id": "evt-8",
     "timestamp": "2026-09-01T15:29:02+02:00",
     "title": "Il avait imposé une fellation à un garçon de 13 ans : un ex dirigeant de la Fédération française de cyclisme condamné pour agression sexuelle",
@@ -45,6 +135,42 @@
     "source_type": "Presse Locale Directe",
     "source_category": "orange",
     "theme": "Délinquance criminalité",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-182",
+    "timestamp": "2026-09-01T15:25:04+00:00",
+    "title": "Avis à Manifestation d’Intérêt – Festival des Food Trucks",
+    "summary": "Article via Google News (Frontignan la Peyrade).",
+    "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOc0xCcFJ6ZGVNT1lza1NYMjJpbWpFTnJ4dXZCM25PRUROcFdqWGdjVDkzdG9kTURRR0JPQTFRdzlPNHRyLTA4b3ZEak5TaXI5cFIwdDdIbk51MWRGdE5yUUs2akYxRmtldFBTOGtvSVNzeVYtM1RwZTkxdzhBVGlscTRCQTJ5ZEhUdHNGVDhnNlpwM2l6UFJfS2NjdkRUYkFpVkg2SjRqWEgzNGhoOE1uZlBadw?oc=5",
+    "source_name": "Frontignan la Peyrade",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Festivité Evènements voie publique",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-196",
+    "timestamp": "2026-09-01T15:03:34+00:00",
+    "title": "Iran : une centralité de la question nucléaire ? - IRIS",
+    "summary": "Article via Google News (IRIS - Institut de relations internationales et stratégiques).",
+    "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOQ3FnbWRsOVlzNTEwdXFGd0p0R3h5NkdGanB3aUg5dEVteDhFVmVOUktCcDluNjV0NEZ4VzNOdUpzb01MRmZlMXhYQ2YtMWU2TVJrVU1Ob3hwaDVNV0hmTV9KMlBnaV96dHBYcG5SemdVeGh2TnpPMzh1aW9TYmI2OGI3YS1OUnlv?oc=5",
+    "source_name": "IRIS - Institut de relations internationales et stratégiques",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Nucléaire",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -315,6 +441,24 @@
     "source_type": "Presse Locale Directe",
     "source_category": "orange",
     "theme": "Visite officielle",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-153",
+    "timestamp": "2026-09-01T12:53:52+00:00",
+    "title": "[X (Twitter)] Leur école a été ravagée par une tornade il y a une semaine et, pourtant, ils ont pu faire leur rentrée comme tous les enfants. Voici comment le village de Pomas s’est organisé en quelques jours pour assurer la rentrée scolaire des 80 élèves.",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01cktoNzhjWVA3SHJ0dnFJS3BlNHRMendOdElKV29TcmtzMXYydEpPU0RObExobnVpNEp4ZkF3bW9SLUZpR3JSeFY5aW1YbmVuYkhQdTdieFAwNHFoYURESllKQXhVcUU?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Education nationale",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -648,6 +792,24 @@
     }
   },
   {
+    "id": "evt-184",
+    "timestamp": "2026-09-01T10:10:29+00:00",
+    "title": "Budget 2027 : la CGT appelle à \"une grande grève\" le 29 septembre dans la fonction publique",
+    "summary": "Article via Google News (TF1 Info).",
+    "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxONElXM3VxRUZSM0NmYmRYWDFjQ0pWZ2o0eUFYS3M3bFlBeTIyWFBFdDhsSkhlZUxQdkRSOFdDMnFMa0JrUkMtNVRzX1NSLUNOYnVkQ2Q3TmprSmVseXhMVDlRaFg0dDRoOUhLYzdnOHFlQXdibnM1dFByOXlKLXd3TGQxNFRCazJBX05aUWVzUFh4QzZ2bEVqeC13aC1CZ2xqTFBmYnZGOXlTanZxT0xJbmRaREt1SXVod2ZqODZ5WVpSODJUZF9xYjVlOA?oc=5",
+    "source_name": "TF1 Info",
+    "source_type": "Google News",
+    "source_category": "blue",
+    "theme": "Blocage grève",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
     "id": "evt-24",
     "timestamp": "2026-09-01T10:09:13+02:00",
     "title": "\"On a le strict minimum\" : grève chez le spécialiste tarnais du canard gras, les salariés réclament la réouverture du plan de sauvegarde de l'emploi",
@@ -656,6 +818,114 @@
     "source_name": "France 3 Occitanie",
     "source_type": "Presse Locale Directe",
     "source_category": "orange",
+    "theme": "Blocage grève",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-151",
+    "timestamp": "2026-09-01T09:56:15+00:00",
+    "title": "[X (Twitter)] ‼️💰 Des précisions de @FabrizioRomano. Sunderland va débourser 30M€ + bonus pour faire de l’ailier belge un Black Cat. Arsenal ne voulait pas débourser un package de 35/40M€. Encore une piste qui nous échappe pour quelques millions d’euros, en es",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE40LVd0TzMwVmpZRGl0b3hkNFF1c1YxLVlmb0JmSkJHZ2U2UWN4VlJGdWZiOHJyREpJeVRwQ1FpZkIwVmtraE85Wmk5Ym9UaHdKZkdvWkh2S3VFdWJ4QVBuZDdB?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Armes",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-158",
+    "timestamp": "2026-09-01T09:55:59+00:00",
+    "title": "[X (Twitter)] 🚨MALICK FOFANA N’IRA PAS À ARSENAL ! ❌ Sunderland a trouvé un accord pour s'offrir Malick Fofana ! 💣 Le joueur a été autorisé à voyager pour passer sa visite médicale avant de parapher un contrat de cinq ans. @David_Ornstein",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBuWVVVeVl1eXdhdWZBLS1WcWlwUkF1MW95WDJIWFZnQmJWSTdBUEhFRC1RRUI4a1RUSUlmVDVWMGJIM2xnVk1RdmkydDZLYVZsY1QtbUZGSXBFRDJxUWdV?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Armes",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-149",
+    "timestamp": "2026-09-01T09:54:10+00:00",
+    "title": "[X (Twitter)] ⚠️ Malik Fofana va rallier Sunderland. Le joueur avait notamment été proposé à Arsenal, mais Mikel Arteta n’était pas forcément convaincu par son profil. Opération estimée à 30 M d’Euros #SAFC #OL (@HandofArsenal 👍)",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBZU3BxenlhX3RqNWtERE5URzdxZEtiNXFvNkxQRUFkWmF0aUJEd0EyYVNXSTZ0NnhGRXBwMDVkclE0NnRNZU04YXdySUVuNnpGaGJ5N09KWG5LRzJTdEQweGlqbE9UZw?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Armes",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-162",
+    "timestamp": "2026-09-01T09:47:17+00:00",
+    "title": "[X (Twitter)] 💬\"L'école doit rester la première des priorités\" 19 élèves par classe, petit-déjeuner offert... Olivier Faure développe ses propositions pour l'école #BFM2",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFA3SmFRZ2JGclFZQXRFMG9OSGtKb2tibld6SzNHcWxUQUtBdDhfSFhUVjRqUkZBSjVWQWgwd3VNeU95RUNqUU9HeldpSnZ5bXNHb0NMdmNlc1k2Zw?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Education nationale",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-147",
+    "timestamp": "2026-09-01T09:35:29+00:00",
+    "title": "[X (Twitter)] 🚨🔵🔴🇧🇪 #Ligue1 | ❌️ Pour le moment, Arsenal ne propose verbalement qu’un prêt avec option d’achat pour Malick Fofana. 🔵🔴 Lyon souhaite/espère un transfert définitif de 40 M€. 🇧🇪 Le joueur, lui, veut rejoindre Arsenal. 🔴⚪️ Sunderland reste toujours prés",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4zREdVcUZWcS1uQUtTX1lTWjc4ZHRVNzZCdXVHb1otdk54TE1TaWxYbm1HdlJLa0FFUlZhemNtdzhad3d1Z0pLVW5qVjZjNW9qNms5UEV2cG5tNGlZd3FRUQ?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Armes",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-181",
+    "timestamp": "2026-09-01T09:11:00+00:00",
+    "title": "La grève est levée pour de bon chez easyJet : l’accord qui met un terme au bras de fer avec les salariés",
+    "summary": "Article via Google News (Challenges).",
+    "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPX20tS1NXU2pSN2NmMGUxZHBka2pwR1FhMU5hRUpTc3dwNnREcEZCcU5WcGdoTkJKRkE0NjBVOW5HRlEyZ09FUTV5NXJ6MkI5ZDNtRTdLanNwaUtNRHllREluUUlpdDBFUlFYQlFnTmYwQUlBTzFMdDY4Q1pneG5ybXhqbmlWS21oRlF1ZVlyMXRDZERNTjVHdHY2dzhPOC1jZ3N1SzVSbGpOeUgxZmJXak8wSEFhV2Q0Y3BRWkx5YUhra0RtbEN5VnFDQWZMMWpsUnNjR3U5ckhhcG0xdUE?oc=5",
+    "source_name": "Challenges",
+    "source_type": "Google News",
+    "source_category": "blue",
     "theme": "Blocage grève",
     "location": {
       "region": "INCONNUE",
@@ -810,6 +1080,24 @@
     }
   },
   {
+    "id": "evt-148",
+    "timestamp": "2026-09-01T08:09:50+00:00",
+    "title": "[X (Twitter)] Je préfère un jeune avec un CAP ou un bac pro et un emploi à la clé, plutôt qu’un master avec Pôle Emploi à la fin. Je propose l’apprentissage dès 14 ans. Je veux une révolution culturelle pour l’école : revaloriser la voie professionnelle et lui redonner sa libe",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5FMkVaMjhmY0R1X1RnanIzajEzSV9tbnlOczZMakhFcWN2THB5VzJieGFDaDUyb0xuekk5eFpSZHgwT1JfZEs5ZTVhQlVxSjFzNWRwZTJmZ0ZiOFBELUd3ZTYyUGM3Qnc?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Education nationale",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
     "id": "evt-10",
     "timestamp": "2026-09-01T08:02:02+02:00",
     "title": "C’est la rentrée pour 11,6 millions d’élèves et 851 000 professeurs : les chiffres au primaire, collège et lycée",
@@ -873,6 +1161,42 @@
     "source_type": "Google News",
     "source_category": "blue",
     "theme": "Transport",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-144",
+    "timestamp": "2026-09-01T07:14:29+00:00",
+    "title": "[X (Twitter)] 🚨🚨 ARSENAL A CONCLU UN ACCORD AVEC MALICK FOFANA 🇧🇪 !!!!! ❤️🤍 Le camp du joueur fait pression sur Lyon pour accepter l’offre des Gunners. 🗞️ @yagosabuncuoglu",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE53ZnFoeDJaRkh4WGd4d2YzRloycl9PbUFDOW5qb2VtaGNlQlR4Qm9SYnF5cjVoMGdjUXFqekN6d1RLWEtwZFh6UHVhbmt0WUpLQzhsN2tncmlGRGFna2Vn?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Armes",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-143",
+    "timestamp": "2026-09-01T07:12:20+00:00",
+    "title": "[X (Twitter)] Arsenal a tenté de détourner Iliman Ndiaye de Manchester City. Les Gunners ont effectué une dernière approche pour l’attaquant d’Everton, mais le Sénégalais a déjà donné son accord à City pour un transfert estimé à 75 M€. Après cet échec, Arsenal se tour",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBKNWFXNkhrOUtVZEFzUkVkaXZLRklORlF0TC1kc3l1SnIyREliYk5iM1M4OWQzWWNOckFjMHdZWl9YaGJ4QW9tT1d6MEU3MElmOUxmOWQyVE5xOWJTQ0xLbkwwUjVYYWM?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Armes",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -1008,6 +1332,78 @@
     }
   },
   {
+    "id": "evt-154",
+    "timestamp": "2026-08-31T21:06:13+00:00",
+    "title": "[X (Twitter)] Dans un déplacement compliqué à Aston Villa, Arsenal a comme souvent réussi à tirer son épingle du jeu. Les Gunners s'imposent par la plus petite des marques (1-0) grâce à Bukayo Saka, dans un match fermé. ➡️ https://t.co/rYouNVJQ5F",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE44QUQtNEdfSDdxX0NvQjEyNWFaWmc0bmxxeUpUWmdlSldxRlpINTJEWW9rdDVWelJSZEVsdndacy14MnJfci1SeTNua240ejlvSDF5Nmo0eHViTDds?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Armes",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-155",
+    "timestamp": "2026-08-31T21:03:04+00:00",
+    "title": "[X (Twitter)] C’était pas un grand Arsenal mais c’est un Arsenal qui fait ce qu’il faut pour gagner et ne pas donner d’opportunité à l’adversaire. Deux clean sheet en deux journées et un succès précieux à Villa où il est difficile de s’imposer et qui sera encore plus coriace ds",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9nd1V2M3c5YUNMS2xmVGRoTk00OEJvcEZCT2dTVlBmTmozVFd6ZTJ6VGVqUFRLR2NLbEVCdGNuZTVwWXhIdURNck8xeFBCdlhGdVNDb2NyNTN0OEpGUzM2akV3Smhpdw?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Armes",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-150",
+    "timestamp": "2026-08-31T20:57:44+00:00",
+    "title": "[X (Twitter)] 🚨🚨 SERVICE MINIMUM POUR ARSENAL SUR LA PELOUSE DE VILLA !!! ✅❤️🤍 6/6 comme Manchester City, Hull City et Chelsea. ⚽️ Bukayo Saka 🏴󠁧󠁢󠁥󠁮󠁧󠁿 Toujours pas de but encaissé par les Gunners cette saison. 💪 Toujours pas de but marqué en Premier Le",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1KWHV4UFNBUm9ra3FPUXNHQ0s5ZlRTX2Z0bkN2LWhPTzZ4RkJLRXF0OWFUM05yNVVVcjlQNVZsT3NvMEdvSkVvd0lIRzJndlpCYzIxRHFIc3M0TllBQXpJ?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Armes",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-161",
+    "timestamp": "2026-08-31T20:37:39+00:00",
+    "title": "[X (Twitter)] 79' Entrée de Konsa face à son ancien club. Mosquera est sorti sur blessure, parce que ce n'est pas un match d'Arsenal sans une blessure. 🟤0⃣-1⃣🟡 #AVLAFC",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9sT2tqcUctOGhrczlDZ1JpeXd4WFBoVEZRd3FYdDBsVndDcjBuc2lEbU84VHBaV0FmM3FlRXA3LUZEZkhocWFYR3BLNkNWVmpXYVpwT2MzUGxReEEyRlhtUGxNTU0?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Armes",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
     "id": "evt-36",
     "timestamp": "2026-08-31T19:30:57+02:00",
     "title": "VIDÉO. Incendie : Une trentaine d’hectares de\nvégétation détruits à Aleria",
@@ -1116,6 +1512,24 @@
     }
   },
   {
+    "id": "evt-145",
+    "timestamp": "2026-08-31T16:32:11+00:00",
+    "title": "[X (Twitter)] info @lequipe Arsenal est passé en pôle pour Malick Fofana. Après avoir placé Gabriel Martinelli à Al-Hilal, Roc Nation est en discussions avancées avec les Gunners pour l’ailier belge. L’OL demande toujours 40M€ pour son joueur de 21 ans. https://t.co/A1k",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1XVkZJWTN4NzFEdHdwZEtaTkVSRGdDLUJ3U2F4MzhfdGFTT211alVzdXlocTZCeEItZjduWnBzQTdFSTd6dmkyTGdJVzZQeDlvaERibjJqeEpiSjFVYXFjdnNiVTQ?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Armes",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
     "id": "evt-40",
     "timestamp": "2026-08-31T16:26:23+00:00",
     "title": "[X (Twitter)] 🔴 Un Airbus A320 de LATAM reliant Sao Paulo à Cascavel est légèrement sorti de piste à l’atterrissage ce matin vers 9h45, sous de forte pluie, à l’aéroport de Cascavel au Brésil. 151 personnes à bord (145 passagers + 6 membres d’équipage). Aucun blessé.",
@@ -1125,6 +1539,60 @@
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
     "theme": "Transport",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-152",
+    "timestamp": "2026-08-31T15:47:19+00:00",
+    "title": "[X (Twitter)] 🚨🚨💣 ARSENAL A ENTAMÉ DES PREMIÈRES DÉMARCHES POUR SIGNER MALICK FOFANA 🇧🇪 !!! LE JOUEUR A DÉJÀ DONNÉ SON ACCORD ✅ (@FabriceHawkins)",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBodDZKaXg4eDF6X2hmRFd1RXo1VlRWVzRBX0JTSk1ic3MzWlNINXdTNnRfVUF1QkcwaWU5c2R1WTJMZTdwLXpwX2hNb3NOWS1sRW01R0kwTTFuX0s1d2lBaHR3?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Armes",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-164",
+    "timestamp": "2026-08-31T15:31:51+00:00",
+    "title": "[Facebook] Projet en chantier | École Primaire des Blés-d'Or de Saint-Lin-Laurentides La fin des travaux approche à grands pas et nous sommes fiers de contribuer à la création d'un milieu accueillant pour les élèves. Merci à toute l'équipe! Bonne rentrée scolaire à tous!",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxQTTJGR1Rpem1VV2FoM1AxbXA1RzRpYkVwbnNmdkRWdDdteHJZam1TWHRfTTU4QXdPMkRaVDZDS1FiQ0JWMk9aRnBid0EzZDJEWkdnQmsxd2VBcXplYTlxbVpRVFlpei1ndWJ2SkZVQ0pUc1RzVkJZSnRpS29rRjJMUlBDekhuLTdjTmZwNkJnc1BMdDFuN2pLODZYYXY2TjM3dUVTWVAtNTZHREdUZlM0WW1KVXJvUTR6UFVSb2VqUEZHLUlHMWRMcjFxXzhJdHpFN1NJaVhBdnBlNjQ0Q3FIV2s4MG50SlFlYVFBcTRn?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Education nationale",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-146",
+    "timestamp": "2026-08-31T15:23:58+00:00",
+    "title": "[X (Twitter)] 🚨 DORTMUND DISCUTE AVEC ARSENAL POUR ETHAN NWANERI 🏴󠁧󠁢󠁥󠁮󠁧󠁿 ! 💛🖤 🗞️ @sachatavolieri",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE40am1LYkotLVgwdmRkUGZTcmF4S1F3Z3pNSXFVdHVXRW9YdjVCSllXeXliX0FuLVlIcGpEcktQM0twSFN6c0FlMW5QT0dfTVdQTk5VOEk5MlE1UDJ3VXBJ?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Armes",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -1206,6 +1674,24 @@
     }
   },
   {
+    "id": "evt-175",
+    "timestamp": "2026-08-28T14:13:40+00:00",
+    "title": "[Facebook] Jimco Farxaded iyo Jiilka cusub ee Dalka Very happy meeting you all 🙏🏿✌️",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNeEZGOGJFMURBN2FWYnVhMEFpS2tsbHZIQkZhbnNIUFo0MXMtelJiOFNvLUE0dWZrNjBZcVFYaWRKQWdraGx0Zl9sVEVHUGNUSFd6czhGTGNad3dKX1lqTElHMnJ4Y0dyVkpfRjdEbHFfSk1QS0JnaTNvTE5UOTNJU0d2VUpXNnFHb0lDQjBFLV9ZX0RQQUtabEkzZVI1czlnT0JZMTNVU2Z1Mk04WWpTNURRQUJXLVJQVzNUazVOaUFSTkdNMlI0NUhkQUlOamxYNmlhSERhWXhwSjA0YWQw?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Elections 2027",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
     "id": "evt-133",
     "timestamp": "2026-08-28T11:42:44+00:00",
     "title": "La Grèce fait intervenir ses F-16 après le survol d’un drone turc à proximité d’un de ses aéroports",
@@ -1278,6 +1764,42 @@
     }
   },
   {
+    "id": "evt-160",
+    "timestamp": "2026-08-26T08:29:04+00:00",
+    "title": "[X (Twitter)] Des sourires hier pour le premier entrainement de Konsa avec l'équipe 😁",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBBSDNxTFFvc1FlYjRGSWI1T0lMb0JEY2Y3QUF6cTdKeGdPMzkzNlpLMVQ0OHlyeG9tV20tOEZTRDh2ZDZGODZDaEJmOENFQmpCa2RDSmNWVGFiaGVFa1hRelhmLVlFMVRDRnc?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Reseaux Sociaux",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-165",
+    "timestamp": "2026-08-25T19:56:35+00:00",
+    "title": "[Facebook] École nationale de théâtre - National Theatre School of Canada",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE42dUZFMWpuTm5rTjNtaUhzZUhMU0F4eTlOOWxwWTd1ME8zQTJWbHhNX1JvbWx6c0JNOUhUVVF0Zks0LUE5R3FHd1BOQVRuOTVsMkNKT0NLYU8wbHdiM0pteEFXWDU5a1h3R0hQMWpPY1hTY2M?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Education nationale",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
     "id": "evt-43",
     "timestamp": "2026-08-25T07:14:26+00:00",
     "title": "[X (Twitter)] En marge de la visite officielle en République française de Son Altesse Royale le Prince héritier Mohammed bin Salman, Son Altesse le Prince @BadrFAlSaud s'est félicité de l'annonce de la création d'un nouveau centre culturel saoudien à Paris. Ce projet re",
@@ -1323,6 +1845,24 @@
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
     "theme": "Prévention de la délinquance",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-157",
+    "timestamp": "2026-08-21T17:06:02+00:00",
+    "title": "[X (Twitter)] Après 39 ans de service, le CV Luxembourger quitte l’École navale, où il était chef d’état-major et DGA. Officier pilote exemplaire, chef reconnu : son parcours force l’admiration. Nous vous exprimons notre profonde gratitude et vous souhaitons une retraite ép",
+    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1aUEtLM3h0alJqeE5yYnBDWS1MRG1ZblRMOGxnTnZ3LTlLcEExQk9nb19vTVYtOEc4QmFrT3BYTlVacFdFZ2NWTk1tSUxLRFlhQkFvMEowb041Tmo5djk0VHpFNA?oc=5",
+    "source_name": "X (Twitter)",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Education nationale",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -1395,6 +1935,24 @@
     "source_type": "Google News",
     "source_category": "blue",
     "theme": "Drones",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-166",
+    "timestamp": "2026-08-14T14:57:48+00:00",
+    "title": "[Facebook] 💚 Après l’École Vauban, l’expérience KidsCare continue à la Cloche d’Or ! Le foyer de jour KidsCare avec un service de transport prend en charge les enfants à la sortie de l’École Vauban et les accompagne jusqu’au foyer de jour KidsCare Cloche d’Or. Dans",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxOM3Y4WXotRDE5eGdaYWtGNWNvcnlFbTRMemdPX1dDM0FybFY4VVVKajk1bkNqbmFFakV6XzBzaHhUVjlPdDdSTHBwS001VFJFTTJDMDUzYS1EUEtCbWE1S0NFRmVzT242Ym9oNkZwYWZ1VEZxeVFnbGh0bjV0VkpBenJwVDBiQUZIVE5SeW4wbEhPMDdnQVVWRmtLREEtS21EbDdjMDlVXzM0WFd0RVFjb3hEdUo1LXBfSnZZSmJtclBHaDYzU2NUNlVrbkFlRWwyM1JMVmw4dXBNUHpwU0FmOVdoaUFqUzNJT1YzSFFENFBfMnFK?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Education nationale",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -1548,7 +2106,25 @@
     }
   },
   {
-    "id": "evt-96",
+    "id": "evt-167",
+    "timestamp": "2026-08-04T07:00:00+00:00",
+    "title": "[Facebook] L’or de l’été est en pot. Récolte de miel de lavande 2026 ✨ Entre les abeilles bourdonnantes et les champs violets, on a capturé le soleil de Provence. À retrouver sur www.butinarello.fr",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQTUZ6VWphQ1NhX2UxQlRlWFdTZTlTcW1tc3ZoZU1NRlNKRWRHWld1TVo0MEdDVjhrVmZGXzVXc2tQMnpIejRDRGNNd3o2aXJ1MlFjZ3gxMGVmbWN5RHBUVTlMcTNIWFhVWXV1aURMM0o5RVI1QmtYdUtpR044eVMyYmtIbk9MNEJLZWRkZGFIRWZkNzZfN011bTBGVzFKY3NqWEZSaUZxdDlxUDdGbEp5b1RyTUF5MlhDTHBwZ1psR1Jtb0hySkVSdDVQeDlsTUdlWkMxaFRDYXJYNHQyTDAxMVFXNTU4UjZ0U051TQ?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Agriculture",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-193",
     "timestamp": "2026-07-31T07:00:00+00:00",
     "title": "Saint-André : un couple déféré dans une affaire de dérive sectaire présumée",
     "summary": "Article via Google News (Le Quotidien de La Réunion).",
@@ -1566,7 +2142,7 @@
     }
   },
   {
-    "id": "evt-131",
+    "id": "evt-207",
     "timestamp": "2026-07-29T08:46:23+00:00",
     "title": "Autorisation de survol de drone - 22 et 23 août 2026",
     "summary": "Article via Google News (Les services de l'État dans l'Orne).",
@@ -1584,15 +2160,15 @@
     }
   },
   {
-    "id": "evt-42",
-    "timestamp": "2026-07-24T07:00:00+00:00",
-    "title": "[X (Twitter)] 🔥 Prévention des feux de forêt en Côte-d'Or ⚠️ En raison des conditions météorologiques et de l'aggravation de la sécheresse, la préfète de la Côte-d'Or place les 8 massifs forestiers du département en risque sévère d'incendie à compter de ce dimanche 26",
-    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE11SThDTTg3dTZKRVBPckx6dm5hWEk3amFmZWM0ME5icjAtYjBaSk5LNl9iNGZqeEJSaEEzZXZ2bFpXc2oyMlo1VW95NndmMlN6LXFmMkFEOWoxUzAwT050LWlIdw?oc=5",
-    "source_name": "X (Twitter)",
+    "id": "evt-163",
+    "timestamp": "2026-07-17T07:00:00+00:00",
+    "title": "[Facebook] Your next meeting, work session or gathering deserves a better setting. Discover the VIP space at Lynk. – Votre prochaine réunion ou séance de travail mérite un espace à la hauteur. Découvrez l’espace VIP de Lynk.",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPa3FqY0haZ0NaTkhQaGI2dndJX2xyanVVTzBoRnJ1VzRiRnU1dnNUWkY5TlhDck1UNUJNeHNfa2Nsd0xxbTRYcThZNDBMUGdWbnZJSFJ3XzhsMjlZQ2FOeDdhYkR6eXBpNzhtN2M5ZzlRVFRIbVlfeWhoNFl2NThPcTIyTW5ST1R2RzJjQUtnSmNnYjdSWHV0QzFKS0N6bHNNeTB6aVFWY0lkUmQ2OW5DOUtWMUNEODJrbEhKWk1RQ3NXOUt4SVV1WXRLMGdaRnJXbXh3OW1n?oc=5",
+    "source_name": "Facebook",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
-    "theme": "Ecologie",
+    "theme": "Elections 2027",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -1602,7 +2178,7 @@
     }
   },
   {
-    "id": "evt-95",
+    "id": "evt-192",
     "timestamp": "2026-07-17T07:00:00+00:00",
     "title": "« Il y avait de l’empathie, pas d’emprise » : un habitué des cérémonies conteste toute dérive sectaire dans ce village près de Nice",
     "summary": "Article via Google News (Nice-Matin).",
@@ -1620,7 +2196,7 @@
     }
   },
   {
-    "id": "evt-113",
+    "id": "evt-197",
     "timestamp": "2026-07-14T15:45:32+00:00",
     "title": "JOP d'hiver 2030 : audition d’Edgar Grospiron, président du Cojop Alpes 2030, et de Vincent Roberti, directeur général",
     "summary": "Article via Google News (assemblee-nationale.fr).",
@@ -1638,7 +2214,7 @@
     }
   },
   {
-    "id": "evt-114",
+    "id": "evt-198",
     "timestamp": "2026-07-09T07:00:00+00:00",
     "title": "Procès des assistants du RN : Marine Le Pen condamnée en appel, mais éligible à l'élection présidentielle 2027",
     "summary": "Article via Google News (Touteleurope.eu).",
@@ -1656,25 +2232,7 @@
     }
   },
   {
-    "id": "evt-45",
-    "timestamp": "2026-07-08T07:00:00+00:00",
-    "title": "[X (Twitter)] 🔥 #Feu de végétation en cours commune de Nuits-Saint-Georges [Côte-d'Or - 21] __ 📹 Brenda Favier 🚫Évitez le secteur 🚒Facilitez l'accès aux secours #incendie #FeuxDeForêt #NuitsSaintGeorges #CoteDor",
-    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFB4dWlsX0lRVE93SVRLVGdIVDBCODg4dERFLTEzMHZaVWRoS1hUekJjYXBrdy1UWkZGODdPY1I1THQ1NnRLOHpfWDVrSTRUeXpQcmtENnhTWmtXNERRNDdscHZJdGpldlNHM2k0?oc=5",
-    "source_name": "X (Twitter)",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Ecologie",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-115",
+    "id": "evt-199",
     "timestamp": "2026-07-07T07:00:00+00:00",
     "title": "France: malgré sa condamnation et l'obligation de porter un bracelet électronique, Marine Le Pen annonce être candidate à la présidentielle",
     "summary": "Article via Google News (tv5monde).",
@@ -1692,15 +2250,15 @@
     }
   },
   {
-    "id": "evt-48",
+    "id": "evt-174",
     "timestamp": "2026-07-06T07:00:00+00:00",
-    "title": "[X (Twitter)] 🏖️ Cet été, profitons de la baignade… en toute sécurité ! Les services de l'État en charge de la jeunesse et des sports en Côte-d'Or vous donnent rendez-vous pour le Village itinérant Prévention des noyades : 📍 Mercredi 8 juillet de 10h30 à 17h au Lac Kir à",
-    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE1XLU5jbzR4eEMwbHRfLWZBamozZVpBby03UDlsMTBsVVJnTF9nRDVKSW8teTJCeWFtZkR2a3NuMnBfRVIzYVlmaFU3MVlZYmFldU9QaHdnbm1jSmpaZ0x3Q09QWQ?oc=5",
-    "source_name": "X (Twitter)",
+    "title": "[Facebook] Emmanuel Macron signe le livre d'or de la Grande Mosquée des Omeyyades à Damas",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPc2JKeUV4TFRhMmsxOHp2ck5WUG9yZjhhMTFTa09oS254STRjS0syd2hzandyRE84X2JRZlFGa0pnaXlsTUx4SjY3QU93dkoyS21UVW1Oa0pKaDlqOTVHdktxSWtVcS1XeFlpVV9UOUdFWm1MN0hSVUd0ek5zaWJvU2VRTVJtRTEzelFLZVkxWEE4ZmYxeGRJX09aTWJrcUVqVEtOV3hrNzZ3WjA1YlJLNEJMX0huX2E0WS1NMEt0SXE1VkZXNWtzSXpDdFZsajBiWkJYcVc1RlQ5QQ?oc=5",
+    "source_name": "Facebook",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
-    "theme": "Prévention de la délinquance",
+    "theme": "Visite officielle",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -1710,25 +2268,7 @@
     }
   },
   {
-    "id": "evt-41",
-    "timestamp": "2026-07-02T07:00:00+00:00",
-    "title": "[X (Twitter)] 🔥 Prévention des feux de forêt #Cotedor | Restons vigilants #AyonsLesBonsReflexes La préfète de la Côte-d’Or place un massif du département en risque sévère d’incendie, sur la base des analyses de Météo France, de l’ONF, de la DDT et du Sdis21. Chacu",
-    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBzMm5ieXN4RkNkc0xrZ1V5cFd0aFZ1bnVrMXptcDJkQ25aMXd2cDNXYUxQUUEtZklLTC1TMGNWcmVhOTE2cFMxR2FYeWlUSHlYSXJkWjlJRzNQYzE4a2pGZDIwN3BCSzdDUExQRHdB?oc=5",
-    "source_name": "X (Twitter)",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Ecologie",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-118",
+    "id": "evt-202",
     "timestamp": "2026-07-01T07:00:00+00:00",
     "title": "Élection présidentielle : les premier et second tours fixés aux 18 avril et 2 mai 2027",
     "summary": "Article via Google News (rci.fm).",
@@ -1746,12 +2286,30 @@
     }
   },
   {
-    "id": "evt-89",
+    "id": "evt-179",
+    "timestamp": "2026-06-30T07:00:00+00:00",
+    "title": "[Facebook] ✨ Belle consécration pour #Arue ! L'école Tamahana vient de recevoir le label « Éco-École OR » pour son projet centré sur la santé mentale et le bien-être de ses élèves. Un succès célébré en présence de Miss France 2026, Hinaupoko Devèze venue à la re",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPdmNNMFVackZHVTlZakpTenNnYU1GVnNoclJPdGxQOWV4eVlrS0MxeHY3c29hRkpSYXpPVVdmeUxxRV9mdnZaZXVqMHlKd2RNZnNtTTZFQXNaTV8xZEZZOG9ubWVaQjVLbjd0b0RkME1UYTZnQVFzdUV6VHZ1aXdfdzlBS25JYVlwSzdCd2hhTmtaVURPNnh3YWNvNmpIa3NQWEdiWXNxelpTNXhSbkl2clVmdmhQWExoN0syMHdWTDRNbmpUM3pCNUZoanFCNUNHN3N5V1dDRFhlcTZJNG1aUWVDQVBpcXJzdXA1RmNVbjlBdTVP?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Education nationale",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-186",
     "timestamp": "2026-06-30T07:00:00+00:00",
     "title": "DOSSIER SPÉCIAL : un psychiatre de Clermont accusé de dérive sectaire et d’agressions sexuelles",
-    "summary": "Article via Google News (courrier-picard.fr).",
+    "summary": "Article via Google News (Courrier picard).",
     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQb3JfMk9XSGZBRmtCSjRZVUIweEdPTFVhQlJyMmVkY0ZqaXVJckkyOWVyV3RkcEx0ZzVGZDk0ME15dXUwSlpFeHR3OGRkRDlaSnBFLXo3VThHZXFUemRCTzJ1WFo4c0VKSWF0czB5aDFwbnQ2b2tLNnFZM3AybHowSHppMmExN3lHVU5rOUg3Y2tUdEdCbzRMMjVKQU9DRmdMcFhjR0VMUU5sdEdfY2pZSnNQdnI3bVM2X19VREpOR0MwOV9ZT0x4YQ?oc=5",
-    "source_name": "courrier-picard.fr",
+    "source_name": "Courrier picard",
     "source_type": "Google News",
     "source_category": "blue",
     "theme": "Dérives Sectaires",
@@ -1764,43 +2322,7 @@
     }
   },
   {
-    "id": "evt-49",
-    "timestamp": "2026-06-29T07:00:00+00:00",
-    "title": "[X (Twitter)] 🔥 Prévention des feux de forêt #Cotedor | Restons vigilants #AyonsLesBonsReflexes La préfète de la Côte-d’Or place l’ensemble du département en risque normal d’incendie, sur la base des analyses de @meteofrance, de l’ONF, de la DDT et du @sdis21, m",
-    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE85UW9OTUhrR3E0N2FaWGhBNVZOczVOcDZtNU1BVmxCTHJfNHJPQWdnWmZVX2pWVXR3YXpjYkN2eFJRVDZEZ3FjZTh1d251aElMZjVLMGlYZVZONThqQlNGSnRHRQ?oc=5",
-    "source_name": "X (Twitter)",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Ecologie",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-68",
-    "timestamp": "2026-06-19T07:00:00+00:00",
-    "title": "[Facebook] 🔥 **Prévention des feux de forêt en Côte-d’Or : restons vigilants !** 🌲 Depuis le **15 juin**, un arrêté préfectoral encadre strictement l’usage du feu pour **protéger nos forêts et notre sécurité**. [Arrêté préfectoral 1018 du 15 juin] 👉 **À retenir :** 🚭 Interdiction",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBSRGtPbkRfbEpSVE0zQWpDVGUtZ0RSREd2TEYxRk1SUUdwd1oyWW9MZ2ZWQ3VFeTY0djdNb1d2WTQxWDRqN1RTbXVMSnFBSHVpYWROcl9HMC1qOWQ5djJGQ09UZTdXSzdwaGUxR3p3?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Prévention de la délinquance",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-120",
+    "id": "evt-204",
     "timestamp": "2026-06-16T07:00:00+00:00",
     "title": "Canicule : les oraux du bac pourront être reportés en cas de trop fortes chaleurs, annonce le ministre de l’Éducation",
     "summary": "Article via Google News (Ouest-France).",
@@ -1818,7 +2340,7 @@
     }
   },
   {
-    "id": "evt-117",
+    "id": "evt-201",
     "timestamp": "2026-06-10T07:00:00+00:00",
     "title": "Présidentielle 2027 : au RN, une si longue attente jusqu'au 7 juillet",
     "summary": "Article via Google News (Les Echos).",
@@ -1836,7 +2358,7 @@
     }
   },
   {
-    "id": "evt-116",
+    "id": "evt-200",
     "timestamp": "2026-06-09T07:00:00+00:00",
     "title": "Quels sont les 30 candidats déjà officiellement déclarés à la présidentielle de 2027 ?",
     "summary": "Article via Google News (Le Nouvel Obs).",
@@ -1854,7 +2376,43 @@
     }
   },
   {
-    "id": "evt-86",
+    "id": "evt-173",
+    "timestamp": "2026-06-05T07:00:00+00:00",
+    "title": "[Facebook] BFM Lyon. . Parc de la Tête d'Or : Réouverture de l’école de botanique",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNMW9HZFNBNjRxR1JmTmlhQ25fYmROdFFsWk9BbFh1Q1l6NmE1MnFZenVXSWNabUJQa09GVXdlTHdyRzVnaW14UldGQ0lJckgyZ2lhWHN0cUJvSXo3YXJKWjQ4ZXpzcFNlWjFHdEEwTW5sNkNQbjkxdWYzT0tib0RDSGRkcUZNTjBWZEtqRkhoOXpyUnVwOENNT1Q2dmZ0VjVGVUsyNERONTh1cTljUmhaV3pnTHZEQUhrUm1QRkRnQW91Qml4TWc?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Education nationale",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-178",
+    "timestamp": "2026-05-27T07:00:00+00:00",
+    "title": "[Facebook] PSG or Arsenal… who’s taking the trophy home? 🏆 We asked people around the mall for their predictions ahead of the Champions League Final ⚽ Now it’s your turn 👇 Drop your score predictions in the comments and join us at Gravity Max Tribeca on Saturda",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxOYWxTWVpUS1FzeUxoOVp2VnRmMlZVeGg5RlJfMW8xOWc2em5NYTJrLTNDcE12Xy1ENGxZNC1sU1F2U3A1ekJrU2tXYWxuUG5KamdJT3E4VjhhbS02aS1obHNIb2FVX3loQ3M5WUxSLU1MQ2RTS0ZsMXVGQ2VUTmF1dzIyLUFjNlo1LW9OdkJxU3lFUE1Ca1ZEQTZzcXJndTdGQkZ2Wlo4aUl3Q0p5OTRzNmtVdW0yakJoZHljQlBnSVpRVnd6YldJakszaTJsdFZtZDJ6OHgzMFJiSmZ6UGVSTG5XQQ?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Armes",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-185",
     "timestamp": "2026-05-26T07:00:00+00:00",
     "title": "Conférence internationale sur le terrorisme et extrémisme violent : la radicalisation des jeunes",
     "summary": "Article via Google News (coe.int).",
@@ -1872,7 +2430,7 @@
     }
   },
   {
-    "id": "evt-94",
+    "id": "evt-191",
     "timestamp": "2026-05-07T09:52:50+00:00",
     "title": "Loi Rodwell : psychiatriser la radicalisation, pente glissante en démocratie",
     "summary": "Article via Google News (blast-info.fr).",
@@ -1890,7 +2448,7 @@
     }
   },
   {
-    "id": "evt-93",
+    "id": "evt-190",
     "timestamp": "2026-05-04T07:00:00+00:00",
     "title": "Côtes-d’Armor : soupçonné de dérive sectaire, un maire mis en examen pour abus de faiblesse et viols",
     "summary": "Article via Google News (Sud Ouest).",
@@ -1908,7 +2466,7 @@
     }
   },
   {
-    "id": "evt-92",
+    "id": "evt-189",
     "timestamp": "2026-04-30T07:00:00+00:00",
     "title": "Dérive sectaire : un mouvement venu de Corée désormais visé par des plaintes en France",
     "summary": "Article via Google News (La Croix).",
@@ -1926,7 +2484,7 @@
     }
   },
   {
-    "id": "evt-122",
+    "id": "evt-206",
     "timestamp": "2026-04-24T07:00:00+00:00",
     "title": "Quel avenir pour Emmanuel Macron après 2027 ? Le Président assure qu’il ne fera plus de politique",
     "summary": "Article via Google News (Ouest-France).",
@@ -1944,7 +2502,7 @@
     }
   },
   {
-    "id": "evt-90",
+    "id": "evt-187",
     "timestamp": "2026-04-10T07:00:00+00:00",
     "title": "Dérive sectaire à Bellaffaire: le couple mis en cause placé en détention provisoire",
     "summary": "Article via Google News (bfmtv.com).",
@@ -1962,7 +2520,7 @@
     }
   },
   {
-    "id": "evt-91",
+    "id": "evt-188",
     "timestamp": "2026-04-10T07:00:00+00:00",
     "title": "\"Le Refuge\" : une communauté religieuse soupçonnée de dérive sectaire",
     "summary": "Article via Google News (franceinfo).",
@@ -1980,7 +2538,7 @@
     }
   },
   {
-    "id": "evt-119",
+    "id": "evt-203",
     "timestamp": "2026-04-10T07:00:00+00:00",
     "title": "Léon XIV et Emmanuel Macron : que faut-il retenir de cette première audience privée au Vatican ?",
     "summary": "Article via Google News (La Vie.fr).",
@@ -1998,7 +2556,7 @@
     }
   },
   {
-    "id": "evt-98",
+    "id": "evt-195",
     "timestamp": "2026-04-09T07:00:00+00:00",
     "title": "Dérive sectaire : trois ans de prison, dont deux avec sursis, pour la coach en bien-être",
     "summary": "Article via Google News (Ouest-France).",
@@ -2016,7 +2574,7 @@
     }
   },
   {
-    "id": "evt-97",
+    "id": "evt-194",
     "timestamp": "2026-04-01T07:00:00+00:00",
     "title": "En Occident, un terrorisme de plus en plus alimenté par la radicalisation des jeunes",
     "summary": "Article via Google News (Le Figaro).",
@@ -2034,7 +2592,7 @@
     }
   },
   {
-    "id": "evt-121",
+    "id": "evt-205",
     "timestamp": "2026-04-01T07:00:00+00:00",
     "title": "France 2027 : la prochaine élection présidentielle, entre héritages et recomposition",
     "summary": "Article via Google News (fr.infosgabon.com).",
@@ -2052,15 +2610,15 @@
     }
   },
   {
-    "id": "evt-69",
-    "timestamp": "2026-03-24T07:00:00+00:00",
-    "title": "[Facebook] Correspondants TF1 en Normandie. . 🐚🌅 Pêcheur à pied, c’est aussi un métier Le dos courbé, râteau à la main… partons à la découverte des pêcheurs à pied professionnels. Eh oui, pour certains, c’est un véritable métier. Au rythme des marées, ils parcouren",
+    "id": "evt-177",
+    "timestamp": "2026-02-19T08:00:00+00:00",
+    "title": "[Facebook] Running outside to a meeting, or off site work? Remember your footwear with good traction, it is slippery out there! https://www.wscc.nt.ca/sites/default/files/documents/Toolbox%20Talk%20-%20Slips%20Trips%20%26%20Falls%20-%20EN.pdf ---- ᐅᓪᓚᔭᒃᐲᑦ",
     "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxNQzE3ZENUMnhrcVhGXy1sUDBPLUlFaG1RWG1Cb0FjSDVydHhkaWtGaWpyZ3AwMHQzc0lMLTFudFh2RDBxOGRUbmNBMWZLNXBMNEo2NVBFUm9uWGdHMTZnLWRUMDlNYkNoQ0p0VjVrRFlvemtYbm9DRVQyckwzWENEQUQ1ck9meVdSZkFIVHpMdURoLWFMTnY3TDc3bW1seDdjNEVtSGk4ZUc2NkNzcmdwQ29CNXF1b1p3V1QwaHd2V0RmQmNmTUpoZ2pMQ1gxNWx3cDNUNks1SG9fUmtvOTVraE5TajJ2VGJOS2F6YXk5UFlnaG5jWWY2LTMyb0FEZ2V0eWpRUGp0TVM?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPdS00TDA4TDBLTnZKOGQ3eFlZdWlHdnlmSE96RkRuLU1mUEgtMURaV1NrR3Mzd1BibjVYSmlJYW1Ga1JSQzMtandGejVuSUZzZ3lFb2ExSnpMOEl2ZlRYX0xJRVFoT09IdkhUeVV1akotZ1hrY0M3QThkMy11d1U1SUdhQmtkWExiYlp1cGtIejlpSVk4U3dTT3BxS1BuOVFlcWtLSmNYYkZqRFhxS0ZNOTYxTWZENkt0cno0NXczYW5IM0JCdDRzSkdqQTBHc0s2Y2FmblB3?oc=5",
     "source_name": "Facebook",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
-    "theme": "Pêche",
+    "theme": "Elections 2027",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -2070,79 +2628,7 @@
     }
   },
   {
-    "id": "evt-62",
-    "timestamp": "2025-12-19T08:00:00+00:00",
-    "title": "[Facebook] 📢 APPEL À LA POPULATION – Un orignal victime de braconnage à Val-d’Or Les agents de protection de la faune de Val-d’Or demandent la collaboration du public afin de recueillir des informations sur un orignal victime d’un possible acte de braconnage. L’a",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQejgwR056SnZLRldyaXg3dlhhdXZlSzFqeW1oWVpXODU5d05XUzVsb3g4amJ4dWI4RkpGbFhKS01zZ1llWHpLUUFRam13M2s2R05WaFNBb2RySS1SalZwdXZzMnMycmxwaEloZzlWaUxFSmhYci1aRFhsa1ZmR0gxRzFuZ3hCZlREaUhQSDZjbVlmblJwTmNtVFVXWUpiaEhtUDZ1SXl0N3N1Y1RVVXN5Z3EtVkc0Q1BobGZaUGZUUDRMcGxCX0dLdllud3phd0k5TjVROXhpMTBxSE0yMnl0SGpPaVRCS2c2b0VHVWpMNA?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Chasse",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-46",
-    "timestamp": "2025-12-09T08:00:00+00:00",
-    "title": "[X (Twitter)] OUVERTURE DU CONSEIL DE MÉDIATION ET DE SÉCURITÉ DE LA CEDEAO À ABUJA* La 55e session du Conseil de médiation et de sécurité (CMS) de la CEDEAO au niveau ministériel se tient aujourd'hui, 9 décembre 2025, au siège de la Commission",
-    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE12VFdNWkZnSm1sZFVxeGlBcS0zQkg1Tk5OanRkWWRKVU92Tllwd2tYalpBWmVEZV81MlNkdUFCUnpOem1zOUdxUnNYbFZ4aFBjSlBHWUFKbXY5QWR1OTdXNk9VcHc?oc=5",
-    "source_name": "X (Twitter)",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Prévention de la délinquance",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-55",
-    "timestamp": "2025-11-25T18:31:57+00:00",
-    "title": "[X (Twitter)] Préfète Bourgogne-Franche-Comté, Préfète Côte-d'Or (@Prefet21_BFC) on X",
-    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE12dEhMeE11bmRWd2g2aWZaSHBIXy1HMmd2R1FsRDgySHhIbmlfM3NBVU53a011MjVLTXdLdW5WXzUyc0NZMmNZbUYtcGVHdw?oc=5",
-    "source_name": "X (Twitter)",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Reseaux Sociaux",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-50",
-    "timestamp": "2025-11-25T08:00:00+00:00",
-    "title": "[X (Twitter)] #ToutesEtTousEgaux | Journée internationale pour l’élimination de la violence à l’égard des femmes Ce matin, dans les locaux de la préfecture de la Côte-d’Or, se sont réunis les partenaires engagés dans la prévention et la lutte contre les violences conjugal",
-    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1iSGVwcVU5OGZjd1A2WUE4TUljTjItVEtxNUlVbThqTGRSZEpUUXFOdkltbTd2eU1mR1hKeGNuYWQ2d2xRZmJRX1VqYjdEbXpVVG9hNmR1dkU0bUk4enNoc092Q0hDLWNPaTRweGZB?oc=5",
-    "source_name": "X (Twitter)",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Prévention de la délinquance",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-19",
+    "id": "evt-139",
     "timestamp": "2025-09-22T21:00:00+02:00",
     "title": "Incident grave à l’aéroport Nice Côte d’Azur: une enquête judiciaire ouverte, la gendarmerie des transports aériens saisie",
     "summary": "Article direct de Var-Matin.",
@@ -2160,7 +2646,7 @@
     }
   },
   {
-    "id": "evt-20",
+    "id": "evt-140",
     "timestamp": "2025-09-22T20:55:00+02:00",
     "title": "Le match RCT-Castres du 13 septembre dernier s’était-il joué \"en vigilance orange\", comme l’affirme le préfet du Var?",
     "summary": "Article direct de Var-Matin.",
@@ -2178,15 +2664,15 @@
     }
   },
   {
-    "id": "evt-64",
-    "timestamp": "2025-09-17T07:00:00+00:00",
-    "title": "[Facebook] 🎗 Septembre en Or : journée de prévention. Dans le cadre de Septembre en Or, mois de sensibilisation aux cancers pédiatriques, la Ligue contre le cancer, avec le soutien de l’agglomération et sous le parrainage de Sabine Belli, organise un après-midi plac",
+    "id": "evt-180",
+    "timestamp": "2025-02-17T08:00:00+00:00",
+    "title": "[Facebook] Running outside to a meeting or off site work? Remember your footwear with good traction, it is slippery out there! https://ow.ly/LbHo50UZrON ---- ᐅᓪᓚᔭᒃᐲᑦ ᑲᑎᒪᔭᖅᑐᕐᓂᕐᒧᑦ, ᐅᕝᕙᓘᓐᓃᑦ ᐊᓂᓂᐊᖅᐲᑦ ᐃᖅᑲᓇᐃᔭᕐᕕᖕᓂᑦ? ᐃᖅᑲᐅᒪᓂᐊᖅᐸᑎᑦ ᖁᐊᐃᑦᑖᙱᑦᑐᑦ ᑲ",
     "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOZWZWZEYzOTROSTlNRVRvQnBSc2k2UUhHaUMyMnlmSnBtcHpyQUp0ckF6YnRkQkFLeXhyaFgyLTRRc2U3SHlSUjBSSnVsX3dhTHNDNlRUX1JiZGFWUHBVSTljVnUtSUhnemRLU05xSkQzVnMwSXVxTmJnM3piR2ZwUzFaVEZrUXJqeDIxbGFEWkdtX1h2bEdIQmY4TDB0eE1EWkctQmh1dzhlX1k4S2VCRXlwSXpHWDBTNHpNZEJ1Mk1PTDY0emJpMGt5Y0hjQzVfVzhNOG4wTnBzODNRYUJYcXNsc0g3Zk0?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNTWhka1lodUJUcVBmNzdEdHZHOHFWQTQzRlB4dHBDZmJCX0toLWE4T2JTRWxKV0l6b0VxX25BX0Nzam96WjQxd2tsaUhRWjlZNXYtSGJKVG96RFFaY3JGX3pTdXVxelNRUVZGclp0RmdjMXFtXy1NeTVJU251ZTE4QlplRjRYOFBZOGYxc0ZMUS1mYVd1aFkxMnB6b3hISEh1dUlsbVJlUXo1ZGd1YlJRbXZCSC1xclNxdkt6dGJnMVM1bkZZeldOSjhZLVdxdWo0UTZIbg?oc=5",
     "source_name": "Facebook",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
-    "theme": "Prévention de la délinquance",
+    "theme": "Elections 2027",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -2196,102 +2682,12 @@
     }
   },
   {
-    "id": "evt-60",
-    "timestamp": "2024-10-22T06:11:39+00:00",
-    "title": "[Facebook] La Marine du Pêcheur - Palavas Les Flots",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQQ2luczRHOWwtZWVnVC1jSFpwdGd1UkNNblhaVVhmdm9HT3FYcmVfNGNrbUk4WVRyTkcyZEZEMFhFUm5CTExKTGxManFjOWxTUWJxS09yb05veUFqaFRBTzVPNWpobzlMbW14Tmx5NVZJNlZRdDFIbDh5SmsyVXBwSEwxMnhSQVFrdzdOVTdqYw?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Pêche",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-52",
-    "timestamp": "2024-09-29T07:00:00+00:00",
-    "title": "[X (Twitter)] Amabwiriza yo kwirinda icyorezo cya Marburg —— Guidelines for prevention of Marburg Virus Disease —— Mesures de prévention contre le virus Marburg",
+    "id": "evt-156",
+    "timestamp": "2024-05-23T07:00:00+00:00",
+    "title": "[X (Twitter)] Campagne de vaccination contre les papillomavirus humains (HPV) Dans la Creuse à fin 2023, 17% des élèves de 5ème ont été vaccinés dans leur collège. Depuis début avril, ils bénéficient de leur 2ème dose de vaccin et un rattrapage est organisé. @ARS_",
     "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5uNEI5djZ6RlVDdUpZVkJVRmRBdHhvaWtKN0hLTWt6MmdNVmlmNmtPdGxiRDVVVnVsTDFGcEU1TS1HelM0U2RQa3hSWHQ0ZmlqYUhERHNrWnVMTkMxSlJ4SFNpMA?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9LeXRlelUteUJjb0Z0UTFaWHgzV0YtZ2wyazNfVlpVWTUySUtCYThOSFpEcDFmelY0cUZBbS1BR2pwWE9kQjBpR3JzeS1UTHM5Y3d6X1hfTU9UX1QzOE9ZVUgyYUVMc0Fw?oc=5",
     "source_name": "X (Twitter)",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Prévention de la délinquance",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-54",
-    "timestamp": "2024-08-02T07:00:00+00:00",
-    "title": "[X (Twitter)] Avenir Santé, une équipe en Or ! L’association est présente pendant les Jeux Olympiques en Rhône-Alpes pour y réaliser des actions de prévention ! A Saint-Étienne, nous co-animons un espace de prévention avec la @Prefecture42 au sein du Club olympiq",
-    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBYa1pVTDJ6SUMtZm91QTlEaFB1bnZSYkpreUF2MHhqSk05OWZ4bVNXZ19ER2g1M3dqZU5Sa3FoVlE0WkR5dVFUbUtBQmVtSWxuQjBJT0lFWHcwbElCYXhSQ25ITQ?oc=5",
-    "source_name": "X (Twitter)",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Prévention de la délinquance",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-38",
-    "timestamp": "2024-05-17T11:18:07+00:00",
-    "title": "[X (Twitter)] Comprendre quand l'accès à un contenu est restreint dans un pays",
-    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5nRDdDWm1aWmFkTWJJM2VaR3NMUmpWMUdLTGNONHl1QkZXTGRwckJfeGhodDdTVGhTOGZzaHBZckZBdjJwc25WUFhzVElvaUFYc2JZb0p1cW5Pemg4LXUyQWlQZ1NkbXU4T3NTNFVLNFJ3dDg?oc=5",
-    "source_name": "X (Twitter)",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Reseaux Sociaux",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-39",
-    "timestamp": "2024-05-17T00:30:03+00:00",
-    "title": "[X (Twitter)] Faire appel en cas de compte verrouillé ou suspendu",
-    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE92eVgtVTB6Q0FScjY2dEZJSWNJV2cyc1NpN2VlR0p0WDZtQTljUGFYb0g1Y2tCVnBHQm84WGNfTjJ5eVRxM0tSNkZ1ckVDUnZ3aEhhVFJ4ZV9RWFF4anZR?oc=5",
-    "source_name": "X (Twitter)",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Reseaux Sociaux",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-59",
-    "timestamp": "2024-01-25T08:00:00+00:00",
-    "title": "[Facebook] Nuit de blocage en Côte-d’Or. Sylvain Fleury, agriculteur près de Saulieu, fait le point.",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNWWFMd2JlZzVBNEgtWWVVLU5PcGZIV0cwcXctT0psSnc2T3RTTUdDTzYzVUp4V2t2bW44YmRLNEl3VUxaLVdtdUFYVkNHVWp6dlkycUhnYXVQNnZFQm5yUjIzcGFETkdMUjdyajFySDdqclZYZUNscDJUS0lpbEVMR2lfT3cxTnh1STBZWThmcnpFWTJ5cDF1b2pFYU1xZGppalFEeXNNU215bVBJYUtlV0M1RklETndPVmItS095OFk1Z0g2MUhBWVRWdExnV1J4a1JFQTBJUF90VDFLVlV5QTRUN1RPcDg?oc=5",
-    "source_name": "Facebook",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
     "theme": "Agriculture",
@@ -2304,15 +2700,15 @@
     }
   },
   {
-    "id": "evt-70",
-    "timestamp": "2023-05-26T19:32:48+00:00",
-    "title": "[Facebook] Expoprotection : Salon de la prévention et de la gestion des risques",
+    "id": "evt-171",
+    "timestamp": "2023-08-09T22:58:08+00:00",
+    "title": "[Facebook] Meeting Of Styles France | Paimpol",
     "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOeDRiMzdxdmdWSU9vQUlqdVBETFRCZmlRc3lHMm9FWWh5LWNaQkpOTFJibmk1OTFtUkYtYjdYV0hBYmdkMk5QbmZ5QTN1WmdsUUN4SjFTN0pzRDFMLVFUMGU5ZVpwdTBVTTZPVVYwNUFTUDRQcW8wTnZZT0ZaLXNIbmJaS3NSeDJrRHVlNDNXb2kyMlpTRjM5czVxbzhUcng4UnVLRG1NVGxPdWJOaU5mUFN0NlB6Zw?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5BLVNCT2hidzF0b0QtYWNIS1B0RF9QdnhsVmVLNldPbWYtbHA1cElUcHNvQml4S0N2VXQzNGFKWm5MckJRQm5ZQU05R2VnUFF1VFZIREw3M0NxT0U?oc=5",
     "source_name": "Facebook",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
-    "theme": "Prévention de la délinquance",
+    "theme": "Elections 2027",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -2322,15 +2718,15 @@
     }
   },
   {
-    "id": "evt-63",
-    "timestamp": "2022-03-14T07:00:00+00:00",
-    "title": "[Facebook] [ALPIN] FIN DE L'ETAPE DES ECUREUILS D'OR A SERRE CHEVALIER VENDREDI_SUPER G fin des championnats de France U16 de Serre Chevalier avec les SG filles et Garçons. Chez les garçons, Damien Fink du Ski Club Val D'Allos et Natan Ruiz du C",
+    "id": "evt-176",
+    "timestamp": "2023-05-25T19:59:40+00:00",
+    "title": "[Facebook] Bleu et Or Hockey École Polyvalente Arvida",
     "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOMGF6aEQ3VS1nOEJLTm1XN3dkeEltdWFSSEdpbmd5WTMzNTBHZkY0THBXRU9zeXZvRFZ4VmFKdk03V0t3NDVIbURzMGxrRS1hQjlsME9jd1VvWDRlNUxzajlYUGpPWUk3ZVFtUWtrSnliUTc5OUR2ZkdPOUMtUHVmWEdVdlRFV3hVVktjVzVRdm1SUHFieTJLbHJCd3NJSWVSamlvZEdBazh3N182YlV3NG5LREc1RjVnTDZWVThSVFhwSkV1Z1hwR3QxYmE1eXNXVUNWSnkxcjRJeUp3M09xd3FzY1RCUWZMTnN5YWNR?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQb3NaM3ZKOG9MVUxfeFFxbUl1MWdmZ0NPUy1NUTVRM1Fic1ZyaFZYSmtKTW9vNnpWTjZmZXU2OHhpaDFDZzBsSlhhVWk0aWJLS3ZLY3NVUnQ0WmRWVjZJTkpKVGl4Wldia3RrZ0NRZjNremhKaHFUUlF4STY5bzBpbWo3ZEJwN3p0RWlxSUctQlFFSWFJNHc?oc=5",
     "source_name": "Facebook",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
-    "theme": "JOPH 2030",
+    "theme": "Education nationale",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -2340,15 +2736,69 @@
     }
   },
   {
-    "id": "evt-53",
-    "timestamp": "2022-02-21T08:00:00+00:00",
-    "title": "[X (Twitter)] 🚨 [PRÉVENTION] Avec l’essor d’Internet et des réseaux sociaux, les escrocs ont développé de nouvelles techniques. Quelles sont les règles d’or à respecter pour ne pas tomber dans ces nouveaux pièges ? ➡ bit.ly/3p4NMbF #ABEIS #prévention #arnaques",
+    "id": "evt-168",
+    "timestamp": "2023-05-25T16:59:39+00:00",
+    "title": "[Facebook] École le Sablon d'Or",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9tQnVCT2tPRnhoU2ZCMEhQN2lUSWVNRmhpYXlyeElZbXpaakZXaWRxMXU2MUxURzk3RE41WC1fMVdhck9sVmFVRkt5ZHBSOXdmRHlIdU1NSy14YlVTTlJMcV9Uck8xUlM0QlNpTWJqNkU5d2JsT0hJ?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Education nationale",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-172",
+    "timestamp": "2023-02-05T16:52:34+00:00",
+    "title": "[Facebook] Auto école les boutons d'or (@aeboutonsdor)",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFA3YXBQUFg0ZkFMV0M2LUFwdVZXTkhSTkF5V0ZQdVlIYWdaNGNVQzREaExqcVpIUm8tSFY4c2t1Q1Y0MG9JTmxkMWRfT05iMDJZYnJad3VhLTY3R25rTEU2UQ?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Education nationale",
+    "location": {
+      "region": "INCONNUE",
+      "department": "N/A",
+      "city": "Non localisé",
+      "lat": null,
+      "lng": null
+    }
+  },
+  {
+    "id": "evt-170",
+    "timestamp": "2022-10-30T07:00:00+00:00",
+    "title": "[Facebook] Choisir L'école Juive. . L'association Choisir l'École Juive est fière de présenter l'école Or Atorah de Marseille. 📖Une équipe encadrante et pédagogique engagée, des petits effectifs par classe permettant ainsi un suivi personnalisé et individualisé des élèves..",
+    "summary": "Publication Facebook détectée par Dork OSINT.",
+    "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQaGFKVDE4eF93cHNUNGFIcTNFNlNqd3hLZGJsVzQwdkg1TUJRejNZY3BFR0tDdmdONUVFb3VmRzFNOEJRMXM2LXY0ZzNqRVRXbVNKaDJ3WjY3MTUyOU9GMkxKMlRUNkVjV0oyamZVWjFlMGM1YVJNNXNqNFJDbUlzR053LVkxaXcycXNaSVFNdGNGVVBpVDFWTU1R?oc=5",
+    "source_name": "Facebook",
+    "source_type": "Reseaux Sociaux",
+    "source_category": "red",
+    "theme": "Education nationale",
+    "location": {
+      "region": "PACA",
+      "department": "13",
+      "city": "Marseille",
+      "lat": 43.2965,
+      "lng": 5.3698
+    }
+  },
+  {
+    "id": "evt-159",
+    "timestamp": "2018-04-08T07:00:00+00:00",
+    "title": "[X (Twitter)] \"Les enfants autistes ne sont pas faits pour l'école, ce sont des personnes insensibles, ne voulant pas vivre en société.\" Avec Josef Schovanec cassons les idées reçues et #ChangeonsLaDonne #Rediff",
     "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBCOElZal9vbW9yaUJLQklHd2xaQmtrdHBZb0EzbTRZd20wZng5Umw5YmFFU3JWbkFVd1VrYUlYdHFpNk9maFZwQ0Z1bXJidlBaazQ3eVQ4TDhhdUg3Y1dn?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5MU0p5T09YR2s0QmU1djU4ektlMG9vUFh0cV9GTHFHbXBrVEVXdGxwRUt6ODNVTFh2d3RhOWYwX2ZGZHdyMVB4TDBabGVUTzZuaXNOd3VUeEpVTWM5cWo1VFU2dktSOG5Sc09MU0s5SQ?oc=5",
     "source_name": "X (Twitter)",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
-    "theme": "Prévention de la délinquance",
+    "theme": "Education nationale",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
@@ -2358,87 +2808,15 @@
     }
   },
   {
-    "id": "evt-67",
-    "timestamp": "2022-02-11T08:00:00+00:00",
-    "title": "[Facebook] #OR ❌ Une donnée issue de la campagne de survol des sites d’orpaillage illégal, réalisée en janvier par les inspecteurs de l’environnement du Parc amazonien de Guyane, Parc national, avec la participation de l’ONF et l’OFB. 119 sites actifs ont été recensé",
+    "id": "evt-169",
+    "timestamp": "2017-08-31T00:18:37+00:00",
+    "title": "[Facebook] Bleu et Or École Polyvalente Arvida",
     "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPblVJQ2dJZlFaVkUzY1Rha0JKY0I0ZFJ5MHFaekNyUHdYckpDOUZIejZxaE02NzNxREUyajMwOFVJdW53OHpWaUZoX2ZaVWpMcWVQc1dMR3o3T1Q5a1Y2SUNXSzJCUmtKRmtTSXB6NzlVeVotNHJiRExaVm9uMm5HLTQ5c1RLQ2VJbEQwZUt3RVBlZ1ZScDNTTk5rZmk4NHRvdU5xTU1tV2E4OWFlakRoOU4ydjJWUnpIVlJJODA1VUtuQXIzLWx6bXpnVDJWREVFTk9UR2RPUWRWNS1DdTJxR3otZGdnOG9Yd3dr?oc=5",
+    "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE1RRUVzSmxKbGJhaHNnMUZNWUV6T2dxTjF4U2hFSjdndW5JdUJ0dmtaM25NUmV0ZXAxay1MV09GeWVacWFkbGItTG9NUnc?oc=5",
     "source_name": "Facebook",
     "source_type": "Reseaux Sociaux",
     "source_category": "red",
-    "theme": "Ecologie",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-71",
-    "timestamp": "2022-01-30T13:58:23+00:00",
-    "title": "[Facebook] Comité Central du Groupe Public Ferroviaire - CCGPF",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1OYXFlRFI5SDVlMWNlOWxlV1dWZklZMXNOMTUwcU9kREFFNUNnR0twMDY3VzkwdXdUNmpOQ1EtM0tNYTlYS3UyQnJVTWc4WF9SV25N?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Ferroviaire",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-44",
-    "timestamp": "2021-12-20T08:00:00+00:00",
-    "title": "[X (Twitter)] Cette visite officielle du Prof. Elena et Prof. David à Kigali Rwanda 🇷🇼 est axée sur la consolidation des relations amicales entre ces deux prestigieuses institutions médicales françaises 🇫🇷 et le CHU de Kigali.",
-    "summary": "Publication X (Twitter) détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5NdXVMRDN0WTZGbWlZbDlSQ3Z2M1pRdlcyT0d6a0VMd2NtMm9HeHVDZVdpdm1neXgybUdFTlBRcFQ5TDhvOEZDX3dfZV9xWVJMWnVNdEVWTWxPYk1zbVBYaGpWNA?oc=5",
-    "source_name": "X (Twitter)",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Visite officielle",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-66",
-    "timestamp": "2020-03-12T10:20:35+00:00",
-    "title": "[Facebook] Au Gai Pécheur",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE82WUlyYXhReUt2emxGWTRleXdRaTB5cHZicXJIblJiTmJySnpJR1NmQ3lVcTFITEI1b0pGUGFzR05uS0YzNE9jc0oxRGoyUVk3TFE?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Reseaux Sociaux",
-    "location": {
-      "region": "INCONNUE",
-      "department": "N/A",
-      "city": "Non localisé",
-      "lat": null,
-      "lng": null
-    }
-  },
-  {
-    "id": "evt-61",
-    "timestamp": "2015-10-29T06:33:17+00:00",
-    "title": "[Facebook] Murmures, Médiation équine et poney club à Corcelles les Monts Côte D’or",
-    "summary": "Publication Facebook détectée par Dork OSINT.",
-    "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE01QXFEZHllZUhoeXpBVVRpYW1jTWptX0NVazlpdHBaV01HbTdDcmZMVlBmUkhQRGFsdS1ORi1KUUJPX2cxTmxDcF95ZUY?oc=5",
-    "source_name": "Facebook",
-    "source_type": "Reseaux Sociaux",
-    "source_category": "red",
-    "theme": "Prévention de la délinquance",
+    "theme": "Education nationale",
     "location": {
       "region": "INCONNUE",
       "department": "N/A",
